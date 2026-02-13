@@ -4,93 +4,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seal and Stamp Notary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            font-family: 'Georgia', serif; 
-            background: white; 
-            color: black; 
+            font-family: 'Montserrat', sans-serif; 
+            background: #000; 
+            color: #fff; 
             line-height: 1.6; 
         }
         .navbar { 
-            background: black; 
-            color: white; 
-            padding: 15px; 
+            background: #000; 
+            color: #fff; 
+            padding: 20px; 
             text-align: center; 
+            border-bottom: 1px solid #333;
         }
         .navbar a { 
-            color: white; 
+            color: #fff; 
             text-decoration: none; 
-            margin: 0 15px; 
-            font-size: 14px;
+            margin: 0 20px; 
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .navbar a:hover {
+            color: #d4af37;
         }
         .hero { 
-            background: white; 
-            color: black; 
-            padding: 100px 20px; 
+            background: #000; 
+            color: #fff; 
+            padding: 120px 20px; 
             text-align: center; 
-            border-bottom: 3px solid black;
         }
         .hero h1 { 
-            font-size: 4em; 
-            margin-bottom: 20px; 
-            text-transform: uppercase;
-            letter-spacing: 3px;
+            font-family: 'Sacramento', cursive;
+            font-size: 7em; 
+            font-weight: 400; 
+            margin-bottom: 20px;
+            color: #d4af37;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
         }
         .hero p { 
-            font-size: 1.5em; 
-            color: #333; 
-            font-style: italic;
+            font-size: 1.2em; 
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #ccc;
+        }
+        .line {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 40px auto;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
         .content { 
-            padding: 60px 20px; 
+            padding: 80px 20px; 
             text-align: center; 
             max-width: 800px; 
             margin: 0 auto; 
+            border-top: 1px solid #333;
+            background: #000;
         }
         .btn { 
             display: inline-block; 
-            background: black; 
-            color: white; 
-            padding: 15px 40px; 
+            background: transparent; 
+            color: #d4af37; 
+            padding: 15px 50px; 
             text-decoration: none; 
-            margin-top: 30px; 
-            border: 2px solid black;
+            margin-top: 40px; 
+            border: 1px solid #d4af37;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 12px;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
         }
         .btn:hover {
-            background: white;
-            color: black;
+            background: #d4af37;
+            color: #000;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
         }
         footer { 
-            background: black; 
-            color: white; 
+            background: #000; 
+            color: #fff; 
             text-align: center; 
-            padding: 30px; 
+            padding: 40px; 
+            font-size: 12px;
+            letter-spacing: 1px;
+            border-top: 1px solid #333;
+        }
+        .gold-accent {
+            color: #d4af37;
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <a href="index.html"><strong>SEAL AND STAMP NOTARY</strong></a>
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <a href="index.html" style="font-weight: 400; color: #d4af37;">SEAL AND STAMP NOTARY</a>
+        <div style="margin-top: 10px;">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
     </nav>
 
-    <header class="hero">
-        <h1>Seal and Stamp Notary</h1>
-        <p>Professional Notary Services You Can Trust</p>
-    </header>
-
-    <section class="content">
-        <h2>Our Services</h2>
-        <p>General Notary | Remote Online Notarization (RON) | IPEN Equipment</p>
-        <a href="contact.html" class="btn">Book Appointment</a>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 Seal and Stamp Notary | (123) 456-7890</p>
-    </footer>
-</body>
-</html>
+   
