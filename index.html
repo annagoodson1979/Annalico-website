@@ -227,9 +227,114 @@
     </section>
 
     <!-- UPDATED FOOTER with nyms span -->
-    <footer>
-    <p>&copy;2025 | <span class="gold-accent">Operated by AN-NA<span class="nyms-footer">nyms</span>-LI Co. LLC. | NNA Certified Signing Agent | Background Screened </span> | (972) 900-7147</p>
-</footer>
+/* nyms styling - smaller, lowercase, closer to -LI */
+.nyms-footer {
+    font-family: 'Satisfy', cursive;
+    font-size: 0.6em;
+    color: #d4af37;
+    margin: 0;
+    text-transform: lowercase;
+    display: inline-block;
+    margin-left: -2px;  /* Pull closer to -LI */
+    margin-right: 1px;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect on nyms */
+.nyms-footer:hover {
+    transform: scale(1.2) rotate(-5deg);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+}
+
+/* Subtle glow animation for gold accents */
+@keyframes goldPulse {
+    0%, 100% { text-shadow: 0 0 5px rgba(212, 175, 55, 0.3); }
+    50% { text-shadow: 0 0 15px rgba(212, 175, 55, 0.6); }
+}
+
+.gold-accent {
+    color: #d4af37;
+    animation: goldPulse 3s infinite;
+}
+
+/* Fade in animation for page load */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero h1 {
+    animation: fadeInUp 1s ease-out;
+}
+
+/* Subtle line animation */
+@keyframes lineGrow {
+    from { width: 0; }
+    to { width: 100px; }
+}
+
+.line {
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    margin: 40px auto;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    animation: lineGrow 1.5s ease-out;
+}
+
+/* Button hover animation */
+.btn {
+    display: inline-block;
+    background: transparent;
+    color: #d4af37;
+    padding: 15px 50px;
+    text-decoration: none;
+    margin-top: 40px;
+    border: 1px solid #d4af37;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:hover {
+    background: #d4af37;
+    color: #000;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+}
+
+/* Logo hover effect */
+.logo {
+    font-size: 2em;
+    color: #d4af37;
+    text-decoration: none;
+    font-weight: 300;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+/* Navigation link hover animation */
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 11px;
+   
+
 
 
     <script>
