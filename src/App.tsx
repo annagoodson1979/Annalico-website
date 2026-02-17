@@ -1,6 +1,6 @@
 // src/App.tsx
 
-
+export default function App() {
 function App() {
 return (
 <div>
@@ -8,5 +8,4 @@ return (
 <p>If you see this, the build is working.</p>
 </div>
 );
-export default App;
 }
