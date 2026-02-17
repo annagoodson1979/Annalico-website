@@ -1,14 +1,150 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Seal and Stamp Notary</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seal & Stamp Notary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600&family=Satisfy&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background: #000; 
+            color: #fff; 
+            line-height: 1.6; 
+        }
+        .navbar {
+            background: #000;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        .logo {
+            font-size: 2em;
+            color: #d4af37;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .nav-links a:hover { color: #d4af37; }
+        .hero {
+            background: #000;
+            padding: 150px 20px 100px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 5em;
+            font-weight: 100;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: #d4af37;
+            margin-bottom: 30px;
+        }
+        .line {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 40px auto;
+        }
+        .hero p {
+            font-size: 1.2em;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #ccc;
+        }
+        .btn {
+            display: inline-block;
+            background: transparent;
+            color: #d4af37;
+            padding: 15px 50px;
+            text-decoration: none;
+            margin-top: 40px;
+            border: 1px solid #d4af37;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+        .btn:hover { background: #d4af37; color: #000; }
+        .content {
+            padding: 80px 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            border-top: 1px solid #333;
+        }
+        .section-title {
+            color: #d4af37;
+            font-weight: 300;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        .section-text { color: #ccc; line-height: 2; }
+        .footer {
+            background: #000;
+            color: #d4af37;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 11px;
+            border-top: 1px solid #333;
+        }
+        .nyms { font-family: 'Satisfy', cursive; font-size: 1.1em; }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3em; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <span class="logo">Seal & Stamp</span>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Seal & Stamp<br>Notary</h1>
+        <div class="line"></div>
+        <p>Professional Notary Services You Can Trust</p>
+        <a href="contact.html" class="btn">Schedule Appointment</a>
+    </section>
+
+    <section class="content">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-text">
+            We provide comprehensive notary services for individuals and businesses.
+            From document notarization to loan signings, our certified notary public
+            ensures your documents are handled with professionalism and care.
+        </p>
+    </section>
+
+    <section class="content">
+        <h2 class="section-title">About Us</h2>
+        <p class="section-text">
+            With years of experience in the notary industry, we understand the importance
+            of accuracy, confidentiality, and timely service.
+        </p>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 <span class="nyms">nyms</span> | Seal & Stamp Notary | (123) 456-7890</p>
+    </footer>
+</body>
 </html>
