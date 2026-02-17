@@ -8,4 +8,5 @@ return (
 <p>If you see this, the build is working.</p>
 </div>
 );
+export default App;
 }
