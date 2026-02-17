@@ -1,4 +1,9 @@
 // src/App.tsx
+const App: React. FC=()=>{
+  return(
+    //existing JSX
+    );
+};
 export default function App() {
 return (
   <main>
