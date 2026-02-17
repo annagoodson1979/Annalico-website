@@ -3,9 +3,7 @@ export default function App() {
 return (
   <main>
     {/*index.html*/}
-  </main>main>
-  );
-}
+  </main>main>}
 // src/main.tsx
 import React from './App.css'
   {/*<h1>Hello from React!</h1>*/}
