@@ -1,9 +1,13 @@
 // src/App.tsx
 export default function App() {
-return <div></div>
+return (
+  <main>
+    {/*index.html*/}
+  </main>main>
+  );
 }
 // src/main.tsx
-import React from 'react'
+import React from './App.css'
   {/*<h1>Hello from React!</h1>*/}
 <p>If you see this, the build is working.</p>
 </div>
