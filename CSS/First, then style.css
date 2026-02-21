@@ -31,13 +31,52 @@ body {
     align-items: center;
 }
 
-.logo {
-    color: white;
-    text-decoration: none;
-    font-size: 1.5rem;
-    font-weight: bold;
+.logo-container {
+    position: relative;
+    display: inline-block;
+    max-width: 600px;
+    width: 90%;
 }
 
+.logo-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.logo-text-overlay {
+    position: absolute;
+    bottom: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.8em;
+    font-weight: 300;
+    letter-spacing: 4px;
+    color: #fff;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-shadow: 
+        0 0 10px #fff,
+        0 0 20px #d4af37,
+        0 0 40px #d4af37,
+        0 0 80px #d4af37;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.logo-text-overlay .nyms {
+    font-family: 'Satisfy', cursive;
+    font-size: 1.3em;
+    text-transform: none;
+    color: #d4af37;
+    text-shadow: 
+        0 0 10px #d4af37,
+        0 0 20px #d4af37;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #fff, 0 0 20px #d4af37, 0 0 40px #d4af37; }
+    to { text-shadow: 0 0 20px #fff, 0 0 40px #d4af37, 0 0 80px #d4af37, 0 0 120px #d4af37; }
+}
 .nav-menu {
     display: flex;
     list-style: none;
