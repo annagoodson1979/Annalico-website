@@ -147,6 +147,19 @@
             of accuracy, confidentiality, and timely service.
         </p>
     </section>
+    <!-- Spotlight Feature -->
+<section class="spotlight-section">
+  <div class="spotlight-card">
+    <div class="ribbon">Spotlight</div>
+
+    <h2 id="spotlight-name" class="business-name"></h2>
+    <p id="spotlight-tagline" class="business-tagline"></p>
+
+    <a href="partners.html" class="directory-link">
+      Click for Partnership Directory
+    </a>
+  </div>
+</section>
 
     <footer class="footer">
         <p&copy; <span class="phone-number">2025</span> <span class="nyms">nyms</span>| Seal & Stamp Notary | (972) 900 - 7147</p>
@@ -183,8 +196,40 @@ const partner = partners[weekNumber % partners.length];
 document.getElementById("spotlight-name").textContent = partner.name;
 document.getElementById("spotlight-tagline").textContent = partner.tagline;
 </script>
+    <script>
+const partners = [
+  {
+    name: "TGB Global",
+    tagline: "Global logistics with local care.",
+    link: "/partners.html"
+  },
+  {
+    name: "Sunrise Title Co.",
+    tagline: "Closing with clarity and confidence.",
+    link: "/partners.html"
+  },
+  {
+    name: "North Star Lending",
+    tagline: "Guiding you home.",
+    link: "/partners.html"
+  }
+];
+
+function getWeekNumber(date) {
+  const start = new Date(date.getFullYear(), 0, 1);
+  const days = Math.floor((date - start) / (24 * 60 * 60 * 1000));
+  return Math.ceil((days + start.getDay() + 1) / 7);
+}
+
+const today = new Date();
+const weekNumber = getWeekNumber(today);
+const partner = partners[weekNumber % partners.length];
+document.getElementById("spotlight-name").textContent = partner.name;
+document.getElementById("spotlight-tagline").textContent = partner.tagline;
+</script>
 </body>
 </html>
+
 
 
 
