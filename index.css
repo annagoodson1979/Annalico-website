@@ -1,0 +1,26 @@
+.landing {
+  position: relative;
+  text-align: center;
+  margin-top: 120px; /* adjust as needed to clear the logo */
+}
+
+.landing-img {
+  width: 100%;
+  max-width: 600px;
+  display: block;
+  margin: 0 auto;
+}
+
+.llc-name {
+  position: absolute;
+  bottom: 40px; /* adjust as needed */
+  left: 60%;    /* adjust as needed to move next to the lady */
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 2rem;
+  font-family: 'Georgia', serif;
+  background: rgba(0,0,0,0.5);
+  padding: 10px 30px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
