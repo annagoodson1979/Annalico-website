@@ -1,6 +1,6 @@
 <section class="about-me">
   <div class="aboutme.jpg-container">
-    <img src="images/aboutme.jpg" alt="About Me" class="aboutme.jpg" id="aboutImage">
+    <img src="About Me/aboutme.jpg" alt="About Me" class="aboutme.jpg" id="aboutImage">
     <div class="about-text">
       <h2>About Me</h2>
       <p>Your about me text goes here...</p>
