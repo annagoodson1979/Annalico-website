@@ -1,13 +1,4 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>About Me</title>
-  <link rel="stylesheet" href="index.css"> <!-- or your CSS file path -->
-</head>
-<body>
-  <section class="about-me">
+<section class="about-me">
   <div class="about-image-container">
     <img src="images/about-me.jpg" alt="About Me" class="about-image" id="aboutImage">
     <div class="about-text">
@@ -16,5 +7,3 @@
     </div>
   </div>
 </section>
-</body>
-</html>
