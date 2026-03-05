@@ -8,13 +8,13 @@
 </head>
 <body>
   <section class="about-me">
-    <div class="about-image-container">
-      <img src="images/about-me.jpg" alt="About Me" class="about-image" id="aboutImage">
-      <div class="about-text">
-        <h2>About Me</h2>
-        <p>Your about me text goes here...</p>
-      </div>
+  <div class="about-image-container">
+    <img src="images/about-me.jpg" alt="About Me" class="about-image" id="aboutImage">
+    <div class="about-text">
+      <h2>About Me</h2>
+      <p>Your about me text goes here...</p>
     </div>
-  </section>
+  </div>
+</section>
 </body>
 </html>
