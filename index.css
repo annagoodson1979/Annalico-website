@@ -24,3 +24,26 @@
   border-radius: 8px;
   white-space: nowrap;
 }
+.about-image-container {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.about-image {
+  width: 100%;
+  transition: filter 0.6s;
+}
+.about-image.blurred {
+  filter: blur(4px) brightness(0.7);
+}
+.about-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-shadow: 0 2px 8px #000;
+  z-index: 2;
+  text-align: center;
+}
