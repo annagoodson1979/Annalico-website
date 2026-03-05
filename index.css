@@ -24,17 +24,17 @@
   border-radius: 8px;
   white-space: nowrap;
 }
-.about-image-container {
+.aboutme.jpg-container {
   position: relative;
   width: 100%;
   max-width: 700px;
   margin: 0 auto;
 }
-.about-image {
+.aboutme.jpg {
   width: 100%;
   transition: filter 0.6s;
 }
-.about-image.blurred {
+.aboutme.jpg.blurred {
   filter: blur(4px) brightness(0.7);
 }
 .about-text {
