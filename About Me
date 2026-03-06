@@ -1,9 +1,5 @@
-<section class="about-me">
-  <div class="aboutme.jpg-container">
-    <img src="index(4)_files/aboutme.jpg" alt="About Me" class="aboutme.jpg" id="aboutImage">
-    <div class="about-text">
-      <h2>About Me</h2>
-      <p>Your about me text goes here...</p>
-    </div>
-  </div>
-</section>
+# About Me
+
+This is my updated About Me section. Here is the correct image path:
+
+![About Me](aboutme.jpg)
