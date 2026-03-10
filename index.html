@@ -8,21 +8,19 @@
     <link rel="stylesheet" href="index.css">
 <script src="index.js"></script>
   </head>
-    <script>
-window.addEventListener('scroll', function() {
-  const img = document.getElementById('aboutme.jpg');
-  const aboutSection = document.querySelector('aboutme.jpg');
-  const rect = aboutSection.getBoundingClientRect();
-  if (rect.top < window.innerHeight && rect.bottom > 0) {
-    img.classList.add('blurred');
-  } else {
-    img.classList.remove('blurred');
-  }
-});
-</script>
-  <body>
+<body>
+  <!-- Landing Section -->
   <img src="images/image3.jpg" alt="Landing Image">
-  <script>
+
+  <!-- ...other content... -->
+
+  <!-- About Me Section -->
+  <section id="about-me">
+    <img src="images/aboutme.jpg" alt="About Me">
+    <!-- About Me text/content here -->
+  </section>
+
+    <script>
     window.addEventListener('scroll', function() {
       // your scroll code here
     });
