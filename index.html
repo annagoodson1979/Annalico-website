@@ -1,4 +1,314 @@
-@ -1,192 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seal and Stamp Notary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background: #000; 
+            color: #fff; 
+            line-height: 1.6; 
+        }
+        
+        .navbar { 
+            background: #000; 
+            color: #fff; 
+            padding: 15px 20px; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        .logo { 
+            font-size: 2em; 
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: 300;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .logo:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a { 
+            color: #fff; 
+            text-decoration: none; 
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #d4af37;
+            transition: width 0.3s;
+        }
+        .nav-links a:hover {
+            color: #d4af37;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-btn {
+            background: transparent;
+            color: #d4af37;
+            border: 1px solid #d4af37;
+            padding: 8px 15px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .dropdown-btn:hover {
+            background: #d4af37;
+            color: #000;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: #111;
+            min-width: 320px;
+            border: 1px solid #333;
+            z-index: 1000;
+            margin-top: 5px;
+        }
+        .dropdown-content.show {
+            display: block;
+        }
+        .dropdown-content a {
+            color: #fff;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+            font-size: 10px;
+            white-space: nowrap;
+            border-bottom: 1px solid #222;
+        }
+        .dropdown-content a:hover {
+            background: #222;
+            color: #d4af37;
+        }
+        
+        .hero { 
+            background: #000; 
+            color: #fff; 
+            padding: 150px 20px 100px; 
+            text-align: center; 
+        }
+        .hero h1 { 
+            font-size: 5em; 
+            font-weight: 100; 
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            line-height: 1.2;
+            color: #d4af37;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+        .hero p { 
+            font-size: 1.2em; 
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #ccc;
+        }
+        .line {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 40px auto;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+            animation: lineGrow 1.5s ease-out;
+        }
+        .btn { 
+            display: inline-block; 
+            background: transparent; 
+            color: #d4af37; 
+            padding: 15px 50px; 
+            text-decoration: none; 
+            margin-top: 40px; 
+            border: 1px solid #d4af37;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn:hover {
+            background: #d4af37;
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+        .content { 
+            padding: 80px 20px; 
+            text-align: center; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            border-top: 1px solid #333;
+            background: #000;
+        }
+                     <footer>
+    <p>&copy;2025 | Operated by AN-NA<span class="nyms-footer">nyms</span>-LI Co. LLC. | NNA Certified Signing Agent | Background Screened | <span class="phone-number">(972) 900-7147</span></p>
+</footer>
+
+        footer { 
+            background: #000; 
+            color: #d4af37;  /* Gold color for all footer text */
+            text-align: center; 
+            padding: 40px 20px; 
+            font-size: 11px;
+            letter-spacing: 1px;
+            border-top: 1px solid #333;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+        footer p {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        /* nyms styling - gold color */
+        .nyms-footer {
+            font-family: 'Satisfy', cursive;
+            font-size: 1.1em;
+            color: #d4af37 !important;
+            text-transform: lowercase;
+            display: inline-block;
+            margin-left: 0;
+            margin-right: 2px;
+            vertical-align: 1px;
+            transition: all 0.3s ease;
+        }
+
+        
+        .nyms-footer:hover {
+            transform: scale(1.2) rotate(-5deg);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+        }
+
+        
+        /* Phone number in white */
+        .phone-number {
+            color: #ffffff !important;
+        }
+        
+        /* Animations */
+@ -197,82 +226,4 @@
+        }
+        
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes lineGrow {
+            0% { width: 0; }
+            100% { width: 100px; }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; gap: 15px; }
+            .nav-right { flex-direction: column; gap: 15px; }
+            .hero h1 { font-size: 3em; }
+            .dropdown-content { right: -50px; }
+            footer p { white-space: normal; } /* Allow wrapping on mobile */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">LOGO</a>
+        
+        <div class="nav-right">
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            
+            <div class="dropdown">
+                <button class="dropdown-btn" onclick="toggleDropdown()">
+                    How I Can Help ▼
+                </button>
+                <div class="dropdown-content" id="dropdownMenu">
+                    <a href="services.html">Mobile & General Notary</a>
+                    <a href="services.html">Remote Online Notarization (RON)</a>
+                    <a href="services.html">Electronic Notarization (IPEN)</a>
+                    <a href="services.html">Loan Signing Services</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Seal and<br>Stamp Notary</h1>
+        <div class="line"></div>
+        <p>Professional Notary Services You Can Trust</p>
+        <a href="contact.html" class="btn">Book Appointment</a>
+    </header>
+
+    <section class="content">
+        <p style="letter-spacing: 2px; text-transform: uppercase; font-size: 14px; color: #666;">
+            <span class="gold-accent">General Notary</span> | <span class="gold-accent">RON</span> | <span class="gold-accent">IPEN</span>
+        </p>
+    </section>
+
+    <footer>
+        <p>&copy;2025 | Operated by AN-NA<span class="nyms-footer">nyms</span>-LI Co. LLC. | NNA Certified Signing Agent | Background Screened | <span class="phone-number">(972) 900-7147</span></p>
+    </footer>
+
+    <script>
+        function toggleDropdown() {
+            document.getElementById('dropdownMenu').classList.toggle('show');
+        }
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropdown-btn')) {
+                var dropdowns = document.getElementsByClassName('dropdown-content');
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+            0% { opacity: 0; transform: translateY(30@ -1,192 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
