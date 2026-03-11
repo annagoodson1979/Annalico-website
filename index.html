@@ -4,240 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seal and Stamp Notary</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
+    <!-- Your existing Montserrat font -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600&display=swap" rel="stylesheet">
+    <!-- ADD THIS: Satisfy font for nyms -->
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-@ -13,28 +13,94 @@
-            color: #fff; 
-            line-height: 1.6; 
-        }
-        
-        /* Navigation */
-        .navbar { 
-            background: #000; 
-            color: #fff; 
-            padding: 20px; 
-            text-align: center; 
-            padding: 15px 20px; 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #333;
-        }
-        .navbar a { 
-        .logo { 
-            font-size: 2em; 
-            color: #d4af37;
-            text-decoration: none;
-            font-weight: 300;
-            letter-spacing: 2px;
-        }
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
-        .nav-links a { 
-            color: #fff; 
-            text-decoration: none; 
-            margin: 0 20px; 
-            font-size: 12px;
-            letter-spacing: 2px;
-            font-size: 11px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        .navbar a:hover {
-        .nav-links a:hover { color: #d4af37; }
-        
-        /* Dropdown */
-        .dropdown {
-            position: relative;
-        }
-        .dropdown-btn {
-            background: transparent;
-            color: #d4af37;
-            border: 1px solid #d4af37;
-            padding: 8px 15px;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-        .dropdown-btn:hover {
-            background: #d4af37;
-            color: #000;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            right: 0;
-            top: 100%;
-            background: #111;
-            min-width: 320px;
-            border: 1px solid #333;
-            z-index: 1000;
-            margin-top: 5px;
-        }
-        .dropdown-content.show {
-            display: block;
-        }
-        .dropdown-content a {
-            color: #fff;
-            padding: 10px 15px;
-            text-decoration: none;
-            display: block;
-            font-size: 10px;
-            white-space: nowrap;
-            border-bottom: 1px solid #222;
-        }
-        .dropdown-content a:hover {
-            background: #222;
+@ -164,6 +167,14 @@
             color: #d4af37;
         }
         
-        /* Hero */
-        .hero { 
-            background: #000; 
-            color: #fff; 
-            padding: 120px 20px; 
-            padding: 150px 20px 100px; 
-            text-align: center; 
-        }
-        .hero h1 { 
-@ -61,14 +127,6 @@
-            margin: 40px auto;
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-        }
-        .content { 
-            padding: 80px 20px; 
-            text-align: center; 
-            max-width: 800px; 
-            margin: 0 auto; 
-            border-top: 1px solid #333;
-            background: #000;
-        }
-        .btn { 
-            display: inline-block; 
-            background: transparent; 
-@ -80,53 +138,102 @@
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-size: 12px;
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
-        }
-        .btn:hover {
-            background: #d4af37;
-            color: #000;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-        }
-        .content { 
-            padding: 80px 20px; 
-            text-align: center; 
-            max-width: 800px; 
-            margin: 0 auto; 
-            border-top: 1px solid #333;
-            background: #000;
-        }
-        footer { 
-            background: #000; 
-            color: #fff; 
-            text-align: center; 
-            padding: 40px; 
-            font-size: 12px;
-            font-size: 11px;
-            letter-spacing: 1px;
-            border-top: 1px solid #333;
-        }
-        .gold-accent {
+        /* ADD THIS: Style for nyms in footer */
+        .nyms-footer {
+            font-family: 'Satisfy', cursive;
+            font-size: 1.4em;
             color: #d4af37;
+            margin: 0 2px;
         }
         
         /* Mobile */
         @media (max-width: 768px) {
             .navbar { flex-direction: column; gap: 15px; }
-            .nav-right { flex-direction: column; gap: 15px; }
-            .hero h1 { font-size: 3em; }
-            .dropdown-content { right: -50px; }
-        }
-    </style>
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <a href="index.html" style="font-weight: 400; color: #d4af37;">SEAL AND STAMP NOTARY</a>
-        <div style="margin-top: 10px;">
-            <a href="index.html">Home</a>
-            <a href="services.html">Services</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-        <a href="index.html" class="logo">LOGO</a>
-        
-        <div class="nav-right">
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="services.html">Services</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-            </div>
-            
-            <!-- Dropdown Menu -->
-            <div class="dropdown">
-                <button class="dropdown-btn" onclick="toggleDropdown()">
-                    How I Can Help ▼
-                </button>
-                <div class="dropdown-content" id="dropdownMenu">
-                    <a href="services.html">Mobile & General Notary</a>
-                    <a href="services.html">Remote Online Notarization (RON)</a>
-                    <a href="services.html">Electronic Notarization (IPEN)</a>
-                    <a href="services.html">Loan Signing Services</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero -->
-    <header class="hero">
-        <h1>Seal and<br>Stamp Notary</h1>
-        <div class="line"></div>
-        <p>Professional Notary Services You Can Trust</p>
-        <a href="contact.html" class="btn">Book Appointment</a>
-    </header>
-
-    <section class="content">
-        <p style="letter-spacing: 2px; text-transform: uppercase; font-size: 14px; color: #666;">
-            <span class="gold-accent">General Notary</span> | <span class="gold-accent">RON</span> | <span class="gold-accent">IPEN</span>
+@ -215,11 +226,10 @@
         </p>
-        <a href="contact.html" class="btn">Book Appointment</a>
     </section>
 
+    <!-- UPDATED FOOTER with nyms span -->
     <footer>
-        <p>&copy; 2025 <span class="gold-accent">Operated by AN-NAnyms-LI Co. LLC. | NNA Certified Signing Agent | Background Screened </span> | (972) 900-7147</p>
-        <p>&copy;2025 | <span class="gold-accent">Operated by AN-NAnyms-LI Co. LLC. | NNA Certified Signing Agent | Background Screened </span> | (972) 900-7147</p>
+    <p>&copy;2025 | <span class="gold-accent">Operated by AN-NA<span class="nyms-footer">nyms</span>-LI Co. LLC. | NNA Certified Signing Agent | Background Screened </span> | (972) 900-7147</p>
+</footer>
+
+
+        <p>&copy;2025 | <span class="gold-accent">Operated by AN-NA<span class="nyms-footer">nyms</span>-LI Co. LLC. | NNA Certified Signing Agent | Background Screened </span> | (972) 900-7147</p>
     </footer>
 
     <script>
         function toggleDropdown() {
-            document.getElementById('dropdownMenu').classList.toggle('show');
-        }
-        window.onclick = function(event) {
-            if (!event.target.matches('.dropdown-btn')) {
-                var dropdowns = document.getElementsByClassName('dropdown-content');
-                for (var i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
-                }
-            }
-        }
-    </script>
-</body>
-</html>
