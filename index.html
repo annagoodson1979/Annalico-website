@@ -1,3 +1,4 @@
+@ -1,229 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seal and Stamp Notary</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
@@ -179,10 +180,6 @@
             border-top: 1px solid #333;
             background: #000;
         }
-                     <footer>
-    <p>&copy;2025 | Operated by AN-NA<span class="nyms-footer">nyms</span>-LI Co. LLC. | NNA Certified Signing Agent | Background Screened | <span class="phone-number">(972) 900-7147</span></p>
-</footer>
-
         footer { 
             background: #000; 
             color: #d4af37;  /* Gold color for all footer text */
@@ -211,13 +208,11 @@
             vertical-align: 1px;
             transition: all 0.3s ease;
         }
-
         
         .nyms-footer:hover {
             transform: scale(1.2) rotate(-5deg);
             text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
         }
-
         
         /* Phone number in white */
         .phone-number {
@@ -225,86 +220,25 @@
         }
         
         /* Animations */
-@ -197,82 +226,4 @@
+        @keyframes goldPulse {
+            0% { text-shadow: 0 0 5px rgba(212, 175, 55, 0.3); }
+            50% { text-shadow: 0 0 15px rgba(212, 175, 55, 0.6); }
+            100% { text-shadow: 0 0 5px rgba(212, 175, 55, 0.3); }
         }
         
         @keyframes fadeInUp {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes lineGrow {
-            0% { width: 0; }
-            100% { width: 100px; }
-        }
-        
-        @media (max-width: 768px) {
-            .navbar { flex-direction: column; gap: 15px; }
-            .nav-right { flex-direction: column; gap: 15px; }
-            .hero h1 { font-size: 3em; }
-            .dropdown-content { right: -50px; }
-            footer p { white-space: normal; } /* Allow wrapping on mobile */
-        }
-    </style>
-</head>
-<body>
-    <nav class="navbar">
-        <a href="index.html" class="logo">LOGO</a>
-        
-        <div class="nav-right">
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="services.html">Services</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-            </div>
-            
-            <div class="dropdown">
-                <button class="dropdown-btn" onclick="toggleDropdown()">
-                    How I Can Help ▼
-                </button>
-                <div class="dropdown-content" id="dropdownMenu">
-                    <a href="services.html">Mobile & General Notary</a>
-                    <a href="services.html">Remote Online Notarization (RON)</a>
-                    <a href="services.html">Electronic Notarization (IPEN)</a>
-                    <a href="services.html">Loan Signing Services</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <header class="hero">
-        <h1>Seal and<br>Stamp Notary</h1>
-        <div class="line"></div>
-        <p>Professional Notary Services You Can Trust</p>
-        <a href="contact.html" class="btn">Book Appointment</a>
-    </header>
-
-    <section class="content">
-        <p style="letter-spacing: 2px; text-transform: uppercase; font-size: 14px; color: #666;">
-            <span class="gold-accent">General Notary</span> | <span class="gold-accent">RON</span> | <span class="gold-accent">IPEN</span>
-        </p>
-    </section>
-
-    <footer>
-        <p>&copy;2025 | Operated by AN-NA<span class="nyms-footer">nyms</span>-LI Co. LLC. | NNA Certified Signing Agent | Background Screened | <span class="phone-number">(972) 900-7147</span></p>
-    </footer>
-
-    <script>
-        function toggleDropdown() {
-            document.getElementById('dropdownMenu').classList.toggle('show');
-        }
-        window.onclick = function(event) {
-            if (!event.target.matches('.dropdown-btn')) {
-                var dropdowns = document.getElementsByClassName('dropdown-content');
-                for (var i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
-                }
-            }
-        }
-    </script>
-</body>
+            0% { opacity: 0; transform: translateY(30
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seal and Stamp Notary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
