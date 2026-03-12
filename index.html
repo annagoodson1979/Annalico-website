@@ -1,43 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Seal and Stamp Notary</title>
-    <!-- Your existing Montserrat font -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600&display=swap" rel="stylesheet">
-    <!-- ADD THIS: Satisfy font for nyms -->
-    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Qwigley&family=Parisienne&family=Great+Vibes&family=Allura&family=Tangerine&family=Alex+Brush&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/index.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-@ -164,6 +167,14 @@
-            color: #d4af37;
-        }
-        
-        /* ADD THIS: Style for nyms in footer */
-        .nyms-footer {
-            font-family: 'Satisfy', cursive;
-            font-size: 1.4em;
-            color: #d4af37;
-            margin: 0 2px;
-        }
-        
-        /* Mobile */
-        @media (max-width: 768px) {
-            .navbar { flex-direction: column; gap: 15px; }
-@ -215,11 +226,10 @@
-        </p>
-    </section>
-
-    <!-- UPDATED FOOTER with nyms span -->
-    <footer>
-    <p>&copy;2025 | <span class="gold-accent">Operated by AN-NA<span class="nyms-footer">nyms</span>-LI Co. LLC. | NNA Certified Signing Agent | Background Screened </span> | (972) 900-7147</p>
-</footer>
-
-
-        <p>&copy;2025 | <span class="gold-accent">Operated by AN-NA<span class="nyms-footer">nyms</span>-LI Co. LLC. | NNA Certified Signing Agent | Background Screened </span> | (972) 900-7147</p>
-    </footer>
-
-    <script>
-        function toggleDropdown() {
+      .logo-container {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1000;
+      }
+      .logo-container img {
+        width: 80px;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="logo-container">
+      <img src="/images/logo.jpg" alt="AN-NAnyms-LI Co. Logo" />
+    </div>
+    <div id="root"></div>
+  </body>
+</html>
