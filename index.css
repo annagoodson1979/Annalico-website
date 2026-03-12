@@ -1,3 +1,11 @@
+.about-me {
+  background: #000;
+  padding: 80px 20px 60px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .landing {
   position: relative;
   text-align: center;
@@ -24,17 +32,17 @@
   border-radius: 8px;
   white-space: nowrap;
 }
-.aboutme.jpg-container {
+.aboutme-container {
   position: relative;
   width: 100%;
   max-width: 700px;
   margin: 0 auto;
 }
-.aboutme.jpg {
+.aboutme-img {
   width: 100%;
   transition: filter 0.6s;
 }
-.aboutme.jpg.blurred {
+.aboutme-img.blurred {
   filter: blur(4px) brightness(0.7);
 }
 .about-text {
