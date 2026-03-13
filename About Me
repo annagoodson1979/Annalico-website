@@ -1,9 +1,0 @@
-<section class="about-me">
-  <div class="aboutme-container">
-    <img src="images/aboutme.jpg" alt="About Me" class="aboutme-img" id="aboutImage">
-    <div class="about-text">
-      <h2>About Me</h2>
-      <p>Your about me text goes here...</p>
-    </div>
-  </div>
-</section>

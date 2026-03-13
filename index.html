@@ -1,43 +1,30 @@
-<!DOCTYPE html>
-<!-- saved from url=(0062)https://6999c69e8418dbcde7ada478-%2Dannalico-2025.netlify.app/ -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AN-NAnyms-LI Co.,LLC</title>
-    
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ANNA LLC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Qwigley&family=Parisienne&family=Great+Vibes&family=Allura&family=Tangerine&family=Alex+Brush&display=swap" rel="stylesheet">
     <script type="module" crossorigin src="/assets/index.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index.css">
     <link rel="stylesheet" href="index.css">
+    <style>
+      .logo-container {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1000;
+      }
+      .logo-container img {
+        width: 80px;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      }
+    </style>
   </head>
-    <script>
-window.addEventListener('scroll', function() {
-  const img = document.getElementById('aboutImage');
-  const aboutSection = document.querySelector('.about-me');
-  if (!img || !aboutSection) return;
-  const rect = aboutSection.getBoundingClientRect();
-  if (rect.top < window.innerHeight && rect.bottom > 0) {
-    img.classList.add('blurred');
-  } else {
-    img.classList.remove('blurred');
-  }
-});
-</script>
   <body>
-    <div id="site-logo" style="position: fixed; top: 0; left: 10px; z-index: 200; height: 60px; display: flex; align-items: center; pointer-events: none;">
-      <img src="logo3.jpg" alt="AN-NAnyms-LI Co. Logo" style="height: 50px; width: auto; object-fit: contain;">
-    </div>
     <div id="root"></div>
-
-  
-
-<section class="about-me">
-  <div class="aboutme-container">
-    <img src="images/aboutme.jpg" alt="About Me" class="aboutme-img" id="aboutImage">
-    <div class="about-text">
-      <h2>About Me</h2>
-      <p>Your about me text goes here...</p>
-    </div>
-  </div>
-</section>
-
-</body></html>
+  </body>
+</html>
