@@ -73,6 +73,4 @@ provision and renew an HTTPS certificate once the DNS is pointing correctly.
    what the home page displays. To update home-page content, replace
    `assets/index.js` (and `assets/index.css`) with a newly built version.
 
-4. **If Netlify is also connected** to this repository, make sure it is set to
-   deploy from the **`main`** branch. The `netlify.toml` file configures
-   Netlify correctly; just verify the branch setting in the Netlify dashboard.
+
