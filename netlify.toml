@@ -1,0 +1,17 @@
+# Netlify build & deployment settings.
+# Publish the repo root as-is (no build step required).
+[build]
+  publish = "."
+  command = ""
+
+# Prevent Netlify from caching HTML so visitors always get the latest deploy.
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Allow long-term caching for hashed JS/CSS assets.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
