@@ -55,3 +55,41 @@
   z-index: 2;
   text-align: center;
 }
+
+/* ── Dropdown menu animations ────────────────────────────── */
+/*
+ * The dropdown containers are rendered by the React bundle with inline
+ * styles (position: absolute; top: 60px; ...) and no class names.
+ * We target them via the attribute selector below, which matches all
+ * dropdown divs that React conditionally mounts inside the nav on hover.
+ */
+
+/* Container: clip-path reveal from top → bottom ("roll down") */
+@keyframes dropdownOpen {
+  from { clip-path: inset(0 0 100% 0); opacity: 0; }
+  to   { clip-path: inset(0 0 0%   0); opacity: 1; }
+}
+
+/* Items: fade in */
+@keyframes itemAppear {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Target every dropdown container that React mounts inside the nav */
+nav div[style*="position: absolute; top: 60px"] {
+  animation: dropdownOpen 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Each button fades in; fill-mode:both keeps it invisible during its delay */
+nav div[style*="position: absolute; top: 60px"] > button {
+  animation: itemAppear 0.25s ease-out both;
+}
+
+/* Staggered delays — one line at a time */
+nav div[style*="position: absolute; top: 60px"] > button:nth-child(1) { animation-delay: 0.05s; }
+nav div[style*="position: absolute; top: 60px"] > button:nth-child(2) { animation-delay: 0.15s; }
+nav div[style*="position: absolute; top: 60px"] > button:nth-child(3) { animation-delay: 0.25s; }
+nav div[style*="position: absolute; top: 60px"] > button:nth-child(4) { animation-delay: 0.35s; }
+nav div[style*="position: absolute; top: 60px"] > button:nth-child(5) { animation-delay: 0.45s; }
+nav div[style*="position: absolute; top: 60px"] > button:nth-child(6) { animation-delay: 0.55s; }
