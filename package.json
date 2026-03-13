@@ -1,0 +1,8 @@
+{
+  "name": "annalico-website",
+  "version": "1.0.0",
+  "description": "AN-NAnyms-LI Co.,LLC website",
+  "scripts": {
+    "start": "npx serve . --listen 7153"
+  }
+}
