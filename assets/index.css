@@ -4,3 +4,30 @@ body{font-family:Montserrat,sans-serif;background:#000;color:#fff;line-height:1.
 @keyframes pulse{0%{opacity:.85;transform:scale(1)}50%{opacity:1;transform:scale(1.02)}to{opacity:.85;transform:scale(1)}}
 @keyframes fadeInUp{0%{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 @keyframes lineGrow{0%{width:0;opacity:0}to{width:100px;opacity:1}}
+.hero-container{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:40px;
+padding:80px 20px;
+}
+
+.logo-section{
+text-align:center;
+}
+
+.logo{
+width:120px;
+}
+
+.llc-name{
+font-family:'Montserrat',sans-serif;
+font-size:28px;
+letter-spacing:3px;
+margin-top:10px;
+}
+
+.hero-image img{
+max-width:350px;
+border-radius:10px;
+}
