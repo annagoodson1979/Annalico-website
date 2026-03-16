@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const heroImage = '/images/image%204.JPEG';
+const heroImage = '/images/image3.jpg';
 
 interface LandingProps {
   onNavigate: (page: 'landing' | 'home' | 'about' | 'services' | 'contact' | 'hire' | 'salon' | 'salon-portal' | 'salon-packages' | 'documents') => void;
@@ -131,20 +131,21 @@ function Landing({ onNavigate }: LandingProps) {
       display: 'flex',
       flexDirection: 'column',
       position: 'relative',
-      height: 'calc(100vh - 60px)',
       paddingTop: '60px',
       overflow: 'hidden',
+      minHeight: 0,
     },
-    hero: {
-      background: '#000',
-      color: '#fff',
-      padding: '150px 20px 20px',
-      textAlign: 'center',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
+      main: { 
+        flex: 1, 
+        display: 'flex', 
+        flexDirection: 'column', 
+        position: 'relative', 
+        height: 'calc(100vh - 60px)', 
+        paddingTop: '60px', 
+        overflow: 'hidden', 
+      },
       flex: 1,
+      minHeight: 0,
     },
     intro: {
       marginBottom: '30px',
@@ -376,17 +377,17 @@ function Landing({ onNavigate }: LandingProps) {
         width: '500px',
         zIndex: 1,
         textAlign: 'center' as const,
-      }}>
-        <img 
-          src={heroImage} 
-          alt="AN-NA nyms-LI Co." 
-          style={{
-            width: '100%', 
-            height: 'auto',
-            opacity: 0.95,
-            display: 'block',
-            borderRadius: '8px',
-          }}
+        hero: { 
+          flex: 1, 
+          display: 'flex', 
+          flexDirection: 'column', 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          padding: '80px 40px 40px', 
+          textAlign: 'center', 
+          background: '#000', 
+          color: '#fff', 
+        },
         />
       </div>
 
