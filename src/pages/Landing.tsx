@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const heroImage = '/images/image%204.JPEG';
+const heroImage = '/images/hero.jpg';
 
 interface LandingProps {
   onNavigate: (page: 'landing' | 'home' | 'about' | 'services' | 'contact' | 'hire' | 'salon' | 'salon-portal' | 'salon-packages' | 'documents') => void;
@@ -136,16 +136,15 @@ function Landing({ onNavigate }: LandingProps) {
       overflow: 'hidden',
     },
     hero: {
-      background: '#000',
-      color: '#fff',
-      padding: '150px 20px 20px',
-      textAlign: 'center',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flex: 1,
-    },
+  color: '#fff',
+  padding: '150px 20px 20px',
+  textAlign: 'center',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+   height: '100vh'
+},
     intro: {
       marginBottom: '30px',
       animation: 'fadeInUp 1.2s ease-out forwards',
@@ -378,16 +377,10 @@ function Landing({ onNavigate }: LandingProps) {
         textAlign: 'center' as const,
       }}>
         <img 
-          src={heroImage} 
-          alt="AN-NA nyms-LI Co." 
-          style={{
-            width: '100%', 
-            height: 'auto',
-            opacity: 0.95,
-            display: 'block',
-            borderRadius: '8px',
-          }}
-        />
+  src={heroImage} 
+  alt="AN-NAnyms-LI Co., LLC"
+  style={{ width: "100%", maxHeight: "500px", objectFit: "cover" }}
+/>
       </div>
 
       {/* Main Content */}
