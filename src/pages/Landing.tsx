@@ -1,9 +1,8 @@
-import { useState } from 'react';
-
+import type { Page } from '../types';
+const testPage: Page = 'landing';
 const heroImage = '/images/image3.jpg';
-
 interface LandingProps {
-  onNavigate: (page: 'landing' | 'home' | 'about' | 'services' | 'contact' | 'hire' | 'salon' | 'salon-portal' | 'salon-packages' | 'documents') => void;
+  onNavigate: (page: Page) => void;
 }
 
 function Landing({ onNavigate }: LandingProps) {
