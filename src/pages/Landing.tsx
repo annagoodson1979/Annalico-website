@@ -1,9 +1,8 @@
-import { useState } from 'react';
-
-const heroImage = '/images/hero.jpg';
-
+import type { Page } from '../types';
+const testPage: Page = 'landing';
+const heroImage = '/images/image3.jpg';
 interface LandingProps {
-  onNavigate: (page: 'landing' | 'home' | 'about' | 'services' | 'contact' | 'hire' | 'salon' | 'salon-portal' | 'salon-packages' | 'documents') => void;
+  onNavigate: (page: Page) => void;
 }
 
 function Landing({ onNavigate }: LandingProps) {
@@ -131,20 +130,22 @@ function Landing({ onNavigate }: LandingProps) {
       display: 'flex',
       flexDirection: 'column',
       position: 'relative',
-      height: 'calc(100vh - 60px)',
       paddingTop: '60px',
       overflow: 'hidden',
+      minHeight: 0,
     },
-    hero: {
-  color: '#fff',
-  padding: '150px 20px 20px',
-  textAlign: 'center',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-   height: '100vh'
-},
+      main: { 
+        flex: 1, 
+        display: 'flex', 
+        flexDirection: 'column', 
+        position: 'relative', 
+        height: 'calc(100vh - 60px)', 
+        paddingTop: '60px', 
+        overflow: 'hidden', 
+      },
+      flex: 1,
+      minHeight: 0,
+    },
     intro: {
       marginBottom: '30px',
       animation: 'fadeInUp 1.2s ease-out forwards',
@@ -375,12 +376,18 @@ function Landing({ onNavigate }: LandingProps) {
         width: '500px',
         zIndex: 1,
         textAlign: 'center' as const,
-      }}>
-        <img 
-  src={heroImage} 
-  alt="AN-NAnyms-LI Co., LLC"
-  style={{ width: "100%", maxHeight: "500px", objectFit: "cover" }}
-/>
+        hero: { 
+          flex: 1, 
+          display: 'flex', 
+          flexDirection: 'column', 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          padding: '80px 40px 40px', 
+          textAlign: 'center', 
+          background: '#000', 
+          color: '#fff', 
+        },
+        />
       </div>
 
       {/* Main Content */}
