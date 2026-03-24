@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - copilot/redeploy-older-version
   workflow_dispatch:
     inputs:
       ref:
