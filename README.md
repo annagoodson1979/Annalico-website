@@ -42,6 +42,24 @@ The [deploy workflow](.github/workflows/deploy.yml):
 
 ---
 
+## Last known working commit
+
+The last commit confirmed to build and deploy successfully is recorded in [LAST_KNOWN_GOOD.md](LAST_KNOWN_GOOD.md).
+
+Going forward, the `last-known-good` git tag is automatically moved to the deployed commit after every successful deployment.  To find it at any time:
+
+```bash
+# Fetch tags from GitHub
+git fetch --tags
+
+# See which commit it points to
+git show last-known-good --no-patch
+```
+
+You can also browse it on GitHub under [Tags](https://github.com/annagoodson1979/Annalico-website/tags).
+
+---
+
 ## How to redeploy an older version
 
 You can redeploy any previous commit through the GitHub Actions **manual trigger** (`workflow_dispatch`).

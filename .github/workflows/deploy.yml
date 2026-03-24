@@ -12,7 +12,7 @@ on:
         default: ''
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -65,3 +65,30 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  tag-last-known-good:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.ref || github.sha }}
+          fetch-depth: 0
+
+      - name: Determine deployed SHA
+        id: deployed-sha
+        run: |
+          if [ -n "${{ github.event.inputs.ref }}" ]; then
+            SHA=$(git rev-parse "${{ github.event.inputs.ref }}")
+          else
+            SHA="${{ github.sha }}"
+          fi
+          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
+
+      - name: Move last-known-good tag to deployed commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -f last-known-good "${{ steps.deployed-sha.outputs.sha }}"
+          git push origin refs/tags/last-known-good --force
