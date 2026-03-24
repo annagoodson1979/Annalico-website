@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { Page } from '../types';
 const testPage: Page = 'landing';
-const heroImage = '/images/image3.jpg';
+const heroImage = '/images/hero.jpg';
 interface LandingProps {
   onNavigate: (page: Page) => void;
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-const logoImage = '/images/20260118_134105000_iOS.jpg';
+const logoImage = '/images/logo.jpg';
 
 interface ServicesProps {
   onNavigate: (page: 'landing' | 'home' | 'about' | 'services' | 'contact' | 'hire' | 'salon' | 'salon-portal' | 'salon-packages' | 'documents') => void;

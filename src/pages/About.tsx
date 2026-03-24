@@ -1,8 +1,8 @@
 
 import { useState, useEffect } from 'react';
 
-const logoImage = '/images/20260118_134105000_iOS.jpg';
-const portraitImage = '/images/image.png';
+const logoImage = '/images/logo.jpg';
+const portraitImage = '/images/aboutme.jpg';
 
 interface AboutProps {
   onNavigate: (page: 'landing' | 'home' | 'about' | 'services' | 'contact' | 'hire' | 'salon' | 'salon-portal' | 'salon-packages' | 'documents') => void;
