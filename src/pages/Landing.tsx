@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import type { Page } from '../types';
 const testPage: Page = 'landing';
 const heroImage = '/images/image3.jpg';
@@ -130,20 +131,9 @@ function Landing({ onNavigate }: LandingProps) {
       display: 'flex',
       flexDirection: 'column',
       position: 'relative',
+      height: 'calc(100vh - 60px)',
       paddingTop: '60px',
       overflow: 'hidden',
-      minHeight: 0,
-    },
-      main: { 
-        flex: 1, 
-        display: 'flex', 
-        flexDirection: 'column', 
-        position: 'relative', 
-        height: 'calc(100vh - 60px)', 
-        paddingTop: '60px', 
-        overflow: 'hidden', 
-      },
-      flex: 1,
       minHeight: 0,
     },
     intro: {
@@ -308,7 +298,7 @@ function Landing({ onNavigate }: LandingProps) {
       <nav style={{...styles.navbar, justifyContent: 'center'}}>
         {/* Spacer matching About page logo width */}
         <div style={{width: '100px', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', marginRight: '10px', paddingTop: '10px'}}>
-          <span style={{fontSize: '0.7em', fontWeight: 300, letterSpacing: '2px', color: gold, textTransform: 'uppercase' as const, textAlign: 'center'}}>Start<br/>here</span>
+          <span style={{fontSize: '0.7em', fontWeight: 300, letterSpacing: '2px', color: gold, textTransform: 'uppercase', textAlign: 'center'}}>Start<br/>here</span>
         </div>
         <div style={{width: '2px', height: '20px', background: '#333', marginRight: '10px'}}></div>
         {/* Notary Dropdown */}
@@ -376,18 +366,7 @@ function Landing({ onNavigate }: LandingProps) {
         width: '500px',
         zIndex: 1,
         textAlign: 'center' as const,
-        hero: { 
-          flex: 1, 
-          display: 'flex', 
-          flexDirection: 'column', 
-          justifyContent: 'center', 
-          alignItems: 'center', 
-          padding: '80px 40px 40px', 
-          textAlign: 'center', 
-          background: '#000', 
-          color: '#fff', 
-        },
-        />
+      }}>
       </div>
 
       {/* Main Content */}
@@ -408,7 +387,7 @@ function Landing({ onNavigate }: LandingProps) {
               fontSize: '2.5em',
               fontWeight: 100,
               letterSpacing: '6px',
-              textTransform: 'uppercase' as const,
+              textTransform: 'uppercase',
               marginBottom: '10px',
               color: gold,
               margin: 0,
@@ -502,7 +481,7 @@ function Landing({ onNavigate }: LandingProps) {
 
             {/* Right Beam (cone shaped, wider at top) */}
             <div style={{
-              position: 'absolute' as const,
+              position: 'absolute',
               right: '30px',
               bottom: '8px',
               width: '60px',
@@ -517,11 +496,11 @@ function Landing({ onNavigate }: LandingProps) {
 
             {/* Logo - SS with notary */}
             <div style={{
-              position: 'absolute' as const,
+              position: 'absolute',
               left: '50%',
               top: '15px',
               transform: 'translateX(-50%)',
-              textAlign: 'center' as const,
+              textAlign: 'center',
               zIndex: 10,
             }}>
               <div style={{
@@ -557,7 +536,7 @@ function Landing({ onNavigate }: LandingProps) {
               left: '50%',
               top: '62px',
               transform: 'translateX(-50%)',
-              textAlign: 'center' as const,
+              textAlign: 'center',
               zIndex: 10,
             }}>
               <p style={{
@@ -566,7 +545,7 @@ function Landing({ onNavigate }: LandingProps) {
                 margin: '0 0 1px',
                 letterSpacing: '2px',
                 textShadow: '0 0 8px rgba(0,0,0,0.9)',
-                whiteSpace: 'nowrap' as const,
+                whiteSpace: 'nowrap',
               }}>Seal and Stamp</p>
               <p style={{
                 fontSize: '0.24em',
@@ -580,7 +559,7 @@ function Landing({ onNavigate }: LandingProps) {
             {/* View button - Between the lights at the base */}
             <button 
               style={{
-                position: 'absolute' as const,
+                position: 'absolute',
                 left: '50%',
                 bottom: '8px',
                 transform: 'translateX(-50%)',
@@ -590,7 +569,7 @@ function Landing({ onNavigate }: LandingProps) {
                 color: gold,
                 fontSize: '0.38em',
                 letterSpacing: '0.5px',
-                textTransform: 'uppercase' as const,
+                textTransform: 'uppercase',
                 cursor: 'pointer',
                 textShadow: '0 0 10px rgba(0,0,0,0.8)',
                 zIndex: 10,
@@ -605,10 +584,10 @@ function Landing({ onNavigate }: LandingProps) {
           <p style={{
             fontSize: '0.22em',
             letterSpacing: '0.5px',
-            textTransform: 'uppercase' as const,
+            textTransform: 'uppercase',
             color: '#555',
             margin: '8px 0 0',
-            whiteSpace: 'nowrap' as const,
+            whiteSpace: 'nowrap',
           }}>This Week's Spotlight</p>
         </div>
 
@@ -623,7 +602,7 @@ function Landing({ onNavigate }: LandingProps) {
       {showPartnershipForm && (
         <div 
           style={{
-            position: 'fixed' as const,
+            position: 'fixed',
             top: 0,
             left: 0,
             right: 0,
@@ -648,10 +627,10 @@ function Landing({ onNavigate }: LandingProps) {
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            <h2 style={{color: gold, fontSize: '1.5em', fontWeight: 300, marginBottom: '20px', textAlign: 'center' as const}}>Partnership Inquiry</h2>
+            <h2 style={{color: gold, fontSize: '1.5em', fontWeight: 300, marginBottom: '20px', textAlign: 'center'}}>Partnership Inquiry</h2>
             <form onSubmit={handleSubmit}>
               <div style={{marginBottom: '20px'}}>
-                <label style={{display: 'block', color: '#888', fontSize: '0.8em', marginBottom: '8px', textTransform: 'uppercase' as const, letterSpacing: '1px'}}>Name</label>
+                <label style={{display: 'block', color: '#888', fontSize: '0.8em', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '1px'}}>Name</label>
                 <input 
                   type="text" 
                   value={formData.name}
@@ -670,7 +649,7 @@ function Landing({ onNavigate }: LandingProps) {
                 />
               </div>
               <div style={{marginBottom: '20px'}}>
-                <label style={{display: 'block', color: '#888', fontSize: '0.8em', marginBottom: '8px', textTransform: 'uppercase' as const, letterSpacing: '1px'}}>Email</label>
+                <label style={{display: 'block', color: '#888', fontSize: '0.8em', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '1px'}}>Email</label>
                 <input 
                   type="email" 
                   value={formData.email}
@@ -689,7 +668,7 @@ function Landing({ onNavigate }: LandingProps) {
                 />
               </div>
               <div style={{marginBottom: '20px'}}>
-                <label style={{display: 'block', color: '#888', fontSize: '0.8em', marginBottom: '8px', textTransform: 'uppercase' as const, letterSpacing: '1px'}}>Company</label>
+                <label style={{display: 'block', color: '#888', fontSize: '0.8em', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '1px'}}>Company</label>
                 <input 
                   type="text" 
                   value={formData.company}
@@ -707,7 +686,7 @@ function Landing({ onNavigate }: LandingProps) {
                 />
               </div>
               <div style={{marginBottom: '20px'}}>
-                <label style={{display: 'block', color: '#888', fontSize: '0.8em', marginBottom: '8px', textTransform: 'uppercase' as const, letterSpacing: '1px'}}>Message</label>
+                <label style={{display: 'block', color: '#888', fontSize: '0.8em', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '1px'}}>Message</label>
                 <textarea 
                   value={formData.message}
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
@@ -722,7 +701,7 @@ function Landing({ onNavigate }: LandingProps) {
                     minHeight: '120px',
                     marginBottom: '20px',
                     outline: 'none',
-                    resize: 'vertical' as const,
+                    resize: 'vertical',
                   }}
                   required
                 />
@@ -739,7 +718,7 @@ function Landing({ onNavigate }: LandingProps) {
                     fontFamily: 'inherit',
                     fontSize: '12px',
                     letterSpacing: '2px',
-                    textTransform: 'uppercase' as const,
+                    textTransform: 'uppercase',
                     cursor: 'pointer',
                     fontWeight: 500,
                   }}
@@ -758,7 +737,7 @@ function Landing({ onNavigate }: LandingProps) {
                     fontFamily: 'inherit',
                     fontSize: '12px',
                     letterSpacing: '2px',
-                    textTransform: 'uppercase' as const,
+                    textTransform: 'uppercase',
                     cursor: 'pointer',
                   }}
                 >
