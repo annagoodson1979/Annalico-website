@@ -387,7 +387,7 @@ function Landing({ onNavigate }: LandingProps) {
               fontSize: '2.5em',
               fontWeight: 100,
               letterSpacing: '6px',
-              textTransform: 'uppercase',
+              textTransform: 'uppercase' as const,
               marginBottom: '10px',
               color: gold,
               margin: 0,
@@ -496,7 +496,7 @@ function Landing({ onNavigate }: LandingProps) {
 
             {/* Logo - SS with notary */}
             <div style={{
-              position: 'absolute',
+              position: 'absolute' as const,
               left: '50%',
               top: '15px',
               transform: 'translateX(-50%)',
