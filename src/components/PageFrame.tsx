@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import type { CSSProperties, ReactNode } from 'react';
 import type { Page } from '../types';
 
-const logoImage = '/images/20260118_134105000_iOS.jpg';
+const logoImage = '/images/logo.jpg';
 
 interface PageFrameProps {
   children: ReactNode;
@@ -23,6 +24,9 @@ function PageFrame({
   maxWidth = '1100px',
 }: PageFrameProps) {
   const gold = '#d4af37';
+  const [hoveredBusiness, setHoveredBusiness] = useState<
+    'notary' | 'salon' | 'partnership' | null
+  >(null);
 
   const styles: Record<string, CSSProperties> = {
     shell: {
@@ -34,9 +38,75 @@ function PageFrame({
       overflow: 'hidden',
       position: 'relative',
     },
+    navbar: {
+      width: '100%',
+      height: '60px',
+      background: '#000',
+      borderBottom: '1px solid #111',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '0 20px',
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      zIndex: 18,
+      gap: '20px',
+    },
+    navDivider: {
+      width: '2px',
+      height: '20px',
+      background: '#333',
+    },
+    navItem: {
+      position: 'relative',
+      height: '60px',
+      display: 'flex',
+      alignItems: 'center',
+    },
+    navButton: {
+      fontFamily: "'Montserrat', sans-serif",
+      fontSize: '0.7em',
+      fontWeight: 300,
+      letterSpacing: '2px',
+      textTransform: 'uppercase',
+      color: '#888',
+      background: 'transparent',
+      border: 'none',
+      cursor: 'pointer',
+      transition: 'all 0.3s ease',
+      margin: '0 12px',
+      padding: '8px 16px',
+    },
+    dropdown: {
+      position: 'absolute',
+      top: '60px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      background: '#0a0a0a',
+      border: '1px solid #222',
+      borderTop: `2px solid ${gold}`,
+      padding: '10px 0',
+      zIndex: 19,
+      boxShadow: '0 10px 30px rgba(0,0,0,0.9)',
+      minWidth: '150px',
+    },
+    dropdownItem: {
+      display: 'block',
+      width: '100%',
+      padding: '8px 20px',
+      background: 'transparent',
+      border: 'none',
+      color: '#888',
+      fontSize: '8px',
+      letterSpacing: '1px',
+      textTransform: 'uppercase',
+      cursor: 'pointer',
+      textAlign: 'center',
+    },
     logoButton: {
       position: 'fixed',
-      top: '22px',
+      top: '82px',
       left: '22px',
       width: '74px',
       height: '74px',
@@ -56,7 +126,7 @@ function PageFrame({
     },
     backButton: {
       position: 'fixed',
-      top: '34px',
+      top: '82px',
       right: '28px',
       border: `1px solid ${gold}`,
       background: 'rgba(0, 0, 0, 0.6)',
@@ -73,14 +143,14 @@ function PageFrame({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '110px 28px 36px',
+      padding: '144px 28px 36px',
       boxSizing: 'border-box',
     },
     panel: {
       width: '100%',
       maxWidth,
-      minHeight: 'calc(100vh - 160px)',
-      maxHeight: 'calc(100vh - 160px)',
+      minHeight: 'calc(100vh - 194px)',
+      maxHeight: 'calc(100vh - 194px)',
       background: 'linear-gradient(180deg, rgba(17, 17, 17, 0.92) 0%, rgba(5, 5, 5, 0.98) 100%)',
       border: '1px solid rgba(212, 175, 55, 0.18)',
       borderRadius: '26px',
@@ -138,6 +208,116 @@ function PageFrame({
           50% { transform: scale(1.04); box-shadow: 0 0 24px rgba(212, 175, 55, 0.35); }
         }
       `}</style>
+
+      <nav style={styles.navbar}>
+        <div
+          style={{
+            width: '100px',
+            display: 'flex',
+            alignItems: 'flex-start',
+            justifyContent: 'center',
+            marginRight: '10px',
+            paddingTop: '10px',
+          }}
+        >
+          <span
+            style={{
+              fontSize: '0.7em',
+              fontWeight: 300,
+              letterSpacing: '2px',
+              color: gold,
+              textTransform: 'uppercase',
+              textAlign: 'center',
+            }}
+          >
+            Start
+            <br />
+            here
+          </span>
+        </div>
+        <div style={styles.navDivider}></div>
+        <div
+          style={styles.navItem}
+          onMouseEnter={() => setHoveredBusiness('notary')}
+          onMouseLeave={() => setHoveredBusiness(null)}
+        >
+          <button style={styles.navButton} onClick={() => onNavigate('home')}>
+            Notary
+          </button>
+          {hoveredBusiness === 'notary' && (
+            <div style={styles.dropdown}>
+              <button style={styles.dropdownItem} onClick={() => onNavigate('home')}>
+                Website
+              </button>
+              <button style={styles.dropdownItem} onClick={() => onNavigate('services')}>
+                Services & Prices
+              </button>
+              <button style={styles.dropdownItem} onClick={() => onNavigate('documents')}>
+                Documents I Sign
+              </button>
+              <button style={styles.dropdownItem} onClick={() => onNavigate('contact')}>
+                Contact
+              </button>
+              <button style={styles.dropdownItem} onClick={() => onNavigate('contact')}>
+                Booking Request
+              </button>
+            </div>
+          )}
+        </div>
+        <div
+          style={styles.navItem}
+          onMouseEnter={() => setHoveredBusiness('salon')}
+          onMouseLeave={() => setHoveredBusiness(null)}
+        >
+          <button style={styles.navButton} onClick={() => onNavigate('salon')}>
+            Salon
+          </button>
+          {hoveredBusiness === 'salon' && (
+            <div style={styles.dropdown}>
+              <button style={styles.dropdownItem} onClick={() => onNavigate('salon')}>
+                Website
+              </button>
+              <button style={styles.dropdownItem} onClick={() => onNavigate('salon-portal')}>
+                Client Portal
+              </button>
+              <button style={styles.dropdownItem} onClick={() => onNavigate('salon-packages')}>
+                Packages
+              </button>
+              <button style={styles.dropdownItem} onClick={() => onNavigate('contact')}>
+                Contact
+              </button>
+            </div>
+          )}
+        </div>
+        <button style={{ ...styles.navButton, color: gold }} onClick={() => onNavigate('hire')}>
+          DID YOU KNOW?
+        </button>
+        <div
+          style={styles.navItem}
+          onMouseEnter={() => setHoveredBusiness('partnership')}
+          onMouseLeave={() => setHoveredBusiness(null)}
+        >
+          <button style={styles.navButton} onClick={() => onNavigate('contact')}>
+            Partnership
+          </button>
+          {hoveredBusiness === 'partnership' && (
+            <div style={{ ...styles.dropdown, minWidth: '180px' }}>
+              <button style={styles.dropdownItem} onClick={() => onNavigate('contact')}>
+                Preferred Partner Portal
+              </button>
+              <button style={styles.dropdownItem} onClick={() => onNavigate('contact')}>
+                Local Network Portal
+              </button>
+            </div>
+          )}
+        </div>
+        <button style={styles.navButton} onClick={() => onNavigate('about')}>
+          About Me
+        </button>
+        <button style={styles.navButton} onClick={() => onNavigate('contact')}>
+          Contact
+        </button>
+      </nav>
 
       <button
         style={{ ...styles.logoButton, animation: 'pageLogoPulse 2.6s ease-in-out infinite' }}

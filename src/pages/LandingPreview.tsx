@@ -411,7 +411,7 @@ function Landing({ onNavigate }: LandingProps) {
         style={{
           position: 'fixed',
           left: '42%',
-          top: '43%',
+          top: '58%',
           transform: 'translate(-50%, -50%)',
           width: '500px',
           zIndex: 1,
@@ -442,7 +442,7 @@ function Landing({ onNavigate }: LandingProps) {
           <div
             style={{
               position: 'absolute' as const,
-              top: '57%',
+              top: '74%',
               left: '38%',
               transform: 'translate(-50%, calc(-50% + 24px))',
               textAlign: 'center' as const,
