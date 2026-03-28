@@ -1,59 +1,40 @@
+import type { Page } from '../types';
+import PageFrame from '../components/PageFrame';
+
 interface HireProps {
-  onNavigate: (page: 'landing' | 'home' | 'about' | 'services' | 'contact' | 'hire' | 'salon' | 'salon-portal' | 'salon-packages' | 'documents') => void;
+  onNavigate: (page: Page) => void;
 }
 
 function Hire({ onNavigate }: HireProps) {
-  const gold = '#d4af37';
-
-  const styles: { [key: string]: React.CSSProperties } = {
-    container: {
-      minHeight: '100vh',
-      background: '#000',
-      display: 'flex',
-      flexDirection: 'column' as const,
-      alignItems: 'center',
-      justifyContent: 'center',
-      color: '#fff',
-    },
-    heading: {
-      fontSize: '3em',
-      fontWeight: 100,
-      letterSpacing: '6px',
-      textTransform: 'uppercase',
-      marginBottom: '20px',
-      color: gold,
-    },
-    text: {
-      color: '#888',
-      fontSize: '1.2em',
-      maxWidth: '600px',
-      textAlign: 'center' as const,
-      lineHeight: 1.6,
-    },
-    button: {
-      marginTop: '30px',
-      padding: '15px 30px',
-      background: 'transparent',
-      border: `1px solid ${gold}`,
-      color: gold,
-      cursor: 'pointer',
-      fontSize: '14px',
-      letterSpacing: '2px',
-      textTransform: 'uppercase' as const,
-    },
-  };
-
   return (
-    <div style={styles.container}>
-      <h1 style={styles.heading}>Hire a Signing Agent</h1>
-      <p style={styles.text}>
-        Looking for a professional notary signing agent? I specialize in loan signings, 
-        real estate documents, and legal paperwork with precision and care.
-      </p>
-      <button style={styles.button} onClick={() => onNavigate('landing')}>
-        Back to Home
-      </button>
-    </div>
+    <PageFrame
+      onNavigate={onNavigate}
+      title="Did You Know"
+      subtitle="Helpful answers before your signing"
+      backTo="home"
+      backLabel="Back to Notary Home"
+      maxWidth="920px"
+    >
+      <div
+        style={{
+          background: '#101010',
+          border: '1px solid #242424',
+          borderRadius: '18px',
+          padding: '28px',
+          color: '#d0d0d0',
+          lineHeight: 1.9,
+        }}
+      >
+        <p style={{ marginTop: 0 }}>
+          Save time and money by having valid ID ready, confirming all signer names match the
+          documents exactly, and avoiding signatures before the appointment begins.
+        </p>
+        <p style={{ marginBottom: 0 }}>
+          If you are unsure whether a document is ready for notarization, reach out before booking
+          and I can help you prepare.
+        </p>
+      </div>
+    </PageFrame>
   );
 }
 

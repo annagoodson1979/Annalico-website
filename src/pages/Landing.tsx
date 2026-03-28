@@ -1,1 +1,1 @@
-export { default } from './LandingOldPreview';
+export { default } from './LandingPreview';
