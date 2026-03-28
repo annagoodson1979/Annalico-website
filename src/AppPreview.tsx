@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Page } from './types';
-import Landing from './pages/Landing';
+import LandingPreview from './pages/LandingPreview';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -11,7 +11,7 @@ import SalonHome from './pages/SalonHome';
 import SalonClientPortal from './pages/SalonClientPortal';
 import SalonPackages from './pages/SalonPackages';
 
-function App() {
+function AppPreview() {
   const [currentPage, setCurrentPage] = useState<Page>('landing');
 
   const renderPage = () => {
@@ -36,11 +36,11 @@ function App() {
         return <SalonPackages onNavigate={setCurrentPage} />;
       case 'landing':
       default:
-        return <Landing onNavigate={setCurrentPage} />;
+        return <LandingPreview onNavigate={setCurrentPage} />;
     }
   };
 
   return <div className="app">{renderPage()}</div>;
 }
 
-export default App;
+export default AppPreview;

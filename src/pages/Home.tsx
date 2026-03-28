@@ -1,11 +1,17 @@
+import { useState } from 'react';
+import type { Page } from '../types';
+
 const logoImage = '/images/20260118_134105000_iOS.jpg';
 
 interface HomeProps {
-  onNavigate: (page: 'landing' | 'home' | 'about' | 'services' | 'contact' | 'hire' | 'salon' | 'salon-portal' | 'salon-packages' | 'documents') => void;
+  onNavigate: (page: Page) => void;
 }
 
 function Home({ onNavigate }: HomeProps) {
   const gold = '#d4af37';
+  const [hoveredBusiness, setHoveredBusiness] = useState<
+    'notary' | 'salon' | 'partnership' | 'didyouknow' | null
+  >(null);
 
   const styles: { [key: string]: React.CSSProperties } = {
     container: {
@@ -62,31 +68,34 @@ function Home({ onNavigate }: HomeProps) {
       padding: '10px 0',
       zIndex: 200,
       boxShadow: '0 10px 30px rgba(0,0,0,0.9)',
-      minWidth: '140px',
+      minWidth: '150px',
+    },
+    dropdownWide: {
+      position: 'absolute' as const,
+      top: '60px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      background: '#0a0a0a',
+      border: '1px solid #222',
+      borderTop: `2px solid ${gold}`,
+      padding: '10px 0',
+      zIndex: 200,
+      boxShadow: '0 10px 30px rgba(0,0,0,0.9)',
+      minWidth: '280px',
     },
     dropdownItem: {
       display: 'block',
       width: '100%',
-      padding: '8px 20px',
+      padding: '10px 20px',
       background: 'transparent',
       border: 'none',
       color: '#888',
-      fontSize: '8px',
+      fontSize: '11px',
       letterSpacing: '1px',
       textTransform: 'uppercase' as const,
       cursor: 'pointer',
       textAlign: 'center' as const,
       transition: 'all 0.2s ease',
-      transform: 'translateY(0)',
-    },
-    main: {
-      flex: 1,
-      display: 'flex',
-      flexDirection: 'column',
-      position: 'relative',
-      height: 'calc(100vh - 60px)',
-      paddingTop: '60px',
-      overflow: 'hidden',
     },
     hero: {
       flex: 1,
@@ -94,84 +103,55 @@ function Home({ onNavigate }: HomeProps) {
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      padding: '80px 40px 40px',
-      textAlign: 'center',
+      padding: '140px 40px 60px',
+      textAlign: 'center' as const,
     },
     heroH1: {
       fontSize: '4em',
       fontWeight: 100,
       letterSpacing: '8px',
-      textTransform: 'uppercase',
+      textTransform: 'uppercase' as const,
       marginBottom: '20px',
       lineHeight: 1.2,
       color: gold,
       animation: 'fadeInUp 1s ease-out forwards, pulse 10s ease-in-out infinite 1s, glow 10s ease-in-out infinite 1s',
     },
-    heroSub: {
-      fontSize: '1em',
-      fontWeight: 100,
-      letterSpacing: '4px',
-      textTransform: 'uppercase',
-      color: '#888',
-      marginBottom: '30px',
-    },
     line: {
       width: '100px',
       height: '2px',
       background: `linear-gradient(90deg, transparent, ${gold}, transparent)`,
-      margin: '50px auto 30px',
+      margin: '20px auto 40px',
       boxShadow: '0 0 8px rgba(212, 175, 55, 0.3)',
     },
-    heroP: {
-      fontSize: '1em',
+    heroSub: {
+      fontSize: '0.8em',
       fontWeight: 300,
-      letterSpacing: '3px',
-      textTransform: 'uppercase',
-      color: '#fff',
-      maxWidth: '600px',
-    },
-    btn: {
-      display: 'inline-block',
-      background: 'transparent',
-      color: gold,
-      padding: '15px 50px',
-      textDecoration: 'none',
-      marginTop: '40px',
-      border: `1px solid ${gold}`,
       letterSpacing: '2px',
       textTransform: 'uppercase' as const,
-      fontSize: '12px',
-      cursor: 'pointer',
-      fontFamily: 'inherit',
-      transition: 'all 0.3s ease',
+      color: '#888',
+      marginBottom: '40px',
     },
-    content: {
-      padding: '60px 20px',
-      textAlign: 'center',
-      maxWidth: '800px',
-      margin: '0 auto',
-      borderTop: '1px solid #111',
-      background: '#000',
+    card: {
+      background: '#111',
+      padding: '40px',
+      border: '1px solid #222',
+      borderRadius: '4px',
+      maxWidth: '820px',
+      width: '100%',
+      boxSizing: 'border-box' as const,
     },
-    sectionTitle: {
-      color: gold,
-      fontWeight: 300,
-      letterSpacing: '4px',
-      marginBottom: '20px',
-      textTransform: 'uppercase' as const,
-      textAlign: 'center',
-      fontSize: '1.5em',
-    },
-    sectionText: {
-      color: '#ccc',
-      lineHeight: 2,
-      textAlign: 'center',
+    cardText: {
       fontSize: '0.95em',
+      lineHeight: 1.9,
+      letterSpacing: '0.8px',
+      color: '#ccc',
+      margin: 0,
+      textTransform: 'none' as const,
     },
     footer: {
       background: '#000',
       color: gold,
-      textAlign: 'center',
+      textAlign: 'center' as const,
       padding: '20px 15px',
       fontSize: '13px',
       letterSpacing: '1px',
@@ -184,7 +164,7 @@ function Home({ onNavigate }: HomeProps) {
       fontSize: '1.25em',
       fontWeight: 400,
       color: gold,
-      textTransform: 'lowercase',
+      textTransform: 'lowercase' as const,
       display: 'inline-block',
       marginRight: '3px',
       marginLeft: '2px',
@@ -195,14 +175,11 @@ function Home({ onNavigate }: HomeProps) {
     },
   };
 
-  const logoPulseKeyframes = `
+  const keyframes = `
     @keyframes logoPulse {
       0%, 100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.3); transform: translateY(-50%) scale(1); }
       50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.6); transform: translateY(-50%) scale(1.05); }
     }
-  `;
-
-  const pulseKeyframes = `
     @keyframes pulse {
       0%, 100% { color: #d4af37; }
       25% { color: #e8d5a3; }
@@ -219,47 +196,297 @@ function Home({ onNavigate }: HomeProps) {
       50% { text-shadow: 0 0 20px rgba(245, 240, 224, 0.7), 0 0 35px rgba(245, 240, 224, 0.5); }
       75% { text-shadow: 0 0 10px rgba(232, 213, 163, 0.5), 0 0 18px rgba(232, 213, 163, 0.3); }
     }
-    @keyframes rollDown {
-      0% { opacity: 0; transform: translateX(-50%) translateY(-10px); max-height: 0; }
-      100% { opacity: 1; transform: translateX(-50%) translateY(0); max-height: 500px; }
-    }
   `;
 
   return (
     <div style={styles.container}>
-      <style>{logoPulseKeyframes}{pulseKeyframes}</style>
-      
-      {/* Top Navbar */}
-      <nav style={{...styles.navbar, justifyContent: 'center'}}>
-        {/* Logo */}
-        <div style={{width: '100px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: '10px', marginTop: '150px'}}>
-          <img src={logoImage} alt="Home" title="Back to Home" style={{width: '80px', height: '80px', objectFit: 'contain', cursor: 'pointer', borderRadius: '50%', animation: 'logoPulse 2s ease-in-out infinite'}} onClick={() => onNavigate('landing')} onMouseEnter={(e) => {e.currentTarget.style.width = '90px'; e.currentTarget.style.height = '90px';}} onMouseLeave={(e) => {e.currentTarget.style.width = '80px'; e.currentTarget.style.height = '80px';}} />
+      <style>{keyframes}</style>
+
+      <nav style={styles.navbar}>
+        <div
+          style={{
+            width: '100px',
+            display: 'flex',
+            alignItems: 'flex-start',
+            justifyContent: 'center',
+            marginRight: '10px',
+            paddingTop: '10px',
+          }}
+        >
+          <span
+            style={{
+              fontSize: '0.7em',
+              fontWeight: 300,
+              letterSpacing: '2px',
+              color: gold,
+              textTransform: 'uppercase',
+              textAlign: 'center',
+            }}
+          >
+            Start
+            <br />
+            here
+          </span>
         </div>
-        <div style={{width: '2px', height: '20px', background: '#333', marginRight: '10px'}}></div>
-        {/* Main Nav Items - What was in Notary dropdown */}
-        <button style={styles.navButton} onClick={() => onNavigate('services')} onMouseEnter={(e) => { e.currentTarget.style.color = gold; e.currentTarget.style.transform = 'scale(1.2)'; }} onMouseLeave={(e) => { e.currentTarget.style.color = '#888'; e.currentTarget.style.transform = 'scale(1)'; }}>Services and Prices</button>
-        <button style={styles.navButton} onClick={() => onNavigate('documents')} onMouseEnter={(e) => { e.currentTarget.style.color = gold; e.currentTarget.style.transform = 'scale(1.2)'; }} onMouseLeave={(e) => { e.currentTarget.style.color = '#888'; e.currentTarget.style.transform = 'scale(1)'; }}>Documents I Sign</button>
-        <button style={styles.navButton} onClick={() => onNavigate('contact')} onMouseEnter={(e) => { e.currentTarget.style.color = gold; e.currentTarget.style.transform = 'scale(1.2)'; }} onMouseLeave={(e) => { e.currentTarget.style.color = '#888'; e.currentTarget.style.transform = 'scale(1)'; }}>Contact</button>
-        <button style={styles.navButton} onClick={() => onNavigate('contact')} onMouseEnter={(e) => { e.currentTarget.style.color = gold; e.currentTarget.style.transform = 'scale(1.2)'; }} onMouseLeave={(e) => { e.currentTarget.style.color = '#888'; e.currentTarget.style.transform = 'scale(1)'; }}>Booking Request</button>
-        <button style={{...styles.navButton, color: gold}} onClick={() => window.open('https://annalico.glossgenius.com', '_blank')} onMouseEnter={(e) => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.transform = 'scale(1.2)'; }} onMouseLeave={(e) => { e.currentTarget.style.color = gold; e.currentTarget.style.transform = 'scale(1)'; }}>Book Your Signing</button>
+
+        <div
+          style={styles.navItem}
+          onMouseEnter={() => setHoveredBusiness('notary')}
+          onMouseLeave={() => setHoveredBusiness(null)}
+        >
+          <button style={{ ...styles.navButton, color: gold }} onClick={() => onNavigate('home')}>
+            Notary
+          </button>
+          {hoveredBusiness === 'notary' && (
+            <div style={styles.dropdown}>
+              <button
+                style={styles.dropdownItem}
+                onClick={() => onNavigate('home')}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = gold;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#888';
+                }}
+              >
+                Website
+              </button>
+              <button
+                style={styles.dropdownItem}
+                onClick={() => onNavigate('contact')}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = gold;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#888';
+                }}
+              >
+                Booking Request
+              </button>
+              <button
+                style={styles.dropdownItem}
+                onClick={() => onNavigate('services')}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = gold;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#888';
+                }}
+              >
+                Services and Prices
+              </button>
+              <button
+                style={styles.dropdownItem}
+                onClick={() => onNavigate('contact')}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = gold;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#888';
+                }}
+              >
+                Contact
+              </button>
+              <button
+                style={styles.dropdownItem}
+                onClick={() => window.open('https://annalico.glossgenius.com', '_blank')}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = gold;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#888';
+                }}
+              >
+                Pay Online
+              </button>
+            </div>
+          )}
+        </div>
+
+        <div
+          style={styles.navItem}
+          onMouseEnter={() => setHoveredBusiness('salon')}
+          onMouseLeave={() => setHoveredBusiness(null)}
+        >
+          <button style={styles.navButton} onClick={() => onNavigate('salon')}>
+            Salon
+          </button>
+          {hoveredBusiness === 'salon' && (
+            <div style={styles.dropdown}>
+              <button
+                style={styles.dropdownItem}
+                onClick={() => onNavigate('salon')}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = gold;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#888';
+                }}
+              >
+                Website
+              </button>
+              <button
+                style={styles.dropdownItem}
+                onClick={() => onNavigate('salon-portal')}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = gold;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#888';
+                }}
+              >
+                Client Portal
+              </button>
+              <button
+                style={styles.dropdownItem}
+                onClick={() => onNavigate('salon-packages')}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = gold;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#888';
+                }}
+              >
+                Packages
+              </button>
+              <button
+                style={styles.dropdownItem}
+                onClick={() => onNavigate('contact')}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = gold;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#888';
+                }}
+              >
+                Contact
+              </button>
+              <button
+                style={styles.dropdownItem}
+                onClick={() => window.open('https://annalico.glossgenius.com', '_blank')}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = gold;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#888';
+                }}
+              >
+                Pay Online
+              </button>
+            </div>
+          )}
+        </div>
+
+        <div
+          style={styles.navItem}
+          onMouseEnter={() => setHoveredBusiness('didyouknow')}
+          onMouseLeave={() => setHoveredBusiness(null)}
+        >
+          <button style={{ ...styles.navButton, color: gold }}>DID YOU KNOW?</button>
+          {hoveredBusiness === 'didyouknow' && (
+            <div style={styles.dropdownWide}>
+              <button
+                style={styles.dropdownItem}
+                onClick={() => onNavigate('hire')}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = gold;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#888';
+                }}
+              >
+                Ways to Save Money at Signing and more Answers
+              </button>
+            </div>
+          )}
+        </div>
+
+        <div
+          style={styles.navItem}
+          onMouseEnter={() => setHoveredBusiness('partnership')}
+          onMouseLeave={() => setHoveredBusiness(null)}
+        >
+          <button style={styles.navButton}>Partnership</button>
+          {hoveredBusiness === 'partnership' && (
+            <div style={styles.dropdown}>
+              <button
+                style={styles.dropdownItem}
+                onClick={() => onNavigate('contact')}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = gold;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#888';
+                }}
+              >
+                Preferred Partner Portal
+              </button>
+              <button
+                style={styles.dropdownItem}
+                onClick={() => onNavigate('contact')}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = gold;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#888';
+                }}
+              >
+                Local Network Portal
+              </button>
+            </div>
+          )}
+        </div>
+
+        <button style={styles.navButton} onClick={() => onNavigate('about')}>
+          About Me
+        </button>
+        <button style={styles.navButton} onClick={() => onNavigate('contact')}>
+          Contact
+        </button>
+
+        <img
+          src={logoImage}
+          alt="Home"
+          title="Back to Home"
+          style={{
+            width: '80px',
+            height: '80px',
+            objectFit: 'contain',
+            cursor: 'pointer',
+            position: 'absolute',
+            left: '40px',
+            top: '100%',
+            transform: 'translateY(-50%)',
+            borderRadius: '50%',
+            animation: 'logoPulse 2s ease-in-out infinite',
+            transition: 'all 0.3s ease',
+          }}
+          onClick={() => onNavigate('landing')}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.width = '100px';
+            e.currentTarget.style.height = '100px';
+            e.currentTarget.style.left = '30px';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.width = '80px';
+            e.currentTarget.style.height = '80px';
+            e.currentTarget.style.left = '40px';
+          }}
+        />
       </nav>
 
-      {/* Main Content */}
-      <main style={styles.main}>
+      <main style={{ flex: 1, paddingTop: '60px' }}>
         <section style={styles.hero}>
           <h1 style={styles.heroH1}>SEAL AND STAMP Notary</h1>
-          <div style={{...styles.line, margin: '40px auto 20px'}}></div>
-          <p style={{...styles.heroSub, marginBottom: '40px', letterSpacing: '2px', fontSize: '0.75em'}}>Mobile • Remote • IPEN • NNA Certified in both RON • NSA</p>
-          <div style={{
-            background: '#111',
-            padding: '40px',
-            margin: '40px auto',
-            border: '1px solid #222',
-            borderRadius: '4px',
-            maxWidth: '800px',
-          }}>
-            <p style={{...styles.heroP, fontSize: '0.9em', letterSpacing: '1px', textTransform: 'none' as const, color: '#ccc', margin: 0}}>
-              Trusted Mobile Notary Serving Plano, TX. Loan Signings, Affidavits, Acknowledgments, Power Of Attorney, Legal Documents, Business Notarization and More. Fast Scheduling, Secure Handling, and Service With Care.
+          <div style={styles.line}></div>
+          <p style={styles.heroSub}>
+            Mobile • Remote • IPEN • NNA Certified in both RON • NSA
+          </p>
+          <div style={styles.card}>
+            <p style={styles.cardText}>
+              Trusted mobile notary serving Plano, Texas. Loan signings, affidavits,
+              acknowledgments, powers of attorney, legal documents, business notarization,
+              and more. Fast scheduling, secure handling, and service with care.
             </p>
           </div>
         </section>
@@ -267,7 +494,12 @@ function Home({ onNavigate }: HomeProps) {
 
       <footer style={styles.footer}>
         <p>
-          <span style={styles.yearWhite}><span style={{fontSize: '0.7em', verticalAlign: 'super'}}>@</span>2001</span> | AN-NA<span style={styles.nymsFooter}>nyms</span>-LI Co., LLC | All Rights Reserved | <span style={{color: gold}}>anna@annalico.com</span> | <span style={styles.yearWhite}>(972) 900-7147</span>
+          <span style={styles.yearWhite}>
+            <span style={{ fontSize: '0.7em', verticalAlign: 'super' }}>@</span>2001
+          </span>{' '}
+          | AN-NA<span style={styles.nymsFooter}>nyms</span>-LI Co., LLC | All Rights Reserved
+          | <span style={{ color: gold }}>anna@annalico.com</span> |{' '}
+          <span style={styles.yearWhite}>(972) 900-7147</span>
         </p>
       </footer>
     </div>

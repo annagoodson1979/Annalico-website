@@ -1,3 +1,5 @@
+import type { CSSProperties } from 'react';
+
 interface SalonHomeProps {
   onNavigate: (page: 'landing' | 'home' | 'about' | 'services' | 'contact' | 'hire' | 'salon' | 'salon-portal' | 'salon-packages' | 'documents') => void;
 }
@@ -5,7 +7,7 @@ interface SalonHomeProps {
 function SalonHome({ onNavigate }: SalonHomeProps) {
   const gold = '#d4af37';
 
-  const styles: { [key: string]: React.CSSProperties } = {
+  const styles: { [key: string]: CSSProperties } = {
     container: {
       minHeight: '100vh',
       background: '#000',
