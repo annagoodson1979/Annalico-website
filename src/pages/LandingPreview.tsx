@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { Page } from '../types';
-const heroImage = '/images/9397A37B-CBFB-45E4-ACA9-7A20332AB3F3.jpeg';
+const heroImage = '/images/hero.jpg';
 interface LandingProps {
   onNavigate: (page: Page) => void;
 }
@@ -521,15 +521,16 @@ function Landing({ onNavigate }: LandingProps) {
                     left: 'calc(50% - 50px)',
                     bottom: '100%',
                     transform: 'translateX(-50%)',
-                    width: '100px',
-                    height: '200px',
+                    width: '128px',
+                    height: '240px',
                     background:
-                      'linear-gradient(0deg, rgba(212, 175, 55, 0.22) 0%, rgba(212, 175, 55, 0.10) 40%, rgba(212, 175, 55, 0.04) 70%, transparent 100%)',
+                      'linear-gradient(0deg, rgba(212, 175, 55, 0.42) 0%, rgba(212, 175, 55, 0.22) 38%, rgba(212, 175, 55, 0.09) 70%, transparent 100%)',
                     clipPath: 'polygon(49% 100%, 51% 100%, 100% 0%, 0% 0%)',
                     transformOrigin: 'bottom center',
                     pointerEvents: 'none' as const,
                     animation: 'wiperLeft 2s ease-in-out infinite alternate',
-                    filter: 'blur(2.5px)',
+                    filter: 'blur(3px)',
+                    boxShadow: '0 0 35px rgba(212, 175, 55, 0.18)',
                     zIndex: 1,
                   }}
                 ></div>
@@ -567,15 +568,16 @@ function Landing({ onNavigate }: LandingProps) {
                     left: 'calc(50% - 50px)',
                     bottom: '100%',
                     transform: 'translateX(-50%)',
-                    width: '100px',
-                    height: '200px',
+                    width: '128px',
+                    height: '240px',
                     background:
-                      'linear-gradient(0deg, rgba(212, 175, 55, 0.22) 0%, rgba(212, 175, 55, 0.10) 40%, rgba(212, 175, 55, 0.04) 70%, transparent 100%)',
+                      'linear-gradient(0deg, rgba(212, 175, 55, 0.42) 0%, rgba(212, 175, 55, 0.22) 38%, rgba(212, 175, 55, 0.09) 70%, transparent 100%)',
                     clipPath: 'polygon(49% 100%, 51% 100%, 100% 0%, 0% 0%)',
                     transformOrigin: 'bottom center',
                     pointerEvents: 'none' as const,
                     animation: 'wiperRight 2s ease-in-out infinite alternate',
-                    filter: 'blur(2.5px)',
+                    filter: 'blur(3px)',
+                    boxShadow: '0 0 35px rgba(212, 175, 55, 0.18)',
                     zIndex: 1,
                   }}
                 ></div>
@@ -709,7 +711,7 @@ function Landing({ onNavigate }: LandingProps) {
             <span style={styles.yearWhite}>
               <span style={{ fontSize: '0.7em', verticalAlign: 'super' }}>@</span>2001
             </span>{' '}
-            | Anna-Li Co. LLC | All Rights Reserved | <span style={{ color: gold }}>anna@annalico.com</span>{' '}
+            | Anna-Li Co. | All Rights Reserved | <span style={{ color: gold }}>anna@annalico.com</span>{' '}
             | <span style={styles.yearWhite}>(972) 900-7147</span>
           </p>
         </footer>
