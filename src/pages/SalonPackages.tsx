@@ -1,5 +1,6 @@
 import { useState } from 'react';
-const logoImage = '/images/logo.jpg';
+import SiteFooter from '../components/SiteFooter';
+const logoImage = '/images/logo3.jpg';
 
 interface SalonPackagesProps {
   onNavigate: (page: 'landing' | 'home' | 'about' | 'services' | 'contact' | 'salon' | 'salon-portal' | 'salon-packages' | 'documents') => void;
@@ -45,7 +46,14 @@ const PACKAGES = [
 
 function SalonPackages({ onNavigate }: SalonPackagesProps) {
   const [selectedPackage, setSelectedPackage] = useState<number | null>(null);
+  const [hoveredBusiness, setHoveredBusiness] = useState<'primary' | 'partnership' | null>(null);
   const gold = '#d4af37';
+  const dropdownItemStyle = (delay: number): React.CSSProperties => ({
+    ...styles.dropdownItem,
+    opacity: 0,
+    animation: 'dropdownLineReveal 0.32s ease forwards',
+    animationDelay: `${delay}s`,
+  });
 
   const handlePurchase = (pkg: any) => {
     alert(`${pkg.name} - Payment processing would happen here.\n\nFor now, please contact Anna directly to purchase packages.`);
@@ -67,12 +75,26 @@ function SalonPackages({ onNavigate }: SalonPackagesProps) {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      gap: '40px',
-      padding: '0 40px',
+      gap: '20px',
+      padding: '0 20px',
       position: 'fixed' as const,
       top: 0,
       left: 0,
       zIndex: 100,
+    },
+    navDivider: {
+      width: '2px',
+      height: '20px',
+      background: '#333',
+    },
+    navItem: {
+      position: 'relative' as const,
+      height: '60px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: '184px',
+      flexShrink: 0,
     },
     navButton: {
       fontFamily: "'Montserrat', sans-serif",
@@ -85,8 +107,41 @@ function SalonPackages({ onNavigate }: SalonPackagesProps) {
       border: 'none',
       cursor: 'pointer',
       transition: 'all 0.3s ease',
+      margin: 0,
       padding: '8px 16px',
-      transform: 'scale(1)',
+      width: '184px',
+      textAlign: 'center' as const,
+    },
+    dropdown: {
+      position: 'absolute' as const,
+      top: '60px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      transformOrigin: 'top center',
+      background:
+        'radial-gradient(ellipse at top, rgba(212, 175, 55, 0.16) 0%, rgba(212, 175, 55, 0.08) 22%, rgba(24, 24, 24, 0.95) 23%, #0a0a0a 42%, #080808 100%)',
+      border: '1px solid #222',
+      borderTop: `2px solid ${gold}`,
+      padding: '10px 0',
+      zIndex: 200,
+      boxShadow: '0 10px 30px rgba(0,0,0,0.9)',
+      minWidth: '150px',
+      overflow: 'hidden' as const,
+      borderRadius: '0 0 18px 18px',
+      isolation: 'isolate' as const,
+    },
+    dropdownItem: {
+      display: 'block',
+      width: '100%',
+      padding: '8px 20px',
+      background: 'transparent',
+      border: 'none',
+      color: '#888',
+      fontSize: '8px',
+      letterSpacing: '1px',
+      textTransform: 'uppercase' as const,
+      cursor: 'pointer',
+      textAlign: 'center' as const,
     },
     main: {
       flex: 1,
@@ -232,7 +287,7 @@ function SalonPackages({ onNavigate }: SalonPackagesProps) {
       cursor: 'pointer',
     },
     backBtn: {
-      display: 'inline-block',
+      display: 'none',
       background: 'transparent',
       border: 'none',
       color: '#666',
@@ -293,21 +348,56 @@ function SalonPackages({ onNavigate }: SalonPackagesProps) {
 
   const logoPulseKeyframes = `
     @keyframes logoPulse {
-      0%, 100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.3); transform: translateY(-50%) scale(1); }
-      50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.6); transform: translateY(-50%) scale(1.05); }
+      0%, 100% { box-shadow: 0 0 10px rgba(243, 239, 236, 0.24); transform: translateY(-50%) scale(1); }
+      50% { box-shadow: 0 0 30px rgba(243, 239, 236, 0.36); transform: translateY(-50%) scale(1.05); }
     }
   `;
 
   return (
     <div style={styles.container}>
-      <style>{pulseKeyframes}{logoPulseKeyframes}</style>
+      <style>{pulseKeyframes}{logoPulseKeyframes}{`
+        .nav-hover-button:hover {
+          color: #f3efec !important;
+          transform: scale(1.08) translateY(-1px);
+          text-shadow: 0 0 12px rgba(243, 239, 236, 0.35);
+        }
+        @keyframes carpetDrop {
+          0% { opacity: 0.12; transform: translateX(-50%); clip-path: inset(0 0 calc(100% - 8px) 0); }
+          100% { opacity: 1; transform: translateX(-50%); clip-path: inset(0 0 0 0); }
+        }
+        @keyframes dropdownLineReveal {
+          0% { opacity: 0; transform: translateY(-8px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
       
       {/* Top Navbar */}
       <nav style={styles.navbar}>
-        <img src={logoImage} alt="Home" title="Back to Home" style={{width: '80px', height: '80px', objectFit: 'contain', cursor: 'pointer', position: 'absolute', left: '40px', top: '100%', transform: 'translateY(-50%)', borderRadius: '50%', animation: 'logoPulse 2s ease-in-out infinite', transition: 'all 0.3s ease'}} onClick={() => onNavigate('landing')} onMouseEnter={(e) => {e.currentTarget.style.width = '100px'; e.currentTarget.style.height = '100px'; e.currentTarget.style.left = '30px';}} onMouseLeave={(e) => {e.currentTarget.style.width = '80px'; e.currentTarget.style.height = '80px'; e.currentTarget.style.left = '40px';}} />
-        <button style={styles.navButton} onClick={() => onNavigate('salon')} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.2)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>Home</button>
-        <button style={{...styles.navButton, color: gold}} onClick={() => onNavigate('salon-packages')} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.2)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>Packages</button>
-        <button style={styles.navButton} onClick={() => onNavigate('contact')} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.2)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>Contact</button>
+        <div style={{ position: 'absolute', left: '20px', top: '50%', transform: 'translateY(-50%)', width: '100px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <img src={logoImage} alt="Home" title="Back to Home" style={{width: '82px', height: '82px', objectFit: 'cover', cursor: 'pointer', borderRadius: '50%', animation: 'logoPulse 2s ease-in-out infinite', transition: 'all 0.3s ease', border: '1px solid rgba(243, 239, 236, 0.9)'}} onClick={() => onNavigate('landing')} />
+        </div>
+        <div style={styles.navDivider}></div>
+        <div style={styles.navItem} onMouseEnter={() => setHoveredBusiness('primary')} onMouseLeave={() => setHoveredBusiness(null)}>
+          <button className="nav-hover-button" style={{...styles.navButton, color: gold}} onClick={() => onNavigate('salon')}>Salon</button>
+          {hoveredBusiness === 'primary' && (
+            <div style={{ ...styles.dropdown, animation: 'carpetDrop 0.72s ease forwards' }}>
+              <button style={dropdownItemStyle(0.08)} onClick={() => onNavigate('salon-portal')}>Client Portal</button>
+              <button style={dropdownItemStyle(0.14)} onClick={() => onNavigate('salon-packages')}>Packages</button>
+              <button style={dropdownItemStyle(0.2)} onClick={() => onNavigate('contact')}>Contact</button>
+            </div>
+          )}
+        </div>
+        <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('hire')}>DID YOU KNOW?</button>
+        <div style={styles.navItem} onMouseEnter={() => setHoveredBusiness('partnership')} onMouseLeave={() => setHoveredBusiness(null)}>
+          <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('contact')}>Partnership</button>
+          {hoveredBusiness === 'partnership' && (
+            <div style={{ ...styles.dropdown, minWidth: '180px', animation: 'carpetDrop 0.72s ease forwards' }}>
+              <button style={dropdownItemStyle(0.08)} onClick={() => onNavigate('contact')}>Preferred Partner Portal</button>
+              <button style={dropdownItemStyle(0.14)} onClick={() => onNavigate('contact')}>Local Network Portal</button>
+            </div>
+          )}
+        </div>
+        <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('contact')}>Contact</button>
       </nav>
 
       {/* Main Content */}
@@ -386,9 +476,7 @@ function SalonPackages({ onNavigate }: SalonPackagesProps) {
           </button>
         </section>
 
-        <footer style={styles.footer}>
-          <span style={styles.yearWhite}><span style={{fontSize: '0.7em', verticalAlign: 'super'}}>@</span>2001</span> | AN-NA<span style={styles.nymsFooter}>nyms</span>-LI Co., LLC | All Rights Reserved | <span style={{color: gold}}>anna@annalico.com</span> | <span style={styles.yearWhite}>(972) 900-7147</span>
-        </footer>
+        <SiteFooter compact />
       </main>
     </div>
   );

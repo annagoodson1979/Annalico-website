@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import type { CSSProperties, ReactNode } from 'react';
 import type { Page } from '../types';
+import SiteFooter from './SiteFooter';
 
-const logoImage = '/images/logo.jpg';
+const logoImage = '/images/logo3.jpg';
 
 interface PageFrameProps {
   children: ReactNode;
@@ -12,6 +13,7 @@ interface PageFrameProps {
   backTo?: Page;
   backLabel?: string;
   maxWidth?: string;
+  business?: 'notary' | 'salon';
 }
 
 function PageFrame({
@@ -22,11 +24,32 @@ function PageFrame({
   backTo,
   backLabel = 'Back',
   maxWidth = '1100px',
+  business = 'notary',
 }: PageFrameProps) {
   const gold = '#d4af37';
-  const [hoveredBusiness, setHoveredBusiness] = useState<
-    'notary' | 'salon' | 'partnership' | null
-  >(null);
+  const logoAccent = '#f3efec';
+  const [hoveredBusiness, setHoveredBusiness] = useState<'primary' | 'partnership' | null>(null);
+  const primaryLabel = business === 'salon' ? 'Salon' : 'Notary';
+  const primaryTarget: Page = business === 'salon' ? 'salon' : 'home';
+  const primaryDropdownItems =
+    business === 'salon'
+      ? [
+          { label: 'Client Portal', page: 'salon-portal' as Page },
+          { label: 'Packages', page: 'salon-packages' as Page },
+          { label: 'Contact', page: 'contact' as Page },
+        ]
+      : [
+          { label: 'Services & Prices', page: 'services' as Page },
+          { label: 'Documents I Sign', page: 'documents' as Page },
+          { label: 'Contact', page: 'contact' as Page },
+          { label: 'Booking Request', page: 'contact' as Page },
+        ];
+  const dropdownItemStyle = (delay: number): CSSProperties => ({
+    ...styles.dropdownItem,
+    opacity: 0,
+    animation: 'dropdownLineReveal 0.32s ease forwards',
+    animationDelay: `${delay}s`,
+  });
 
   const styles: Record<string, CSSProperties> = {
     shell: {
@@ -63,6 +86,9 @@ function PageFrame({
       height: '60px',
       display: 'flex',
       alignItems: 'center',
+      justifyContent: 'center',
+      width: '184px',
+      flexShrink: 0,
     },
     navButton: {
       fontFamily: "'Montserrat', sans-serif",
@@ -75,21 +101,28 @@ function PageFrame({
       border: 'none',
       cursor: 'pointer',
       transition: 'all 0.3s ease',
-      margin: '0 12px',
+      margin: 0,
       padding: '8px 16px',
+      width: '184px',
+      textAlign: 'center',
     },
     dropdown: {
       position: 'absolute',
       top: '60px',
       left: '50%',
       transform: 'translateX(-50%)',
-      background: '#0a0a0a',
+      transformOrigin: 'top center',
+      background:
+        'radial-gradient(ellipse at top, rgba(212, 175, 55, 0.16) 0%, rgba(212, 175, 55, 0.08) 22%, rgba(24, 24, 24, 0.95) 23%, #0a0a0a 42%, #080808 100%)',
       border: '1px solid #222',
       borderTop: `2px solid ${gold}`,
       padding: '10px 0',
       zIndex: 19,
       boxShadow: '0 10px 30px rgba(0,0,0,0.9)',
       minWidth: '150px',
+      overflow: 'hidden',
+      borderRadius: '0 0 18px 18px',
+      isolation: 'isolate',
     },
     dropdownItem: {
       display: 'block',
@@ -105,38 +138,21 @@ function PageFrame({
       textAlign: 'center',
     },
     logoButton: {
-      position: 'fixed',
-      top: '82px',
-      left: '22px',
-      width: '74px',
-      height: '74px',
+      width: '82px',
+      height: '82px',
       borderRadius: '50%',
       overflow: 'hidden',
-      border: '1px solid rgba(212, 175, 55, 0.45)',
+      border: `1px solid ${logoAccent}`,
       background: '#080808',
       cursor: 'pointer',
-      zIndex: 20,
-      boxShadow: '0 0 16px rgba(212, 175, 55, 0.25)',
+      boxShadow: '0 0 16px rgba(243, 239, 236, 0.22)',
       padding: 0,
+      flexShrink: 0,
     },
     logoImage: {
       width: '100%',
       height: '100%',
       objectFit: 'cover',
-    },
-    backButton: {
-      position: 'fixed',
-      top: '82px',
-      right: '28px',
-      border: `1px solid ${gold}`,
-      background: 'rgba(0, 0, 0, 0.6)',
-      color: gold,
-      padding: '10px 18px',
-      letterSpacing: '2px',
-      textTransform: 'uppercase',
-      fontSize: '11px',
-      cursor: 'pointer',
-      zIndex: 20,
     },
     main: {
       minHeight: '100vh',
@@ -168,11 +184,12 @@ function PageFrame({
     },
     title: {
       margin: 0,
-      fontSize: 'clamp(2rem, 4vw, 3.6rem)',
+      fontSize: 'clamp(1.55rem, 3vw, 2.6rem)',
       fontWeight: 200,
-      letterSpacing: '6px',
+      letterSpacing: '4px',
       textTransform: 'uppercase',
       color: gold,
+      fontFamily: "'Cinzel', serif",
       textShadow: '0 0 18px rgba(212, 175, 55, 0.18)',
     },
     line: {
@@ -185,9 +202,9 @@ function PageFrame({
     subtitle: {
       margin: 0,
       color: '#a5a5a5',
-      letterSpacing: '2px',
+      letterSpacing: '1.6px',
       textTransform: 'uppercase',
-      fontSize: '0.82rem',
+      fontSize: '0.66rem',
       lineHeight: 1.6,
     },
     body: {
@@ -197,6 +214,9 @@ function PageFrame({
       flexDirection: 'column',
       justifyContent: 'center',
       gap: '18px',
+      fontFamily: "'Cormorant Garamond', serif",
+      fontSize: '1.08rem',
+      lineHeight: 1.6,
     },
   };
 
@@ -204,92 +224,69 @@ function PageFrame({
     <div style={styles.shell}>
       <style>{`
         @keyframes pageLogoPulse {
-          0%, 100% { transform: scale(1); box-shadow: 0 0 16px rgba(212, 175, 55, 0.25); }
-          50% { transform: scale(1.04); box-shadow: 0 0 24px rgba(212, 175, 55, 0.35); }
+          0%, 100% { transform: scale(1); box-shadow: 0 0 16px rgba(243, 239, 236, 0.22); }
+          50% { transform: scale(1.04); box-shadow: 0 0 24px rgba(243, 239, 236, 0.32); }
+        }
+        @keyframes carpetDrop {
+          0% { opacity: 0.12; transform: translateX(-50%); clip-path: inset(0 0 calc(100% - 8px) 0); }
+          100% { opacity: 1; transform: translateX(-50%); clip-path: inset(0 0 0 0); }
+        }
+        @keyframes dropdownLineReveal {
+          0% { opacity: 0; transform: translateY(-8px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        .nav-hover-button:hover {
+          color: #f3efec !important;
+          transform: scale(1.08) translateY(-1px);
+          text-shadow: 0 0 12px rgba(243, 239, 236, 0.35);
         }
       `}</style>
 
       <nav style={styles.navbar}>
         <div
           style={{
+            position: 'absolute',
+            left: '20px',
+            top: '50%',
+            transform: 'translateY(-50%)',
             width: '100px',
             display: 'flex',
-            alignItems: 'flex-start',
+            alignItems: 'center',
             justifyContent: 'center',
-            marginRight: '10px',
-            paddingTop: '10px',
           }}
         >
-          <span
-            style={{
-              fontSize: '0.7em',
-              fontWeight: 300,
-              letterSpacing: '2px',
-              color: gold,
-              textTransform: 'uppercase',
-              textAlign: 'center',
-            }}
+          <button
+            style={{ ...styles.logoButton, animation: 'pageLogoPulse 2.6s ease-in-out infinite' }}
+            onClick={() => onNavigate('landing')}
+            aria-label="Back to landing"
           >
-            Start
-            <br />
-            here
-          </span>
+            <img src={logoImage} alt="Anna-Li Co." style={styles.logoImage} />
+          </button>
         </div>
         <div style={styles.navDivider}></div>
         <div
           style={styles.navItem}
-          onMouseEnter={() => setHoveredBusiness('notary')}
+          onMouseEnter={() => setHoveredBusiness('primary')}
           onMouseLeave={() => setHoveredBusiness(null)}
         >
-          <button style={styles.navButton} onClick={() => onNavigate('home')}>
-            Notary
+          <button className="nav-hover-button" style={{ ...styles.navButton, color: gold }} onClick={() => onNavigate(primaryTarget)}>
+            {primaryLabel}
           </button>
-          {hoveredBusiness === 'notary' && (
-            <div style={styles.dropdown}>
-              <button style={styles.dropdownItem} onClick={() => onNavigate('home')}>
-                Website
-              </button>
-              <button style={styles.dropdownItem} onClick={() => onNavigate('services')}>
-                Services & Prices
-              </button>
-              <button style={styles.dropdownItem} onClick={() => onNavigate('documents')}>
-                Documents I Sign
-              </button>
-              <button style={styles.dropdownItem} onClick={() => onNavigate('contact')}>
-                Contact
-              </button>
-              <button style={styles.dropdownItem} onClick={() => onNavigate('contact')}>
-                Booking Request
-              </button>
+          {hoveredBusiness === 'primary' && (
+            <div style={{ ...styles.dropdown, animation: 'carpetDrop 0.72s ease forwards' }}>
+              {primaryDropdownItems.map((item, index) => (
+                <button
+                  key={item.label}
+                  style={dropdownItemStyle(0.08 + index * 0.06)}
+                  onClick={() => onNavigate(item.page)}
+                >
+                  {item.label}
+                </button>
+              ))}
             </div>
           )}
         </div>
-        <div
-          style={styles.navItem}
-          onMouseEnter={() => setHoveredBusiness('salon')}
-          onMouseLeave={() => setHoveredBusiness(null)}
-        >
-          <button style={styles.navButton} onClick={() => onNavigate('salon')}>
-            Salon
-          </button>
-          {hoveredBusiness === 'salon' && (
-            <div style={styles.dropdown}>
-              <button style={styles.dropdownItem} onClick={() => onNavigate('salon')}>
-                Website
-              </button>
-              <button style={styles.dropdownItem} onClick={() => onNavigate('salon-portal')}>
-                Client Portal
-              </button>
-              <button style={styles.dropdownItem} onClick={() => onNavigate('salon-packages')}>
-                Packages
-              </button>
-              <button style={styles.dropdownItem} onClick={() => onNavigate('contact')}>
-                Contact
-              </button>
-            </div>
-          )}
-        </div>
-        <button style={{ ...styles.navButton, color: gold }} onClick={() => onNavigate('hire')}>
+        <button className="nav-hover-button" style={{ ...styles.navButton, color: gold }} onClick={() => onNavigate('hire')}>
           DID YOU KNOW?
         </button>
         <div
@@ -297,41 +294,24 @@ function PageFrame({
           onMouseEnter={() => setHoveredBusiness('partnership')}
           onMouseLeave={() => setHoveredBusiness(null)}
         >
-          <button style={styles.navButton} onClick={() => onNavigate('contact')}>
+          <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('contact')}>
             Partnership
           </button>
           {hoveredBusiness === 'partnership' && (
-            <div style={{ ...styles.dropdown, minWidth: '180px' }}>
-              <button style={styles.dropdownItem} onClick={() => onNavigate('contact')}>
+            <div style={{ ...styles.dropdown, minWidth: '180px', animation: 'carpetDrop 0.72s ease forwards' }}>
+              <button style={dropdownItemStyle(0.08)} onClick={() => onNavigate('contact')}>
                 Preferred Partner Portal
               </button>
-              <button style={styles.dropdownItem} onClick={() => onNavigate('contact')}>
+              <button style={dropdownItemStyle(0.14)} onClick={() => onNavigate('contact')}>
                 Local Network Portal
               </button>
             </div>
           )}
         </div>
-        <button style={styles.navButton} onClick={() => onNavigate('about')}>
-          About Me
-        </button>
-        <button style={styles.navButton} onClick={() => onNavigate('contact')}>
+        <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('contact')}>
           Contact
         </button>
       </nav>
-
-      <button
-        style={{ ...styles.logoButton, animation: 'pageLogoPulse 2.6s ease-in-out infinite' }}
-        onClick={() => onNavigate('landing')}
-        aria-label="Back to landing"
-      >
-        <img src={logoImage} alt="Anna-Li Co." style={styles.logoImage} />
-      </button>
-
-      {backTo && (
-        <button style={styles.backButton} onClick={() => onNavigate(backTo)}>
-          {backLabel}
-        </button>
-      )}
 
       <main style={styles.main}>
         <section style={styles.panel}>
@@ -343,6 +323,7 @@ function PageFrame({
           <div style={styles.body}>{children}</div>
         </section>
       </main>
+      <SiteFooter compact />
     </div>
   );
 }

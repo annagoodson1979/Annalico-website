@@ -1,30 +1,58 @@
-import type { CSSProperties } from 'react';
+import { useEffect, useState } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 import type { Page } from '../types';
-import SiteFooter from '../components/SiteFooter';
+import SiteFooter from './SiteFooter';
 
 const landingLogo = '/images/logo3.jpg';
 const notaryLogo = '/images/sealandstamp.jpeg';
 
-interface HomeProps {
+interface NotaryFrameProps {
+  children: ReactNode;
   onNavigate: (page: Page) => void;
+  title: string;
+  subtitle?: string;
+  backTo?: Page;
+  backLabel?: string;
+  maxWidth?: string;
+  showNavBack?: boolean;
 }
 
-function Home({ onNavigate }: HomeProps) {
+function NotaryFrame({
+  children,
+  onNavigate,
+  title,
+  subtitle,
+  backTo,
+  backLabel = 'Back to Notary Home',
+  maxWidth = '1060px',
+  showNavBack = true,
+}: NotaryFrameProps) {
   const gold = '#d4af37';
   const logoAccent = '#f3efec';
   const paper = '#f2efe8';
   const footerHeight = 52;
   const navHeight = 74;
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 80);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const styles: Record<string, CSSProperties> = {
     page: {
-      height: '100vh',
+      minHeight: '100vh',
       background: '#050505',
       color: '#fff',
       position: 'relative',
-      overflowX: 'hidden',
       display: 'flex',
       flexDirection: 'column',
+      overflowX: 'hidden',
     },
     backgroundOverlay: {
       position: 'absolute',
@@ -97,22 +125,7 @@ function Home({ onNavigate }: HomeProps) {
       width: '184px',
       textAlign: 'center',
     },
-    navButtonPlaceholder: {
-      fontFamily: "'Montserrat', sans-serif",
-      fontSize: '0.7em',
-      fontWeight: 300,
-      letterSpacing: '2px',
-      textTransform: 'uppercase',
-      background: 'transparent',
-      border: 'none',
-      margin: 0,
-      padding: '8px 16px',
-      width: '184px',
-      textAlign: 'center',
-      visibility: 'hidden',
-      pointerEvents: 'none',
-    },
-    hero: {
+    main: {
       position: 'relative',
       zIndex: 2,
       flex: 1,
@@ -124,40 +137,53 @@ function Home({ onNavigate }: HomeProps) {
       minHeight: `calc(100vh - ${navHeight}px - ${footerHeight}px)`,
     },
     logoGhost: {
-      position: 'absolute',
+      position: 'fixed',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -44%)',
       width: 'min(62vw, 660px)',
       aspectRatio: '1 / 1',
       objectFit: 'contain',
-      opacity: 0.12,
-      filter: 'grayscale(0.08) drop-shadow(0 0 28px rgba(212, 175, 55, 0.16))',
+      opacity: 0.07,
+      filter: 'grayscale(0.08) drop-shadow(0 0 28px rgba(212, 175, 55, 0.12))',
       pointerEvents: 'none',
+      zIndex: 1,
+    },
+    contentWrap: {
+      width: '100%',
+      maxWidth,
+      minHeight: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      padding: '32px 24px',
+      boxSizing: 'border-box',
     },
     intro: {
-      width: 'min(900px, 100%)',
-      padding: '32px 24px',
       textAlign: 'center',
+      marginBottom: '22px',
     },
     title: {
       margin: 0,
       color: gold,
-      fontSize: 'clamp(2.25rem, 5vw, 4.4rem)',
+      fontSize: 'clamp(1.8rem, 3.6vw, 3.15rem)',
       lineHeight: 1,
       textTransform: 'uppercase',
-      letterSpacing: '5px',
+      letterSpacing: '4px',
       fontWeight: 500,
       textAlign: 'center',
       fontFamily: "'Cinzel', serif",
       textShadow: '0 0 24px rgba(212, 175, 55, 0.16)',
     },
-    titleSub: {
-      margin: '6px 0 0',
+    subtitle: {
+      margin: '8px 0 0',
       color: paper,
-      fontSize: 'clamp(1.25rem, 2.4vw, 2rem)',
-      lineHeight: 1,
+      fontSize: 'clamp(0.68rem, 1vw, 0.82rem)',
+      lineHeight: 1.2,
       textTransform: 'uppercase',
-      letterSpacing: '5px',
+      letterSpacing: '4px',
       textAlign: 'center',
-      fontFamily: "'Cinzel', serif",
+      fontFamily: "'Cormorant Garamond', serif",
       fontWeight: 500,
     },
     line: {
@@ -165,29 +191,26 @@ function Home({ onNavigate }: HomeProps) {
       height: '2px',
       background: `linear-gradient(90deg, transparent, ${gold}, transparent)`,
       boxShadow: '0 0 10px rgba(212, 175, 55, 0.35)',
-      margin: '20px auto 18px',
+      margin: '26px auto 16px',
     },
-    snippet: {
-      margin: '14px auto 0',
-      maxWidth: 'none',
-      color: '#ddd4c8',
+    bottomLine: {
+      width: '200px',
+      height: '1px',
+      background: 'linear-gradient(90deg, transparent, rgba(242, 239, 232, 0.85), transparent)',
+      margin: '0 auto',
+      opacity: 0.9,
+    },
+    panel: {
+      background: 'transparent',
+      border: 'none',
+      borderRadius: '0',
+      padding: 0,
+      boxShadow: 'none',
+      backdropFilter: 'none',
+      width: '100%',
       fontFamily: "'Cormorant Garamond', serif",
-      fontSize: '0.98rem',
-      lineHeight: 1.2,
-      textAlign: 'center',
-      letterSpacing: '0.5px',
-      whiteSpace: 'nowrap',
-    },
-    credentialLine: {
-      margin: '14px auto 0',
-      color: gold,
-      fontFamily: "'Montserrat', sans-serif",
-      fontSize: '0.48rem',
-      lineHeight: 1.4,
-      textAlign: 'center',
-      letterSpacing: '1.8px',
-      textTransform: 'uppercase',
-      whiteSpace: 'nowrap',
+      fontSize: '1.08rem',
+      lineHeight: 1.65,
     },
   };
 
@@ -205,6 +228,7 @@ function Home({ onNavigate }: HomeProps) {
         }
       `}</style>
       <div style={styles.backgroundOverlay} />
+      <img src={notaryLogo} alt="" style={styles.logoGhost} />
 
       <nav style={styles.navbar}>
         <div style={styles.navLeft}>
@@ -218,9 +242,11 @@ function Home({ onNavigate }: HomeProps) {
         <div style={styles.navDivider}></div>
 
         <div style={styles.navRight}>
-          <button aria-hidden="true" tabIndex={-1} style={styles.navButtonPlaceholder}>
-            Back
-          </button>
+          {showNavBack ? (
+            <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('home')}>
+              Back
+            </button>
+          ) : null}
           <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('services')}>
             Services & Prices
           </button>
@@ -236,24 +262,76 @@ function Home({ onNavigate }: HomeProps) {
         </div>
       </nav>
 
-      <main style={styles.hero}>
-        <img src={notaryLogo} alt="" style={styles.logoGhost} />
-        <section style={styles.intro}>
-          <h1 style={styles.title}>Seal and Stamp</h1>
-          <p style={styles.titleSub}>Notary</p>
-          <p style={styles.credentialLine}>
-            NNA Certified in Both Notary Signing Agent and RON | IPEN Available
-          </p>
-          <div style={styles.line} />
-          <p style={styles.snippet}>
-            Mobile, remote, and electronic notarization for legal, business, and everyday documents.
-          </p>
-        </section>
+      <main style={styles.main}>
+        <div style={styles.contentWrap}>
+          <section style={styles.intro}>
+            <h1 style={styles.title}>{title}</h1>
+            {subtitle ? <p style={styles.subtitle}>{subtitle}</p> : null}
+            <div style={styles.line} />
+            <div style={styles.bottomLine} />
+          </section>
+
+          <section style={styles.panel}>{children}</section>
+        </div>
       </main>
+
+      {showBackToTop ? (
+        <button
+          onClick={() =>
+            window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' })
+          }
+          style={{
+            position: 'fixed',
+            left: '10px',
+            top: '146px',
+            border: 'none',
+            background: 'transparent',
+            color: '#b7b0a7',
+            fontFamily: "'Montserrat', sans-serif",
+            fontSize: '0.42rem',
+            letterSpacing: '1px',
+            textTransform: 'uppercase',
+            cursor: 'pointer',
+            zIndex: 15,
+            lineHeight: 1.15,
+            textAlign: 'left',
+          }}
+        >
+          Back to
+          <br />
+          Bottom
+        </button>
+      ) : null}
+
+      {showBackToTop ? (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          style={{
+            position: 'fixed',
+            left: '10px',
+            bottom: '72px',
+            border: 'none',
+            background: 'transparent',
+            color: '#b7b0a7',
+            fontFamily: "'Montserrat', sans-serif",
+            fontSize: '0.42rem',
+            letterSpacing: '1px',
+            textTransform: 'uppercase',
+            cursor: 'pointer',
+            zIndex: 15,
+            lineHeight: 1.15,
+            textAlign: 'left',
+          }}
+        >
+          Back to
+          <br />
+          Top
+        </button>
+      ) : null}
 
       <SiteFooter compact />
     </div>
   );
 }
 
-export default Home;
+export default NotaryFrame;

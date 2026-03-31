@@ -1,82 +1,157 @@
+import NotaryFrame from '../components/NotaryFrame';
+
 interface HireProps {
-  onNavigate: (page: 'landing' | 'home' | 'about' | 'services' | 'contact' | 'hire' | 'salon' | 'salon-portal' | 'salon-packages' | 'documents') => void;
+  onNavigate: (
+    page:
+      | 'landing'
+      | 'home'
+      | 'about'
+      | 'services'
+      | 'contact'
+      | 'hire'
+      | 'salon'
+      | 'salon-portal'
+      | 'salon-packages'
+      | 'documents'
+  ) => void;
 }
 
 function Hire({ onNavigate }: HireProps) {
   const gold = '#d4af37';
-  const logoImage = '/images/logo.jpg';
-
-  const styles: { [key: string]: React.CSSProperties } = {
-    container: {
-      minHeight: '100vh',
-      background: '#000',
-      display: 'flex',
-      flexDirection: 'column' as const,
-      alignItems: 'center',
-      justifyContent: 'center',
-      color: '#fff',
-    },
-    logoButton: {
-      position: 'fixed' as const,
-      top: '24px',
-      left: '24px',
-      width: '74px',
-      height: '74px',
-      borderRadius: '50%',
-      overflow: 'hidden',
-      border: `1px solid ${gold}`,
-      background: '#080808',
-      cursor: 'pointer',
-      boxShadow: '0 0 16px rgba(212, 175, 55, 0.25)',
-      padding: 0,
-    },
-    logoImage: {
-      width: '100%',
-      height: '100%',
-      objectFit: 'cover' as const,
-    },
-    heading: {
-      fontSize: '3em',
-      fontWeight: 100,
-      letterSpacing: '6px',
-      textTransform: 'uppercase',
-      marginBottom: '20px',
-      color: gold,
-    },
-    text: {
-      color: '#888',
-      fontSize: '1.2em',
-      maxWidth: '600px',
-      textAlign: 'center' as const,
-      lineHeight: 1.6,
-    },
-    button: {
-      marginTop: '30px',
-      padding: '15px 30px',
-      background: 'transparent',
-      border: `1px solid ${gold}`,
-      color: gold,
-      cursor: 'pointer',
-      fontSize: '14px',
-      letterSpacing: '2px',
-      textTransform: 'uppercase' as const,
-    },
-  };
+  const paper = '#f2efe8';
 
   return (
-    <div style={styles.container}>
-      <button style={styles.logoButton} onClick={() => onNavigate('landing')} aria-label="Back to landing">
-        <img src={logoImage} alt="Anna-Li Co." style={styles.logoImage} />
-      </button>
-      <h1 style={styles.heading}>Hire a Signing Agent</h1>
-      <p style={styles.text}>
-        Looking for a professional notary signing agent? I specialize in loan signings, 
-        real estate documents, and legal paperwork with precision and care.
-      </p>
-      <button style={styles.button} onClick={() => onNavigate('landing')}>
-        Back to Home
-      </button>
-    </div>
+    <NotaryFrame
+      onNavigate={onNavigate}
+      title="Work With Me"
+      subtitle="Choose the path that fits your appointment, signing order, or intake request"
+      backTo="home"
+    >
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+          gap: '24px',
+          maxWidth: '900px',
+          margin: '0 auto',
+          width: '100%',
+        }}
+      >
+        <section
+          style={{
+            padding: '26px 24px 24px',
+            border: '1px solid rgba(212, 175, 55, 0.16)',
+            borderRadius: '22px',
+            background: 'linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01))',
+            textAlign: 'center',
+          }}
+        >
+          <p
+            style={{
+              margin: '0 0 12px',
+              color: gold,
+              letterSpacing: '2px',
+              textTransform: 'uppercase',
+            }}
+          >
+            For Clients
+          </p>
+          <h3
+            style={{
+              margin: '0 0 14px',
+              color: paper,
+              fontFamily: "'Cinzel', serif",
+              fontSize: '1.45rem',
+              letterSpacing: '2px',
+              textTransform: 'uppercase',
+            }}
+          >
+            Book Notary Service
+          </h3>
+          <p style={{ margin: '0 0 20px', color: '#ddd', lineHeight: 1.85 }}>
+            Mobile, remote, and electronic notarization for personal, legal, business, and
+            everyday documents. Reach out to schedule an appointment or ask a question before we
+            begin.
+          </p>
+          <button
+            onClick={() => onNavigate('contact')}
+            style={{
+              fontFamily: "'Montserrat', sans-serif",
+              fontSize: '0.72rem',
+              letterSpacing: '2px',
+              textTransform: 'uppercase',
+              color: gold,
+              background: 'transparent',
+              border: `1px solid ${gold}`,
+              borderRadius: '999px',
+              padding: '12px 20px',
+              cursor: 'pointer',
+            }}
+          >
+            Contact for Appointment
+          </button>
+        </section>
+
+        <section
+          style={{
+            padding: '26px 24px 24px',
+            border: '1px solid rgba(212, 175, 55, 0.16)',
+            borderRadius: '22px',
+            background: 'linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01))',
+            textAlign: 'center',
+          }}
+        >
+          <p
+            style={{
+              margin: '0 0 12px',
+              color: gold,
+              letterSpacing: '2px',
+              textTransform: 'uppercase',
+            }}
+          >
+            For Lenders
+          </p>
+          <h3
+            style={{
+              margin: '0 0 14px',
+              color: paper,
+              fontFamily: "'Cinzel', serif",
+              fontSize: '1.45rem',
+              letterSpacing: '2px',
+              textTransform: 'uppercase',
+            }}
+          >
+            Intake & Signing Requests
+          </h3>
+          <p style={{ margin: '0 0 20px', color: '#ddd', lineHeight: 1.85 }}>
+            For lender, title, escrow, and signing-service assignments. Open the intake form to
+            document signing instructions, correction policy, package handling, and return
+            expectations.
+          </p>
+          <a
+            href="/notary-intake-form.html"
+            target="_blank"
+            rel="noreferrer"
+            style={{
+              display: 'inline-block',
+              fontFamily: "'Montserrat', sans-serif",
+              fontSize: '0.72rem',
+              letterSpacing: '2px',
+              textTransform: 'uppercase',
+              color: gold,
+              background: 'transparent',
+              border: `1px solid ${gold}`,
+              borderRadius: '999px',
+              padding: '12px 20px',
+              cursor: 'pointer',
+              textDecoration: 'none',
+            }}
+          >
+            Open Lender Intake Form
+          </a>
+        </section>
+      </div>
+    </NotaryFrame>
   );
 }
 

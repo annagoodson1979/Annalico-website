@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type { Page } from '../types';
-const heroImage = '/images/hero.jpg';
+import SiteFooter from '../components/SiteFooter';
+const heroImage = '/images/hero4.jpg';
 interface LandingProps {
   onNavigate: (page: Page) => void;
 }
@@ -11,7 +12,16 @@ function Landing({ onNavigate }: LandingProps) {
   >(null);
   const [showPartnershipForm, setShowPartnershipForm] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
-  const gold = '#d4af37';
+  const brandLetters = Array.from('ANNA−LI CO.');
+  const gold = '#f3efec';
+  const bulbYellow = '#d4af37';
+  const umbrellaRose = '#e4d2d7';
+  const dropdownItemStyle = (delay: number): React.CSSProperties => ({
+    ...styles.dropdownItem,
+    opacity: 0,
+    animation: `dropdownLineReveal 0.32s ease forwards`,
+    animationDelay: `${delay}s`,
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -70,6 +80,9 @@ function Landing({ onNavigate }: LandingProps) {
       height: '60px',
       display: 'flex',
       alignItems: 'center',
+      justifyContent: 'center',
+      width: '184px',
+      flexShrink: 0,
     },
     navButton: {
       fontFamily: "'Montserrat', sans-serif",
@@ -82,9 +95,11 @@ function Landing({ onNavigate }: LandingProps) {
       border: 'none',
       cursor: 'pointer',
       transition: 'all 0.3s ease',
-      margin: '0 12px',
+      margin: 0,
       padding: '8px 16px',
       transform: 'scale(1) translateY(0)',
+      width: '184px',
+      textAlign: 'center' as const,
     },
     dropdown: {
       position: 'absolute' as const,
@@ -92,7 +107,8 @@ function Landing({ onNavigate }: LandingProps) {
       left: '50%',
       transform: 'translateX(-50%)',
       transformOrigin: 'top center',
-      background: '#0a0a0a',
+      background:
+        'radial-gradient(ellipse at top, rgba(243, 239, 236, 0.16) 0%, rgba(243, 239, 236, 0.08) 22%, rgba(24, 24, 24, 0.95) 23%, #0a0a0a 42%, #080808 100%)',
       border: '1px solid #222',
       borderTop: `2px solid ${gold}`,
       padding: '10px 0',
@@ -100,6 +116,8 @@ function Landing({ onNavigate }: LandingProps) {
       boxShadow: '0 10px 30px rgba(0,0,0,0.9)',
       minWidth: '140px',
       overflow: 'hidden' as const,
+      borderRadius: '0 0 18px 18px',
+      isolation: 'isolate' as const,
     },
     dropdownItem: {
       display: 'block',
@@ -157,7 +175,7 @@ function Landing({ onNavigate }: LandingProps) {
       height: '2px',
       background: `linear-gradient(90deg, transparent, ${gold}, transparent)`,
       margin: '30px auto',
-      boxShadow: '0 0 10px rgba(212, 175, 55, 0.5)',
+      boxShadow: '0 0 12px rgba(243, 239, 236, 0.45)',
     },
     businessSection: {
       display: 'flex',
@@ -188,31 +206,6 @@ function Landing({ onNavigate }: LandingProps) {
       lineHeight: 1.4,
     },
     hero: {},
-    footer: {
-      background: '#000',
-      color: gold,
-      textAlign: 'center',
-      padding: '20px 15px',
-      fontSize: '13px',
-      letterSpacing: '1px',
-      borderTop: '1px solid #111',
-      position: 'fixed' as const,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      zIndex: 80,
-      whiteSpace: 'nowrap' as const,
-    },
-    nymsFooter: {
-      fontFamily: "'Allura', cursive",
-      fontSize: '1.25em',
-      fontWeight: 400,
-      color: gold,
-      textTransform: 'lowercase',
-      display: 'inline-block',
-      marginRight: '3px',
-      marginLeft: '2px',
-    },
     nymsTitle: {
       fontFamily: "'Modernline', cursive",
       fontSize: '1.1em',
@@ -227,41 +220,46 @@ function Landing({ onNavigate }: LandingProps) {
       top: '8px',
       left: '12px',
     },
-    yearWhite: {
-      color: '#ffffff',
-      fontWeight: 300,
-    },
   };
 
   const businessPulseKeyframes = `
     @keyframes businessPulse {
-      0%, 100% { text-shadow: 0 0 15px rgba(212, 175, 55, 0.3); transform: scale(1); }
-      50% { text-shadow: 0 0 35px rgba(212, 175, 55, 0.8); transform: scale(1.03); }
+          0%, 100% { text-shadow: none; transform: scale(1); }
+          50% { text-shadow: none; transform: scale(1.03); }
     }
   `;
 
   const pulseKeyframes = `
     @keyframes pulse {
-      0%, 100% { color: #d4af37; }
-      25% { color: #e8d5a3; }
-      50% { color: #f5f0e0; }
-      75% { color: #e8d5a3; }
+      0%, 100% { color: #d7d1d4; }
+      25% { color: #ece8e5; }
+      50% { color: #ffffff; }
+      75% { color: #ece8e5; }
+    }
+  `;
+
+  const rosePulseKeyframes = `
+    @keyframes rosePulse {
+      0%, 100% { color: #e4d2d7; }
+      30% { color: #b88a92; }
+      62% { color: #a96f7c; }
+      82% { color: #c79693; }
     }
   `;
 
   return (
     <div style={styles.container}>
-      <style>{`@font-face { font-family: 'Modernline'; src: url('/fonts/modernline.otf') format('opentype'); font-weight: normal; font-style: normal; }`}{businessPulseKeyframes}{pulseKeyframes}
+      <style>{`@font-face { font-family: 'Modernline'; src: url('/fonts/modernline.otf') format('opentype'); font-weight: normal; font-style: normal; }`}{businessPulseKeyframes}{pulseKeyframes}{rosePulseKeyframes}
       {`
         @keyframes fadeInUp {
           0% { opacity: 0; transform: translateY(30px); }
           100% { opacity: 1; transform: translateY(0); }
         }
         @keyframes glow {
-          0%, 100% { text-shadow: 0 0 5px rgba(212, 175, 55, 0.3), 0 0 10px rgba(212, 175, 55, 0.2); }
-          25% { text-shadow: 0 0 10px rgba(232, 213, 163, 0.5), 0 0 18px rgba(232, 213, 163, 0.3); }
-          50% { text-shadow: 0 0 20px rgba(245, 240, 224, 0.7), 0 0 35px rgba(245, 240, 224, 0.5); }
-          75% { text-shadow: 0 0 10px rgba(232, 213, 163, 0.5), 0 0 18px rgba(232, 213, 163, 0.3); }
+          0%, 100% { text-shadow: none; }
+          25% { text-shadow: none; }
+          50% { text-shadow: none; }
+          75% { text-shadow: none; }
         }
         @keyframes beamSweep {
           0%, 100% { opacity: 0.06; transform: rotate(-5deg); }
@@ -287,6 +285,11 @@ function Landing({ onNavigate }: LandingProps) {
           0% { transform: rotate(0deg); }
           100% { transform: rotate(360deg); }
         }
+        @keyframes globeSpin {
+          0% { transform: perspective(320px) rotateY(0deg); }
+          50% { transform: perspective(320px) rotateY(180deg); }
+          100% { transform: perspective(320px) rotateY(360deg); }
+        }
         @keyframes orbit {
           0% { transform: translateX(-20px) translateY(0); }
           25% { transform: translateX(0) translateY(-10px); }
@@ -294,18 +297,38 @@ function Landing({ onNavigate }: LandingProps) {
           75% { transform: translateX(0) translateY(10px); }
           100% { transform: translateX(-20px) translateY(0); }
         }
+        @keyframes carpetDrop {
+          0% { opacity: 0.12; transform: translateX(-50%); clip-path: inset(0 0 calc(100% - 8px) 0); }
+          100% { opacity: 1; transform: translateX(-50%); clip-path: inset(0 0 0 0); }
+        }
+        @keyframes dropdownLineReveal {
+          0% { opacity: 0; transform: translateY(-8px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes letterUnfurl {
+          0% { opacity: 0; transform: scaleX(0.08); }
+          40% { opacity: 1; transform: scaleX(0.08); }
+          100% { opacity: 1; transform: scaleX(1); }
+        }
+        .nav-hover-button:hover {
+          color: #f3efec !important;
+          transform: scale(1.08) translateY(-1px);
+          text-shadow: 0 0 12px rgba(243, 239, 236, 0.35);
+        }
       `}
       </style>
 
       <nav style={{ ...styles.navbar, justifyContent: 'center' }}>
         <div
           style={{
+            position: 'absolute',
+            left: '20px',
+            top: '50%',
+            transform: 'translateY(-50%)',
             width: '100px',
             display: 'flex',
-            alignItems: 'flex-start',
+            alignItems: 'center',
             justifyContent: 'center',
-            marginRight: '10px',
-            paddingTop: '10px',
           }}
         >
           <span
@@ -329,24 +352,24 @@ function Landing({ onNavigate }: LandingProps) {
           onMouseEnter={() => setHoveredBusiness('notary')}
           onMouseLeave={() => setHoveredBusiness(null)}
         >
-          <button style={styles.navButton} onClick={() => onNavigate('home')}>
+          <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('home')}>
             Notary
           </button>
           {hoveredBusiness === 'notary' && (
-            <div style={{ ...styles.dropdown, minWidth: '150px' }}>
-              <button style={styles.dropdownItem} onClick={() => onNavigate('home')}>
+            <div style={{ ...styles.dropdown, minWidth: '150px', animation: 'carpetDrop 0.72s ease forwards' }}>
+              <button style={dropdownItemStyle(0.08)} onClick={() => onNavigate('home')}>
                 Website
               </button>
-              <button style={styles.dropdownItem} onClick={() => onNavigate('services')}>
+              <button style={dropdownItemStyle(0.14)} onClick={() => onNavigate('services')}>
                 Services & Prices
               </button>
-              <button style={styles.dropdownItem} onClick={() => onNavigate('documents')}>
+              <button style={dropdownItemStyle(0.2)} onClick={() => onNavigate('documents')}>
                 Documents I Sign
               </button>
-              <button style={styles.dropdownItem} onClick={() => onNavigate('contact')}>
+              <button style={dropdownItemStyle(0.26)} onClick={() => onNavigate('contact')}>
                 Contact
               </button>
-              <button style={styles.dropdownItem} onClick={() => onNavigate('contact')}>
+              <button style={dropdownItemStyle(0.32)} onClick={() => onNavigate('contact')}>
                 Booking Request
               </button>
             </div>
@@ -357,27 +380,27 @@ function Landing({ onNavigate }: LandingProps) {
           onMouseEnter={() => setHoveredBusiness('salon')}
           onMouseLeave={() => setHoveredBusiness(null)}
         >
-          <button style={styles.navButton} onClick={() => onNavigate('salon')}>
+          <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('salon')}>
             Salon
           </button>
           {hoveredBusiness === 'salon' && (
-            <div style={{ ...styles.dropdown, minWidth: '150px' }}>
-              <button style={styles.dropdownItem} onClick={() => onNavigate('salon')}>
+            <div style={{ ...styles.dropdown, minWidth: '150px', animation: 'carpetDrop 0.72s ease forwards' }}>
+              <button style={dropdownItemStyle(0.08)} onClick={() => onNavigate('salon')}>
                 Website
               </button>
-              <button style={styles.dropdownItem} onClick={() => onNavigate('salon-portal')}>
+              <button style={dropdownItemStyle(0.14)} onClick={() => onNavigate('salon-portal')}>
                 Client Portal
               </button>
-              <button style={styles.dropdownItem} onClick={() => onNavigate('salon-packages')}>
+              <button style={dropdownItemStyle(0.2)} onClick={() => onNavigate('salon-packages')}>
                 Packages
               </button>
-              <button style={styles.dropdownItem} onClick={() => onNavigate('contact')}>
+              <button style={dropdownItemStyle(0.26)} onClick={() => onNavigate('contact')}>
                 Contact
               </button>
             </div>
           )}
         </div>
-        <button style={{ ...styles.navButton, color: gold }} onClick={() => onNavigate('hire')}>
+        <button className="nav-hover-button" style={{ ...styles.navButton, color: gold }} onClick={() => onNavigate('hire')}>
           DID YOU KNOW?
         </button>
         <div
@@ -385,24 +408,24 @@ function Landing({ onNavigate }: LandingProps) {
           onMouseEnter={() => setHoveredBusiness('partnership')}
           onMouseLeave={() => setHoveredBusiness(null)}
         >
-          <button style={styles.navButton} onClick={() => onNavigate('contact')}>
+          <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('contact')}>
             Partnership
           </button>
           {hoveredBusiness === 'partnership' && (
-            <div style={{ ...styles.dropdown, minWidth: '180px' }}>
-              <button style={styles.dropdownItem} onClick={() => onNavigate('contact')}>
+            <div style={{ ...styles.dropdown, minWidth: '180px', animation: 'carpetDrop 0.72s ease forwards' }}>
+              <button style={dropdownItemStyle(0.08)} onClick={() => onNavigate('contact')}>
                 Preferred Partner Portal
               </button>
-              <button style={styles.dropdownItem} onClick={() => onNavigate('contact')}>
+              <button style={dropdownItemStyle(0.14)} onClick={() => onNavigate('contact')}>
                 Local Network Portal
               </button>
             </div>
           )}
         </div>
-        <button style={styles.navButton} onClick={() => onNavigate('about')}>
+        <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('about')}>
           About Me
         </button>
-        <button style={styles.navButton} onClick={() => onNavigate('contact')}>
+        <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('contact')}>
           Contact
         </button>
       </nav>
@@ -411,16 +434,16 @@ function Landing({ onNavigate }: LandingProps) {
         style={{
           position: 'fixed',
           left: '42%',
-          top: '58%',
+          top: '50%',
           transform: 'translate(-50%, -50%)',
           width: '500px',
           zIndex: 1,
           textAlign: 'center',
-          background: '#000',
-          borderRadius: '16px',
-          boxShadow: '0 4px 24px rgba(0,0,0,0.18)',
-          padding: '16px 0 24px 0',
-          overflow: 'hidden',
+          background: 'transparent',
+          borderRadius: '0',
+          boxShadow: 'none',
+          padding: '0',
+          overflow: 'visible',
         }}
       >
         <img
@@ -429,10 +452,14 @@ function Landing({ onNavigate }: LandingProps) {
           style={{
             width: '100%',
             maxWidth: '500px',
-            borderRadius: '12px',
-            background: '#000',
+            borderRadius: '0',
+            background: 'transparent',
             display: 'block',
             margin: '0 auto',
+            outline: 'none',
+            border: 'none',
+            boxShadow: 'none',
+            clipPath: 'inset(2px 2px 2px 2px)',
           }}
         />
       </div>
@@ -442,29 +469,57 @@ function Landing({ onNavigate }: LandingProps) {
           <div
             style={{
               position: 'absolute' as const,
-              top: '74%',
-              left: '38%',
+              top: '66.8%',
+              left: '37.5%',
               transform: 'translate(-50%, calc(-50% + 24px))',
               textAlign: 'center' as const,
               zIndex: 10,
-              animation:
-                'fadeInUp 1s ease-out forwards, pulse 10s ease-in-out infinite 1s, glow 10s ease-in-out infinite 1s',
+              animation: 'fadeInUp 1s ease-out forwards',
             }}
           >
             <h1
               style={{
-                fontFamily: "'Montserrat', sans-serif",
-                fontSize: '2.5em',
-                fontWeight: 100,
-                letterSpacing: '6px',
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: '2.45em',
+                fontWeight: 600,
+                letterSpacing: '0.2px',
                 textTransform: 'uppercase',
                 marginBottom: '10px',
-                color: gold,
                 margin: 0,
                 whiteSpace: 'nowrap' as const,
+                color: umbrellaRose,
+                animation: 'rosePulse 24s ease-in-out infinite',
               }}
             >
-              ANNA-LI CO.
+              {brandLetters.map((char, index) => (
+                <span
+                  key={`${char}-${index}`}
+                  style={{
+                    display: 'inline-block',
+                    width: char === ' ' ? '0.34em' : '1em',
+                    verticalAlign: 'bottom',
+                    position: 'relative',
+                  }}
+                >
+                  <span
+                    style={{
+                      display: 'inline-block',
+                      width: '1em',
+                      textAlign: 'center',
+                      transformOrigin: 'center center',
+                      willChange: 'transform, opacity',
+                      animation:
+                        char === ' '
+                          ? undefined
+                          : `letterUnfurl 3.1s cubic-bezier(0.22, 1, 0.36, 1) forwards`,
+                      animationDelay: char === ' ' ? undefined : '0.08s',
+                      opacity: char === ' ' ? 1 : 0,
+                    }}
+                  >
+                    {char === ' ' ? '\u00A0' : char}
+                  </span>
+                </span>
+              ))}
             </h1>
             <div
               style={{
@@ -472,7 +527,7 @@ function Landing({ onNavigate }: LandingProps) {
                 height: '2px',
                 background: `linear-gradient(90deg, transparent, ${gold}, transparent)`,
                 margin: '15px auto 0',
-                boxShadow: '0 0 10px rgba(212, 175, 55, 0.5)',
+                boxShadow: '0 0 12px rgba(243, 239, 236, 0.4)',
                 animation: 'lineExpand 1s ease-out 1.2s forwards',
               }}
             ></div>
@@ -508,7 +563,7 @@ function Landing({ onNavigate }: LandingProps) {
                 style={{
                   width: '16px',
                   height: '10px',
-                  background: `radial-gradient(ellipse at center, ${gold} 0%, #8a7020 100%)`,
+                  background: `radial-gradient(ellipse at center, ${bulbYellow} 0%, #c9a548 100%)`,
                   borderRadius: '50%',
                   boxShadow: 'none',
                   position: 'relative',
@@ -518,19 +573,19 @@ function Landing({ onNavigate }: LandingProps) {
                 <div
                   style={{
                     position: 'absolute',
-                    left: 'calc(50% - 50px)',
+                    left: 'calc(50% - 78px)',
                     bottom: '100%',
                     transform: 'translateX(-50%)',
-                    width: '128px',
-                    height: '240px',
+                    width: '160px',
+                    height: '290px',
                     background:
-                      'linear-gradient(0deg, rgba(212, 175, 55, 0.42) 0%, rgba(212, 175, 55, 0.22) 38%, rgba(212, 175, 55, 0.09) 70%, transparent 100%)',
+                      'linear-gradient(0deg, rgba(212, 175, 55, 0.52) 0%, rgba(212, 175, 55, 0.26) 38%, rgba(212, 175, 55, 0.1) 72%, transparent 100%)',
                     clipPath: 'polygon(49% 100%, 51% 100%, 100% 0%, 0% 0%)',
                     transformOrigin: 'bottom center',
                     pointerEvents: 'none' as const,
                     animation: 'wiperLeft 2s ease-in-out infinite alternate',
-                    filter: 'blur(3px)',
-                    boxShadow: '0 0 35px rgba(212, 175, 55, 0.18)',
+                    filter: 'blur(4px)',
+                    boxShadow: '0 0 55px rgba(212, 175, 55, 0.24)',
                     zIndex: 1,
                   }}
                 ></div>
@@ -555,7 +610,7 @@ function Landing({ onNavigate }: LandingProps) {
                 style={{
                   width: '16px',
                   height: '10px',
-                  background: `radial-gradient(ellipse at center, ${gold} 0%, #8a7020 100%)`,
+                  background: `radial-gradient(ellipse at center, ${bulbYellow} 0%, #c9a548 100%)`,
                   borderRadius: '50%',
                   boxShadow: 'none',
                   position: 'relative',
@@ -565,19 +620,19 @@ function Landing({ onNavigate }: LandingProps) {
                 <div
                   style={{
                     position: 'absolute',
-                    left: 'calc(50% - 50px)',
+                    left: 'calc(50% - 78px)',
                     bottom: '100%',
                     transform: 'translateX(-50%)',
-                    width: '128px',
-                    height: '240px',
+                    width: '160px',
+                    height: '290px',
                     background:
-                      'linear-gradient(0deg, rgba(212, 175, 55, 0.42) 0%, rgba(212, 175, 55, 0.22) 38%, rgba(212, 175, 55, 0.09) 70%, transparent 100%)',
+                      'linear-gradient(0deg, rgba(212, 175, 55, 0.52) 0%, rgba(212, 175, 55, 0.26) 38%, rgba(212, 175, 55, 0.1) 72%, transparent 100%)',
                     clipPath: 'polygon(49% 100%, 51% 100%, 100% 0%, 0% 0%)',
                     transformOrigin: 'bottom center',
                     pointerEvents: 'none' as const,
                     animation: 'wiperRight 2s ease-in-out infinite alternate',
-                    filter: 'blur(3px)',
-                    boxShadow: '0 0 35px rgba(212, 175, 55, 0.18)',
+                    filter: 'blur(4px)',
+                    boxShadow: '0 0 55px rgba(212, 175, 55, 0.24)',
                     zIndex: 1,
                   }}
                 ></div>
@@ -597,28 +652,67 @@ function Landing({ onNavigate }: LandingProps) {
             >
               <div
                 style={{
-                  width: '24px',
-                  height: '24px',
+                  width: '36px',
+                  height: '36px',
                   borderRadius: '50%',
-                  background: `linear-gradient(135deg, ${gold} 0%, #8a7020 100%)`,
-                  margin: '0 auto 2px',
+                  background: `linear-gradient(135deg, ${bulbYellow} 0%, #c9a548 100%)`,
+                  margin: '0 auto 4px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '0.35em',
-                  color: '#000',
-                  fontWeight: 600,
-                  letterSpacing: '0.5px',
-                  boxShadow: `0 0 10px ${gold}`,
-                  animation: 'none',
+                  boxShadow:
+                    '0 0 14px rgba(212, 175, 55, 0.35), inset -7px -8px 12px rgba(0, 0, 0, 0.38), inset 3px 3px 5px rgba(255, 255, 255, 0.12)',
+                  animation: 'globeSpin 20s linear infinite',
+                  transformOrigin: 'center center',
+                  transformStyle: 'preserve-3d',
+                  overflow: 'hidden',
+                  position: 'relative',
                 }}
               >
-                SS
+                <div
+                  style={{
+                    position: 'absolute',
+                    inset: '0',
+                    borderRadius: '50%',
+                    background:
+                      'radial-gradient(circle at 28% 24%, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.12) 18%, transparent 38%)',
+                    zIndex: 3,
+                    pointerEvents: 'none',
+                  }}
+                />
+                <img
+                  src="/images/sealandstamp.jpeg"
+                  alt="Seal and Stamp Notary logo"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'contain',
+                    display: 'block',
+                    padding: '2px',
+                    transform: 'translateZ(1px)',
+                    backfaceVisibility: 'hidden',
+                    opacity: 0.92,
+                    filter: 'contrast(1.06) saturate(0.96)',
+                    position: 'relative',
+                    zIndex: 2,
+                  }}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    inset: '0',
+                    borderRadius: '50%',
+                    background:
+                      'radial-gradient(circle at 74% 76%, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.2) 30%, transparent 60%), linear-gradient(90deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.04) 22%, transparent 44%, transparent 62%, rgba(0,0,0,0.12) 78%, rgba(0,0,0,0.28) 100%)',
+                    zIndex: 4,
+                    pointerEvents: 'none',
+                  }}
+                />
               </div>
               <p
                 style={{
                   fontSize: '0.22em',
-                  color: gold,
+                  color: '#c9c3bd',
                   margin: '0 0 8px',
                   fontFamily: "'Allura', cursive",
                   textTransform: 'lowercase',
@@ -626,7 +720,7 @@ function Landing({ onNavigate }: LandingProps) {
                   textShadow: '0 0 8px rgba(0,0,0,0.9)',
                 }}
               >
-                notary
+                
               </p>
             </div>
 
@@ -643,7 +737,7 @@ function Landing({ onNavigate }: LandingProps) {
               <p
                 style={{
                   fontSize: '0.26em',
-                  color: '#aaa',
+                  color: bulbYellow,
                   margin: '0 0 1px',
                   letterSpacing: '2px',
                   textShadow: '0 0 8px rgba(0,0,0,0.9)',
@@ -655,7 +749,7 @@ function Landing({ onNavigate }: LandingProps) {
               <p
                 style={{
                   fontSize: '0.24em',
-                  color: '#aaa',
+                  color: '#6d6669',
                   margin: '0 0 3px',
                   letterSpacing: '3px',
                   textShadow: '0 0 8px rgba(0,0,0,0.9)',
@@ -697,7 +791,7 @@ function Landing({ onNavigate }: LandingProps) {
               fontSize: '0.22em',
               letterSpacing: '0.5px',
               textTransform: 'uppercase',
-              color: '#555',
+              color: '#8a8084',
               margin: '8px 0 0',
               whiteSpace: 'nowrap',
             }}
@@ -706,15 +800,17 @@ function Landing({ onNavigate }: LandingProps) {
           </p>
         </div>
 
-        <footer style={styles.footer}>
-          <p>
-            <span style={styles.yearWhite}>
-              <span style={{ fontSize: '0.7em', verticalAlign: 'super' }}>@</span>2001
-            </span>{' '}
-            | Anna-Li Co. | All Rights Reserved | <span style={{ color: gold }}>anna@annalico.com</span>{' '}
-            | <span style={styles.yearWhite}>(972) 900-7147</span>
-          </p>
-        </footer>
+        <div
+          style={{
+            position: 'fixed',
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 80,
+          }}
+        >
+          <SiteFooter compact />
+        </div>
       </main>
 
       {showPartnershipForm && (
@@ -735,7 +831,7 @@ function Landing({ onNavigate }: LandingProps) {
         >
           <div
             style={{
-              background: '#0a0a0a',
+              background: '#f6f3f1',
               border: `1px solid ${gold}`,
               padding: '40px',
               maxWidth: '500px',
@@ -747,7 +843,7 @@ function Landing({ onNavigate }: LandingProps) {
           >
             <h2
               style={{
-                color: gold,
+                color: '#7f7478',
                 fontSize: '1.5em',
                 fontWeight: 300,
                 marginBottom: '20px',
@@ -777,9 +873,9 @@ function Landing({ onNavigate }: LandingProps) {
                   style={{
                     width: '100%',
                     padding: '12px',
-                    background: '#111',
-                    border: '1px solid #333',
-                    color: '#fff',
+                    background: '#fff',
+                    border: '1px solid rgba(17, 17, 17, 0.14)',
+                    color: '#111',
                     fontFamily: 'inherit',
                     fontSize: '14px',
                     outline: 'none',
