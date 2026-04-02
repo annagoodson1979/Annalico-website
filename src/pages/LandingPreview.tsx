@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { Page } from '../types';
 import SiteFooter from '../components/SiteFooter';
-const heroImage = '/images/hero4.jpg';
+const heroImage = '/images/hero5.jpg';
 interface LandingProps {
   onNavigate: (page: Page) => void;
 }
@@ -12,10 +12,8 @@ function Landing({ onNavigate }: LandingProps) {
   >(null);
   const [showPartnershipForm, setShowPartnershipForm] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
-  const brandLetters = Array.from('ANNA−LI CO.');
   const gold = '#f3efec';
   const bulbYellow = '#d4af37';
-  const umbrellaRose = '#e4d2d7';
   const dropdownItemStyle = (delay: number): React.CSSProperties => ({
     ...styles.dropdownItem,
     opacity: 0,
@@ -152,73 +150,30 @@ function Landing({ onNavigate }: LandingProps) {
       display: 'flex',
       flexDirection: 'column',
       position: 'relative',
-      height: 'calc(100vh - 60px)',
+      minHeight: 'calc(100vh - 60px)',
       paddingTop: '60px',
-      overflow: 'hidden',
-      minHeight: 0,
+      paddingBottom: '24px',
+      overflow: 'visible',
     },
-    intro: {
-      marginBottom: '30px',
-      animation: 'fadeInUp 1.2s ease-out forwards',
-    },
-    introText: {
-      fontSize: '4em',
-      fontWeight: 100,
-      letterSpacing: '8px',
-      textTransform: 'uppercase' as const,
-      color: gold,
-      marginBottom: '20px',
-      animation: 'pulse 10s ease-in-out infinite, glow 10s ease-in-out infinite',
-    },
-    introLine: {
-      width: '80px',
-      height: '2px',
-      background: `linear-gradient(90deg, transparent, ${gold}, transparent)`,
-      margin: '30px auto',
-      boxShadow: '0 0 12px rgba(243, 239, 236, 0.45)',
-    },
-    businessSection: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '20px',
-      alignItems: 'center',
-      width: '100%',
-      maxWidth: '800px',
-      animation: 'fadeInUp 1.2s ease-out 0.4s forwards',
-      opacity: 0,
-    },
-    businessName: {
-      fontFamily: "'Montserrat', sans-serif",
-      fontSize: '1.1em',
-      fontWeight: 100,
-      letterSpacing: '4px',
-      textTransform: 'uppercase' as const,
-      color: '#aaa',
-      lineHeight: 1.4,
-    },
-    businessNameSub: {
-      fontFamily: "'Montserrat', sans-serif",
-      fontSize: '1.1em',
-      fontWeight: 100,
-      letterSpacing: '4px',
-      textTransform: 'uppercase' as const,
-      color: '#aaa',
-      lineHeight: 1.4,
-    },
-    hero: {},
-    nymsTitle: {
-      fontFamily: "'Modernline', cursive",
-      fontSize: '1.1em',
-      fontWeight: 400,
-      color: gold,
-      textTransform: 'lowercase',
-      display: 'inline-block',
-      marginRight: '3px',
-      marginLeft: '2px',
-      verticalAlign: 'baseline',
+    hero: {
       position: 'relative' as const,
-      top: '8px',
-      left: '12px',
+      flex: 1,
+      minHeight: 'calc(100vh - 120px)',
+      overflow: 'hidden',
+    },
+    heroBackground: {
+      position: 'absolute' as const,
+      inset: 0,
+      backgroundImage: `url(${heroImage})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'calc(50% - 96px) 0',
+      backgroundSize: 'contain',
+      backgroundColor: '#000',
+    },
+    heroOverlay: {
+      position: 'absolute' as const,
+      inset: 0,
+      background: 'linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.5))',
     },
   };
 
@@ -229,27 +184,9 @@ function Landing({ onNavigate }: LandingProps) {
     }
   `;
 
-  const pulseKeyframes = `
-    @keyframes pulse {
-      0%, 100% { color: #d7d1d4; }
-      25% { color: #ece8e5; }
-      50% { color: #ffffff; }
-      75% { color: #ece8e5; }
-    }
-  `;
-
-  const rosePulseKeyframes = `
-    @keyframes rosePulse {
-      0%, 100% { color: #e4d2d7; }
-      30% { color: #b88a92; }
-      62% { color: #a96f7c; }
-      82% { color: #c79693; }
-    }
-  `;
-
   return (
     <div style={styles.container}>
-      <style>{`@font-face { font-family: 'Modernline'; src: url('/fonts/modernline.otf') format('opentype'); font-weight: normal; font-style: normal; }`}{businessPulseKeyframes}{pulseKeyframes}{rosePulseKeyframes}
+      <style>{businessPulseKeyframes}
       {`
         @keyframes fadeInUp {
           0% { opacity: 0; transform: translateY(30px); }
@@ -430,109 +367,10 @@ function Landing({ onNavigate }: LandingProps) {
         </button>
       </nav>
 
-      <div
-        style={{
-          position: 'fixed',
-          left: '42%',
-          top: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '500px',
-          zIndex: 1,
-          textAlign: 'center',
-          background: 'transparent',
-          borderRadius: '0',
-          boxShadow: 'none',
-          padding: '0',
-          overflow: 'visible',
-        }}
-      >
-        <img
-          src={heroImage}
-          alt="Hero"
-          style={{
-            width: '100%',
-            maxWidth: '500px',
-            borderRadius: '0',
-            background: 'transparent',
-            display: 'block',
-            margin: '0 auto',
-            outline: 'none',
-            border: 'none',
-            boxShadow: 'none',
-            clipPath: 'inset(2px 2px 2px 2px)',
-          }}
-        />
-      </div>
-
       <main style={styles.main}>
         <section style={styles.hero}>
-          <div
-            style={{
-              position: 'absolute' as const,
-              top: '66.8%',
-              left: '37.5%',
-              transform: 'translate(-50%, calc(-50% + 24px))',
-              textAlign: 'center' as const,
-              zIndex: 10,
-              animation: 'fadeInUp 1s ease-out forwards',
-            }}
-          >
-            <h1
-              style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontSize: '2.45em',
-                fontWeight: 600,
-                letterSpacing: '0.2px',
-                textTransform: 'uppercase',
-                marginBottom: '10px',
-                margin: 0,
-                whiteSpace: 'nowrap' as const,
-                color: umbrellaRose,
-                animation: 'rosePulse 24s ease-in-out infinite',
-              }}
-            >
-              {brandLetters.map((char, index) => (
-                <span
-                  key={`${char}-${index}`}
-                  style={{
-                    display: 'inline-block',
-                    width: char === ' ' ? '0.34em' : '1em',
-                    verticalAlign: 'bottom',
-                    position: 'relative',
-                  }}
-                >
-                  <span
-                    style={{
-                      display: 'inline-block',
-                      width: '1em',
-                      textAlign: 'center',
-                      transformOrigin: 'center center',
-                      willChange: 'transform, opacity',
-                      animation:
-                        char === ' '
-                          ? undefined
-                          : `letterUnfurl 3.1s cubic-bezier(0.22, 1, 0.36, 1) forwards`,
-                      animationDelay: char === ' ' ? undefined : '0.08s',
-                      opacity: char === ' ' ? 1 : 0,
-                    }}
-                  >
-                    {char === ' ' ? '\u00A0' : char}
-                  </span>
-                </span>
-              ))}
-            </h1>
-            <div
-              style={{
-                width: '0',
-                height: '2px',
-                background: `linear-gradient(90deg, transparent, ${gold}, transparent)`,
-                margin: '15px auto 0',
-                boxShadow: '0 0 12px rgba(243, 239, 236, 0.4)',
-                animation: 'lineExpand 1s ease-out 1.2s forwards',
-              }}
-            ></div>
-          </div>
-          <div style={styles.businessSection}></div>
+          <div style={styles.heroBackground} />
+          <div style={styles.heroOverlay} />
         </section>
 
         <div
@@ -661,7 +499,7 @@ function Landing({ onNavigate }: LandingProps) {
                   alignItems: 'center',
                   justifyContent: 'center',
                   boxShadow:
-                    '0 0 14px rgba(212, 175, 55, 0.35), inset -7px -8px 12px rgba(0, 0, 0, 0.38), inset 3px 3px 5px rgba(255, 255, 255, 0.12)',
+                    '0 0 16px rgba(228, 180, 196, 0.42), inset -7px -8px 12px rgba(0, 0, 0, 0.38), inset 3px 3px 5px rgba(233, 206, 215, 0.18)',
                   animation: 'globeSpin 20s linear infinite',
                   transformOrigin: 'center center',
                   transformStyle: 'preserve-3d',
@@ -669,43 +507,21 @@ function Landing({ onNavigate }: LandingProps) {
                   position: 'relative',
                 }}
               >
-                <div
-                  style={{
-                    position: 'absolute',
-                    inset: '0',
-                    borderRadius: '50%',
-                    background:
-                      'radial-gradient(circle at 28% 24%, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.12) 18%, transparent 38%)',
-                    zIndex: 3,
-                    pointerEvents: 'none',
-                  }}
-                />
                 <img
                   src="/images/sealandstamp.jpeg"
                   alt="Seal and Stamp Notary logo"
                   style={{
-                    width: '100%',
-                    height: '100%',
+                    width: '124%',
+                    height: '124%',
                     objectFit: 'contain',
                     display: 'block',
-                    padding: '2px',
-                    transform: 'translateZ(1px)',
+                    padding: 0,
+                    transform: 'translate(16%, 23%) translateZ(0)',
                     backfaceVisibility: 'hidden',
-                    opacity: 0.92,
-                    filter: 'contrast(1.06) saturate(0.96)',
+                    opacity: 1,
+                    filter: 'none',
                     position: 'relative',
                     zIndex: 2,
-                  }}
-                />
-                <div
-                  style={{
-                    position: 'absolute',
-                    inset: '0',
-                    borderRadius: '50%',
-                    background:
-                      'radial-gradient(circle at 74% 76%, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.2) 30%, transparent 60%), linear-gradient(90deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.04) 22%, transparent 44%, transparent 62%, rgba(0,0,0,0.12) 78%, rgba(0,0,0,0.28) 100%)',
-                    zIndex: 4,
-                    pointerEvents: 'none',
                   }}
                 />
               </div>
@@ -800,15 +616,7 @@ function Landing({ onNavigate }: LandingProps) {
           </p>
         </div>
 
-        <div
-          style={{
-            position: 'fixed',
-            left: 0,
-            right: 0,
-            bottom: 0,
-            zIndex: 80,
-          }}
-        >
+        <div style={{ position: 'relative', zIndex: 80, marginTop: 'auto' }}>
           <SiteFooter compact />
         </div>
       </main>

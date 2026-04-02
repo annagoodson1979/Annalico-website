@@ -36,8 +36,8 @@ function SiteFooter({ compact = false }: SiteFooterProps) {
       <span style={styles.year}>
         <span style={{ fontSize: '0.7em', verticalAlign: 'super' }}>@</span>2001
       </span>{' '}
-      | Anna-Li Co. | All Rights Reserved |{' '}
-      <span style={styles.email}>anna@annalico.com</span> | <span style={styles.year}>(972) 900-7147</span>
+      | Yen An LLC | All Rights Reserved |{' '}
+      <span style={styles.email}>info@theyenan.com</span> | <span style={styles.year}>(972) 900-7147</span>
     </footer>
   );
 }

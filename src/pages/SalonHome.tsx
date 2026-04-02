@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react';
 import type { Page } from '../types';
 import SiteFooter from '../components/SiteFooter';
 
-const landingLogo = '/images/logo3.jpg';
+const landingLogo = '/images/logo4.jpg';
 
 interface SalonHomeProps {
   onNavigate: (page: Page) => void;
@@ -62,6 +62,8 @@ function SalonHome({ onNavigate }: SalonHomeProps) {
       height: '74px',
       borderRadius: '50%',
       objectFit: 'cover',
+      objectPosition: 'center',
+      scale: '1.14',
       border: `1px solid ${logoAccent}`,
       background: '#080808',
       cursor: 'pointer',

@@ -3,7 +3,7 @@ import type { CSSProperties, ReactNode } from 'react';
 import type { Page } from '../types';
 import SiteFooter from './SiteFooter';
 
-const logoImage = '/images/logo3.jpg';
+const logoImage = '/images/logo4.jpg';
 
 interface PageFrameProps {
   children: ReactNode;
@@ -138,8 +138,8 @@ function PageFrame({
       textAlign: 'center',
     },
     logoButton: {
-      width: '82px',
-      height: '82px',
+      width: '74px',
+      height: '74px',
       borderRadius: '50%',
       overflow: 'hidden',
       border: `1px solid ${logoAccent}`,
@@ -153,6 +153,8 @@ function PageFrame({
       width: '100%',
       height: '100%',
       objectFit: 'cover',
+      objectPosition: 'center',
+      scale: '1.16',
     },
     main: {
       minHeight: '100vh',

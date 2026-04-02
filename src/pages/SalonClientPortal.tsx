@@ -7,7 +7,7 @@ import SiteFooter from '../components/SiteFooter';
 function SalonClientPortal({ onNavigate }: SalonClientPortalProps) {
   const gold = '#d4af37';
   const logoAccent = '#f3efec';
-  const logoImage = '/images/logo3.jpg';
+  const logoImage = '/images/logo4.jpg';
 
   const styles: { [key: string]: React.CSSProperties } = {
     container: {
@@ -48,6 +48,8 @@ function SalonClientPortal({ onNavigate }: SalonClientPortalProps) {
       width: '100%',
       height: '100%',
       objectFit: 'cover' as const,
+      objectPosition: 'center' as const,
+      scale: '1.16',
     },
     heading: {
       fontSize: '3em',

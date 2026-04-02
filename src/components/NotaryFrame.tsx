@@ -3,7 +3,7 @@ import type { CSSProperties, ReactNode } from 'react';
 import type { Page } from '../types';
 import SiteFooter from './SiteFooter';
 
-const landingLogo = '/images/logo3.jpg';
+const landingLogo = '/images/logo4.jpg';
 const notaryLogo = '/images/sealandstamp.jpeg';
 
 interface NotaryFrameProps {
@@ -92,6 +92,8 @@ function NotaryFrame({
       height: '74px',
       borderRadius: '50%',
       objectFit: 'cover',
+      objectPosition: 'center',
+      scale: '1.14',
       border: `1px solid ${logoAccent}`,
       background: '#080808',
       cursor: 'pointer',
@@ -193,13 +195,6 @@ function NotaryFrame({
       boxShadow: '0 0 10px rgba(212, 175, 55, 0.35)',
       margin: '26px auto 16px',
     },
-    bottomLine: {
-      width: '200px',
-      height: '1px',
-      background: 'linear-gradient(90deg, transparent, rgba(242, 239, 232, 0.85), transparent)',
-      margin: '0 auto',
-      opacity: 0.9,
-    },
     panel: {
       background: 'transparent',
       border: 'none',
@@ -222,9 +217,9 @@ function NotaryFrame({
           50% { transform: scale(1.05); box-shadow: 0 0 28px rgba(243, 239, 236, 0.36); }
         }
         .nav-hover-button:hover {
-          color: #f3efec !important;
+          color: #d4af37 !important;
           transform: scale(1.08) translateY(-1px);
-          text-shadow: 0 0 12px rgba(243, 239, 236, 0.35);
+          text-shadow: 0 0 12px rgba(212, 175, 55, 0.35);
         }
       `}</style>
       <div style={styles.backgroundOverlay} />
@@ -268,7 +263,6 @@ function NotaryFrame({
             <h1 style={styles.title}>{title}</h1>
             {subtitle ? <p style={styles.subtitle}>{subtitle}</p> : null}
             <div style={styles.line} />
-            <div style={styles.bottomLine} />
           </section>
 
           <section style={styles.panel}>{children}</section>
@@ -286,14 +280,15 @@ function NotaryFrame({
             top: '146px',
             border: 'none',
             background: 'transparent',
-            color: '#b7b0a7',
+            color: 'rgba(183, 176, 167, 0.5)',
             fontFamily: "'Montserrat', sans-serif",
-            fontSize: '0.42rem',
-            letterSpacing: '1px',
+            fontSize: '0.18rem',
+            fontWeight: 300,
+            letterSpacing: '0.35px',
             textTransform: 'uppercase',
             cursor: 'pointer',
             zIndex: 15,
-            lineHeight: 1.15,
+            lineHeight: 1,
             textAlign: 'left',
           }}
         >
@@ -312,14 +307,15 @@ function NotaryFrame({
             bottom: '72px',
             border: 'none',
             background: 'transparent',
-            color: '#b7b0a7',
+            color: 'rgba(183, 176, 167, 0.5)',
             fontFamily: "'Montserrat', sans-serif",
-            fontSize: '0.42rem',
-            letterSpacing: '1px',
+            fontSize: '0.18rem',
+            fontWeight: 300,
+            letterSpacing: '0.35px',
             textTransform: 'uppercase',
             cursor: 'pointer',
             zIndex: 15,
-            lineHeight: 1.15,
+            lineHeight: 1,
             textAlign: 'left',
           }}
         >

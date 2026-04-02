@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react';
 import type { Page } from '../types';
 import SiteFooter from '../components/SiteFooter';
 
-const landingLogo = '/images/logo3.jpg';
+const landingLogo = '/images/logo4.jpg';
 const notaryLogo = '/images/sealandstamp.jpeg';
 
 interface HomeProps {
@@ -64,6 +64,8 @@ function Home({ onNavigate }: HomeProps) {
       height: '74px',
       borderRadius: '50%',
       objectFit: 'cover',
+      objectPosition: 'center',
+      scale: '1.14',
       border: `1px solid ${logoAccent}`,
       background: '#080808',
       cursor: 'pointer',
@@ -199,9 +201,9 @@ function Home({ onNavigate }: HomeProps) {
           50% { transform: scale(1.05); box-shadow: 0 0 28px rgba(243, 239, 236, 0.36); }
         }
         .nav-hover-button:hover {
-          color: #f3efec !important;
+          color: #d4af37 !important;
           transform: scale(1.08) translateY(-1px);
-          text-shadow: 0 0 12px rgba(243, 239, 236, 0.35);
+          text-shadow: 0 0 12px rgba(212, 175, 55, 0.35);
         }
       `}</style>
       <div style={styles.backgroundOverlay} />
