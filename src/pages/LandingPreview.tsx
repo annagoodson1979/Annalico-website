@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { Page } from '../types';
 import SiteFooter from '../components/SiteFooter';
-const heroImage = '/images/hero5.jpg';
+const heroImage = '/images/hero7.jpg';
 interface LandingProps {
   onNavigate: (page: Page) => void;
 }
@@ -166,9 +166,18 @@ function Landing({ onNavigate }: LandingProps) {
       inset: 0,
       backgroundImage: `url(${heroImage})`,
       backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'calc(50% - 96px) 0',
-      backgroundSize: 'contain',
+      backgroundPosition: 'calc(50% - 96px) 8px',
+      backgroundSize: 'min(82vw, 760px) auto',
       backgroundColor: '#000',
+      filter: 'saturate(0.95) contrast(1.03) brightness(0.96)',
+      opacity: 0.96,
+      transform: 'scale(1.01)',
+    },
+    heroPolish: {
+      position: 'absolute' as const,
+      inset: 0,
+      background:
+        'radial-gradient(circle at 50% 28%, rgba(226, 152, 183, 0.14) 0%, rgba(111, 54, 73, 0.08) 22%, rgba(0,0,0,0) 42%), linear-gradient(90deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.12) 18%, rgba(0,0,0,0.1) 82%, rgba(0,0,0,0.74) 100%), linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.08) 22%, rgba(0,0,0,0.12) 78%, rgba(0,0,0,0.46) 100%)',
     },
     heroOverlay: {
       position: 'absolute' as const,
@@ -370,6 +379,7 @@ function Landing({ onNavigate }: LandingProps) {
       <main style={styles.main}>
         <section style={styles.hero}>
           <div style={styles.heroBackground} />
+          <div style={styles.heroPolish} />
           <div style={styles.heroOverlay} />
         </section>
 
