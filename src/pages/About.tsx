@@ -3,7 +3,7 @@ import type { CSSProperties } from 'react';
 import type { Page } from '../types';
 import SiteFooter from '../components/SiteFooter';
 
-const landingLogo = '/images/logo4.jpg';
+const landingLogo = '/images/logo5.jpg';
 const portraitImage = '/images/aboutme.jpg';
 
 interface AboutProps {
@@ -69,7 +69,7 @@ function About({ onNavigate }: AboutProps) {
       border: '1px solid #f3efec',
       background: '#080808',
       cursor: 'pointer',
-      boxShadow: '0 0 18px rgba(243, 239, 236, 0.24)',
+      boxShadow: '0 0 26px rgba(236, 156, 188, 0.52)',
     },
     navDivider: {
       width: '2px',
@@ -260,8 +260,8 @@ function About({ onNavigate }: AboutProps) {
           75% { text-shadow: 0 0 10px rgba(232, 213, 163, 0.5), 0 0 18px rgba(232, 213, 163, 0.3); }
         }
         @keyframes landingLogoPulse {
-          0%, 100% { transform: scale(1); box-shadow: 0 0 18px rgba(243, 239, 236, 0.24); }
-          50% { transform: scale(1.05); box-shadow: 0 0 28px rgba(243, 239, 236, 0.36); }
+          0%, 100% { transform: scale(1); box-shadow: 0 0 24px rgba(236, 156, 188, 0.42); }
+          50% { transform: scale(1.015); box-shadow: 0 0 32px rgba(236, 156, 188, 0.58); }
         }
         .nav-hover-button:hover {
           color: #f3efec !important;

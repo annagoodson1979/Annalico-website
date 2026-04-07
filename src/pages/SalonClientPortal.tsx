@@ -7,7 +7,7 @@ import SiteFooter from '../components/SiteFooter';
 function SalonClientPortal({ onNavigate }: SalonClientPortalProps) {
   const gold = '#d4af37';
   const logoAccent = '#f3efec';
-  const logoImage = '/images/logo4.jpg';
+  const logoImage = '/images/logo5.jpg';
 
   const styles: { [key: string]: React.CSSProperties } = {
     container: {
@@ -41,7 +41,7 @@ function SalonClientPortal({ onNavigate }: SalonClientPortalProps) {
       border: `1px solid ${logoAccent}`,
       background: '#080808',
       cursor: 'pointer',
-      boxShadow: '0 0 16px rgba(243, 239, 236, 0.22)',
+      boxShadow: '0 0 24px rgba(236, 156, 188, 0.48)',
       padding: 0,
     },
     logoImage: {
@@ -71,8 +71,8 @@ function SalonClientPortal({ onNavigate }: SalonClientPortalProps) {
     <div style={styles.container}>
       <style>{`
         @keyframes pageLogoPulse {
-          0%, 100% { transform: scale(1); box-shadow: 0 0 16px rgba(243, 239, 236, 0.22); }
-          50% { transform: scale(1.04); box-shadow: 0 0 24px rgba(243, 239, 236, 0.32); }
+          0%, 100% { transform: scale(1); box-shadow: 0 0 22px rgba(236, 156, 188, 0.4); }
+          50% { transform: scale(1.012); box-shadow: 0 0 30px rgba(236, 156, 188, 0.56); }
         }
       `}</style>
       <button style={{ ...styles.logoButton, animation: 'pageLogoPulse 2.6s ease-in-out infinite' }} onClick={() => onNavigate('landing')} aria-label="Back to landing">

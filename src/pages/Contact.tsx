@@ -78,7 +78,8 @@ function Contact({ onNavigate }: ContactProps) {
             <li>
               Do not sign before the appointment. If any personal information is incorrect, wait
               for guidance before making changes unless you have already been instructed to
-              correct it.
+              correct it. I want to help avoid delays and keep your signing as smooth as possible,
+              whether that means getting you into your new home or on to your next destination.
             </li>
             <li>Bring all pages that need notarization or witness coordination</li>
             <li>Send location details in advance for mobile requests</li>

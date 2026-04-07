@@ -511,12 +511,12 @@ function Landing({ onNavigate }: LandingProps) {
                   src="/images/sealandstamp.jpeg"
                   alt="Seal and Stamp Notary logo"
                   style={{
-                    width: '124%',
-                    height: '124%',
+                    width: '108%',
+                    height: '108%',
                     objectFit: 'contain',
                     display: 'block',
                     padding: 0,
-                    transform: 'translate(16%, 23%) translateZ(0)',
+                    transform: 'translate(0, 0) translateZ(0)',
                     backfaceVisibility: 'hidden',
                     opacity: 1,
                     filter: 'none',

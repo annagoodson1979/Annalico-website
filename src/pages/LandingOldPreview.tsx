@@ -297,7 +297,7 @@ function LandingOldPreview({ onNavigate }: LandingOldPreviewProps) {
         }}
       >
         <img
-          alt="AN-NA nyms-LI Co."
+          alt="Anna-Li Co."
           src={heroImage}
           style={{ width: '100%', height: 'auto', opacity: 1, display: 'block', backgroundColor: '#000' }}
         />
@@ -526,7 +526,7 @@ function LandingOldPreview({ onNavigate }: LandingOldPreviewProps) {
             <span style={styles.yearWhite}>
               <span style={{ fontSize: '0.7em', verticalAlign: 'super' }}>@</span>2001
             </span>{' '}
-            | AN-NA<span style={styles.nymsFooter}>nyms</span>-LI Co., LLC | All Rights Reserved |
+            | Anna-Li Co. | All Rights Reserved |
             <span style={{ color: gold }}> anna@annalico.com</span> |{' '}
             <span style={styles.yearWhite}>(972) 900-7147</span>
           </p>

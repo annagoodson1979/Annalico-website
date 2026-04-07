@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react';
 import type { Page } from '../types';
 import SiteFooter from '../components/SiteFooter';
 
-const landingLogo = '/images/logo4.jpg';
+const landingLogo = '/images/logo5.jpg';
 
 interface SalonHomeProps {
   onNavigate: (page: Page) => void;
@@ -67,7 +67,7 @@ function SalonHome({ onNavigate }: SalonHomeProps) {
       border: `1px solid ${logoAccent}`,
       background: '#080808',
       cursor: 'pointer',
-      boxShadow: '0 0 18px rgba(243, 239, 236, 0.24)',
+      boxShadow: '0 0 26px rgba(236, 156, 188, 0.52)',
     },
     navRight: {
       display: 'flex',
@@ -188,8 +188,8 @@ function SalonHome({ onNavigate }: SalonHomeProps) {
     <div style={styles.page}>
       <style>{`
         @keyframes landingLogoPulse {
-          0%, 100% { transform: scale(1); box-shadow: 0 0 18px rgba(243, 239, 236, 0.24); }
-          50% { transform: scale(1.05); box-shadow: 0 0 28px rgba(243, 239, 236, 0.36); }
+          0%, 100% { transform: scale(1); box-shadow: 0 0 24px rgba(236, 156, 188, 0.42); }
+          50% { transform: scale(1.015); box-shadow: 0 0 32px rgba(236, 156, 188, 0.58); }
         }
         .nav-hover-button:hover {
           color: #f3efec !important;

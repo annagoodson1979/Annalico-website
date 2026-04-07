@@ -3,7 +3,7 @@ import type { CSSProperties, ReactNode } from 'react';
 import type { Page } from '../types';
 import SiteFooter from './SiteFooter';
 
-const logoImage = '/images/logo4.jpg';
+const logoImage = '/images/logo5.jpg';
 
 interface PageFrameProps {
   children: ReactNode;
@@ -142,10 +142,10 @@ function PageFrame({
       height: '74px',
       borderRadius: '50%',
       overflow: 'hidden',
-      border: `1px solid ${logoAccent}`,
-      background: '#080808',
+      border: 'none',
+      background: 'transparent',
       cursor: 'pointer',
-      boxShadow: '0 0 16px rgba(243, 239, 236, 0.22)',
+      boxShadow: '0 0 24px rgba(236, 156, 188, 0.48)',
       padding: 0,
       flexShrink: 0,
     },
@@ -154,7 +154,7 @@ function PageFrame({
       height: '100%',
       objectFit: 'cover',
       objectPosition: 'center',
-      scale: '1.16',
+      scale: '1.08',
     },
     main: {
       minHeight: '100vh',
@@ -226,8 +226,8 @@ function PageFrame({
     <div style={styles.shell}>
       <style>{`
         @keyframes pageLogoPulse {
-          0%, 100% { transform: scale(1); box-shadow: 0 0 16px rgba(243, 239, 236, 0.22); }
-          50% { transform: scale(1.04); box-shadow: 0 0 24px rgba(243, 239, 236, 0.32); }
+          0%, 100% { transform: scale(1); box-shadow: 0 0 22px rgba(236, 156, 188, 0.4); }
+          50% { transform: scale(1.012); box-shadow: 0 0 30px rgba(236, 156, 188, 0.56); }
         }
         @keyframes carpetDrop {
           0% { opacity: 0.12; transform: translateX(-50%); clip-path: inset(0 0 calc(100% - 8px) 0); }

@@ -73,9 +73,12 @@ function Hire({ onNavigate }: HireProps) {
             everyday documents. Reach out to schedule an appointment or ask a question before we
             begin.
           </p>
-          <button
-            onClick={() => onNavigate('contact')}
+          <a
+            href="https://forms.gle/MmmsrGioJmUTPw228"
+            target="_blank"
+            rel="noreferrer"
             style={{
+              display: 'inline-block',
               fontFamily: "'Montserrat', sans-serif",
               fontSize: '0.72rem',
               letterSpacing: '2px',
@@ -86,10 +89,11 @@ function Hire({ onNavigate }: HireProps) {
               borderRadius: '999px',
               padding: '12px 20px',
               cursor: 'pointer',
+              textDecoration: 'none',
             }}
           >
             Contact for Appointment
-          </button>
+          </a>
         </section>
 
         <section
@@ -129,7 +133,7 @@ function Hire({ onNavigate }: HireProps) {
             expectations.
           </p>
           <a
-            href="/notary-intake-form.html"
+            href="https://forms.gle/3WPpapCWvWPKJ8QJ6"
             target="_blank"
             rel="noreferrer"
             style={{
