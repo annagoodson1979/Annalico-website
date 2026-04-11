@@ -201,21 +201,19 @@ function renderFeature(feature: PackageFeature) {
     <div key={feature.label} style={{ marginTop: '2px' }}>
       <div
         style={{
-          display: 'grid',
-          gridTemplateColumns: '98px 1fr',
-          gap: '10px',
-          alignItems: 'start',
           textAlign: 'left',
         }}
       >
         <span
           style={{
+            display: 'block',
             color: '#d4af37',
             fontSize: '0.76rem',
             letterSpacing: '1px',
             textTransform: 'uppercase',
             fontFamily: "'Montserrat', sans-serif",
             lineHeight: 1.15,
+            marginBottom: '6px',
           }}
         >
           {feature.label}

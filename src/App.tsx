@@ -7,6 +7,7 @@ import Services from './pages/Services';
 import Contact from './pages/Contact';
 import Hire from './pages/Hire';
 import Documents from './pages/Documents';
+import PartnershipDirectory from './pages/PartnershipDirectory';
 import SalonHome from './pages/SalonHome';
 import SalonClientPortal from './pages/SalonClientPortal';
 import SalonPackages from './pages/SalonPackages';
@@ -26,6 +27,8 @@ function App() {
         return <Contact onNavigate={setCurrentPage} />;
       case 'hire':
         return <Hire onNavigate={setCurrentPage} />;
+      case 'partnership-directory':
+        return <PartnershipDirectory onNavigate={setCurrentPage} />;
       case 'documents':
         return <Documents onNavigate={setCurrentPage} />;
       case 'salon':

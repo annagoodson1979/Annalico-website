@@ -5,6 +5,7 @@ export type Page =
   | 'services'
   | 'contact'
   | 'hire'
+  | 'partnership-directory'
   | 'salon'
   | 'salon-portal'
   | 'salon-packages'

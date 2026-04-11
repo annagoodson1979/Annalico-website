@@ -166,18 +166,12 @@ function Landing({ onNavigate }: LandingProps) {
       inset: 0,
       backgroundImage: `url(${heroImage})`,
       backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'calc(50% - 96px) 8px',
+      backgroundPosition: 'calc(50% - 340px) 52px',
       backgroundSize: 'min(82vw, 760px) auto',
       backgroundColor: '#000',
       filter: 'saturate(0.95) contrast(1.03) brightness(0.96)',
       opacity: 0.96,
       transform: 'scale(1.01)',
-    },
-    heroPolish: {
-      position: 'absolute' as const,
-      inset: 0,
-      background:
-        'radial-gradient(circle at 50% 28%, rgba(226, 152, 183, 0.14) 0%, rgba(111, 54, 73, 0.08) 22%, rgba(0,0,0,0) 42%), linear-gradient(90deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.12) 18%, rgba(0,0,0,0.1) 82%, rgba(0,0,0,0.74) 100%), linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.08) 22%, rgba(0,0,0,0.12) 78%, rgba(0,0,0,0.46) 100%)',
     },
     heroOverlay: {
       position: 'absolute' as const,
@@ -255,6 +249,22 @@ function Landing({ onNavigate }: LandingProps) {
           0% { opacity: 0; transform: scaleX(0.08); }
           40% { opacity: 1; transform: scaleX(0.08); }
           100% { opacity: 1; transform: scaleX(1); }
+        }
+        @font-face {
+          font-family: 'Bethany';
+          src: url('/images/BethanyRomanceRegular-gwMMR-2.otf') format('opentype');
+          font-weight: 400;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: 'Boheme';
+          src: url('/images/Boheme Floral.ttf') format('truetype');
+          font-weight: 400;
+          font-style: normal;
+        }
+        @keyframes yenFadeRise {
+          0% { opacity: 0; transform: translateY(20px); }
+          100% { opacity: 1; transform: translateY(0); }
         }
         .nav-hover-button:hover {
           color: #f3efec !important;
@@ -379,8 +389,99 @@ function Landing({ onNavigate }: LandingProps) {
       <main style={styles.main}>
         <section style={styles.hero}>
           <div style={styles.heroBackground} />
-          <div style={styles.heroPolish} />
           <div style={styles.heroOverlay} />
+          <div
+            style={{
+              position: 'absolute',
+              right: 'max(400px, 25vw)',
+              top: '18%',
+              zIndex: 12,
+              width: 'min(425px, 24vw)',
+              textAlign: 'center',
+              color: '#fff',
+            }}
+          >
+            <h1
+              style={{
+                margin: 0,
+                color: '#983c3b',
+                fontFamily: "'Bethany', serif",
+                fontSize: 'clamp(2.6rem, 5.3vw, 4.4rem)',
+                fontWeight: 400,
+                letterSpacing: '0.24em',
+                textIndent: '0.24em',
+                lineHeight: 0.92,
+                opacity: 0,
+                animation: 'yenFadeRise 1.8s ease forwards',
+              }}
+            >
+              YEN
+            </h1>
+            <p
+              style={{
+                margin: '30px 0 0',
+                color: '#8a5658',
+                fontFamily: "'Boheme', cursive",
+                fontSize: 'clamp(2.1rem, 3.55vw, 3.85rem)',
+                lineHeight: 1.08,
+                whiteSpace: 'nowrap',
+                opacity: 0,
+                animation: 'yenFadeRise 1.4s ease 0.9s forwards',
+              }}
+            >
+              Leading with strength and grace...
+            </p>
+            <p
+              style={{
+                margin: '30px auto 0',
+                color: '#bbb8bd',
+                fontFamily: "'Bethany', serif",
+                fontSize: 'clamp(1.02rem, 1.72vw, 1.76rem)',
+                lineHeight: 1.38,
+                letterSpacing: '0.09em',
+                maxWidth: '430px',
+                opacity: 0,
+                animation: 'yenFadeRise 1.45s ease 1.55s forwards',
+              }}
+            >
+              Built on precision.
+              <br />
+              Redefining the standard.
+            </p>
+            <p
+              style={{
+                margin: '38px 0 0',
+                color: '#a06a6b',
+                fontFamily: "'Boheme', cursive",
+                fontSize: 'clamp(2.1rem, 3.55vw, 3.85rem)',
+                lineHeight: 1.08,
+                textShadow: '0 0 10px rgba(160, 106, 107, 0.12)',
+                filter: 'contrast(1.04)',
+                opacity: 0,
+                animation: 'yenFadeRise 1.4s ease 2.15s forwards',
+              }}
+            >
+              ...authority without noise.
+            </p>
+            <p
+              style={{
+                margin: '60px auto 0',
+                color: '#5f5d63',
+                fontFamily: "'Bethany', serif",
+                fontSize: 'clamp(0.68rem, 0.94vw, 1.04rem)',
+                lineHeight: 1.6,
+                letterSpacing: '0.05em',
+                maxWidth: 'none',
+                whiteSpace: 'nowrap',
+                position: 'relative',
+                left: '-28px',
+                opacity: 0,
+                animation: 'yenFadeRise 1.5s ease 2.7s forwards',
+              }}
+            >
+              To bring clarity and certainty where it matters most.
+            </p>
+          </div>
         </section>
 
         <div
@@ -574,11 +675,12 @@ function Landing({ onNavigate }: LandingProps) {
               </p>
               <p
                 style={{
-                  fontSize: '0.24em',
+                  fontSize: '6px',
                   color: '#6d6669',
                   margin: '0 0 3px',
-                  letterSpacing: '3px',
+                  letterSpacing: '1px',
                   textShadow: '0 0 8px rgba(0,0,0,0.9)',
+                  whiteSpace: 'nowrap',
                 }}
               >
                 Notary
@@ -595,8 +697,8 @@ function Landing({ onNavigate }: LandingProps) {
                 background: 'transparent',
                 border: 'none',
                 color: gold,
-                fontSize: '0.38em',
-                letterSpacing: '0.5px',
+                fontSize: '7px',
+                letterSpacing: '0.6px',
                 textTransform: 'uppercase',
                 cursor: 'pointer',
                 textShadow: '0 0 10px rgba(0,0,0,0.8)',
@@ -612,18 +714,44 @@ function Landing({ onNavigate }: LandingProps) {
             </button>
           </div>
 
-          <p
+          <button
+            type="button"
+            onClick={() => onNavigate('partnership-directory')}
             style={{
-              fontSize: '0.22em',
-              letterSpacing: '0.5px',
-              textTransform: 'uppercase',
-              color: '#8a8084',
+              background: 'transparent',
+              border: 'none',
+              padding: 0,
               margin: '8px 0 0',
-              whiteSpace: 'nowrap',
+              cursor: 'pointer',
+              display: 'grid',
+              gap: '3px',
+              justifyItems: 'center',
+              width: '100%',
             }}
           >
-            This Week's Spotlight
-          </p>
+            <span
+              style={{
+                fontSize: '5px',
+                letterSpacing: '0.4px',
+                textTransform: 'uppercase',
+                color: '#7c7377',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              This Week's Spotlight
+            </span>
+            <span
+              style={{
+                fontSize: '4px',
+                letterSpacing: '0.5px',
+                textTransform: 'uppercase',
+                color: '#9a8f94',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              Click for Directory
+            </span>
+          </button>
         </div>
 
         <div style={{ position: 'relative', zIndex: 80, marginTop: 'auto' }}>

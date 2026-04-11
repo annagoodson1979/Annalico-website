@@ -1,12 +1,25 @@
+import type { Page } from '../types';
+import SiteFooter from '../components/SiteFooter';
+
 interface PartnershipDirectoryProps {
-  onNavigate: (page: 'landing' | 'home' | 'about' | 'services' | 'contact' | 'hire' | 'salon' | 'salon-portal' | 'salon-packages' | 'documents') => void;
+  onNavigate: (page: Page) => void;
 }
 
-import SiteFooter from '../components/SiteFooter';
+const directoryEntries = [
+  {
+    name: 'Seal and Stamp Notary',
+    email: 'notary@theyenan.com',
+    phone: '(972) 900-7147',
+  },
+  {
+    name: 'Anna Salon Studio',
+    email: 'info@theyenan.com',
+    phone: '(972) 900-7147',
+  },
+];
 
 function PartnershipDirectory({ onNavigate }: PartnershipDirectoryProps) {
   const gold = '#d4af37';
-  const logoAccent = '#f3efec';
   const logoImage = '/images/logo5.jpg';
 
   const styles: { [key: string]: React.CSSProperties } = {
@@ -15,7 +28,6 @@ function PartnershipDirectory({ onNavigate }: PartnershipDirectoryProps) {
       background: '#000',
       display: 'flex',
       flexDirection: 'column' as const,
-      alignItems: 'center',
       color: '#fff',
       paddingTop: '120px',
       boxSizing: 'border-box',
@@ -23,11 +35,11 @@ function PartnershipDirectory({ onNavigate }: PartnershipDirectoryProps) {
     content: {
       flex: 1,
       width: '100%',
-      display: 'flex',
-      flexDirection: 'column' as const,
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: '20px',
+      maxWidth: '900px',
+      margin: '0 auto',
+      display: 'grid',
+      gap: '20px',
+      padding: '20px 20px 48px',
       boxSizing: 'border-box',
     },
     logoButton: {
@@ -38,8 +50,8 @@ function PartnershipDirectory({ onNavigate }: PartnershipDirectoryProps) {
       height: '74px',
       borderRadius: '50%',
       overflow: 'hidden',
-      border: `1px solid ${logoAccent}`,
-      background: '#080808',
+      border: 'none',
+      background: 'transparent',
       cursor: 'pointer',
       boxShadow: '0 0 24px rgba(236, 156, 188, 0.48)',
       padding: 0,
@@ -49,21 +61,56 @@ function PartnershipDirectory({ onNavigate }: PartnershipDirectoryProps) {
       height: '100%',
       objectFit: 'cover' as const,
       objectPosition: 'center' as const,
-      scale: '1.16',
+      scale: '1.08',
     },
     heading: {
-      fontSize: '3em',
-      fontWeight: 100,
-      letterSpacing: '6px',
+      fontSize: 'clamp(2rem, 4vw, 3.1rem)',
+      fontWeight: 400,
+      letterSpacing: '4px',
       textTransform: 'uppercase',
-      marginBottom: '20px',
+      margin: '0 0 6px',
       color: gold,
+      textAlign: 'center' as const,
+      fontFamily: "'Cinzel', serif",
     },
     text: {
-      color: '#888',
-      fontSize: '1.2em',
-      maxWidth: '600px',
+      color: '#a39b8f',
+      fontSize: '1rem',
+      maxWidth: '680px',
       textAlign: 'center' as const,
+      margin: '0 auto',
+      lineHeight: 1.8,
+    },
+    cardGrid: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+      gap: '18px',
+      marginTop: '12px',
+    },
+    card: {
+      border: '1px solid rgba(255,255,255,0.1)',
+      borderRadius: '18px',
+      padding: '24px 22px',
+      background: 'rgba(10,10,10,0.72)',
+      boxShadow: '0 18px 36px rgba(0,0,0,0.28)',
+      textAlign: 'left' as const,
+    },
+    cardTitle: {
+      margin: 0,
+      color: '#f4efe8',
+      fontSize: '1.15rem',
+      fontWeight: 700,
+      lineHeight: 1.3,
+    },
+    cardMeta: {
+      margin: '10px 0 0',
+      color: '#b8b0a4',
+      fontSize: '0.95rem',
+      lineHeight: 1.7,
+    },
+    metaLink: {
+      color: '#e7d4dc',
+      textDecoration: 'none',
     },
   };
 
@@ -81,9 +128,24 @@ function PartnershipDirectory({ onNavigate }: PartnershipDirectoryProps) {
       <div style={styles.content}>
         <h1 style={styles.heading}>Partnership Directory</h1>
         <p style={styles.text}>
-          Connect with our network of trusted partners. Join our preferred partner program 
-          to expand your business reach.
+          Connect with featured business affiliates and direct contacts across the Yen An network.
         </p>
+        <div style={styles.cardGrid}>
+          {directoryEntries.map((entry) => (
+            <section key={entry.name} style={styles.card}>
+              <p style={styles.cardTitle}>
+                <strong>{entry.name}</strong>
+              </p>
+              <p style={styles.cardMeta}>
+                <a href={`mailto:${entry.email}`} style={styles.metaLink}>
+                  {entry.email}
+                </a>
+                <br />
+                {entry.phone}
+              </p>
+            </section>
+          ))}
+        </div>
       </div>
       <SiteFooter compact />
     </div>

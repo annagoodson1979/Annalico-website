@@ -65,11 +65,11 @@ function Home({ onNavigate }: HomeProps) {
       borderRadius: '50%',
       objectFit: 'cover',
       objectPosition: 'center',
-      scale: '1.14',
-      border: `1px solid ${logoAccent}`,
-      background: '#080808',
+      scale: '1.08',
+      border: 'none',
+      background: 'transparent',
       cursor: 'pointer',
-      boxShadow: '0 0 26px rgba(236, 156, 188, 0.52)',
+      boxShadow: '0 0 34px rgba(236, 156, 188, 0.62)',
     },
     navRight: {
       display: 'flex',
@@ -197,8 +197,8 @@ function Home({ onNavigate }: HomeProps) {
     <div style={styles.page}>
       <style>{`
         @keyframes landingLogoPulse {
-          0%, 100% { transform: scale(1); box-shadow: 0 0 24px rgba(236, 156, 188, 0.42); }
-          50% { transform: scale(1.015); box-shadow: 0 0 32px rgba(236, 156, 188, 0.58); }
+          0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(236, 156, 188, 0.52); }
+          50% { transform: scale(1.015); box-shadow: 0 0 42px rgba(236, 156, 188, 0.72); }
         }
         .nav-hover-button:hover {
           color: #d4af37 !important;
