@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { Page } from '../types';
 import SiteFooter from '../components/SiteFooter';
-const heroImage = '/images/hero8.jpg';
+const heroImage = '/images/hero.jpg';
 interface LandingProps {
   onNavigate: (page: Page) => void;
 }
