@@ -173,14 +173,12 @@ function Landing({ onNavigate }: LandingProps) {
       filter: 'saturate(0.95) contrast(1.03) brightness(0.96)',
       opacity: 0.96,
       transform: 'scale(1.01)',
-      animation: 'heroSettle 2.8s ease 7.2s forwards',
     },
     heroOverlay: {
       position: 'absolute' as const,
       inset: 0,
       background:
         'radial-gradient(circle at 23% 32%, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.04) 18%, rgba(0,0,0,0.14) 44%, transparent 58%), linear-gradient(90deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.06) 24%, rgba(0,0,0,0.12) 48%, rgba(0,0,0,0.34) 72%, rgba(0,0,0,0.58) 100%)',
-      animation: 'overlaySettle 2.8s ease 7.2s forwards',
     },
   };
 
@@ -198,14 +196,6 @@ function Landing({ onNavigate }: LandingProps) {
         @keyframes fadeInUp {
           0% { opacity: 0; transform: translateY(30px); }
           100% { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes heroSettle {
-          0% { filter: saturate(0.95) contrast(1.03) brightness(0.96) blur(0px); opacity: 0.96; }
-          100% { filter: saturate(0.88) contrast(1) brightness(0.88) blur(0.7px); opacity: 0.8; }
-        }
-        @keyframes overlaySettle {
-          0% { opacity: 1; }
-          100% { opacity: 1; background: radial-gradient(circle at 23% 32%, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.08) 18%, rgba(0,0,0,0.2) 44%, transparent 58%), linear-gradient(90deg, rgba(0,0,0,0.26) 0%, rgba(0,0,0,0.12) 24%, rgba(0,0,0,0.18) 48%, rgba(0,0,0,0.44) 72%, rgba(0,0,0,0.68) 100%); }
         }
         @keyframes fadeScaleIn {
           0% { opacity: 0; transform: scale(0.92) translateZ(0); filter: blur(3px); }
@@ -414,7 +404,7 @@ function Landing({ onNavigate }: LandingProps) {
             style={{
               position: 'absolute',
               left: '50%',
-              top: '55%',
+              top: '50%',
               transform: 'translate(-50%, -50%)',
               zIndex: 12,
               width: 'min(560px, 56vw)',
@@ -548,7 +538,7 @@ function Landing({ onNavigate }: LandingProps) {
                 <div
                   style={{
                     position: 'absolute',
-                    left: 'calc(50% - 26px)',
+                    left: 'calc(50% - 42px)',
                     bottom: '100%',
                     transform: 'translateX(-50%)',
                     width: '128px',
@@ -595,7 +585,7 @@ function Landing({ onNavigate }: LandingProps) {
                 <div
                   style={{
                     position: 'absolute',
-                    left: 'calc(50% - 26px)',
+                    left: 'calc(50% - 42px)',
                     bottom: '100%',
                     transform: 'translateX(-50%)',
                     width: '128px',
