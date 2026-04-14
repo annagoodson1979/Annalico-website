@@ -404,7 +404,7 @@ function Landing({ onNavigate }: LandingProps) {
             style={{
               position: 'absolute',
               left: '50%',
-              top: '50%',
+              top: '52%',
               transform: 'translate(-50%, -50%)',
               zIndex: 12,
               width: 'min(560px, 56vw)',
@@ -425,7 +425,7 @@ function Landing({ onNavigate }: LandingProps) {
                 margin: 0,
                 color: '#983c3b',
                 fontFamily: "'Bethany', serif",
-                fontSize: 'clamp(3.6rem, 8.8vw, 6.8rem)',
+                fontSize: 'clamp(4rem, 9.4vw, 7.3rem)',
                 fontWeight: 400,
                 letterSpacing: '0.2em',
                 textIndent: '0.2em',
@@ -538,7 +538,7 @@ function Landing({ onNavigate }: LandingProps) {
                 <div
                   style={{
                     position: 'absolute',
-                    left: 'calc(50% - 42px)',
+                    left: 'calc(50% - 34px)',
                     bottom: '100%',
                     transform: 'translateX(-50%)',
                     width: '128px',
@@ -585,7 +585,7 @@ function Landing({ onNavigate }: LandingProps) {
                 <div
                   style={{
                     position: 'absolute',
-                    left: 'calc(50% - 42px)',
+                    left: 'calc(50% - 34px)',
                     bottom: '100%',
                     transform: 'translateX(-50%)',
                     width: '128px',
