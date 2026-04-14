@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --config vite.preview.config.ts",
     "build": "vite build",
     "preview": "vite preview"
   },

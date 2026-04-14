@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: 'localhost',
-    port: 1754,
+    port: 1753,
     open: '/index.preview.html',
   },
 });
