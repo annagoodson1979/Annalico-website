@@ -201,7 +201,7 @@ function Landing({ onNavigate }: LandingProps) {
         }
         @keyframes heroSettle {
           0% { filter: saturate(0.95) contrast(1.03) brightness(0.96) blur(0px); opacity: 0.96; }
-          100% { filter: saturate(0.84) contrast(0.98) brightness(0.84) blur(1.2px); opacity: 0.72; }
+          100% { filter: saturate(0.88) contrast(1) brightness(0.88) blur(0.7px); opacity: 0.8; }
         }
         @keyframes overlaySettle {
           0% { opacity: 1; }
@@ -548,7 +548,7 @@ function Landing({ onNavigate }: LandingProps) {
                 <div
                   style={{
                     position: 'absolute',
-                    left: 'calc(50% - 10px)',
+                    left: 'calc(50% - 26px)',
                     bottom: '100%',
                     transform: 'translateX(-50%)',
                     width: '128px',
@@ -595,7 +595,7 @@ function Landing({ onNavigate }: LandingProps) {
                 <div
                   style={{
                     position: 'absolute',
-                    left: 'calc(50% - 10px)',
+                    left: 'calc(50% - 26px)',
                     bottom: '100%',
                     transform: 'translateX(-50%)',
                     width: '128px',
