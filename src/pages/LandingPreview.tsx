@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import type { Page } from '../types';
 import SiteFooter from '../components/SiteFooter';
 const heroImage = '/images/hero.jpg';
+const ynxLogo = '/images/ynxlogo.jpg';
 interface LandingProps {
   onNavigate: (page: Page) => void;
 }
@@ -166,8 +167,8 @@ function Landing({ onNavigate }: LandingProps) {
       inset: 0,
       backgroundImage: `url(${heroImage})`,
       backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'calc(50% - 340px) 52px',
-      backgroundSize: 'min(82vw, 760px) auto',
+      backgroundPosition: 'calc(50% - 488px) 102px',
+      backgroundSize: 'min(68vw, 655px) auto',
       backgroundColor: '#000',
       filter: 'saturate(0.95) contrast(1.03) brightness(0.96)',
       opacity: 0.96,
@@ -176,7 +177,29 @@ function Landing({ onNavigate }: LandingProps) {
     heroOverlay: {
       position: 'absolute' as const,
       inset: 0,
-      background: 'linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.5))',
+      background:
+        'linear-gradient(90deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.12) 26%, rgba(0,0,0,0.28) 52%, rgba(0,0,0,0.58) 100%)',
+    },
+    heroRingMask: {
+      position: 'absolute' as const,
+      left: 'calc(50% - 562px)',
+      top: '76px',
+      width: '540px',
+      height: '540px',
+      borderRadius: '50%',
+      background:
+        'radial-gradient(circle at center, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 31%, rgba(0,0,0,0.12) 46%, rgba(0,0,0,0) 52%, rgba(0,0,0,0.18) 60%, rgba(0,0,0,0.34) 73%, transparent 100%)',
+      pointerEvents: 'none' as const,
+      opacity: 0.9,
+      zIndex: 2,
+    },
+    heroCleanup: {
+      position: 'absolute' as const,
+      inset: 0,
+      background:
+        'linear-gradient(90deg, transparent 0%, transparent 48%, rgba(0,0,0,0.18) 58%, rgba(0,0,0,0.42) 70%, rgba(0,0,0,0.72) 100%)',
+      pointerEvents: 'none' as const,
+      zIndex: 3,
     },
   };
 
@@ -206,12 +229,12 @@ function Landing({ onNavigate }: LandingProps) {
           50% { opacity: 0.12; transform: rotate(5deg); }
         }
         @keyframes wiperLeft {
-          0% { transform: rotate(-25deg); opacity: 0.15; }
-          100% { transform: rotate(25deg); opacity: 0.25; }
+          0% { transform: rotate(-12deg); opacity: 0.16; }
+          100% { transform: rotate(12deg); opacity: 0.24; }
         }
         @keyframes wiperRight {
-          0% { transform: rotate(25deg); opacity: 0.15; }
-          100% { transform: rotate(-25deg); opacity: 0.25; }
+          0% { transform: rotate(12deg); opacity: 0.16; }
+          100% { transform: rotate(-12deg); opacity: 0.24; }
         }
         @keyframes lineExpand {
           0% { width: 0; opacity: 0; }
@@ -389,16 +412,27 @@ function Landing({ onNavigate }: LandingProps) {
       <main style={styles.main}>
         <section style={styles.hero}>
           <div style={styles.heroBackground} />
+          <div style={styles.heroRingMask} />
           <div style={styles.heroOverlay} />
+          <div style={styles.heroCleanup} />
           <div
             style={{
               position: 'absolute',
-              right: 'max(400px, 25vw)',
-              top: '18%',
+              left: '50%',
+              top: '50%',
+              transform: 'translate(-50%, -50%)',
               zIndex: 12,
-              width: 'min(425px, 24vw)',
+              width: 'min(560px, 56vw)',
+              minHeight: 'min(72vh, 640px)',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
               textAlign: 'center',
               color: '#fff',
+              padding: '40px 18px 48px',
+              background: 'transparent',
+              boxShadow: 'none',
+              backdropFilter: 'none',
             }}
           >
             <h1
@@ -406,11 +440,11 @@ function Landing({ onNavigate }: LandingProps) {
                 margin: 0,
                 color: '#983c3b',
                 fontFamily: "'Bethany', serif",
-                fontSize: 'clamp(2.6rem, 5.3vw, 4.4rem)',
+                fontSize: 'clamp(3.2rem, 8vw, 6.1rem)',
                 fontWeight: 400,
-                letterSpacing: '0.24em',
-                textIndent: '0.24em',
-                lineHeight: 0.92,
+                letterSpacing: '0.2em',
+                textIndent: '0.2em',
+                lineHeight: 0.9,
                 opacity: 0,
                 animation: 'yenFadeRise 1.8s ease forwards',
               }}
@@ -422,11 +456,11 @@ function Landing({ onNavigate }: LandingProps) {
                 margin: '30px 0 0',
                 color: '#8a5658',
                 fontFamily: "'Boheme', cursive",
-                fontSize: 'clamp(2.1rem, 3.55vw, 3.85rem)',
-                lineHeight: 1.08,
-                whiteSpace: 'nowrap',
+                fontSize: 'clamp(2.7rem, 5vw, 4.8rem)',
+                lineHeight: 1.04,
                 opacity: 0,
                 animation: 'yenFadeRise 1.4s ease 0.9s forwards',
+                textShadow: '0 0 20px rgba(0,0,0,0.28)',
               }}
             >
               Leading with strength and grace...
@@ -436,10 +470,10 @@ function Landing({ onNavigate }: LandingProps) {
                 margin: '30px auto 0',
                 color: '#bbb8bd',
                 fontFamily: "'Bethany', serif",
-                fontSize: 'clamp(1.02rem, 1.72vw, 1.76rem)',
-                lineHeight: 1.38,
-                letterSpacing: '0.09em',
-                maxWidth: '430px',
+                fontSize: 'clamp(1.18rem, 1.95vw, 1.86rem)',
+                lineHeight: 1.46,
+                letterSpacing: '0.1em',
+                maxWidth: '500px',
                 opacity: 0,
                 animation: 'yenFadeRise 1.45s ease 1.55s forwards',
               }}
@@ -453,8 +487,8 @@ function Landing({ onNavigate }: LandingProps) {
                 margin: '38px 0 0',
                 color: '#a06a6b',
                 fontFamily: "'Boheme', cursive",
-                fontSize: 'clamp(2.1rem, 3.55vw, 3.85rem)',
-                lineHeight: 1.08,
+                fontSize: 'clamp(2.7rem, 5vw, 4.8rem)',
+                lineHeight: 1.04,
                 textShadow: '0 0 10px rgba(160, 106, 107, 0.12)',
                 filter: 'contrast(1.04)',
                 opacity: 0,
@@ -465,16 +499,13 @@ function Landing({ onNavigate }: LandingProps) {
             </p>
             <p
               style={{
-                margin: '60px auto 0',
+                margin: '56px auto 0',
                 color: '#5f5d63',
                 fontFamily: "'Bethany', serif",
-                fontSize: 'clamp(0.68rem, 0.94vw, 1.04rem)',
-                lineHeight: 1.6,
-                letterSpacing: '0.05em',
-                maxWidth: 'none',
-                whiteSpace: 'nowrap',
-                position: 'relative',
-                left: '-28px',
+                fontSize: 'clamp(0.96rem, 1.18vw, 1.18rem)',
+                lineHeight: 1.72,
+                letterSpacing: '0.07em',
+                maxWidth: '500px',
                 opacity: 0,
                 animation: 'yenFadeRise 1.5s ease 2.7s forwards',
               }}
@@ -488,13 +519,13 @@ function Landing({ onNavigate }: LandingProps) {
           style={{
             position: 'fixed' as const,
             right: '120px',
-            bottom: '100px',
+            bottom: '46px',
             zIndex: 50,
             width: '180px',
             textAlign: 'center' as const,
           }}
         >
-          <div style={{ position: 'relative', width: '180px', height: '160px' }}>
+          <div style={{ position: 'relative', width: '180px', height: '176px' }}>
             <div
               style={{
                 position: 'absolute' as const,
@@ -525,16 +556,16 @@ function Landing({ onNavigate }: LandingProps) {
                     left: 'calc(50% - 78px)',
                     bottom: '100%',
                     transform: 'translateX(-50%)',
-                    width: '160px',
-                    height: '290px',
+                    width: '128px',
+                    height: '116px',
                     background:
-                      'linear-gradient(0deg, rgba(212, 175, 55, 0.52) 0%, rgba(212, 175, 55, 0.26) 38%, rgba(212, 175, 55, 0.1) 72%, transparent 100%)',
-                    clipPath: 'polygon(49% 100%, 51% 100%, 100% 0%, 0% 0%)',
+                      'linear-gradient(0deg, rgba(212, 175, 55, 0.48) 0%, rgba(212, 175, 55, 0.3) 38%, rgba(212, 175, 55, 0.12) 68%, transparent 100%)',
+                    clipPath: 'polygon(49% 100%, 51% 100%, 78% 0%, 22% 0%)',
                     transformOrigin: 'bottom center',
                     pointerEvents: 'none' as const,
-                    animation: 'wiperLeft 2s ease-in-out infinite alternate',
-                    filter: 'blur(4px)',
-                    boxShadow: '0 0 55px rgba(212, 175, 55, 0.24)',
+                    animation: 'wiperLeft 17s ease-in-out infinite alternate',
+                    filter: 'blur(5px)',
+                    boxShadow: '0 0 26px rgba(212, 175, 55, 0.16)',
                     zIndex: 1,
                   }}
                 ></div>
@@ -572,16 +603,16 @@ function Landing({ onNavigate }: LandingProps) {
                     left: 'calc(50% - 78px)',
                     bottom: '100%',
                     transform: 'translateX(-50%)',
-                    width: '160px',
-                    height: '290px',
+                    width: '128px',
+                    height: '116px',
                     background:
-                      'linear-gradient(0deg, rgba(212, 175, 55, 0.52) 0%, rgba(212, 175, 55, 0.26) 38%, rgba(212, 175, 55, 0.1) 72%, transparent 100%)',
-                    clipPath: 'polygon(49% 100%, 51% 100%, 100% 0%, 0% 0%)',
+                      'linear-gradient(0deg, rgba(212, 175, 55, 0.48) 0%, rgba(212, 175, 55, 0.3) 38%, rgba(212, 175, 55, 0.12) 68%, transparent 100%)',
+                    clipPath: 'polygon(49% 100%, 51% 100%, 78% 0%, 22% 0%)',
                     transformOrigin: 'bottom center',
                     pointerEvents: 'none' as const,
-                    animation: 'wiperRight 2s ease-in-out infinite alternate',
-                    filter: 'blur(4px)',
-                    boxShadow: '0 0 55px rgba(212, 175, 55, 0.24)',
+                    animation: 'wiperRight 17s ease-in-out infinite alternate',
+                    filter: 'blur(5px)',
+                    boxShadow: '0 0 26px rgba(212, 175, 55, 0.16)',
                     zIndex: 1,
                   }}
                 ></div>
@@ -593,7 +624,7 @@ function Landing({ onNavigate }: LandingProps) {
               style={{
                 position: 'absolute',
                 left: '50%',
-                top: '15px',
+                top: '22px',
                 transform: 'translateX(-50%)',
                 textAlign: 'center',
                 zIndex: 10,
@@ -601,34 +632,30 @@ function Landing({ onNavigate }: LandingProps) {
             >
               <div
                 style={{
-                  width: '36px',
-                  height: '36px',
-                  borderRadius: '50%',
-                  background: `linear-gradient(135deg, ${bulbYellow} 0%, #c9a548 100%)`,
-                  margin: '0 auto 4px',
+                  width: '58px',
+                  height: '58px',
+                  borderRadius: '18px',
+                  background: 'rgba(255, 255, 255, 0.04)',
+                  border: '1px solid rgba(212, 175, 55, 0.5)',
+                  margin: '0 auto 8px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   boxShadow:
-                    '0 0 16px rgba(228, 180, 196, 0.42), inset -7px -8px 12px rgba(0, 0, 0, 0.38), inset 3px 3px 5px rgba(233, 206, 215, 0.18)',
-                  animation: 'globeSpin 20s linear infinite',
-                  transformOrigin: 'center center',
-                  transformStyle: 'preserve-3d',
+                    '0 0 24px rgba(212, 175, 55, 0.18), inset 0 0 20px rgba(0, 0, 0, 0.34)',
                   overflow: 'hidden',
                   position: 'relative',
                 }}
               >
                 <img
-                  src="/images/sealandstamp.jpeg"
-                  alt="Seal and Stamp Notary logo"
+                  src={ynxLogo}
+                  alt="YNX Notary logo"
                   style={{
-                    width: '108%',
-                    height: '108%',
+                    width: '100%',
+                    height: '100%',
                     objectFit: 'contain',
                     display: 'block',
-                    padding: 0,
-                    transform: 'translate(0, 0) translateZ(0)',
-                    backfaceVisibility: 'hidden',
+                    padding: '6px',
                     opacity: 1,
                     filter: 'none',
                     position: 'relative',
@@ -636,26 +663,13 @@ function Landing({ onNavigate }: LandingProps) {
                   }}
                 />
               </div>
-              <p
-                style={{
-                  fontSize: '0.22em',
-                  color: '#c9c3bd',
-                  margin: '0 0 8px',
-                  fontFamily: "'Allura', cursive",
-                  textTransform: 'lowercase',
-                  letterSpacing: '1px',
-                  textShadow: '0 0 8px rgba(0,0,0,0.9)',
-                }}
-              >
-                
-              </p>
             </div>
 
             <div
               style={{
                 position: 'absolute' as const,
                 left: '50%',
-                top: '62px',
+                top: '92px',
                 transform: 'translateX(-50%)',
                 textAlign: 'center',
                 zIndex: 10,
@@ -663,27 +677,28 @@ function Landing({ onNavigate }: LandingProps) {
             >
               <p
                 style={{
-                  fontSize: '0.26em',
+                  fontSize: '0.46em',
                   color: bulbYellow,
-                  margin: '0 0 1px',
-                  letterSpacing: '2px',
+                  margin: '0 0 4px',
+                  letterSpacing: '1.2px',
+                  fontWeight: 600,
                   textShadow: '0 0 8px rgba(0,0,0,0.9)',
                   whiteSpace: 'nowrap',
                 }}
               >
-                Seal and Stamp
+                YNX Notary
               </p>
               <p
                 style={{
-                  fontSize: '6px',
-                  color: '#6d6669',
+                  fontSize: '8px',
+                  color: '#9a8f94',
                   margin: '0 0 3px',
-                  letterSpacing: '1px',
+                  letterSpacing: '0.8px',
                   textShadow: '0 0 8px rgba(0,0,0,0.9)',
                   whiteSpace: 'nowrap',
                 }}
               >
-                Notary
+                Mobile Notary Services
               </p>
             </div>
 
@@ -697,7 +712,7 @@ function Landing({ onNavigate }: LandingProps) {
                 background: 'transparent',
                 border: 'none',
                 color: gold,
-                fontSize: '7px',
+                fontSize: '6px',
                 letterSpacing: '0.6px',
                 textTransform: 'uppercase',
                 cursor: 'pointer',
@@ -706,7 +721,7 @@ function Landing({ onNavigate }: LandingProps) {
               }}
               onClick={() =>
                 alert(
-                  'Seal and Stamp Notary\nMobile Notary Services\nLicensed, Bonded & Insured\nServing: Dallas-Fort Worth',
+                  'YNX Notary\nMobile Notary Services\nLicensed, Bonded & Insured\nServing: Dallas-Fort Worth',
                 )
               }
             >
@@ -721,7 +736,7 @@ function Landing({ onNavigate }: LandingProps) {
               background: 'transparent',
               border: 'none',
               padding: 0,
-              margin: '8px 0 0',
+              margin: '6px 0 0',
               cursor: 'pointer',
               display: 'grid',
               gap: '3px',
@@ -731,7 +746,7 @@ function Landing({ onNavigate }: LandingProps) {
           >
             <span
               style={{
-                fontSize: '5px',
+                fontSize: '6px',
                 letterSpacing: '0.4px',
                 textTransform: 'uppercase',
                 color: '#7c7377',
@@ -742,7 +757,7 @@ function Landing({ onNavigate }: LandingProps) {
             </span>
             <span
               style={{
-                fontSize: '4px',
+                fontSize: '4.5px',
                 letterSpacing: '0.5px',
                 textTransform: 'uppercase',
                 color: '#9a8f94',
