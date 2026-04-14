@@ -3,10 +3,23 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   base: '/',
-  plugins: [react()],
+  plugins: [
+    react(),
+    {
+      name: 'preview-root-fallback',
+      configureServer(server) {
+        server.middlewares.use((req, _res, next) => {
+          if (req.url === '/' || req.url?.startsWith('/?')) {
+            req.url = '/index.preview.html';
+          }
+          next();
+        });
+      },
+    },
+  ],
   server: {
     host: 'localhost',
     port: 1753,
-    open: '/index.preview.html',
+    open: '/',
   },
 });
