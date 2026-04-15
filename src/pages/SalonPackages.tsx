@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import SiteFooter from '../components/SiteFooter';
+import type { Page } from '../types';
 const logoImage = '/images/logo5.jpg';
 
 interface SalonPackagesProps {
-  onNavigate: (page: 'landing' | 'home' | 'about' | 'services' | 'contact' | 'salon' | 'salon-portal' | 'salon-packages' | 'documents') => void;
+  onNavigate: (page: Page) => void;
 }
 
 const PACKAGES = [
@@ -373,8 +374,8 @@ function SalonPackages({ onNavigate }: SalonPackagesProps) {
       
       {/* Top Navbar */}
       <nav style={styles.navbar}>
-        <div style={{ position: 'absolute', left: '20px', top: '50%', transform: 'translateY(-50%)', width: '100px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <img src={logoImage} alt="Home" title="Back to Home" style={{width: '74px', height: '74px', objectFit: 'cover', objectPosition: 'center', scale: '1.08', cursor: 'pointer', borderRadius: '50%', animation: 'logoPulse 2s ease-in-out infinite', transition: 'all 0.3s ease', border: 'none', background: 'transparent'}} onClick={() => onNavigate('landing')} />
+        <div style={{ position: 'absolute', left: '20px', top: '56%', transform: 'translateY(-50%)', width: '100px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <img src={logoImage} alt="Home" title="Back to Home" style={{width: '74px', height: '74px', objectFit: 'cover', objectPosition: 'center', scale: '1.02', cursor: 'pointer', borderRadius: '50%', animation: 'logoPulse 2s ease-in-out infinite', transition: 'all 0.3s ease', border: 'none', background: 'transparent'}} onClick={() => onNavigate('landing')} />
         </div>
         <div style={styles.navDivider}></div>
         <div style={styles.navItem} onMouseEnter={() => setHoveredBusiness('primary')} onMouseLeave={() => setHoveredBusiness(null)}>
@@ -387,7 +388,13 @@ function SalonPackages({ onNavigate }: SalonPackagesProps) {
             </div>
           )}
         </div>
-        <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('hire')}>DID YOU KNOW?</button>
+        <button
+          className="nav-hover-button"
+          style={{ ...styles.navButton, color: '#f3efec', fontWeight: 500, textShadow: '0 0 10px rgba(243, 239, 236, 0.3)' }}
+          onClick={() => onNavigate('did-you-know')}
+        >
+          DID YOU KNOW?
+        </button>
         <div style={styles.navItem} onMouseEnter={() => setHoveredBusiness('partnership')} onMouseLeave={() => setHoveredBusiness(null)}>
           <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('contact')}>Partnership</button>
           {hoveredBusiness === 'partnership' && (
@@ -412,7 +419,7 @@ function SalonPackages({ onNavigate }: SalonPackagesProps) {
         <section style={styles.content}>
           <h2 style={styles.sectionTitle}>Prepaid Session Packages</h2>
           
-          <div style={styles.notice}>
+          <div className="info-hover-card" style={styles.notice}>
             <p style={styles.noticeText}>
               These packages are available exclusively for current clients. 
               Sessions never expire and can be used for any service within the package category.
@@ -422,6 +429,7 @@ function SalonPackages({ onNavigate }: SalonPackagesProps) {
           <div style={styles.grid}>
             {PACKAGES.map((pkg, index) => (
               <div
+                className="info-hover-card"
                 key={index}
                 style={{
                   ...styles.card,

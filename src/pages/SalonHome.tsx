@@ -50,7 +50,7 @@ function SalonHome({ onNavigate }: SalonHomeProps) {
     navLeft: {
       position: 'absolute',
       left: '20px',
-      top: '50%',
+      top: '52%',
       transform: 'translateY(-50%)',
       display: 'flex',
       alignItems: 'center',
@@ -63,7 +63,7 @@ function SalonHome({ onNavigate }: SalonHomeProps) {
       borderRadius: '50%',
       objectFit: 'cover',
       objectPosition: 'center',
-      scale: '1.14',
+      scale: '1.02',
       border: `1px solid ${logoAccent}`,
       background: '#080808',
       cursor: 'pointer',
@@ -217,6 +217,13 @@ function SalonHome({ onNavigate }: SalonHomeProps) {
           <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('salon-portal')}>
             Client Portal
           </button>
+          <button
+            className="nav-hover-button"
+            style={{ ...styles.navButton, color: '#f3efec', fontWeight: 500, textShadow: '0 0 10px rgba(243, 239, 236, 0.3)' }}
+            onClick={() => onNavigate('did-you-know')}
+          >
+            Did You Know?
+          </button>
           <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('contact')}>
             Contact
           </button>
@@ -224,7 +231,7 @@ function SalonHome({ onNavigate }: SalonHomeProps) {
       </nav>
 
       <main style={styles.hero}>
-        <section style={styles.intro}>
+        <section className="info-hover-card" style={styles.intro}>
           <p style={styles.eyebrow}>Hair • Beauty • Client Care</p>
           <h1 style={styles.title}>Salon</h1>
           <p style={styles.subtitle}>Personalized beauty services with polished results and easy booking paths.</p>

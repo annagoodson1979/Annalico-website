@@ -1,19 +1,8 @@
 import NotaryFrame from '../components/NotaryFrame';
+import type { Page } from '../types';
 
 interface ContactProps {
-  onNavigate: (
-    page:
-      | 'landing'
-      | 'home'
-      | 'about'
-      | 'services'
-      | 'contact'
-      | 'hire'
-      | 'salon'
-      | 'salon-portal'
-      | 'salon-packages'
-      | 'documents'
-  ) => void;
+  onNavigate: (page: Page) => void;
 }
 
 function Contact({ onNavigate }: ContactProps) {
@@ -38,6 +27,7 @@ function Contact({ onNavigate }: ContactProps) {
         }}
       >
         <section
+          className="info-hover-card"
           style={{
             padding: '10px 0 18px',
             borderBottom: '1px solid rgba(255,255,255,0.08)',
@@ -65,6 +55,7 @@ function Contact({ onNavigate }: ContactProps) {
         </section>
 
         <section
+          className="info-hover-card"
           style={{
             padding: '10px 0 18px',
             borderBottom: '1px solid rgba(255,255,255,0.08)',

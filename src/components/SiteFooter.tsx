@@ -2,9 +2,10 @@ import type { CSSProperties } from 'react';
 
 interface SiteFooterProps {
   compact?: boolean;
+  mode?: 'default' | 'notary';
 }
 
-function SiteFooter({ compact = false }: SiteFooterProps) {
+function SiteFooter({ compact = false, mode = 'default' }: SiteFooterProps) {
   const styles: Record<string, CSSProperties> = {
     footer: {
       width: '100%',
@@ -36,8 +37,18 @@ function SiteFooter({ compact = false }: SiteFooterProps) {
       <span style={styles.year}>
         <span style={{ fontSize: '0.7em', verticalAlign: 'super' }}>@</span>2001
       </span>{' '}
-      | Yen An LLC | All Rights Reserved |{' '}
-      <span style={styles.email}>info@theyenan.com</span> | <span style={styles.year}>(972) 900-7147</span>
+      {mode === 'notary' ? (
+        <>
+          | A signature of Yen An LLC | YNX Notary | All Rights Reserved |{' '}
+          <span style={styles.email}>ynxnotary.com</span> |{' '}
+          <span style={styles.year}>(972) 900-7147</span>
+        </>
+      ) : (
+        <>
+          | Yen An LLC | All Rights Reserved | <span style={styles.email}>info@theyenan.com</span>{' '}
+          | <span style={styles.year}>(972) 900-7147</span>
+        </>
+      )}
     </footer>
   );
 }

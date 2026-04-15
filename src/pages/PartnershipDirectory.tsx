@@ -132,7 +132,7 @@ function PartnershipDirectory({ onNavigate }: PartnershipDirectoryProps) {
         </p>
         <div style={styles.cardGrid}>
           {directoryEntries.map((entry) => (
-            <section key={entry.name} style={styles.card}>
+            <section key={entry.name} className="info-hover-card" style={styles.card}>
               <p style={styles.cardTitle}>
                 <strong>{entry.name}</strong>
               </p>

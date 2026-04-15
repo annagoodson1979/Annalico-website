@@ -39,8 +39,9 @@ function PageFrame({
           { label: 'Contact', page: 'contact' as Page },
         ]
       : [
-          { label: 'Services & Prices', page: 'services' as Page },
-          { label: 'Documents I Sign', page: 'documents' as Page },
+          { label: 'Services', page: 'services' as Page },
+          { label: 'Prices', page: 'prices' as Page },
+          { label: 'Documents', page: 'documents' as Page },
           { label: 'Contact', page: 'contact' as Page },
           { label: 'Booking Request', page: 'contact' as Page },
         ];
@@ -154,7 +155,7 @@ function PageFrame({
       height: '100%',
       objectFit: 'cover',
       objectPosition: 'center',
-      scale: '1.08',
+      scale: '1.02',
     },
     main: {
       minHeight: '100vh',
@@ -249,7 +250,7 @@ function PageFrame({
           style={{
             position: 'absolute',
             left: '20px',
-            top: '50%',
+            top: '56%',
             transform: 'translateY(-50%)',
             width: '100px',
             display: 'flex',
@@ -288,7 +289,11 @@ function PageFrame({
             </div>
           )}
         </div>
-        <button className="nav-hover-button" style={{ ...styles.navButton, color: gold }} onClick={() => onNavigate('hire')}>
+        <button
+          className="nav-hover-button"
+          style={{ ...styles.navButton, color: '#f3efec', fontWeight: 500, textShadow: '0 0 10px rgba(243, 239, 236, 0.3)' }}
+          onClick={() => onNavigate('did-you-know')}
+        >
           DID YOU KNOW?
         </button>
         <div

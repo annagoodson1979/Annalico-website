@@ -4,7 +4,7 @@ import type { Page } from '../types';
 import SiteFooter from './SiteFooter';
 
 const landingLogo = '/images/logo5.jpg';
-const notaryLogo = '/images/sealandstamp.jpeg';
+const notaryLogo = '/images/logo.jpg';
 
 interface NotaryFrameProps {
   children: ReactNode;
@@ -80,7 +80,7 @@ function NotaryFrame({
     navLeft: {
       position: 'absolute',
       left: '20px',
-      top: '50%',
+      top: '52%',
       transform: 'translateY(-50%)',
       display: 'flex',
       alignItems: 'center',
@@ -93,7 +93,7 @@ function NotaryFrame({
       borderRadius: '50%',
       objectFit: 'cover',
       objectPosition: 'center',
-      scale: '1.08',
+      scale: '1.02',
       border: 'none',
       background: 'transparent',
       cursor: 'pointer',
@@ -146,8 +146,8 @@ function NotaryFrame({
       width: 'min(62vw, 660px)',
       aspectRatio: '1 / 1',
       objectFit: 'contain',
-      opacity: 0.07,
-      filter: 'grayscale(0.08) drop-shadow(0 0 28px rgba(212, 175, 55, 0.12))',
+      opacity: 0.045,
+      filter: 'blur(2.4px) grayscale(0.08) drop-shadow(0 0 18px rgba(212, 175, 55, 0.1))',
       pointerEvents: 'none',
       zIndex: 1,
     },
@@ -246,7 +246,14 @@ function NotaryFrame({
             Services & Prices
           </button>
           <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('documents')}>
-            Documents I Sign
+            Documents
+          </button>
+          <button
+            className="nav-hover-button"
+            style={{ ...styles.navButton, color: '#f3efec', fontWeight: 500, textShadow: '0 0 10px rgba(243, 239, 236, 0.3)' }}
+            onClick={() => onNavigate('did-you-know')}
+          >
+            Did You Know?
           </button>
           <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('contact')}>
             Contact
@@ -325,7 +332,7 @@ function NotaryFrame({
         </button>
       ) : null}
 
-      <SiteFooter compact />
+      <SiteFooter compact mode="notary" />
     </div>
   );
 }

@@ -4,8 +4,10 @@ import Landing from './pages/Landing';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
+import Prices from './pages/Prices';
 import Contact from './pages/Contact';
 import Hire from './pages/Hire';
+import DidYouKnow from './pages/DidYouKnow';
 import Documents from './pages/Documents';
 import PartnershipDirectory from './pages/PartnershipDirectory';
 import SalonHome from './pages/SalonHome';
@@ -23,10 +25,14 @@ function App() {
         return <About onNavigate={setCurrentPage} />;
       case 'services':
         return <Services onNavigate={setCurrentPage} />;
+      case 'prices':
+        return <Prices onNavigate={setCurrentPage} />;
       case 'contact':
         return <Contact onNavigate={setCurrentPage} />;
       case 'hire':
         return <Hire onNavigate={setCurrentPage} />;
+      case 'did-you-know':
+        return <DidYouKnow onNavigate={setCurrentPage} />;
       case 'partnership-directory':
         return <PartnershipDirectory onNavigate={setCurrentPage} />;
       case 'documents':

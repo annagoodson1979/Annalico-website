@@ -1,5 +1,5 @@
 interface SalonClientPortalProps {
-  onNavigate: (page: 'landing' | 'home' | 'about' | 'services' | 'contact' | 'hire' | 'salon' | 'salon-portal' | 'salon-packages' | 'documents') => void;
+  onNavigate: (page: import('../types').Page) => void;
 }
 
 import SiteFooter from '../components/SiteFooter';

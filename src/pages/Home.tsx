@@ -3,7 +3,7 @@ import type { Page } from '../types';
 import SiteFooter from '../components/SiteFooter';
 
 const landingLogo = '/images/logo5.jpg';
-const notaryLogo = '/images/sealandstamp.jpeg';
+const notaryLogo = '/images/logo.jpg';
 
 interface HomeProps {
   onNavigate: (page: Page) => void;
@@ -52,7 +52,7 @@ function Home({ onNavigate }: HomeProps) {
     navLeft: {
       position: 'absolute',
       left: '20px',
-      top: '50%',
+      top: '52%',
       transform: 'translateY(-50%)',
       display: 'flex',
       alignItems: 'center',
@@ -65,7 +65,7 @@ function Home({ onNavigate }: HomeProps) {
       borderRadius: '50%',
       objectFit: 'cover',
       objectPosition: 'center',
-      scale: '1.08',
+      scale: '1.02',
       border: 'none',
       background: 'transparent',
       cursor: 'pointer',
@@ -130,8 +130,8 @@ function Home({ onNavigate }: HomeProps) {
       width: 'min(62vw, 660px)',
       aspectRatio: '1 / 1',
       objectFit: 'contain',
-      opacity: 0.12,
-      filter: 'grayscale(0.08) drop-shadow(0 0 28px rgba(212, 175, 55, 0.16))',
+      opacity: 0.05,
+      filter: 'blur(2.4px) grayscale(0.08) drop-shadow(0 0 18px rgba(212, 175, 55, 0.12))',
       pointerEvents: 'none',
     },
     intro: {
@@ -227,7 +227,14 @@ function Home({ onNavigate }: HomeProps) {
             Services & Prices
           </button>
           <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('documents')}>
-            Documents I Sign
+            Documents
+          </button>
+          <button
+            className="nav-hover-button"
+            style={{ ...styles.navButton, color: '#f3efec', fontWeight: 500, textShadow: '0 0 10px rgba(243, 239, 236, 0.3)' }}
+            onClick={() => onNavigate('did-you-know')}
+          >
+            Did You Know?
           </button>
           <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('contact')}>
             Contact
@@ -241,7 +248,7 @@ function Home({ onNavigate }: HomeProps) {
       <main style={styles.hero}>
         <img src={notaryLogo} alt="" style={styles.logoGhost} />
         <section style={styles.intro}>
-          <h1 style={styles.title}>Seal and Stamp</h1>
+          <h1 style={styles.title}>YNX</h1>
           <p style={styles.titleSub}>Notary</p>
           <p style={styles.credentialLine}>
             NNA Certified in Both Notary Signing Agent and RON | IPEN Available
@@ -253,7 +260,7 @@ function Home({ onNavigate }: HomeProps) {
         </section>
       </main>
 
-      <SiteFooter compact />
+      <SiteFooter compact mode="notary" />
     </div>
   );
 }

@@ -52,7 +52,7 @@ function About({ onNavigate }: AboutProps) {
     navLeft: {
       position: 'absolute',
       left: '20px',
-      top: '50%',
+      top: '52%',
       transform: 'translateY(-50%)',
       width: '100px',
       display: 'flex',
@@ -64,7 +64,7 @@ function About({ onNavigate }: AboutProps) {
       height: '74px',
       objectFit: 'cover',
       objectPosition: 'center',
-      scale: '1.14',
+      scale: '1.02',
       borderRadius: '50%',
       border: '1px solid #f3efec',
       background: '#080808',
@@ -289,7 +289,14 @@ function About({ onNavigate }: AboutProps) {
             Services & Prices
           </button>
           <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('documents')}>
-            Documents I Sign
+            Documents
+          </button>
+          <button
+            className="nav-hover-button"
+            style={{ ...styles.navButton, color: '#f3efec', fontWeight: 500, textShadow: '0 0 10px rgba(243, 239, 236, 0.3)' }}
+            onClick={() => onNavigate('did-you-know')}
+          >
+            Did You Know?
           </button>
           <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('contact')}>
             Contact
@@ -363,6 +370,7 @@ function About({ onNavigate }: AboutProps) {
           </p>
 
           <div
+            className="info-hover-card"
             style={styles.credentials}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'scale(1.06)';
@@ -397,6 +405,7 @@ function About({ onNavigate }: AboutProps) {
           </p>
 
           <div
+            className="info-hover-card"
             style={styles.credentials}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'scale(1.06)';
@@ -512,7 +521,7 @@ function About({ onNavigate }: AboutProps) {
         </>
       ) : null}
 
-      <SiteFooter compact />
+      <SiteFooter compact mode="notary" />
     </div>
   );
 }

@@ -205,10 +205,13 @@ function LandingOldPreview({ onNavigate }: LandingOldPreviewProps) {
                 Website
               </button>
               <button style={styles.dropdownItem} onClick={() => onNavigate('services')}>
-                Services and Prices
+                Services
+              </button>
+              <button style={styles.dropdownItem} onClick={() => onNavigate('prices')}>
+                Prices
               </button>
               <button style={styles.dropdownItem} onClick={() => onNavigate('documents')}>
-                Documents I Sign
+                Documents
               </button>
               <button style={styles.dropdownItem} onClick={() => onNavigate('contact')}>
                 Contact
@@ -216,7 +219,7 @@ function LandingOldPreview({ onNavigate }: LandingOldPreviewProps) {
               <button style={styles.dropdownItem} onClick={() => onNavigate('contact')}>
                 Booking Request
               </button>
-              <button style={styles.dropdownItem} onClick={() => onNavigate('hire')}>
+              <button style={styles.dropdownItem} onClick={() => onNavigate('did-you-know')}>
                 Did You Know?
               </button>
             </div>
@@ -250,7 +253,10 @@ function LandingOldPreview({ onNavigate }: LandingOldPreviewProps) {
         </div>
 
         <div style={styles.navItem}>
-          <button style={{ ...styles.navButton, color: gold }} onClick={() => onNavigate('hire')}>
+          <button
+            style={{ ...styles.navButton, color: '#f3efec', fontWeight: 500, textShadow: '0 0 10px rgba(243, 239, 236, 0.3)' }}
+            onClick={() => onNavigate('did-you-know')}
+          >
             DID YOU KNOW?
           </button>
         </div>
