@@ -4,6 +4,7 @@ import LandingPreview from './pages/LandingPreview';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
+import HowIHelp from './pages/HowIHelp';
 import Prices from './pages/Prices';
 import Contact from './pages/Contact';
 import Hire from './pages/Hire';
@@ -25,6 +26,8 @@ function AppPreview() {
         return <About onNavigate={setCurrentPage} />;
       case 'services':
         return <Services onNavigate={setCurrentPage} />;
+      case 'how-help':
+        return <HowIHelp onNavigate={setCurrentPage} />;
       case 'prices':
         return <Prices onNavigate={setCurrentPage} />;
       case 'contact':

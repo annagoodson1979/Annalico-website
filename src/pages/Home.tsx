@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react';
 import type { Page } from '../types';
 import SiteFooter from '../components/SiteFooter';
 
-const landingLogo = '/images/logo5.jpg';
+const landingLogo = '/images/llc2.jpg';
 const notaryLogo = '/images/logo.jpg';
 
 interface HomeProps {
@@ -52,16 +52,16 @@ function Home({ onNavigate }: HomeProps) {
     navLeft: {
       position: 'absolute',
       left: '20px',
-      top: '52%',
+      top: '98%',
       transform: 'translateY(-50%)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      width: '100px',
+      width: '132px',
     },
     navLogo: {
-      width: '74px',
-      height: '74px',
+      width: '86px',
+      height: '86px',
       borderRadius: '50%',
       objectFit: 'cover',
       objectPosition: 'center',

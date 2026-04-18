@@ -3,7 +3,7 @@ import type { CSSProperties } from 'react';
 import type { Page } from '../types';
 import SiteFooter from '../components/SiteFooter';
 
-const landingLogo = '/images/logo5.jpg';
+const landingLogo = '/images/llc2.jpg';
 const portraitImage = '/images/aboutme.jpg';
 
 interface AboutProps {
@@ -52,16 +52,16 @@ function About({ onNavigate }: AboutProps) {
     navLeft: {
       position: 'absolute',
       left: '20px',
-      top: '52%',
+      top: '98%',
       transform: 'translateY(-50%)',
-      width: '100px',
+      width: '132px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
     },
     navLogo: {
-      width: '74px',
-      height: '74px',
+      width: '86px',
+      height: '86px',
       objectFit: 'cover',
       objectPosition: 'center',
       scale: '1.02',

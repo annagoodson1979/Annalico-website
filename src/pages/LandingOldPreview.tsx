@@ -207,7 +207,7 @@ function LandingOldPreview({ onNavigate }: LandingOldPreviewProps) {
               <button style={styles.dropdownItem} onClick={() => onNavigate('services')}>
                 Services
               </button>
-              <button style={styles.dropdownItem} onClick={() => onNavigate('prices')}>
+              <button style={styles.dropdownItem} onClick={() => onNavigate('services')}>
                 Prices
               </button>
               <button style={styles.dropdownItem} onClick={() => onNavigate('documents')}>

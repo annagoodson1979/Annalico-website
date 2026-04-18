@@ -19,17 +19,6 @@ const serviceSections = [
     ],
   },
   {
-    title: 'Mobile Notary',
-    body: [
-      'In-person notarization appointments are typically conducted at public or professional locations to ensure a smooth and secure signing experience.',
-    ],
-    highlights: [
-      'Service area: Mobile service is available within a 5-mile radius',
-      'Base fee: $25 within 5 miles',
-      'Ideal for signers without internet access, witnesses, or multiple parties',
-    ],
-  },
-  {
     title: 'Document Prep & Organization',
     body: ['Professional document preparation services to help ensure everything is in order before signing.'],
     highlights: [
@@ -58,12 +47,12 @@ const serviceSections = [
   },
   {
     title: 'Deposit & No-Show Policy',
-    body: ['To respect everyone\'s time and support reliable scheduling, deposits are required for certain bookings.'],
+    body: ['To support reliable scheduling, deposits are required for certain bookings.'],
     bulletPoints: [
-      'Mobile appointments require a 50% reservation deposit to secure your time and travel.',
+      'Mobile appointments require a 50% reservation deposit to secure your time and travel (if applicable).',
       'Deposits are non-refundable if you cancel within 12 hours or no-show.',
       'No-shows forfeit the deposit and may require full prepay for future bookings.',
-      'Reschedules are allowed once with 12+ hours notice and the deposit transfers.',
+      'Life happens and if you need to reschedule, please give at least 12+ hours notice and the deposit transfers.',
     ],
     closing: 'Documented emergencies are considered case-by-case.',
   },
@@ -71,13 +60,10 @@ const serviceSections = [
     title: 'Booking & Scheduling Tips',
     body: ['A few simple guidelines help the appointment stay smooth and efficient.'],
     bulletPoints: [
-      'Best times to book: 10 AM - 2 PM for standard rates.',
       'After-hours and weekends: Higher fees apply and availability is limited.',
       'Have documents ready and IDs valid before the appointment.',
       'Witnesses for in-person notarizations must be provided by the signer when applicable.',
-      'Location limits: Travel stays within 5 miles; beyond that, RON is usually preferred when allowed.',
     ],
-    closing: 'If you are unsure which option fits your situation, reach out and I will guide you.',
   },
 ];
 
@@ -88,11 +74,23 @@ function Services({ onNavigate }: ServicesProps) {
   return (
     <NotaryFrame
       onNavigate={onNavigate}
-      title="Services"
+      title="Services and Prices"
       subtitle="How I can help with your notary needs"
       backTo="home"
     >
       <div style={{ display: 'grid', gap: '18px', maxWidth: '860px', margin: '0 auto', width: '100%' }}>
+        <p
+          style={{
+            margin: '0 auto 2px',
+            color: '#d4af37',
+            textTransform: 'uppercase',
+            letterSpacing: '1.1px',
+            fontSize: '0.8rem',
+            textAlign: 'center',
+          }}
+        >
+          Remote Notary Preferred | Mobile by Exception (Local & Appointment Only)
+        </p>
         <section
           className="info-hover-card"
           style={{
@@ -122,7 +120,24 @@ function Services({ onNavigate }: ServicesProps) {
                 fontWeight: 600,
               }}
             >
-              View Prices
+              Packages
+            </button>
+            <button
+              onClick={() => onNavigate('how-help')}
+              style={{
+                border: `1px solid ${gold}`,
+                background: 'rgba(212, 175, 55, 0.1)',
+                color: '#f3efec',
+                borderRadius: '999px',
+                padding: '11px 18px',
+                fontSize: '0.82rem',
+                textTransform: 'uppercase',
+                letterSpacing: '1.3px',
+                cursor: 'pointer',
+                fontWeight: 600,
+              }}
+            >
+              How I Can Help
             </button>
             <button
               onClick={() => onNavigate('hire')}
@@ -140,23 +155,6 @@ function Services({ onNavigate }: ServicesProps) {
               }}
             >
               Hire an Agent
-            </button>
-            <button
-              onClick={() => window.scrollTo({ top: 320, behavior: 'smooth' })}
-              style={{
-                border: `1px solid ${gold}`,
-                background: 'rgba(212, 175, 55, 0.1)',
-                color: '#f3efec',
-                borderRadius: '999px',
-                padding: '11px 18px',
-                fontSize: '0.82rem',
-                textTransform: 'uppercase',
-                letterSpacing: '1.3px',
-                cursor: 'pointer',
-                fontWeight: 600,
-              }}
-            >
-              How I Can Help
             </button>
           </div>
         </section>
@@ -234,7 +232,45 @@ function Services({ onNavigate }: ServicesProps) {
               </ul>
             ) : null}
 
-            {section.highlights?.length ? (
+            {section.highlights?.length && section.title === 'Agreement / Contract Signing' ? (
+              <div
+                style={{
+                  margin: '6px auto 0',
+                  maxWidth: '60ch',
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 1fr',
+                  gap: '12px',
+                  textAlign: 'left',
+                }}
+              >
+                <ul
+                  style={{
+                    margin: 0,
+                    paddingLeft: '20px',
+                    color: '#beb7aa',
+                    lineHeight: 1.7,
+                  }}
+                >
+                  {section.highlights.slice(0, 2).map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+                <ul
+                  style={{
+                    margin: 0,
+                    paddingLeft: '20px',
+                    color: '#beb7aa',
+                    lineHeight: 1.7,
+                  }}
+                >
+                  {section.highlights.slice(2).map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+
+            {section.highlights?.length && section.title !== 'Agreement / Contract Signing' ? (
               <ul
                 style={{
                   margin: '6px auto 0',
@@ -280,6 +316,7 @@ function Services({ onNavigate }: ServicesProps) {
             ) : null}
           </section>
         ))}
+
       </div>
     </NotaryFrame>
   );

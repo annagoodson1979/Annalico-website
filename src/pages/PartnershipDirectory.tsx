@@ -8,19 +8,19 @@ interface PartnershipDirectoryProps {
 const directoryEntries = [
   {
     name: 'Seal and Stamp Notary',
-    email: 'notary@theyenan.com',
+    email: 'info@ynxnotary.com',
     phone: '(972) 900-7147',
   },
   {
     name: 'Anna Salon Studio',
-    email: 'info@theyenan.com',
+    email: 'info@ynxnotary.com',
     phone: '(972) 900-7147',
   },
 ];
 
 function PartnershipDirectory({ onNavigate }: PartnershipDirectoryProps) {
   const gold = '#d4af37';
-  const logoImage = '/images/logo5.jpg';
+  const logoImage = '/images/llc2.jpg';
 
   const styles: { [key: string]: React.CSSProperties } = {
     container: {

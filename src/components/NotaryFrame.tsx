@@ -3,7 +3,7 @@ import type { CSSProperties, ReactNode } from 'react';
 import type { Page } from '../types';
 import SiteFooter from './SiteFooter';
 
-const landingLogo = '/images/logo5.jpg';
+const landingLogo = '/images/llc2.jpg';
 const notaryLogo = '/images/logo.jpg';
 
 interface NotaryFrameProps {
@@ -15,6 +15,7 @@ interface NotaryFrameProps {
   backLabel?: string;
   maxWidth?: string;
   showNavBack?: boolean;
+  contentJustify?: 'center' | 'start';
 }
 
 function NotaryFrame({
@@ -26,6 +27,7 @@ function NotaryFrame({
   backLabel = 'Back to Notary Home',
   maxWidth = '1060px',
   showNavBack = true,
+  contentJustify = 'center',
 }: NotaryFrameProps) {
   const gold = '#d4af37';
   const logoAccent = '#f3efec';
@@ -80,16 +82,16 @@ function NotaryFrame({
     navLeft: {
       position: 'absolute',
       left: '20px',
-      top: '52%',
+      top: '98%',
       transform: 'translateY(-50%)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      width: '120px',
+      width: '132px',
     },
     navLogo: {
-      width: '74px',
-      height: '74px',
+      width: '86px',
+      height: '86px',
       borderRadius: '50%',
       objectFit: 'cover',
       objectPosition: 'center',
@@ -132,7 +134,7 @@ function NotaryFrame({
       zIndex: 2,
       flex: 1,
       display: 'flex',
-      alignItems: 'center',
+      alignItems: contentJustify === 'start' ? 'flex-start' : 'center',
       justifyContent: 'center',
       padding: `${navHeight + 12}px 24px 12px`,
       boxSizing: 'border-box',
@@ -157,7 +159,7 @@ function NotaryFrame({
       minHeight: '100%',
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'center',
+      justifyContent: contentJustify === 'start' ? 'flex-start' : 'center',
       padding: '32px 24px',
       boxSizing: 'border-box',
     },

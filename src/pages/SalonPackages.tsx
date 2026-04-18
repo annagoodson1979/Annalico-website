@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import SiteFooter from '../components/SiteFooter';
 import type { Page } from '../types';
-const logoImage = '/images/logo5.jpg';
+const logoImage = '/images/llc2.jpg';
 
 interface SalonPackagesProps {
   onNavigate: (page: Page) => void;
@@ -374,8 +374,8 @@ function SalonPackages({ onNavigate }: SalonPackagesProps) {
       
       {/* Top Navbar */}
       <nav style={styles.navbar}>
-        <div style={{ position: 'absolute', left: '20px', top: '56%', transform: 'translateY(-50%)', width: '100px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <img src={logoImage} alt="Home" title="Back to Home" style={{width: '74px', height: '74px', objectFit: 'cover', objectPosition: 'center', scale: '1.02', cursor: 'pointer', borderRadius: '50%', animation: 'logoPulse 2s ease-in-out infinite', transition: 'all 0.3s ease', border: 'none', background: 'transparent'}} onClick={() => onNavigate('landing')} />
+        <div style={{ position: 'absolute', left: '20px', top: '98%', transform: 'translateY(-50%)', width: '132px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <img src={logoImage} alt="Home" title="Back to Home" style={{width: '86px', height: '86px', objectFit: 'cover', objectPosition: 'center', scale: '1.02', cursor: 'pointer', borderRadius: '50%', animation: 'logoPulse 2s ease-in-out infinite', transition: 'all 0.3s ease', border: 'none', background: 'transparent'}} onClick={() => onNavigate('landing')} />
         </div>
         <div style={styles.navDivider}></div>
         <div style={styles.navItem} onMouseEnter={() => setHoveredBusiness('primary')} onMouseLeave={() => setHoveredBusiness(null)}>

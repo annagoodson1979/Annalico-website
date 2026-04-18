@@ -39,10 +39,10 @@ function Contact({ onNavigate }: ContactProps) {
           <p style={{ margin: '0 0 12px', color: '#ddd', lineHeight: 1.8 }}>
             Email:{' '}
             <a
-              href="mailto:notary@theyenan.com"
+              href="mailto:info@ynxnotary.com"
               style={{ color: '#ddd', textDecoration: 'underline', textUnderlineOffset: '3px' }}
             >
-              notary@theyenan.com
+              info@ynxnotary.com
             </a>
           </p>
           <p style={{ margin: '0 0 12px', color: '#ddd', lineHeight: 1.8 }}>

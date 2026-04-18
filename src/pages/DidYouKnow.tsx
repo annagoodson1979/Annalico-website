@@ -35,6 +35,37 @@ const credentials = [
   'Notary Bonded',
 ];
 
+const unexpectedNotarizations = [
+  {
+    label: 'Love Letters',
+    detail: 'Because some words deserve to last longer than a moment.',
+  },
+  {
+    label: 'Wedding Vows',
+    detail: 'Some frame them - others make them unforgettable.',
+  },
+  {
+    label: 'Friendship Pacts',
+    detail: 'Promises that outlast time deserve to be witnessed.',
+  },
+  {
+    label: 'Family Agreements',
+    detail: 'From house rules to heartfelt promises - yes, even the fun ones.',
+  },
+  {
+    label: 'Letters from Grandparents',
+    detail: 'Memories, preserved in their own words.',
+  },
+  {
+    label: 'Notes for Children',
+    detail: 'Something they can hold onto for years to come.',
+  },
+  {
+    label: 'Letters to Your Future Self',
+    detail: 'Because some moments are worth revisiting exactly as they were.',
+  },
+];
+
 function DidYouKnow({ onNavigate }: DidYouKnowProps) {
   const gold = '#d4af37';
   const bodySize = '1.14rem';
@@ -138,6 +169,74 @@ function DidYouKnow({ onNavigate }: DidYouKnowProps) {
                 securing the loan is closed by an attorney or a title company.
               </p>
             </div>
+          </div>
+        </section>
+
+        <section
+          className="info-hover-card"
+          style={{
+            background: 'rgba(255,255,255,0.02)',
+            border: '1px solid rgba(255,255,255,0.08)',
+            borderRadius: '18px',
+            padding: '22px',
+          }}
+        >
+          <h2
+            style={{
+              margin: '0 0 12px',
+              color: gold,
+              letterSpacing: '2px',
+              textTransform: 'none',
+              fontSize: '1.16rem',
+              textAlign: 'center',
+            }}
+          >
+            Things You Didn&apos;t Know You Could Notarize
+          </h2>
+          <div style={{ display: 'grid', gap: '10px', lineHeight: 1.7, color: '#e2ddd4' }}>
+            <p style={{ margin: 0, color: '#bbb3a7', fontStyle: 'italic' }}>
+              Not everything meaningful has to be serious.
+            </p>
+            <p style={{ margin: 0, color: '#bbb3a7' }}>
+              Sometimes, the most powerful things are the ones people never think to preserve.
+            </p>
+            <div
+              style={{
+                display: 'grid',
+                gap: '8px',
+                borderTop: '1px solid rgba(212, 175, 55, 0.18)',
+                borderBottom: '1px solid rgba(212, 175, 55, 0.18)',
+                padding: '12px 0',
+              }}
+            >
+              {unexpectedNotarizations.map((item) => (
+                <div key={item.label}>
+                  <p style={{ margin: 0, color: '#f0ebe2' }}>
+                    <strong>{item.label}</strong>
+                  </p>
+                  <p style={{ margin: '2px 0 0', color: '#bbb3a7' }}>{item.detail}</p>
+                </div>
+              ))}
+            </div>
+
+            <p style={{ margin: '2px 0 0', color: '#f0ebe2' }}>
+              <strong>But does this actually hold weight?</strong>
+            </p>
+            <p style={{ margin: 0, color: '#bbb3a7' }}>
+              A notarization doesn&apos;t make something legally binding on its own - it confirms identity,
+              willingness, and that the moment truly happened.
+            </p>
+            <p style={{ margin: 0, color: '#bbb3a7' }}>
+              If your document is written as a formal agreement, it can carry legal weight. If it&apos;s something
+              personal, it becomes something just as powerful in a different way - it can&apos;t be denied, questioned,
+              or rewritten later.
+            </p>
+            <p style={{ margin: '2px 0 0', color: '#f0ebe2' }}>
+              <strong>A little something to think about...</strong>
+            </p>
+            <p style={{ margin: 0, color: '#d8d1c6', fontStyle: 'italic' }}>
+              Notarizing something doesn&apos;t make it serious... it shows you took it seriously.
+            </p>
           </div>
         </section>
 

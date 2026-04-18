@@ -3,6 +3,7 @@ export type Page =
   | 'home'
   | 'about'
   | 'services'
+  | 'how-help'
   | 'prices'
   | 'contact'
   | 'hire'

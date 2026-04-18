@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import type { Page } from '../types';
 import SiteFooter from '../components/SiteFooter';
-const heroImage = '/images/hero2.jpg';
-const spotlightLogo = '/images/logo.jpg';
+const heroImage = '/images/hero3.jpg';
 interface LandingProps {
   onNavigate: (page: Page) => void;
 }
@@ -15,13 +14,16 @@ function Landing({ onNavigate }: LandingProps) {
   const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
   const gold = '#f3efec';
   const bulbYellow = '#d4af37';
+  const spotlightPartner = {
+    name: 'TGB Global',
+    tagline: 'Global logistics with local care.',
+  };
   const dropdownItemStyle = (delay: number): React.CSSProperties => ({
     ...styles.dropdownItem,
     opacity: 0,
     animation: `dropdownLineReveal 0.32s ease forwards`,
     animationDelay: `${delay}s`,
   });
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     alert('Thank you for your partnership inquiry! We will get back to you soon.');
@@ -168,11 +170,22 @@ function Landing({ onNavigate }: LandingProps) {
       backgroundImage: `url(${heroImage})`,
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'calc(50% - 496px) 128px',
-      backgroundSize: 'min(68vw, 655px) auto',
+      backgroundSize: 'min(70vw, 680px) auto',
       backgroundColor: '#000',
-      filter: 'saturate(0.95) contrast(1.03) brightness(0.96)',
-      opacity: 0.96,
+      filter: 'saturate(0.92) contrast(1.02) brightness(0.94)',
+      opacity: 0.9,
       transform: 'scale(1.01)',
+      WebkitMaskImage:
+        'radial-gradient(ellipse 58% 74% at 24% 40%, rgba(0,0,0,1) 45%, rgba(0,0,0,0.86) 66%, rgba(0,0,0,0) 92%)',
+      maskImage:
+        'radial-gradient(ellipse 58% 74% at 24% 40%, rgba(0,0,0,1) 45%, rgba(0,0,0,0.86) 66%, rgba(0,0,0,0) 92%)',
+    },
+    heroPhotoBlend: {
+      position: 'absolute' as const,
+      inset: 0,
+      pointerEvents: 'none' as const,
+      background:
+        'radial-gradient(ellipse at 24% 42%, rgba(0,0,0,0) 30%, rgba(0,0,0,0.58) 62%, rgba(0,0,0,0.95) 100%), linear-gradient(180deg, rgba(0,0,0,0.76) 0%, rgba(0,0,0,0.1) 18%, rgba(0,0,0,0.12) 78%, rgba(0,0,0,0.88) 100%), linear-gradient(90deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.22) 22%, rgba(0,0,0,0.1) 42%, rgba(0,0,0,0.42) 64%, rgba(0,0,0,0.96) 100%)',
     },
     heroOverlay: {
       position: 'absolute' as const,
@@ -205,6 +218,18 @@ function Landing({ onNavigate }: LandingProps) {
           0% { opacity: 0; filter: blur(5px); }
           100% { opacity: 1; filter: blur(0); }
         }
+        @keyframes wordReveal {
+          0% { opacity: 0; transform: translateY(6px); filter: blur(2px); }
+          100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+        @keyframes forwardEnter {
+          0% { opacity: 0; transform: perspective(650px) translateZ(-120px) scale(0.9); filter: blur(4px); }
+          100% { opacity: 1; transform: perspective(650px) translateZ(0) scale(1); filter: blur(0); }
+        }
+        @keyframes quietEnter {
+          0% { opacity: 0; transform: translateY(8px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
         @keyframes glow {
           0%, 100% { text-shadow: none; }
           25% { text-shadow: none; }
@@ -216,12 +241,16 @@ function Landing({ onNavigate }: LandingProps) {
           50% { opacity: 0.12; transform: rotate(5deg); }
         }
         @keyframes wiperLeft {
-          0% { transform: rotate(-16deg); opacity: 0.16; }
-          100% { transform: rotate(16deg); opacity: 0.24; }
+          0% { transform: rotate(-52deg); opacity: 0.15; }
+          100% { transform: rotate(52deg); opacity: 0.26; }
         }
         @keyframes wiperRight {
-          0% { transform: rotate(16deg); opacity: 0.16; }
-          100% { transform: rotate(-16deg); opacity: 0.24; }
+          0% { transform: rotate(52deg); opacity: 0.15; }
+          100% { transform: rotate(-52deg); opacity: 0.26; }
+        }
+        @keyframes suspendedFloat {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-8px); }
         }
         @keyframes lineExpand {
           0% { width: 0; opacity: 0; }
@@ -276,6 +305,18 @@ function Landing({ onNavigate }: LandingProps) {
           0% { opacity: 0; transform: translateY(20px); }
           100% { opacity: 1; transform: translateY(0); }
         }
+        @keyframes lineRise {
+          0% { opacity: 0; transform: translateY(18px); filter: blur(2px); }
+          100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+        @keyframes sideFadeAway {
+          0% { opacity: 1; filter: blur(0); }
+          100% { opacity: 0; filter: blur(2px); }
+        }
+        @keyframes slowFadeIn {
+          0% { opacity: 0; filter: blur(2px); }
+          100% { opacity: 1; filter: blur(0); }
+        }
         .nav-hover-button:hover {
           color: #f3efec !important;
           transform: scale(1.08) translateY(-1px);
@@ -329,7 +370,7 @@ function Landing({ onNavigate }: LandingProps) {
               <button style={dropdownItemStyle(0.14)} onClick={() => onNavigate('services')}>
                 Services
               </button>
-              <button style={dropdownItemStyle(0.2)} onClick={() => onNavigate('prices')}>
+              <button style={dropdownItemStyle(0.2)} onClick={() => onNavigate('services')}>
                 Prices
               </button>
               <button style={dropdownItemStyle(0.26)} onClick={() => onNavigate('documents')}>
@@ -406,6 +447,7 @@ function Landing({ onNavigate }: LandingProps) {
       <main style={styles.main}>
         <section style={styles.hero}>
           <div style={styles.heroBackground} />
+          <div style={styles.heroPhotoBlend} />
           <div style={styles.heroOverlay} />
           <div
             style={{
@@ -415,13 +457,13 @@ function Landing({ onNavigate }: LandingProps) {
               transform: 'translate(-50%, -50%)',
               zIndex: 12,
               width: 'min(560px, 56vw)',
-              minHeight: 'min(72vh, 640px)',
+              minHeight: 'min(80vh, 700px)',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
               textAlign: 'center',
               color: '#fff',
-              padding: '40px 18px 48px',
+              padding: '54px 18px 66px',
               background: 'transparent',
               boxShadow: 'none',
               backdropFilter: 'none',
@@ -434,32 +476,67 @@ function Landing({ onNavigate }: LandingProps) {
                 fontFamily: "'Bethany', serif",
                 fontSize: 'clamp(4rem, 9.4vw, 7.3rem)',
                 fontWeight: 400,
-                letterSpacing: '0.2em',
-                textIndent: '0.2em',
+                letterSpacing: '0.08em',
                 lineHeight: 0.9,
                 opacity: 0,
-                animation: 'yenFadeRise 1.35s ease forwards',
+                animation: 'yenFadeRise 1.1s ease forwards',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'baseline',
+                gap: '0.24em',
               }}
             >
-              YEN
+              <span
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'baseline',
+                  gap: 0,
+                }}
+              >
+                <span
+                  style={{
+                    animation: 'sideFadeAway 3.2s ease 5.8s both',
+                    willChange: 'opacity, filter',
+                  }}
+                >
+                  DU
+                </span>
+                <span
+                  style={{
+                    display: 'inline-block',
+                    marginLeft: '-0.02em',
+                  }}
+                >
+                  YEN
+                </span>
+              </span>
+              <span
+                style={{
+                  marginLeft: '0.06em',
+                  animation: 'sideFadeAway 3.2s ease 5.8s both',
+                  willChange: 'opacity, filter',
+                }}
+              >
+                AN
+              </span>
             </h1>
             <p
               style={{
-                margin: '30px 0 0',
+                margin: '40px 0 0',
                 color: '#8a5658',
                 fontFamily: "'Boheme', cursive",
                 fontSize: 'clamp(2.05rem, 3.9vw, 3.55rem)',
                 lineHeight: 1.04,
+                textShadow: 'none',
                 opacity: 0,
-                animation: 'yenFadeRise 1.15s ease 1.05s forwards',
-                textShadow: '0 0 20px rgba(0,0,0,0.28)',
+                animation: 'lineRise 0.85s ease 1.15s forwards',
               }}
             >
               Leading with strength and grace...
             </p>
             <p
               style={{
-                margin: '30px auto 0',
+                margin: '42px auto 0',
                 color: '#bbb8bd',
                 fontFamily: "'Bethany', serif",
                 fontSize: 'clamp(1.18rem, 1.95vw, 1.86rem)',
@@ -467,7 +544,7 @@ function Landing({ onNavigate }: LandingProps) {
                 letterSpacing: '0.1em',
                 maxWidth: '500px',
                 opacity: 0,
-                animation: 'blurFocusIn 1.05s ease 1.25s forwards',
+                animation: 'forwardEnter 0.95s ease 3.8s forwards',
               }}
             >
               Built on precision.
@@ -476,22 +553,22 @@ function Landing({ onNavigate }: LandingProps) {
             </p>
             <p
               style={{
-                margin: '38px 0 0',
+                margin: '46px 0 0',
                 color: '#a06a6b',
                 fontFamily: "'Boheme', cursive",
                 fontSize: 'clamp(2.05rem, 3.9vw, 3.55rem)',
                 lineHeight: 1.04,
-                textShadow: '0 0 10px rgba(160, 106, 107, 0.12)',
+                textShadow: 'none',
                 filter: 'contrast(1.04)',
                 opacity: 0,
-                animation: 'blurFocusIn 1.05s ease 2.35s forwards',
+                animation: 'lineRise 0.85s ease 2.25s forwards',
               }}
             >
               ...authority without noise.
             </p>
             <p
               style={{
-                margin: '42px auto 0',
+                margin: '52px auto 0',
                 color: '#5f5d63',
                 fontFamily: "'Bethany', serif",
                 fontSize: 'clamp(0.96rem, 1.18vw, 1.18rem)',
@@ -499,7 +576,7 @@ function Landing({ onNavigate }: LandingProps) {
                 letterSpacing: '0.07em',
                 maxWidth: '500px',
                 opacity: 0,
-                animation: 'blurFocusIn 1.05s ease 3.35s forwards',
+                animation: 'slowFadeIn 3.2s ease 5.8s both',
               }}
             >
               To bring clarity and certainty where it matters most.
@@ -510,54 +587,55 @@ function Landing({ onNavigate }: LandingProps) {
         <div
           style={{
             position: 'fixed' as const,
-            right: '112px',
-            bottom: '88px',
-            zIndex: 50,
-            width: '180px',
+            right: '226px',
+            bottom: '82px',
+            zIndex: 24,
+            width: '220px',
+            opacity: 0.72,
             textAlign: 'center' as const,
           }}
         >
-          <div style={{ position: 'relative', width: '180px', height: '176px' }}>
+          <div style={{ position: 'relative', width: '220px', height: '206px' }}>
             <div
               style={{
                 position: 'absolute' as const,
-                left: '30px',
+                left: '36px',
                 bottom: '0',
                 display: 'flex',
                 flexDirection: 'column' as const,
                 alignItems: 'center',
-                animation: 'lampSway 3s ease-in-out infinite',
+                animation: 'lampSway 4s ease-in-out infinite',
                 transformOrigin: 'bottom center',
                 zIndex: 2,
               }}
             >
               <div
                 style={{
-                  width: '16px',
-                  height: '10px',
+                  width: '20px',
+                  height: '12px',
                   background: `radial-gradient(ellipse at center, ${bulbYellow} 0%, #c9a548 100%)`,
                   borderRadius: '50%',
                   boxShadow: 'none',
                   position: 'relative',
                   zIndex: 3,
                 }}
-              >
-                <div
-                  style={{
-                    position: 'absolute',
-                    left: '44%',
-                    bottom: '100%',
-                    transform: 'translateX(-50%)',
-                    width: '138px',
-                    height: '130px',
+                >
+                  <div
+                    style={{
+                      position: 'absolute',
+                      left: '50%',
+                      bottom: '100%',
+                      transform: 'translateX(calc(-50% + 96px))',
+                      width: '186px',
+                    height: '170px',
                     background:
-                      'linear-gradient(0deg, rgba(212, 175, 55, 0.48) 0%, rgba(212, 175, 55, 0.3) 38%, rgba(212, 175, 55, 0.12) 68%, transparent 100%)',
-                    clipPath: 'polygon(49% 100%, 51% 100%, 80% 0%, 20% 0%)',
+                      'linear-gradient(0deg, rgba(212, 175, 55, 0.5) 0%, rgba(212, 175, 55, 0.34) 36%, rgba(212, 175, 55, 0.12) 70%, transparent 100%)',
+                    clipPath: 'polygon(49% 100%, 51% 100%, 84% 0%, 16% 0%)',
                     transformOrigin: 'bottom center',
                     pointerEvents: 'none' as const,
                     animation: 'wiperLeft 17s ease-in-out infinite alternate',
-                    filter: 'blur(5px)',
-                    boxShadow: '0 0 26px rgba(212, 175, 55, 0.16)',
+                    filter: 'blur(6px)',
+                    boxShadow: '0 0 30px rgba(212, 175, 55, 0.18)',
                     zIndex: 1,
                   }}
                 ></div>
@@ -568,43 +646,43 @@ function Landing({ onNavigate }: LandingProps) {
             <div
               style={{
                 position: 'absolute' as const,
-                right: '30px',
+                right: '36px',
                 bottom: '0',
                 display: 'flex',
                 flexDirection: 'column' as const,
                 alignItems: 'center',
-                animation: 'lampSway 5s ease-in-out infinite 2.5s',
+                animation: 'lampSway 4s ease-in-out infinite',
                 transformOrigin: 'bottom center',
                 zIndex: 2,
               }}
             >
               <div
                 style={{
-                  width: '16px',
-                  height: '10px',
+                  width: '20px',
+                  height: '12px',
                   background: `radial-gradient(ellipse at center, ${bulbYellow} 0%, #c9a548 100%)`,
                   borderRadius: '50%',
                   boxShadow: 'none',
                   position: 'relative',
                   zIndex: 3,
                 }}
-              >
-                <div
-                  style={{
-                    position: 'absolute',
-                    left: '44%',
-                    bottom: '100%',
-                    transform: 'translateX(-50%)',
-                    width: '138px',
-                    height: '130px',
+                >
+                  <div
+                    style={{
+                      position: 'absolute',
+                      left: '50%',
+                      bottom: '100%',
+                      transform: 'translateX(calc(-50% + 96px))',
+                      width: '186px',
+                    height: '170px',
                     background:
-                      'linear-gradient(0deg, rgba(212, 175, 55, 0.48) 0%, rgba(212, 175, 55, 0.3) 38%, rgba(212, 175, 55, 0.12) 68%, transparent 100%)',
-                    clipPath: 'polygon(49% 100%, 51% 100%, 80% 0%, 20% 0%)',
+                      'linear-gradient(0deg, rgba(212, 175, 55, 0.5) 0%, rgba(212, 175, 55, 0.34) 36%, rgba(212, 175, 55, 0.12) 70%, transparent 100%)',
+                    clipPath: 'polygon(49% 100%, 51% 100%, 84% 0%, 16% 0%)',
                     transformOrigin: 'bottom center',
                     pointerEvents: 'none' as const,
                     animation: 'wiperRight 17s ease-in-out infinite alternate',
-                    filter: 'blur(5px)',
-                    boxShadow: '0 0 26px rgba(212, 175, 55, 0.16)',
+                    filter: 'blur(6px)',
+                    boxShadow: '0 0 30px rgba(212, 175, 55, 0.18)',
                     zIndex: 1,
                   }}
                 ></div>
@@ -612,153 +690,96 @@ function Landing({ onNavigate }: LandingProps) {
               <div style={{ width: '6px', height: '6px', background: '#333', zIndex: 4 }}></div>
             </div>
 
-            <div
-              style={{
-                position: 'absolute',
-                left: '50%',
-                top: '22px',
-                transform: 'translateX(-50%)',
-                textAlign: 'center',
-                zIndex: 10,
-              }}
-            >
-              <div
-                style={{
-                  width: '66px',
-                  height: '66px',
-                  borderRadius: '0',
-                  background: 'transparent',
-                  border: 'none',
-                  margin: '0 auto 8px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  boxShadow: 'none',
-                  overflow: 'hidden',
-                  position: 'relative',
-                }}
-              >
-                <img
-                  src={spotlightLogo}
-                  alt="YNX Notary logo"
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    display: 'block',
-                    padding: 0,
-                    opacity: 1,
-                    filter: 'none',
-                    position: 'relative',
-                    zIndex: 2,
-                  }}
-                />
-              </div>
-            </div>
-
-            <div
-              style={{
-                position: 'absolute' as const,
-                left: '50%',
-                top: '92px',
-                transform: 'translateX(-50%)',
-                textAlign: 'center',
-                zIndex: 10,
-              }}
-            >
-              <p
-                style={{
-                  fontSize: '0.4em',
-                  color: bulbYellow,
-                  margin: '0 0 4px',
-                  letterSpacing: '1.2px',
-                  fontWeight: 600,
-                  textShadow: '0 0 8px rgba(0,0,0,0.9)',
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                YNX Notary
-              </p>
-              <p
-                style={{
-                  fontSize: '7px',
-                  color: '#9a8f94',
-                  margin: '0 0 3px',
-                  letterSpacing: '0.8px',
-                  textShadow: '0 0 8px rgba(0,0,0,0.9)',
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                Mobile Notary Services
-              </p>
-            </div>
-
-            <button
-              style={{
-                position: 'absolute',
-                left: '50%',
-                bottom: '8px',
-                transform: 'translateX(-50%)',
-                padding: '2px 8px',
-                background: 'transparent',
-                border: 'none',
-                color: gold,
-                fontSize: '6px',
-                letterSpacing: '0.6px',
-                textTransform: 'uppercase',
-                cursor: 'pointer',
-                textShadow: '0 0 10px rgba(0,0,0,0.8)',
-                zIndex: 10,
-              }}
-              onClick={() =>
-                alert(
-                  'YNX Notary\nMobile Notary Services\nLicensed, Bonded & Insured\nServing: Dallas-Fort Worth',
-                )
-              }
-            >
-              View
-            </button>
           </div>
+        </div>
 
-          <button
-            type="button"
-            onClick={() => onNavigate('partnership-directory')}
+        <div
+          style={{
+            position: 'fixed' as const,
+            right: '96px',
+            bottom: '94px',
+            zIndex: 25,
+            width: '148px',
+            textAlign: 'center' as const,
+            pointerEvents: 'auto' as const,
+            animation: 'suspendedFloat 6s ease-in-out infinite',
+          }}
+        >
+          <div
             style={{
-              background: 'transparent',
-              border: 'none',
-              padding: 0,
-              margin: '6px 0 0',
-              cursor: 'pointer',
-              display: 'grid',
-              gap: '3px',
-              justifyItems: 'center',
-              width: '100%',
+              margin: '0 auto 6px',
+              width: '26px',
+              height: '26px',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '0.92rem',
+              color: '#d4af37',
+              filter: 'drop-shadow(0 0 6px rgba(212, 175, 55, 0.2))',
             }}
           >
-            <span
+            🌐
+          </div>
+          <div
+            style={{
+              padding: '7px 8px 7px',
+              borderRadius: '12px',
+              border: '1px solid rgba(212, 175, 55, 0.22)',
+              background: 'rgba(12, 12, 12, 0.38)',
+              backdropFilter: 'blur(5px)',
+              boxShadow: '0 8px 18px rgba(0,0,0,0.24)',
+            }}
+          >
+            <p
               style={{
-                fontSize: '6px',
-                letterSpacing: '0.4px',
-                textTransform: 'uppercase',
-                color: '#7c7377',
-                whiteSpace: 'nowrap',
+                margin: 0,
+                color: '#f3efec',
+                fontSize: '0.66rem',
+                letterSpacing: '0.45px',
+                fontWeight: 600,
+                lineHeight: 1.35,
+                textShadow: '0 0 10px rgba(0,0,0,0.85)',
               }}
             >
-              This Week's Spotlight
-            </span>
-            <span
+              {spotlightPartner.name}
+            </p>
+            <p
               style={{
-                fontSize: '4.5px',
-                letterSpacing: '0.5px',
-                textTransform: 'uppercase',
-                color: '#9a8f94',
-                whiteSpace: 'nowrap',
+                margin: '4px 0 7px',
+                color: '#aaa296',
+                fontSize: '0.5rem',
+                letterSpacing: '0.28px',
+                lineHeight: 1.35,
+                textShadow: '0 0 10px rgba(0,0,0,0.85)',
               }}
             >
-              Click for Directory
-            </span>
-          </button>
+              {spotlightPartner.tagline}
+            </p>
+          </div>
         </div>
+        <button
+          onClick={() => onNavigate('partnership-directory')}
+          style={{
+            position: 'fixed' as const,
+            right: '226px',
+            bottom: '66px',
+            zIndex: 26,
+            width: '220px',
+            border: 'none',
+            background: 'transparent',
+            color: '#9b9498',
+            padding: 0,
+            fontSize: '0.48rem',
+            letterSpacing: '1px',
+            textTransform: 'uppercase',
+            cursor: 'pointer',
+            textAlign: 'center' as const,
+            textShadow: '0 0 8px rgba(0,0,0,0.82)',
+          }}
+        >
+          This Week&apos;s Spotlight
+        </button>
 
         <div style={{ position: 'relative', zIndex: 80, marginTop: 'auto' }}>
           <SiteFooter compact />
