@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Page } from './types';
-import Landing from './pages/Landing';
+import Landing from './pages/LandingPreview';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
