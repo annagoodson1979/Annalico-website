@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { Page } from '../types';
 import SiteFooter from '../components/SiteFooter';
-const heroImage = '/images/hero3.jpg';
+const heroImage = '/images/hero.jpg';
 interface LandingProps {
   onNavigate: (page: Page) => void;
 }
@@ -172,8 +172,8 @@ function Landing({ onNavigate }: LandingProps) {
       backgroundPosition: 'calc(50% - 496px) 128px',
       backgroundSize: 'min(70vw, 680px) auto',
       backgroundColor: '#000',
-      filter: 'saturate(0.92) contrast(1.02) brightness(0.94)',
-      opacity: 0.9,
+      filter: 'saturate(1) contrast(1.06) brightness(1.03)',
+      opacity: 0.96,
       transform: 'scale(1.01)',
       WebkitMaskImage:
         'radial-gradient(ellipse 58% 74% at 24% 40%, rgba(0,0,0,1) 45%, rgba(0,0,0,0.86) 66%, rgba(0,0,0,0) 92%)',
@@ -185,13 +185,13 @@ function Landing({ onNavigate }: LandingProps) {
       inset: 0,
       pointerEvents: 'none' as const,
       background:
-        'radial-gradient(ellipse at 24% 42%, rgba(0,0,0,0) 30%, rgba(0,0,0,0.58) 62%, rgba(0,0,0,0.95) 100%), linear-gradient(180deg, rgba(0,0,0,0.76) 0%, rgba(0,0,0,0.1) 18%, rgba(0,0,0,0.12) 78%, rgba(0,0,0,0.88) 100%), linear-gradient(90deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.22) 22%, rgba(0,0,0,0.1) 42%, rgba(0,0,0,0.42) 64%, rgba(0,0,0,0.96) 100%)',
+        'radial-gradient(ellipse at 24% 42%, rgba(0,0,0,0) 34%, rgba(0,0,0,0.42) 66%, rgba(0,0,0,0.78) 100%), linear-gradient(180deg, rgba(0,0,0,0.56) 0%, rgba(0,0,0,0.08) 18%, rgba(0,0,0,0.1) 78%, rgba(0,0,0,0.7) 100%), linear-gradient(90deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.18) 24%, rgba(0,0,0,0.08) 44%, rgba(0,0,0,0.34) 66%, rgba(0,0,0,0.86) 100%)',
     },
     heroOverlay: {
       position: 'absolute' as const,
       inset: 0,
       background:
-        'radial-gradient(circle at 23% 32%, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.04) 18%, rgba(0,0,0,0.14) 44%, transparent 58%), linear-gradient(90deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.06) 24%, rgba(0,0,0,0.12) 48%, rgba(0,0,0,0.34) 72%, rgba(0,0,0,0.58) 100%)',
+        'radial-gradient(circle at 23% 32%, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.02) 18%, rgba(0,0,0,0.1) 44%, transparent 58%), linear-gradient(90deg, rgba(0,0,0,0.14) 0%, rgba(0,0,0,0.04) 24%, rgba(0,0,0,0.08) 48%, rgba(0,0,0,0.26) 72%, rgba(0,0,0,0.46) 100%)',
     },
   };
 
@@ -587,7 +587,7 @@ function Landing({ onNavigate }: LandingProps) {
         <div
           style={{
             position: 'fixed' as const,
-            right: '226px',
+            right: '130px',
             bottom: '82px',
             zIndex: 24,
             width: '220px',
@@ -604,7 +604,7 @@ function Landing({ onNavigate }: LandingProps) {
                 display: 'flex',
                 flexDirection: 'column' as const,
                 alignItems: 'center',
-                animation: 'lampSway 4s ease-in-out infinite',
+                animation: 'none',
                 transformOrigin: 'bottom center',
                 zIndex: 2,
               }}
@@ -618,6 +618,7 @@ function Landing({ onNavigate }: LandingProps) {
                   boxShadow: 'none',
                   position: 'relative',
                   zIndex: 3,
+                  transform: 'translateX(44px)',
                 }}
                 >
                   <div
@@ -625,7 +626,7 @@ function Landing({ onNavigate }: LandingProps) {
                       position: 'absolute',
                       left: '50%',
                       bottom: '100%',
-                      transform: 'translateX(calc(-50% + 96px))',
+                      transform: 'translateX(-50%)',
                       width: '186px',
                     height: '170px',
                     background:
@@ -640,7 +641,7 @@ function Landing({ onNavigate }: LandingProps) {
                   }}
                 ></div>
               </div>
-              <div style={{ width: '6px', height: '6px', background: '#333', zIndex: 4 }}></div>
+              <div style={{ width: '6px', height: '6px', background: '#333', zIndex: 4, transform: 'translateX(44px)' }}></div>
             </div>
 
             <div
@@ -651,7 +652,7 @@ function Landing({ onNavigate }: LandingProps) {
                 display: 'flex',
                 flexDirection: 'column' as const,
                 alignItems: 'center',
-                animation: 'lampSway 4s ease-in-out infinite',
+                animation: 'none',
                 transformOrigin: 'bottom center',
                 zIndex: 2,
               }}
@@ -665,6 +666,7 @@ function Landing({ onNavigate }: LandingProps) {
                   boxShadow: 'none',
                   position: 'relative',
                   zIndex: 3,
+                  transform: 'translateX(44px)',
                 }}
                 >
                   <div
@@ -672,7 +674,7 @@ function Landing({ onNavigate }: LandingProps) {
                       position: 'absolute',
                       left: '50%',
                       bottom: '100%',
-                      transform: 'translateX(calc(-50% + 96px))',
+                      transform: 'translateX(-50%)',
                       width: '186px',
                     height: '170px',
                     background:
@@ -687,7 +689,7 @@ function Landing({ onNavigate }: LandingProps) {
                   }}
                 ></div>
               </div>
-              <div style={{ width: '6px', height: '6px', background: '#333', zIndex: 4 }}></div>
+              <div style={{ width: '6px', height: '6px', background: '#333', zIndex: 4, transform: 'translateX(44px)' }}></div>
             </div>
 
           </div>
