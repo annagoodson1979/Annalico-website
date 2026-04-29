@@ -241,14 +241,12 @@ function Landing({ onNavigate }: LandingProps) {
           50% { opacity: 0.12; transform: rotate(5deg); }
         }
         @keyframes wiperLeft {
-          0% { transform: translateX(-50%) rotate(-34deg); opacity: 0.14; }
-          50% { transform: translateX(-50%) rotate(-8deg); opacity: 0.24; }
-          100% { transform: translateX(-50%) rotate(20deg); opacity: 0.2; }
+          0%, 100% { transform: translateX(-50%) rotate(-28deg); opacity: 0.14; }
+          50% { transform: translateX(-50%) rotate(24deg); opacity: 0.3; }
         }
         @keyframes wiperRight {
-          0% { transform: translateX(-50%) rotate(18deg); opacity: 0.14; }
-          50% { transform: translateX(-50%) rotate(-8deg); opacity: 0.24; }
-          100% { transform: translateX(-50%) rotate(-34deg); opacity: 0.2; }
+          0%, 100% { transform: translateX(-50%) rotate(28deg); opacity: 0.14; }
+          50% { transform: translateX(-50%) rotate(-24deg); opacity: 0.3; }
         }
         @keyframes suspendedFloat {
           0%, 100% { transform: translateY(0); }
@@ -648,7 +646,7 @@ function Landing({ onNavigate }: LandingProps) {
                     clipPath: 'polygon(49% 100%, 51% 100%, 80% 0%, 20% 0%)',
                     transformOrigin: 'bottom center',
                     pointerEvents: 'none' as const,
-                    animation: 'wiperLeft 17s ease-in-out infinite alternate',
+                    animation: 'wiperLeft 10s ease-in-out infinite',
                     filter: 'blur(5px)',
                     boxShadow: '0 0 26px rgba(212, 175, 55, 0.16)',
                     zIndex: 1,
@@ -666,7 +664,7 @@ function Landing({ onNavigate }: LandingProps) {
                 display: 'flex',
                 flexDirection: 'column' as const,
                 alignItems: 'center',
-                animation: 'lampSway 5s ease-in-out infinite 2.5s',
+                animation: 'lampSway 3s ease-in-out infinite',
                 transformOrigin: 'bottom center',
                 zIndex: 2,
               }}
@@ -685,7 +683,7 @@ function Landing({ onNavigate }: LandingProps) {
                 <div
                   style={{
                     position: 'absolute',
-                    left: 'calc(44% - 96px)',
+                    left: 'calc(44% + 96px)',
                     bottom: '100%',
                     transform: 'translateX(-50%)',
                     width: '138px',
@@ -695,7 +693,7 @@ function Landing({ onNavigate }: LandingProps) {
                     clipPath: 'polygon(49% 100%, 51% 100%, 80% 0%, 20% 0%)',
                     transformOrigin: 'bottom center',
                     pointerEvents: 'none' as const,
-                    animation: 'wiperRight 17s ease-in-out infinite alternate',
+                    animation: 'wiperRight 10s ease-in-out infinite',
                     filter: 'blur(5px)',
                     boxShadow: '0 0 26px rgba(212, 175, 55, 0.16)',
                     zIndex: 1,
