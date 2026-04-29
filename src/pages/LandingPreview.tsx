@@ -241,12 +241,12 @@ function Landing({ onNavigate }: LandingProps) {
           50% { opacity: 0.12; transform: rotate(5deg); }
         }
         @keyframes wiperLeft {
-          0%, 100% { transform: translateX(-50%) rotate(-28deg); opacity: 0.14; }
-          50% { transform: translateX(-50%) rotate(24deg); opacity: 0.3; }
+          0% { transform: rotate(-25deg); opacity: 0.15; }
+          100% { transform: rotate(25deg); opacity: 0.25; }
         }
         @keyframes wiperRight {
-          0%, 100% { transform: translateX(-50%) rotate(28deg); opacity: 0.14; }
-          50% { transform: translateX(-50%) rotate(-24deg); opacity: 0.3; }
+          0% { transform: rotate(25deg); opacity: 0.15; }
+          100% { transform: rotate(-25deg); opacity: 0.25; }
         }
         @keyframes suspendedFloat {
           0%, 100% { transform: translateY(0); }
@@ -636,19 +636,19 @@ function Landing({ onNavigate }: LandingProps) {
                 <div
                   style={{
                     position: 'absolute',
-                    left: 'calc(44% - 96px)',
+                    left: 'calc(50% - 78px)',
                     bottom: '100%',
                     transform: 'translateX(-50%)',
-                    width: '138px',
-                    height: '130px',
+                    width: '160px',
+                    height: '290px',
                     background:
-                      'linear-gradient(0deg, rgba(212, 175, 55, 0.48) 0%, rgba(212, 175, 55, 0.3) 38%, rgba(212, 175, 55, 0.12) 68%, transparent 100%)',
-                    clipPath: 'polygon(49% 100%, 51% 100%, 80% 0%, 20% 0%)',
+                      'linear-gradient(0deg, rgba(212, 175, 55, 0.52) 0%, rgba(212, 175, 55, 0.26) 38%, rgba(212, 175, 55, 0.1) 72%, transparent 100%)',
+                    clipPath: 'polygon(49% 100%, 51% 100%, 100% 0%, 0% 0%)',
                     transformOrigin: 'bottom center',
                     pointerEvents: 'none' as const,
-                    animation: 'wiperLeft 10s ease-in-out infinite',
-                    filter: 'blur(5px)',
-                    boxShadow: '0 0 26px rgba(212, 175, 55, 0.16)',
+                    animation: 'wiperLeft 2s ease-in-out infinite alternate',
+                    filter: 'blur(4px)',
+                    boxShadow: '0 0 55px rgba(212, 175, 55, 0.24)',
                     zIndex: 1,
                   }}
                 ></div>
@@ -683,19 +683,19 @@ function Landing({ onNavigate }: LandingProps) {
                 <div
                   style={{
                     position: 'absolute',
-                    left: 'calc(44% + 96px)',
+                    left: 'calc(50% - 78px)',
                     bottom: '100%',
                     transform: 'translateX(-50%)',
-                    width: '138px',
-                    height: '130px',
+                    width: '160px',
+                    height: '290px',
                     background:
-                      'linear-gradient(0deg, rgba(212, 175, 55, 0.48) 0%, rgba(212, 175, 55, 0.3) 38%, rgba(212, 175, 55, 0.12) 68%, transparent 100%)',
-                    clipPath: 'polygon(49% 100%, 51% 100%, 80% 0%, 20% 0%)',
+                      'linear-gradient(0deg, rgba(212, 175, 55, 0.52) 0%, rgba(212, 175, 55, 0.26) 38%, rgba(212, 175, 55, 0.1) 72%, transparent 100%)',
+                    clipPath: 'polygon(49% 100%, 51% 100%, 100% 0%, 0% 0%)',
                     transformOrigin: 'bottom center',
                     pointerEvents: 'none' as const,
-                    animation: 'wiperRight 10s ease-in-out infinite',
-                    filter: 'blur(5px)',
-                    boxShadow: '0 0 26px rgba(212, 175, 55, 0.16)',
+                    animation: 'wiperRight 2s ease-in-out infinite alternate',
+                    filter: 'blur(4px)',
+                    boxShadow: '0 0 55px rgba(212, 175, 55, 0.24)',
                     zIndex: 1,
                   }}
                 ></div>
