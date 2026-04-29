@@ -169,9 +169,10 @@ function Landing({ onNavigate }: LandingProps) {
       backgroundPosition: 'calc(50% - 496px) 128px',
       backgroundSize: 'min(70vw, 680px) auto',
       backgroundColor: '#000',
-      filter: 'saturate(1) contrast(1.06) brightness(1.03)',
+      filter: 'saturate(1.05) contrast(1.12) brightness(1.08)',
       opacity: 0.96,
       transform: 'scale(1.01)',
+      animation: 'heroImageSettle 6.2s ease forwards',
       WebkitMaskImage:
         'radial-gradient(ellipse 58% 74% at 24% 40%, rgba(0,0,0,1) 45%, rgba(0,0,0,0.86) 66%, rgba(0,0,0,0) 92%)',
       maskImage:
@@ -183,6 +184,8 @@ function Landing({ onNavigate }: LandingProps) {
       pointerEvents: 'none' as const,
       background:
         'radial-gradient(ellipse at 24% 42%, rgba(0,0,0,0) 34%, rgba(0,0,0,0.42) 66%, rgba(0,0,0,0.78) 100%), linear-gradient(180deg, rgba(0,0,0,0.56) 0%, rgba(0,0,0,0.08) 18%, rgba(0,0,0,0.1) 78%, rgba(0,0,0,0.7) 100%), linear-gradient(90deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.18) 24%, rgba(0,0,0,0.08) 44%, rgba(0,0,0,0.34) 66%, rgba(0,0,0,0.86) 100%)',
+      opacity: 0.42,
+      animation: 'heroMoodSettle 6.2s ease forwards',
     },
     heroOverlay: {
       position: 'absolute' as const,
@@ -313,6 +316,16 @@ function Landing({ onNavigate }: LandingProps) {
         @keyframes slowFadeIn {
           0% { opacity: 0; filter: blur(2px); }
           100% { opacity: 1; filter: blur(0); }
+        }
+        @keyframes heroImageSettle {
+          0% { filter: saturate(1.12) contrast(1.18) brightness(1.18); opacity: 1; }
+          72% { filter: saturate(1.08) contrast(1.15) brightness(1.12); opacity: 0.99; }
+          100% { filter: saturate(1.05) contrast(1.12) brightness(1.08); opacity: 0.96; }
+        }
+        @keyframes heroMoodSettle {
+          0% { opacity: 0.2; }
+          72% { opacity: 0.34; }
+          100% { opacity: 0.82; }
         }
         .nav-hover-button:hover {
           color: #f3efec !important;
