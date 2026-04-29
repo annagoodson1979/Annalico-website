@@ -172,7 +172,7 @@ function Landing({ onNavigate }: LandingProps) {
       filter: 'saturate(1.05) contrast(1.12) brightness(1.08)',
       opacity: 0.96,
       transform: 'scale(1.01)',
-      animation: 'heroImageSettle 6.2s ease forwards',
+      animation: 'heroImageSettle 9s ease forwards',
       WebkitMaskImage:
         'radial-gradient(ellipse 58% 74% at 24% 40%, rgba(0,0,0,1) 45%, rgba(0,0,0,0.86) 66%, rgba(0,0,0,0) 92%)',
       maskImage:
@@ -185,7 +185,7 @@ function Landing({ onNavigate }: LandingProps) {
       background:
         'radial-gradient(ellipse at 24% 42%, rgba(0,0,0,0) 34%, rgba(0,0,0,0.42) 66%, rgba(0,0,0,0.78) 100%), linear-gradient(180deg, rgba(0,0,0,0.56) 0%, rgba(0,0,0,0.08) 18%, rgba(0,0,0,0.1) 78%, rgba(0,0,0,0.7) 100%), linear-gradient(90deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.18) 24%, rgba(0,0,0,0.08) 44%, rgba(0,0,0,0.34) 66%, rgba(0,0,0,0.86) 100%)',
       opacity: 0.42,
-      animation: 'heroMoodSettle 6.2s ease forwards',
+      animation: 'heroMoodSettle 9s ease forwards',
     },
     heroOverlay: {
       position: 'absolute' as const,
@@ -319,12 +319,12 @@ function Landing({ onNavigate }: LandingProps) {
         }
         @keyframes heroImageSettle {
           0% { filter: saturate(1.12) contrast(1.18) brightness(1.18); opacity: 1; }
-          72% { filter: saturate(1.08) contrast(1.15) brightness(1.12); opacity: 0.99; }
+          64% { filter: saturate(1.08) contrast(1.15) brightness(1.12); opacity: 0.99; }
           100% { filter: saturate(1.05) contrast(1.12) brightness(1.08); opacity: 0.96; }
         }
         @keyframes heroMoodSettle {
           0% { opacity: 0.2; }
-          72% { opacity: 0.34; }
+          64% { opacity: 0.34; }
           100% { opacity: 0.82; }
         }
         .nav-hover-button:hover {
@@ -636,7 +636,7 @@ function Landing({ onNavigate }: LandingProps) {
                 <div
                   style={{
                     position: 'absolute',
-                    left: '44%',
+                    left: 'calc(44% - 96px)',
                     bottom: '100%',
                     transform: 'translateX(-50%)',
                     width: '138px',
@@ -683,7 +683,7 @@ function Landing({ onNavigate }: LandingProps) {
                 <div
                   style={{
                     position: 'absolute',
-                    left: '44%',
+                    left: 'calc(44% - 96px)',
                     bottom: '100%',
                     transform: 'translateX(-50%)',
                     width: '138px',
