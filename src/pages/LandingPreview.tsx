@@ -698,20 +698,21 @@ function Landing({ onNavigate }: LandingProps) {
         <div
           style={{
             position: 'fixed' as const,
-            right: '96px',
+            left: '68%',
             bottom: '94px',
             zIndex: 25,
-            width: '148px',
+            width: '120px',
             textAlign: 'center' as const,
             pointerEvents: 'auto' as const,
             animation: 'suspendedFloat 6s ease-in-out infinite',
+            transform: 'translateX(-50%)',
           }}
         >
           <div
             style={{
               margin: '0 auto 6px',
-              width: '26px',
-              height: '26px',
+              width: '22px',
+              height: '22px',
               borderRadius: '50%',
               display: 'flex',
               alignItems: 'center',
@@ -764,7 +765,7 @@ function Landing({ onNavigate }: LandingProps) {
           onClick={() => onNavigate('partnership-directory')}
           style={{
             position: 'fixed' as const,
-            right: '226px',
+            left: '68%',
             bottom: '66px',
             zIndex: 26,
             width: '220px',
@@ -778,6 +779,7 @@ function Landing({ onNavigate }: LandingProps) {
             cursor: 'pointer',
             textAlign: 'center' as const,
             textShadow: '0 0 8px rgba(0,0,0,0.82)',
+            transform: 'translateX(-50%)',
           }}
         >
           This Week&apos;s Spotlight
