@@ -8,6 +8,7 @@ const repoRoot = join(__dirname, '..');
 const distDir = join(repoRoot, 'dist');
 const distAssetsDir = join(distDir, 'assets');
 const publicImagesDir = join(repoRoot, 'public', 'images');
+const publicDir = join(repoRoot, 'public');
 const rootAssetsDir = join(repoRoot, 'assets');
 const rootImagesDir = join(repoRoot, 'images');
 
@@ -38,4 +39,10 @@ cpSync(distAssetsDir, rootAssetsDir, { recursive: true });
 emptyDir(rootImagesDir);
 cpSync(publicImagesDir, rootImagesDir, { recursive: true });
 
-console.log('Synced root static files from dist and public/images.');
+for (const name of readdirSync(publicDir)) {
+  if (name !== 'images') {
+    cpSync(join(publicDir, name), join(repoRoot, name), { recursive: true });
+  }
+}
+
+console.log('Synced root static files from dist and public.');

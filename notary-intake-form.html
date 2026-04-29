@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seal and Stamp Notary | Lender Intake Form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #050505;
+        --paper: #f4efe6;
+        --ink: #1c1a16;
+        --gold: #d4af37;
+        --muted: #cfc7b7;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 40px 24px;
+        background: linear-gradient(180deg, #080808 0%, var(--bg) 100%);
+        color: var(--paper);
+        font-family: 'Montserrat', sans-serif;
+      }
+
+      .sheet {
+        width: min(980px, 100%);
+        margin: 0 auto;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 28px;
+        overflow: hidden;
+        box-shadow: 0 24px 90px rgba(0, 0, 0, 0.45);
+        background: #0e0d0a;
+      }
+
+      .header {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: 22px;
+        align-items: center;
+        padding: 28px 34px 22px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        background: linear-gradient(180deg, rgba(212, 175, 55, 0.08), transparent);
+      }
+
+      .logo-wrap {
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 1px solid rgba(212, 175, 55, 0.5);
+        background: #000;
+        box-shadow: 0 0 24px rgba(212, 175, 55, 0.18);
+      }
+
+      .logo-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .eyebrow,
+      .section h3 {
+        margin: 0 0 6px;
+        color: var(--gold);
+        font-size: 0.7rem;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+      }
+
+      .brand {
+        margin: 0;
+        font-family: 'Cinzel', serif;
+        font-size: clamp(2rem, 4vw, 3rem);
+        line-height: 1;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+
+      .subbrand {
+        margin: 8px 0 0;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.05rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--paper);
+      }
+
+      .tagline {
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .content {
+        background: var(--paper);
+        color: var(--ink);
+        padding: 34px;
+      }
+
+      .intro {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        align-items: flex-end;
+        margin-bottom: 26px;
+        padding-bottom: 18px;
+        border-bottom: 1px solid rgba(28, 26, 22, 0.12);
+      }
+
+      .intro h2 {
+        margin: 0;
+        font-family: 'Cinzel', serif;
+        font-size: 1.45rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      .intro p {
+        margin: 0;
+        max-width: 420px;
+        color: #5a564f;
+        line-height: 1.55;
+        text-align: right;
+      }
+
+      .legend {
+        margin: 0 0 22px;
+        padding: 12px 14px;
+        border: 1px solid rgba(28, 26, 22, 0.12);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.55);
+        color: #5a564f;
+        font-size: 0.8rem;
+        letter-spacing: 0.2px;
+      }
+
+      .section-nav {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin: 0 0 22px;
+      }
+
+      .section-link {
+        display: block;
+        padding: 14px 16px;
+        border: 1px solid rgba(28, 26, 22, 0.12);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.58);
+        color: var(--ink);
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      .section-link strong {
+        display: block;
+        font-size: 0.82rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #8d6f1a;
+        margin-bottom: 4px;
+      }
+
+      .section-link span {
+        display: block;
+        font-size: 0.77rem;
+        color: #5e594f;
+        line-height: 1.35;
+      }
+
+      .form-block {
+        margin-bottom: 28px;
+      }
+
+      .form-block.is-hidden,
+      .section.is-hidden {
+        display: none;
+      }
+
+      .block-header {
+        margin: 0 0 14px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(28, 26, 22, 0.12);
+      }
+
+      .block-header h3 {
+        margin: 0;
+        font-family: 'Cinzel', serif;
+        font-size: 1.05rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #8d6f1a;
+      }
+
+      .block-header p {
+        margin: 6px 0 0;
+        font-size: 0.82rem;
+        color: #5e594f;
+        line-height: 1.5;
+      }
+
+      .submit-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 14px;
+        padding: 11px 16px;
+        border: 1px solid rgba(212, 175, 55, 0.5);
+        border-radius: 999px;
+        color: #8d6f1a;
+        text-decoration: none;
+        font-size: 0.74rem;
+        letter-spacing: 1.8px;
+        text-transform: uppercase;
+        background: rgba(255, 255, 255, 0.68);
+      }
+
+      .required-mark {
+        color: #9d7420;
+        font-weight: 700;
+        margin-left: 4px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px 22px;
+      }
+
+      .section {
+        border: 1px solid rgba(28, 26, 22, 0.1);
+        border-radius: 18px;
+        padding: 18px 18px 16px;
+        background: rgba(255, 255, 255, 0.48);
+      }
+
+      .field {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 10px;
+        align-items: start;
+        margin-bottom: 12px;
+      }
+
+      .field.compact {
+        grid-template-columns: 160px 1fr;
+      }
+
+      .label {
+        font-size: 0.82rem;
+        padding-top: 10px;
+      }
+
+      input,
+      textarea,
+      select {
+        width: 100%;
+        border: 1px solid rgba(28, 26, 22, 0.22);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.8);
+        color: var(--ink);
+        font: inherit;
+        font-size: 0.84rem;
+        padding: 10px 12px;
+        outline: none;
+      }
+
+      input:focus,
+      textarea:focus,
+      select:focus {
+        border-color: rgba(212, 175, 55, 0.72);
+        box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.14);
+      }
+
+      textarea {
+        min-height: 74px;
+        resize: vertical;
+      }
+
+      .textarea-sm {
+        min-height: 56px;
+      }
+
+      .textarea-lg {
+        min-height: 110px;
+      }
+
+      .inline-note {
+        margin-top: 8px;
+        font-size: 0.77rem;
+        color: #5e594f;
+      }
+
+      .full {
+        grid-column: 1 / -1;
+      }
+
+      .checks {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        padding-top: 10px;
+      }
+
+      .checks label {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.8rem;
+      }
+
+      .checks input[type='checkbox'],
+      .checks input[type='radio'] {
+        width: auto;
+        margin: 0;
+        box-shadow: none;
+      }
+
+      .stack {
+        display: grid;
+        gap: 10px;
+      }
+
+      .footer-note {
+        margin-top: 22px;
+        padding-top: 16px;
+        border-top: 1px solid rgba(28, 26, 22, 0.12);
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        font-size: 0.8rem;
+        color: #645f57;
+      }
+
+      @media print {
+        body {
+          padding: 0;
+          background: #fff;
+        }
+
+        .sheet {
+          width: 100%;
+          border: none;
+          border-radius: 0;
+          box-shadow: none;
+        }
+
+        .section {
+          background: transparent;
+        }
+
+        input,
+        textarea,
+        select {
+          background: transparent;
+          border-color: rgba(28, 26, 22, 0.28);
+          box-shadow: none;
+        }
+      }
+
+      @media (max-width: 820px) {
+        body {
+          padding: 18px;
+        }
+
+        .header,
+        .intro,
+        .grid,
+        .field {
+          grid-template-columns: 1fr;
+        }
+
+        .header {
+          gap: 16px;
+        }
+
+        .intro p {
+          text-align: left;
+        }
+
+        .label {
+          padding-top: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sheet">
+      <header class="header">
+        <div class="logo-wrap"><img src="/images/sealandstamp.jpeg" alt="Seal and Stamp logo" /></div>
+        <div>
+          <p class="eyebrow">Lender / Title / Escrow Intake</p>
+          <h1 class="brand">Seal and Stamp Notary</h1>
+          <p class="subbrand">Lender / Title Intake Form</p>
+          <p class="tagline">
+            Assignment intake for signing instructions, correction policy, package handling, and
+            contact protocol.
+          </p>
+        </div>
+      </header>
+      <main class="content">
+        <section class="intro">
+          <h2>Assignment Intake</h2>
+          <p>
+            Complete prior to the signing appointment so instructions, correction procedures, and
+            package expectations are documented in writing.
+          </p>
+        </section>
+
+        <div class="legend">
+          <strong>* Required for initial pricing.</strong> All other fields may be completed later.
+        </div>
+
+        <div class="section-nav">
+          <button class="section-link" type="button" data-target="assignment-intake">
+            <strong>Assignment Initial Intake</strong>
+            <span>Assignment details, delivery, contact protocol, and correction policy.</span>
+          </button>
+          <button class="section-link" type="button" data-target="contract-section">
+            <strong>Contract</strong>
+            <span>Payment terms, shipping, sensitivities, and return instructions.</span>
+          </button>
+          <button class="section-link" type="button" data-target="questions-section">
+            <strong>Contact For Questions</strong>
+            <span>Escalation contacts, approvals, and notes for ongoing communication.</span>
+          </button>
+        </div>
+
+        <form class="grid">
+          <div id="assignment-intake" class="form-block full is-hidden">
+            <div class="block-header">
+              <h3>Assignment Initial Intake</h3>
+              <p>Use this section for initial pricing, scheduling, signer contact, and file setup.</p>
+              <a class="submit-link" href="mailto:info@ynxnotary.com?subject=Seal%20and%20Stamp%20Notary%20-%20Assignment%20Initial%20Intake">
+                Submit to info@ynxnotary.com
+              </a>
+            </div>
+          </div>
+
+          <div class="section section-assignment is-hidden">
+            <h3>1. Company Information</h3>
+            <div class="field"><label class="label" for="company-name">Company Name <span class="required-mark">*</span></label><input id="company-name" type="text" /></div>
+            <div class="field"><label class="label" for="contact-person">Contact Person <span class="required-mark">*</span></label><input id="contact-person" type="text" /></div>
+            <div class="field"><label class="label" for="department">Title / Department <span class="required-mark">*</span></label><input id="department" type="text" /></div>
+            <div class="field"><label class="label" for="company-email">Email <span class="required-mark">*</span></label><input id="company-email" type="email" /></div>
+            <div class="field"><label class="label" for="direct-phone">Direct Phone <span class="required-mark">*</span></label><input id="direct-phone" type="text" /></div>
+            <div class="field"><label class="label" for="after-hours">After-Hours Contact</label><input id="after-hours" type="text" /></div>
+          </div>
+
+          <div class="section section-assignment is-hidden">
+            <h3>2. Order Details</h3>
+            <div class="field"><label class="label" for="order-ref">Order / Reference No.</label><input id="order-ref" type="text" /></div>
+            <div class="field"><label class="label" for="loan-file">Loan / File Number</label><input id="loan-file" type="text" /></div>
+            <div class="field"><label class="label" for="signing-type">Type of Signing <span class="required-mark">*</span></label><input id="signing-type" type="text" /></div>
+            <div class="field"><label class="label" for="signing-datetime">Signing Date / Time <span class="required-mark">*</span></label><input id="signing-datetime" type="text" /></div>
+            <div class="field"><label class="label" for="signers">Signer Name(s)</label><input id="signers" type="text" /></div>
+            <div class="field"><label class="label" for="property-address">Property / Signing Address</label><textarea id="property-address" class="textarea-sm"></textarea></div>
+          </div>
+
+          <div class="section section-assignment is-hidden">
+            <h3>3. Document Delivery</h3>
+            <div class="field compact"><label class="label" for="docs-sent-by">Docs Sent By</label><input id="docs-sent-by" type="text" /></div>
+            <div class="field compact"><label class="label" for="delivery-time">Delivery Time</label><input id="delivery-time" type="text" /></div>
+            <div class="field compact"><label class="label" for="print-size">Print Size</label><input id="print-size" type="text" /></div>
+            <div class="field compact">
+              <label class="label">Single / Double-Sided</label>
+              <div class="checks">
+                <label><input type="checkbox" /> Single</label>
+                <label><input type="checkbox" /> Double</label>
+                <label><input type="checkbox" /> Neither / Other</label>
+              </div>
+            </div>
+            <div class="field compact">
+              <label class="label">Scanbacks Required</label>
+              <div class="checks">
+                <label><input type="checkbox" /> Yes</label>
+                <label><input type="checkbox" /> No</label>
+              </div>
+            </div>
+            <div class="field compact"><label class="label" for="scanback-deadline">Scanback Deadline</label><input id="scanback-deadline" type="text" /></div>
+            <div class="inline-note">Special print instructions:</div>
+            <textarea class="textarea-sm"></textarea>
+          </div>
+
+          <div class="section section-assignment is-hidden">
+            <h3>4. Signer Contact Protocol</h3>
+            <div class="field compact">
+              <label class="label">May NSA contact signer directly?</label>
+              <div class="checks">
+                <label><input type="checkbox" /> Yes</label>
+                <label><input type="checkbox" /> No</label>
+              </div>
+            </div>
+            <div class="field compact"><label class="label" for="signer-number">Signer Number</label><input id="signer-number" type="text" /></div>
+            <div class="field compact">
+              <label class="label" for="confirm-time">Preferred confirmation timing</label>
+              <div class="stack">
+                <select id="confirm-time">
+                  <option value=""></option>
+                  <option>ASAP</option>
+                  <option>Same day</option>
+                  <option>Day before signing</option>
+                  <option>Morning of signing</option>
+                  <option>Other</option>
+                </select>
+                <input type="text" placeholder="If other, specify" />
+              </div>
+            </div>
+            <div class="field compact"><label class="label" for="reschedule-procedure">Reschedule procedure</label><input id="reschedule-procedure" type="text" /></div>
+            <div class="inline-note">Special contact instructions:</div>
+            <textarea class="textarea-sm"></textarea>
+          </div>
+
+          <div class="section section-assignment is-hidden">
+            <h3>5. ID / Witness Requirements</h3>
+            <div class="field compact">
+              <label class="label" for="id-requirements">Acceptable ID Requirements</label>
+              <div class="stack">
+                <select id="id-requirements">
+                  <option value=""></option>
+                  <option>Government-issued photo ID</option>
+                  <option>Current ID only</option>
+                  <option>All of the above standard forms</option>
+                  <option>Listed in file instructions</option>
+                  <option>Other</option>
+                </select>
+                <input type="text" placeholder="If other, specify" />
+              </div>
+            </div>
+            <div class="field compact">
+              <label class="label" for="witness-required">Witness Required</label>
+              <select id="witness-required">
+                <option value=""></option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+            <div class="field compact"><label class="label" for="witness-provider">Witness Name / Provider</label><input id="witness-provider" type="text" /></div>
+            <div class="inline-note">Special state-specific requirements:</div>
+            <textarea class="textarea-sm"></textarea>
+          </div>
+
+          <div class="section section-assignment is-hidden">
+            <h3>6. Signing Instructions</h3>
+            <div class="field compact">
+              <label class="label" for="ink-color">Ink Color Required</label>
+              <div class="stack">
+                <select id="ink-color">
+                  <option value=""></option>
+                  <option>Black</option>
+                  <option>Blue</option>
+                  <option>Other</option>
+                </select>
+                <input type="text" placeholder="If other, specify" />
+              </div>
+            </div>
+            <div class="field compact">
+              <label class="label" for="loose-cert">Loose Certificate Allowed</label>
+              <select id="loose-cert">
+                <option value=""></option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+            <div class="inline-note">Pages needing special attention:</div>
+            <textarea class="textarea-sm"></textarea>
+            <div class="inline-note">Special notarization / package instructions:</div>
+            <textarea class="textarea-sm"></textarea>
+          </div>
+
+          <div class="section full section-assignment is-hidden">
+            <h3>7. Correction Policy</h3>
+            <div class="field">
+              <label class="label" for="corrections-allowed">If signer notices incorrect personal information, may corrections be made at signing?</label>
+              <div class="stack">
+                <select id="corrections-allowed">
+                  <option value=""></option>
+                  <option>Yes</option>
+                  <option>No</option>
+                  <option>Other</option>
+                </select>
+                <input type="text" placeholder="If other, specify" />
+              </div>
+            </div>
+            <div class="field">
+              <label class="label" for="correction-types">What types of corrections are allowed?</label>
+              <div class="stack">
+                <select id="correction-types">
+                  <option value=""></option>
+                  <option>Clerical only</option>
+                  <option>Personal information only</option>
+                  <option>Contact information only</option>
+                  <option>As specifically approved</option>
+                  <option>Other</option>
+                </select>
+                <textarea class="textarea-sm" placeholder="Notes / other"></textarea>
+              </div>
+            </div>
+            <div class="field"><label class="label" for="correction-method">How should corrections be made?</label><textarea id="correction-method" class="textarea-sm"></textarea></div>
+            <div class="field">
+              <label class="label" for="initials-required">Are initials required next to corrections?</label>
+              <div class="stack">
+                <select id="initials-required">
+                  <option value=""></option>
+                  <option>Yes</option>
+                  <option>No</option>
+                  <option>Other</option>
+                </select>
+                <input type="text" placeholder="If other, specify" />
+              </div>
+            </div>
+            <div class="field">
+              <label class="label" for="approval-required">Must approval be obtained before any correction?</label>
+              <div class="stack">
+                <select id="approval-required">
+                  <option value=""></option>
+                  <option>Yes</option>
+                  <option>No</option>
+                  <option>Other</option>
+                </select>
+                <input type="text" placeholder="If other, specify" />
+              </div>
+            </div>
+            <div class="field"><label class="label" for="approval-source">Who gives approval?</label><input id="approval-source" type="text" /></div>
+            <div class="field"><label class="label" for="approval-primary">Approval Contact Primary</label><input id="approval-primary" type="text" /></div>
+            <div class="field"><label class="label" for="approval-secondary">Approval Contact Secondary</label><input id="approval-secondary" type="text" /></div>
+          </div>
+
+          <div id="contract-section" class="form-block full is-hidden">
+            <div class="block-header">
+              <h3>Contract</h3>
+              <p>Use this section for delivery expectations, payment terms, shipping, and package handling.</p>
+              <a class="submit-link" href="mailto:info@ynxnotary.com?subject=Seal%20and%20Stamp%20Notary%20-%20Contract%20Details">
+                Submit to info@ynxnotary.com
+              </a>
+            </div>
+          </div>
+
+          <div class="section section-contract is-hidden">
+            <h3>8. Funding / Closing Sensitivities</h3>
+            <div class="field compact"><label class="label" for="same-day-drop">Same-Day Drop Required</label><input id="same-day-drop" type="text" /></div>
+            <div class="field compact"><label class="label" for="shipping-method">Carrier / Shipping Method</label><input id="shipping-method" type="text" /></div>
+            <div class="field compact"><label class="label" for="drop-deadline">Drop Deadline</label><input id="drop-deadline" type="text" /></div>
+            <div class="inline-note">Do not proceed if:</div>
+            <textarea class="textarea-sm"></textarea>
+            <div class="inline-note" style="margin-top: 14px;">
+              Travel policy: Mobile service includes a 5-mile radius. Appointments beyond that
+              radius may require additional travel fees or may be better suited for remote online
+              notarization when permitted by the document type and signer requirements.
+            </div>
+            <div class="inline-note" style="margin-top: 10px;">
+              RON / document eligibility: Remote online notarization is preferred for eligible
+              documents. Some files, including certain HELOC and lender-specific packages, may
+              still require in-person signing depending on lender, title, or state requirements.
+            </div>
+            <div class="inline-note" style="margin-top: 10px;">
+              Please confirm whether this assignment is authorized for RON and note any lender,
+              title, investor, or document-specific restrictions, including corrections, witness
+              requirements, scanbacks, or in-person closing requirements.
+            </div>
+          </div>
+
+          <div class="section section-contract is-hidden">
+            <h3>9. Return Instructions</h3>
+            <div class="field compact">
+              <label class="label" for="label-provided">Shipping Label Provided</label>
+              <select id="label-provided">
+                <option value=""></option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+            <div class="field compact"><label class="label" for="tracking-submission">Tracking Submission</label><input id="tracking-submission" type="text" /></div>
+            <div class="inline-note">Package return instructions:</div>
+            <textarea class="textarea-sm"></textarea>
+          </div>
+
+          <div class="section section-contract is-hidden">
+            <h3>10. Payment Terms</h3>
+            <div class="field compact"><label class="label" for="agreed-fee">Agreed Fee</label><input id="agreed-fee" type="text" /></div>
+            <div class="field compact"><label class="label" for="print-fee">Print Fee</label><input id="print-fee" type="text" /></div>
+            <div class="field compact"><label class="label" for="scanback-fee">Scanback Fee</label><input id="scanback-fee" type="text" /></div>
+            <div class="field compact"><label class="label" for="travel-fee">Travel Fee</label><input id="travel-fee" type="text" /></div>
+            <div class="field compact"><label class="label" for="trip-fee">Trip / Cancellation Fee</label><input id="trip-fee" type="text" /></div>
+            <div class="field compact"><label class="label" for="payment-method">Payment Timeline / Method</label><input id="payment-method" type="text" /></div>
+          </div>
+
+          <div id="questions-section" class="form-block full is-hidden">
+            <div class="block-header">
+              <h3>Contact For Questions</h3>
+              <p>Use this section for escalation contacts, approval communication, and file-specific notes.</p>
+              <a class="submit-link" href="mailto:info@ynxnotary.com?subject=Seal%20and%20Stamp%20Notary%20-%20Questions%20or%20Follow-Up">
+                Submit to info@ynxnotary.com
+              </a>
+            </div>
+          </div>
+
+          <div class="section section-questions is-hidden">
+            <h3>11. Escalation Contacts</h3>
+            <div class="field compact"><label class="label" for="primary-contact">Primary Contact</label><input id="primary-contact" type="text" /></div>
+            <div class="field compact"><label class="label" for="primary-phone">Primary Phone</label><input id="primary-phone" type="text" /></div>
+            <div class="field compact"><label class="label" for="backup-contact">Backup Contact</label><input id="backup-contact" type="text" /></div>
+            <div class="field compact"><label class="label" for="backup-phone">Backup Phone</label><input id="backup-phone" type="text" /></div>
+            <div class="field compact"><label class="label" for="doc-contact">Document Questions Contact</label><input id="doc-contact" type="text" /></div>
+            <div class="field compact"><label class="label" for="doc-phone">Document Questions Phone</label><input id="doc-phone" type="text" /></div>
+          </div>
+
+          <div class="section section-questions is-hidden">
+            <h3>12. Special Notes</h3>
+            <textarea class="textarea-lg"></textarea>
+          </div>
+        </form>
+
+        <div class="footer-note">
+          <span>Seal and Stamp Notary | Lender Intake Form</span>
+          <span>Prepared for lender, title, and escrow assignment intake</span>
+        </div>
+      </main>
+    </div>
+    <script>
+      const sectionButtons = document.querySelectorAll('[data-target]');
+      const groups = {
+        'assignment-intake': ['#assignment-intake', '.section-assignment'],
+        'contract-section': ['#contract-section', '.section-contract'],
+        'questions-section': ['#questions-section', '.section-questions'],
+      };
+
+      function showSection(target) {
+        Object.values(groups).forEach((selectors) => {
+          selectors.forEach((selector) => {
+            document.querySelectorAll(selector).forEach((el) => el.classList.add('is-hidden'));
+          });
+        });
+
+        groups[target].forEach((selector) => {
+          document.querySelectorAll(selector).forEach((el) => el.classList.remove('is-hidden'));
+        });
+      }
+
+      sectionButtons.forEach((button) => {
+        button.addEventListener('click', () => showSection(button.dataset.target));
+      });
+    </script>
+  </body>
+</html>

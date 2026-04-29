@@ -359,7 +359,11 @@ function Landing({ onNavigate }: LandingProps) {
           onMouseEnter={() => setHoveredBusiness('notary')}
           onMouseLeave={() => setHoveredBusiness(null)}
         >
-          <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('home')}>
+          <button
+            className="nav-hover-button"
+            style={styles.navButton}
+            onClick={() => window.location.assign('https://www.ynxnotary.com')}
+          >
             Notary
           </button>
           {hoveredBusiness === 'notary' && (

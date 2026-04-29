@@ -30,25 +30,24 @@ function SiteFooter({ compact = false, mode = 'default' }: SiteFooterProps) {
     email: {
       color: '#f0dfe5',
     },
+    text: {
+      color: '#f0dfe5',
+    },
   };
 
   return (
     <footer style={styles.footer}>
       <span style={styles.year}>
         <span style={{ fontSize: '0.7em', verticalAlign: 'super' }}>@</span>2001
-      </span>{' '}
-      {mode === 'notary' ? (
-        <>
-          | A signature of Yen An LLC | YNX Notary | All Rights Reserved |{' '}
-          <span style={styles.email}>ynxnotary.com</span> |{' '}
-          <span style={styles.year}>(972) 900-7147</span>
-        </>
-      ) : (
-        <>
-          | Yen An LLC | All Rights Reserved | <span style={styles.email}>info@theyenan.com</span>{' '}
-          | <span style={styles.year}>(972) 900-7147</span>
-        </>
-      )}
+      </span>
+      <br />
+      <span style={styles.text}>Yen An LLC</span>
+      <br />
+      <span style={styles.text}>All Rights Reserved</span>
+      <br />
+      <span style={styles.email}>info@theyenan.com</span>
+      <br />
+      <span style={styles.year}>(972) 900-7147</span>
     </footer>
   );
 }
