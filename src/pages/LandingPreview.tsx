@@ -241,12 +241,14 @@ function Landing({ onNavigate }: LandingProps) {
           50% { opacity: 0.12; transform: rotate(5deg); }
         }
         @keyframes wiperLeft {
-          0% { transform: rotate(-52deg); opacity: 0.15; }
-          100% { transform: rotate(52deg); opacity: 0.26; }
+          0% { transform: translateX(-50%) rotate(-34deg); opacity: 0.14; }
+          50% { transform: translateX(-50%) rotate(-8deg); opacity: 0.24; }
+          100% { transform: translateX(-50%) rotate(20deg); opacity: 0.2; }
         }
         @keyframes wiperRight {
-          0% { transform: rotate(52deg); opacity: 0.15; }
-          100% { transform: rotate(-52deg); opacity: 0.26; }
+          0% { transform: translateX(-50%) rotate(18deg); opacity: 0.14; }
+          50% { transform: translateX(-50%) rotate(-8deg); opacity: 0.24; }
+          100% { transform: translateX(-50%) rotate(-34deg); opacity: 0.2; }
         }
         @keyframes suspendedFloat {
           0%, 100% { transform: translateY(0); }
@@ -794,8 +796,8 @@ function Landing({ onNavigate }: LandingProps) {
                 background: 'transparent',
                 border: 'none',
                 color: gold,
-                fontSize: '6px',
-                letterSpacing: '0.6px',
+                fontSize: '4.5px',
+                letterSpacing: '0.5px',
                 textTransform: 'uppercase',
                 cursor: 'pointer',
                 textShadow: '0 0 10px rgba(0,0,0,0.8)',
@@ -821,15 +823,15 @@ function Landing({ onNavigate }: LandingProps) {
               margin: '6px 0 0',
               cursor: 'pointer',
               display: 'grid',
-              gap: '3px',
+              gap: '2px',
               justifyItems: 'center',
               width: '100%',
             }}
           >
             <span
               style={{
-                fontSize: '6px',
-                letterSpacing: '0.4px',
+                fontSize: '4.2px',
+                letterSpacing: '0.35px',
                 textTransform: 'uppercase',
                 color: '#7c7377',
                 whiteSpace: 'nowrap',
@@ -839,8 +841,8 @@ function Landing({ onNavigate }: LandingProps) {
             </span>
             <span
               style={{
-                fontSize: '4.5px',
-                letterSpacing: '0.5px',
+                fontSize: '3.8px',
+                letterSpacing: '0.42px',
                 textTransform: 'uppercase',
                 color: '#9a8f94',
                 whiteSpace: 'nowrap',
