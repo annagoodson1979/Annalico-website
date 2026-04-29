@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import type { Page } from '../types';
 import SiteFooter from '../components/SiteFooter';
 const heroImage = '/images/hero.jpg';
+const spotlightLogo = '/images/logo.jpg';
 interface LandingProps {
   onNavigate: (page: Page) => void;
 }
@@ -14,10 +15,6 @@ function Landing({ onNavigate }: LandingProps) {
   const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
   const gold = '#f3efec';
   const bulbYellow = '#d4af37';
-  const spotlightPartner = {
-    name: 'TGB Global',
-    tagline: 'Global logistics with local care.',
-  };
   const dropdownItemStyle = (delay: number): React.CSSProperties => ({
     ...styles.dropdownItem,
     opacity: 0,
@@ -591,203 +588,255 @@ function Landing({ onNavigate }: LandingProps) {
         <div
           style={{
             position: 'fixed' as const,
-            right: '130px',
-            bottom: '82px',
-            zIndex: 24,
-            width: '220px',
-            opacity: 0.72,
+            right: '112px',
+            bottom: '88px',
+            zIndex: 50,
+            width: '180px',
             textAlign: 'center' as const,
           }}
         >
-          <div style={{ position: 'relative', width: '220px', height: '206px' }}>
+          <div style={{ position: 'relative', width: '180px', height: '176px' }}>
             <div
               style={{
                 position: 'absolute' as const,
-                left: '36px',
+                left: '30px',
                 bottom: '0',
                 display: 'flex',
                 flexDirection: 'column' as const,
                 alignItems: 'center',
-                animation: 'none',
+                animation: 'lampSway 3s ease-in-out infinite',
                 transformOrigin: 'bottom center',
                 zIndex: 2,
               }}
             >
               <div
                 style={{
-                  width: '20px',
-                  height: '12px',
+                  width: '16px',
+                  height: '10px',
                   background: `radial-gradient(ellipse at center, ${bulbYellow} 0%, #c9a548 100%)`,
                   borderRadius: '50%',
                   boxShadow: 'none',
                   position: 'relative',
                   zIndex: 3,
-                  transform: 'translateX(44px)',
                 }}
-                >
-                  <div
-                    style={{
-                      position: 'absolute',
-                      left: '50%',
-                      bottom: '100%',
-                      transform: 'translateX(-50%)',
-                      width: '186px',
-                    height: '170px',
+              >
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: '44%',
+                    bottom: '100%',
+                    transform: 'translateX(-50%)',
+                    width: '138px',
+                    height: '130px',
                     background:
-                      'linear-gradient(0deg, rgba(212, 175, 55, 0.5) 0%, rgba(212, 175, 55, 0.34) 36%, rgba(212, 175, 55, 0.12) 70%, transparent 100%)',
-                    clipPath: 'polygon(49% 100%, 51% 100%, 84% 0%, 16% 0%)',
+                      'linear-gradient(0deg, rgba(212, 175, 55, 0.48) 0%, rgba(212, 175, 55, 0.3) 38%, rgba(212, 175, 55, 0.12) 68%, transparent 100%)',
+                    clipPath: 'polygon(49% 100%, 51% 100%, 80% 0%, 20% 0%)',
                     transformOrigin: 'bottom center',
                     pointerEvents: 'none' as const,
                     animation: 'wiperLeft 17s ease-in-out infinite alternate',
-                    filter: 'blur(6px)',
-                    boxShadow: '0 0 30px rgba(212, 175, 55, 0.18)',
+                    filter: 'blur(5px)',
+                    boxShadow: '0 0 26px rgba(212, 175, 55, 0.16)',
                     zIndex: 1,
                   }}
                 ></div>
               </div>
-              <div style={{ width: '6px', height: '6px', background: '#333', zIndex: 4, transform: 'translateX(44px)' }}></div>
+              <div style={{ width: '6px', height: '6px', background: '#333', zIndex: 4 }}></div>
             </div>
 
             <div
               style={{
                 position: 'absolute' as const,
-                right: '36px',
+                right: '30px',
                 bottom: '0',
                 display: 'flex',
                 flexDirection: 'column' as const,
                 alignItems: 'center',
-                animation: 'none',
+                animation: 'lampSway 5s ease-in-out infinite 2.5s',
                 transformOrigin: 'bottom center',
                 zIndex: 2,
               }}
             >
               <div
                 style={{
-                  width: '20px',
-                  height: '12px',
+                  width: '16px',
+                  height: '10px',
                   background: `radial-gradient(ellipse at center, ${bulbYellow} 0%, #c9a548 100%)`,
                   borderRadius: '50%',
                   boxShadow: 'none',
                   position: 'relative',
                   zIndex: 3,
-                  transform: 'translateX(44px)',
                 }}
-                >
-                  <div
-                    style={{
-                      position: 'absolute',
-                      left: '50%',
-                      bottom: '100%',
-                      transform: 'translateX(-50%)',
-                      width: '186px',
-                    height: '170px',
+              >
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: '44%',
+                    bottom: '100%',
+                    transform: 'translateX(-50%)',
+                    width: '138px',
+                    height: '130px',
                     background:
-                      'linear-gradient(0deg, rgba(212, 175, 55, 0.5) 0%, rgba(212, 175, 55, 0.34) 36%, rgba(212, 175, 55, 0.12) 70%, transparent 100%)',
-                    clipPath: 'polygon(49% 100%, 51% 100%, 84% 0%, 16% 0%)',
+                      'linear-gradient(0deg, rgba(212, 175, 55, 0.48) 0%, rgba(212, 175, 55, 0.3) 38%, rgba(212, 175, 55, 0.12) 68%, transparent 100%)',
+                    clipPath: 'polygon(49% 100%, 51% 100%, 80% 0%, 20% 0%)',
                     transformOrigin: 'bottom center',
                     pointerEvents: 'none' as const,
                     animation: 'wiperRight 17s ease-in-out infinite alternate',
-                    filter: 'blur(6px)',
-                    boxShadow: '0 0 30px rgba(212, 175, 55, 0.18)',
+                    filter: 'blur(5px)',
+                    boxShadow: '0 0 26px rgba(212, 175, 55, 0.16)',
                     zIndex: 1,
                   }}
                 ></div>
               </div>
-              <div style={{ width: '6px', height: '6px', background: '#333', zIndex: 4, transform: 'translateX(44px)' }}></div>
+              <div style={{ width: '6px', height: '6px', background: '#333', zIndex: 4 }}></div>
             </div>
 
-          </div>
-        </div>
+            <div
+              style={{
+                position: 'absolute',
+                left: '50%',
+                top: '22px',
+                transform: 'translateX(-50%)',
+                textAlign: 'center',
+                zIndex: 10,
+              }}
+            >
+              <div
+                style={{
+                  width: '66px',
+                  height: '66px',
+                  borderRadius: '0',
+                  background: 'transparent',
+                  border: 'none',
+                  margin: '0 auto 8px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  boxShadow: 'none',
+                  overflow: 'hidden',
+                  position: 'relative',
+                }}
+              >
+                <img
+                  src={spotlightLogo}
+                  alt="YNX Notary logo"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    display: 'block',
+                    padding: 0,
+                    opacity: 1,
+                    filter: 'none',
+                    position: 'relative',
+                    zIndex: 2,
+                  }}
+                />
+              </div>
+            </div>
 
-        <div
-          style={{
-            position: 'fixed' as const,
-            left: '68%',
-            bottom: '94px',
-            zIndex: 25,
-            width: '120px',
-            textAlign: 'center' as const,
-            pointerEvents: 'auto' as const,
-            animation: 'suspendedFloat 6s ease-in-out infinite',
-            transform: 'translateX(-50%)',
-          }}
-        >
-          <div
-            style={{
-              margin: '0 auto 6px',
-              width: '22px',
-              height: '22px',
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '0.92rem',
-              color: '#d4af37',
-              filter: 'drop-shadow(0 0 6px rgba(212, 175, 55, 0.2))',
-            }}
-          >
-            🌐
-          </div>
-          <div
-            style={{
-              padding: '7px 8px 7px',
-              borderRadius: '12px',
-              border: '1px solid rgba(212, 175, 55, 0.22)',
-              background: 'rgba(12, 12, 12, 0.38)',
-              backdropFilter: 'blur(5px)',
-              boxShadow: '0 8px 18px rgba(0,0,0,0.24)',
-            }}
-          >
-            <p
+            <div
               style={{
-                margin: 0,
-                color: '#f3efec',
-                fontSize: '0.66rem',
-                letterSpacing: '0.45px',
-                fontWeight: 600,
-                lineHeight: 1.35,
-                textShadow: '0 0 10px rgba(0,0,0,0.85)',
+                position: 'absolute' as const,
+                left: '50%',
+                top: '92px',
+                transform: 'translateX(-50%)',
+                textAlign: 'center',
+                zIndex: 10,
               }}
             >
-              {spotlightPartner.name}
-            </p>
-            <p
+              <p
+                style={{
+                  fontSize: '0.4em',
+                  color: bulbYellow,
+                  margin: '0 0 4px',
+                  letterSpacing: '1.2px',
+                  fontWeight: 600,
+                  textShadow: '0 0 8px rgba(0,0,0,0.9)',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                YNX Notary
+              </p>
+              <p
+                style={{
+                  fontSize: '7px',
+                  color: '#9a8f94',
+                  margin: '0 0 3px',
+                  letterSpacing: '0.8px',
+                  textShadow: '0 0 8px rgba(0,0,0,0.9)',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Mobile Notary Services
+              </p>
+            </div>
+
+            <button
               style={{
-                margin: '4px 0 7px',
-                color: '#aaa296',
-                fontSize: '0.5rem',
-                letterSpacing: '0.28px',
-                lineHeight: 1.35,
-                textShadow: '0 0 10px rgba(0,0,0,0.85)',
+                position: 'absolute',
+                left: '50%',
+                bottom: '8px',
+                transform: 'translateX(-50%)',
+                padding: '2px 8px',
+                background: 'transparent',
+                border: 'none',
+                color: gold,
+                fontSize: '6px',
+                letterSpacing: '0.6px',
+                textTransform: 'uppercase',
+                cursor: 'pointer',
+                textShadow: '0 0 10px rgba(0,0,0,0.8)',
+                zIndex: 10,
+              }}
+              onClick={() =>
+                alert(
+                  'YNX Notary\nMobile Notary Services\nLicensed, Bonded & Insured\nServing: Dallas-Fort Worth',
+                )
+              }
+            >
+              View
+            </button>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => onNavigate('partnership-directory')}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              padding: 0,
+              margin: '6px 0 0',
+              cursor: 'pointer',
+              display: 'grid',
+              gap: '3px',
+              justifyItems: 'center',
+              width: '100%',
+            }}
+          >
+            <span
+              style={{
+                fontSize: '6px',
+                letterSpacing: '0.4px',
+                textTransform: 'uppercase',
+                color: '#7c7377',
+                whiteSpace: 'nowrap',
               }}
             >
-              {spotlightPartner.tagline}
-            </p>
-          </div>
+              This Week's Spotlight
+            </span>
+            <span
+              style={{
+                fontSize: '4.5px',
+                letterSpacing: '0.5px',
+                textTransform: 'uppercase',
+                color: '#9a8f94',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              Click for Directory
+            </span>
+          </button>
         </div>
-        <button
-          onClick={() => onNavigate('partnership-directory')}
-          style={{
-            position: 'fixed' as const,
-            left: '68%',
-            bottom: '66px',
-            zIndex: 26,
-            width: '220px',
-            border: 'none',
-            background: 'transparent',
-            color: '#9b9498',
-            padding: 0,
-            fontSize: '0.48rem',
-            letterSpacing: '1px',
-            textTransform: 'uppercase',
-            cursor: 'pointer',
-            textAlign: 'center' as const,
-            textShadow: '0 0 8px rgba(0,0,0,0.82)',
-            transform: 'translateX(-50%)',
-          }}
-        >
-          This Week&apos;s Spotlight
-        </button>
 
         <div style={{ position: 'relative', zIndex: 80, marginTop: 'auto' }}>
           <SiteFooter compact />
