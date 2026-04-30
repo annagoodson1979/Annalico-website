@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type { Page } from '../types';
 import SiteFooter from '../components/SiteFooter';
+import { getWeeklyFeaturedListing } from '../data/featuredListings';
 const heroImage = '/images/hero.jpg';
 const spotlightLogo = '/images/logo.jpg';
 interface LandingProps {
@@ -8,25 +9,16 @@ interface LandingProps {
 }
 
 function Landing({ onNavigate }: LandingProps) {
-  const [hoveredBusiness, setHoveredBusiness] = useState<
-    'notary' | 'salon' | 'partnership' | null
-  >(null);
-  const [showPartnershipForm, setShowPartnershipForm] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
+  const [hoveredBusiness, setHoveredBusiness] = useState<'yen' | null>(null);
   const gold = '#f3efec';
   const bulbYellow = '#d4af37';
+  const featuredListing = getWeeklyFeaturedListing();
   const dropdownItemStyle = (delay: number): React.CSSProperties => ({
     ...styles.dropdownItem,
     opacity: 0,
     animation: `dropdownLineReveal 0.32s ease forwards`,
     animationDelay: `${delay}s`,
   });
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert('Thank you for your partnership inquiry! We will get back to you soon.');
-    setShowPartnershipForm(false);
-    setFormData({ name: '', email: '', company: '', message: '' });
-  };
 
   const styles: { [key: string]: React.CSSProperties } = {
     container: {
@@ -366,93 +358,23 @@ function Landing({ onNavigate }: LandingProps) {
         <div style={styles.navDivider}></div>
         <div
           style={styles.navItem}
-          onMouseEnter={() => setHoveredBusiness('notary')}
+          onMouseEnter={() => setHoveredBusiness('yen')}
           onMouseLeave={() => setHoveredBusiness(null)}
         >
-          <button
-            className="nav-hover-button"
-            style={styles.navButton}
-            onClick={() => window.location.assign('https://www.ynxnotary.com')}
-          >
-            Notary
+          <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('landing')}>
+            Yen Circle
           </button>
-          {hoveredBusiness === 'notary' && (
-            <div style={{ ...styles.dropdown, minWidth: '150px', animation: 'carpetDrop 0.72s ease forwards' }}>
-              <button style={dropdownItemStyle(0.08)} onClick={() => onNavigate('home')}>
-                Website
-              </button>
-              <button style={dropdownItemStyle(0.14)} onClick={() => onNavigate('services')}>
-                Services
-              </button>
-              <button style={dropdownItemStyle(0.2)} onClick={() => onNavigate('services')}>
-                Prices
-              </button>
-              <button style={dropdownItemStyle(0.26)} onClick={() => onNavigate('documents')}>
-                Documents
-              </button>
-              <button style={dropdownItemStyle(0.32)} onClick={() => onNavigate('contact')}>
-                Contact
-              </button>
-              <button style={dropdownItemStyle(0.38)} onClick={() => onNavigate('contact')}>
-                Booking Request
-              </button>
-            </div>
-          )}
-        </div>
-        <div
-          style={styles.navItem}
-          onMouseEnter={() => setHoveredBusiness('salon')}
-          onMouseLeave={() => setHoveredBusiness(null)}
-        >
-          <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('salon')}>
-            Salon
-          </button>
-          {hoveredBusiness === 'salon' && (
-            <div style={{ ...styles.dropdown, minWidth: '150px', animation: 'carpetDrop 0.72s ease forwards' }}>
-              <button style={dropdownItemStyle(0.08)} onClick={() => onNavigate('salon')}>
-                Website
-              </button>
-              <button style={dropdownItemStyle(0.14)} onClick={() => onNavigate('salon-portal')}>
-                Client Portal
-              </button>
-              <button style={dropdownItemStyle(0.2)} onClick={() => onNavigate('salon-packages')}>
-                Packages
-              </button>
-              <button style={dropdownItemStyle(0.26)} onClick={() => onNavigate('contact')}>
-                Contact
-              </button>
-            </div>
-          )}
-        </div>
-        <button
-          className="nav-hover-button"
-          style={{ ...styles.navButton, color: '#f3efec', fontWeight: 500, textShadow: '0 0 10px rgba(243, 239, 236, 0.3)' }}
-          onClick={() => onNavigate('did-you-know')}
-        >
-          DID YOU KNOW?
-        </button>
-        <div
-          style={styles.navItem}
-          onMouseEnter={() => setHoveredBusiness('partnership')}
-          onMouseLeave={() => setHoveredBusiness(null)}
-        >
-          <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('contact')}>
-            Partnership
-          </button>
-          {hoveredBusiness === 'partnership' && (
+          {hoveredBusiness === 'yen' && (
             <div style={{ ...styles.dropdown, minWidth: '180px', animation: 'carpetDrop 0.72s ease forwards' }}>
-              <button style={dropdownItemStyle(0.08)} onClick={() => onNavigate('contact')}>
-                Preferred Partner Portal
+              <button style={dropdownItemStyle(0.08)} onClick={() => onNavigate('landing')}>
+                Yen Brand
               </button>
-              <button style={dropdownItemStyle(0.14)} onClick={() => onNavigate('contact')}>
-                Local Network Portal
+              <button style={dropdownItemStyle(0.14)} onClick={() => onNavigate('partnership-directory')}>
+                Featured Listings
               </button>
             </div>
           )}
         </div>
-        <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('about')}>
-          About Me
-        </button>
         <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('contact')}>
           Contact
         </button>
@@ -602,6 +524,56 @@ function Landing({ onNavigate }: LandingProps) {
           style={{
             position: 'fixed' as const,
             right: '112px',
+            bottom: '232px',
+            zIndex: 50,
+            width: '190px',
+            textAlign: 'center' as const,
+            display: 'grid',
+            gap: '8px',
+            justifyItems: 'center',
+          }}
+        >
+          <p
+            style={{
+              margin: 0,
+              color: '#f3efec',
+              fontSize: '0.46rem',
+              letterSpacing: '0.65px',
+              textTransform: 'uppercase',
+            }}
+          >
+            Yen Brand
+          </p>
+          <a
+            href="https://www.ynxnotary.com"
+            style={{
+              color: bulbYellow,
+              fontSize: '0.4rem',
+              letterSpacing: '0.52px',
+              textTransform: 'uppercase',
+              textDecoration: 'none',
+            }}
+          >
+            YNX Notary
+          </a>
+          <a
+            href="https://agsalonstudio.glossgenius.com"
+            style={{
+              color: '#c7b8bd',
+              fontSize: '0.4rem',
+              letterSpacing: '0.52px',
+              textTransform: 'uppercase',
+              textDecoration: 'none',
+            }}
+          >
+            AG Salon Studio
+          </a>
+        </div>
+
+        <div
+          style={{
+            position: 'fixed' as const,
+            right: '112px',
             bottom: '88px',
             zIndex: 50,
             width: '180px',
@@ -636,17 +608,17 @@ function Landing({ onNavigate }: LandingProps) {
                 <div
                   style={{
                     position: 'absolute',
-                    left: 'calc(50% - 78px)',
+                    left: 'calc(50% - 60px)',
                     bottom: '100%',
                     transform: 'translateX(-50%)',
-                    width: '160px',
-                    height: '290px',
+                    width: '132px',
+                    height: '142px',
                     background:
                       'linear-gradient(0deg, rgba(212, 175, 55, 0.52) 0%, rgba(212, 175, 55, 0.26) 38%, rgba(212, 175, 55, 0.1) 72%, transparent 100%)',
                     clipPath: 'polygon(49% 100%, 51% 100%, 100% 0%, 0% 0%)',
                     transformOrigin: 'bottom center',
                     pointerEvents: 'none' as const,
-                    animation: 'wiperLeft 2s ease-in-out infinite alternate',
+                    animation: 'wiperLeft 4.2s ease-in-out infinite alternate',
                     filter: 'blur(4px)',
                     boxShadow: '0 0 55px rgba(212, 175, 55, 0.24)',
                     zIndex: 1,
@@ -683,17 +655,17 @@ function Landing({ onNavigate }: LandingProps) {
                 <div
                   style={{
                     position: 'absolute',
-                    left: 'calc(50% - 78px)',
+                    left: 'calc(50% - 60px)',
                     bottom: '100%',
                     transform: 'translateX(-50%)',
-                    width: '160px',
-                    height: '290px',
+                    width: '132px',
+                    height: '142px',
                     background:
                       'linear-gradient(0deg, rgba(212, 175, 55, 0.52) 0%, rgba(212, 175, 55, 0.26) 38%, rgba(212, 175, 55, 0.1) 72%, transparent 100%)',
                     clipPath: 'polygon(49% 100%, 51% 100%, 100% 0%, 0% 0%)',
                     transformOrigin: 'bottom center',
                     pointerEvents: 'none' as const,
-                    animation: 'wiperRight 2s ease-in-out infinite alternate',
+                    animation: 'wiperRight 4.2s ease-in-out infinite alternate',
                     filter: 'blur(4px)',
                     boxShadow: '0 0 55px rgba(212, 175, 55, 0.24)',
                     zIndex: 1,
@@ -730,8 +702,8 @@ function Landing({ onNavigate }: LandingProps) {
                 }}
               >
                 <img
-                  src={spotlightLogo}
-                  alt="YNX Notary logo"
+                  src={featuredListing.logo || spotlightLogo}
+                  alt={`${featuredListing.name} logo`}
                   style={{
                     width: '100%',
                     height: '100%',
@@ -768,7 +740,7 @@ function Landing({ onNavigate }: LandingProps) {
                   whiteSpace: 'nowrap',
                 }}
               >
-                YNX Notary
+                {featuredListing.name}
               </p>
               <p
                 style={{
@@ -780,7 +752,7 @@ function Landing({ onNavigate }: LandingProps) {
                   whiteSpace: 'nowrap',
                 }}
               >
-                Mobile Notary Services
+                {featuredListing.subtitle}
               </p>
             </div>
 
@@ -801,13 +773,9 @@ function Landing({ onNavigate }: LandingProps) {
                 textShadow: '0 0 10px rgba(0,0,0,0.8)',
                 zIndex: 10,
               }}
-              onClick={() =>
-                alert(
-                  'YNX Notary\nMobile Notary Services\nLicensed, Bonded & Insured\nServing: Dallas-Fort Worth',
-                )
-              }
+              onClick={() => onNavigate('partnership-directory')}
             >
-              View
+              {featuredListing.ctaLabel ?? 'View Listing'}
             </button>
           </div>
 
@@ -846,7 +814,7 @@ function Landing({ onNavigate }: LandingProps) {
                 whiteSpace: 'nowrap',
               }}
             >
-              Click for Directory
+              Featured Listings
             </span>
           </button>
         </div>
@@ -855,210 +823,6 @@ function Landing({ onNavigate }: LandingProps) {
           <SiteFooter compact />
         </div>
       </main>
-
-      {showPartnershipForm && (
-        <div
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'rgba(0,0,0,0.9)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 1000,
-          }}
-          onClick={() => setShowPartnershipForm(false)}
-        >
-          <div
-            style={{
-              background: '#f6f3f1',
-              border: `1px solid ${gold}`,
-              padding: '40px',
-              maxWidth: '500px',
-              width: '90%',
-              maxHeight: '90vh',
-              overflow: 'auto',
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h2
-              style={{
-                color: '#7f7478',
-                fontSize: '1.5em',
-                fontWeight: 300,
-                marginBottom: '20px',
-                textAlign: 'center',
-              }}
-            >
-              Partnership Inquiry
-            </h2>
-            <form onSubmit={handleSubmit}>
-              <div style={{ marginBottom: '20px' }}>
-                <label
-                  style={{
-                    display: 'block',
-                    color: '#888',
-                    fontSize: '0.8em',
-                    marginBottom: '8px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '1px',
-                  }}
-                >
-                  Name
-                </label>
-                <input
-                  type="text"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  style={{
-                    width: '100%',
-                    padding: '12px',
-                    background: '#fff',
-                    border: '1px solid rgba(17, 17, 17, 0.14)',
-                    color: '#111',
-                    fontFamily: 'inherit',
-                    fontSize: '14px',
-                    outline: 'none',
-                  }}
-                  required
-                />
-              </div>
-              <div style={{ marginBottom: '20px' }}>
-                <label
-                  style={{
-                    display: 'block',
-                    color: '#888',
-                    fontSize: '0.8em',
-                    marginBottom: '8px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '1px',
-                  }}
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  style={{
-                    width: '100%',
-                    padding: '12px',
-                    background: '#111',
-                    border: '1px solid #333',
-                    color: '#fff',
-                    fontFamily: 'inherit',
-                    fontSize: '14px',
-                    outline: 'none',
-                  }}
-                  required
-                />
-              </div>
-              <div style={{ marginBottom: '20px' }}>
-                <label
-                  style={{
-                    display: 'block',
-                    color: '#888',
-                    fontSize: '0.8em',
-                    marginBottom: '8px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '1px',
-                  }}
-                >
-                  Company
-                </label>
-                <input
-                  type="text"
-                  value={formData.company}
-                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                  style={{
-                    width: '100%',
-                    padding: '12px',
-                    background: '#111',
-                    border: '1px solid #333',
-                    color: '#fff',
-                    fontFamily: 'inherit',
-                    fontSize: '14px',
-                    outline: 'none',
-                  }}
-                />
-              </div>
-              <div style={{ marginBottom: '20px' }}>
-                <label
-                  style={{
-                    display: 'block',
-                    color: '#888',
-                    fontSize: '0.8em',
-                    marginBottom: '8px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '1px',
-                  }}
-                >
-                  Message
-                </label>
-                <textarea
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  style={{
-                    width: '100%',
-                    padding: '12px',
-                    background: '#111',
-                    border: '1px solid #333',
-                    color: '#fff',
-                    fontFamily: 'inherit',
-                    fontSize: '14px',
-                    minHeight: '120px',
-                    marginBottom: '20px',
-                    outline: 'none',
-                    resize: 'vertical',
-                  }}
-                  required
-                />
-              </div>
-              <div style={{ display: 'flex', gap: '10px' }}>
-                <button
-                  type="submit"
-                  style={{
-                    flex: 1,
-                    padding: '12px',
-                    background: gold,
-                    color: '#000',
-                    border: 'none',
-                    fontFamily: 'inherit',
-                    fontSize: '12px',
-                    letterSpacing: '2px',
-                    textTransform: 'uppercase',
-                    cursor: 'pointer',
-                    fontWeight: 500,
-                  }}
-                >
-                  Send
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setShowPartnershipForm(false)}
-                  style={{
-                    flex: 1,
-                    padding: '12px',
-                    background: 'transparent',
-                    color: '#888',
-                    border: '1px solid #333',
-                    fontFamily: 'inherit',
-                    fontSize: '12px',
-                    letterSpacing: '2px',
-                    textTransform: 'uppercase',
-                    cursor: 'pointer',
-                  }}
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

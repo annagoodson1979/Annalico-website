@@ -47,7 +47,7 @@ const PACKAGES = [
 
 function SalonPackages({ onNavigate }: SalonPackagesProps) {
   const [selectedPackage, setSelectedPackage] = useState<number | null>(null);
-  const [hoveredBusiness, setHoveredBusiness] = useState<'primary' | 'partnership' | null>(null);
+  const [hoveredBusiness, setHoveredBusiness] = useState<'primary' | 'yen' | null>(null);
   const gold = '#d4af37';
   const dropdownItemStyle = (delay: number): React.CSSProperties => ({
     ...styles.dropdownItem,
@@ -395,12 +395,12 @@ function SalonPackages({ onNavigate }: SalonPackagesProps) {
         >
           DID YOU KNOW?
         </button>
-        <div style={styles.navItem} onMouseEnter={() => setHoveredBusiness('partnership')} onMouseLeave={() => setHoveredBusiness(null)}>
-          <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('contact')}>Partnership</button>
-          {hoveredBusiness === 'partnership' && (
+        <div style={styles.navItem} onMouseEnter={() => setHoveredBusiness('yen')} onMouseLeave={() => setHoveredBusiness(null)}>
+          <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('landing')}>Yen Circle</button>
+          {hoveredBusiness === 'yen' && (
             <div style={{ ...styles.dropdown, minWidth: '180px', animation: 'carpetDrop 0.72s ease forwards' }}>
-              <button style={dropdownItemStyle(0.08)} onClick={() => onNavigate('contact')}>Preferred Partner Portal</button>
-              <button style={dropdownItemStyle(0.14)} onClick={() => onNavigate('contact')}>Local Network Portal</button>
+              <button style={dropdownItemStyle(0.08)} onClick={() => onNavigate('landing')}>Yen Brand</button>
+              <button style={dropdownItemStyle(0.14)} onClick={() => onNavigate('partnership-directory')}>Featured Listings</button>
             </div>
           )}
         </div>

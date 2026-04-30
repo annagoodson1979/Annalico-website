@@ -28,7 +28,7 @@ function PageFrame({
 }: PageFrameProps) {
   const gold = '#d4af37';
   const logoAccent = '#f3efec';
-  const [hoveredBusiness, setHoveredBusiness] = useState<'primary' | 'partnership' | null>(null);
+  const [hoveredBusiness, setHoveredBusiness] = useState<'primary' | 'yen' | null>(null);
   const primaryLabel = business === 'salon' ? 'Salon' : 'Notary';
   const primaryTarget: Page = business === 'salon' ? 'salon' : 'home';
   const primaryDropdownItems =
@@ -298,19 +298,19 @@ function PageFrame({
         </button>
         <div
           style={styles.navItem}
-          onMouseEnter={() => setHoveredBusiness('partnership')}
+          onMouseEnter={() => setHoveredBusiness('yen')}
           onMouseLeave={() => setHoveredBusiness(null)}
         >
-          <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('contact')}>
-            Partnership
+          <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('landing')}>
+            Yen Circle
           </button>
-          {hoveredBusiness === 'partnership' && (
+          {hoveredBusiness === 'yen' && (
             <div style={{ ...styles.dropdown, minWidth: '180px', animation: 'carpetDrop 0.72s ease forwards' }}>
-              <button style={dropdownItemStyle(0.08)} onClick={() => onNavigate('contact')}>
-                Preferred Partner Portal
+              <button style={dropdownItemStyle(0.08)} onClick={() => onNavigate('landing')}>
+                Yen Brand
               </button>
-              <button style={dropdownItemStyle(0.14)} onClick={() => onNavigate('contact')}>
-                Local Network Portal
+              <button style={dropdownItemStyle(0.14)} onClick={() => onNavigate('partnership-directory')}>
+                Featured Listings
               </button>
             </div>
           )}
