@@ -11,6 +11,8 @@ const publicImagesDir = join(repoRoot, 'public', 'images');
 const publicDir = join(repoRoot, 'public');
 const rootAssetsDir = join(repoRoot, 'assets');
 const rootImagesDir = join(repoRoot, 'images');
+const distDuyenExperienceDir = join(distDir, 'duyen-an-experience');
+const rootDuyenExperienceDir = join(repoRoot, 'duyen-an-experience');
 
 function ensureDir(path) {
   if (!existsSync(path)) {
@@ -38,6 +40,10 @@ cpSync(distAssetsDir, rootAssetsDir, { recursive: true });
 
 emptyDir(rootImagesDir);
 cpSync(publicImagesDir, rootImagesDir, { recursive: true });
+
+if (existsSync(distDuyenExperienceDir)) {
+  cpSync(distDuyenExperienceDir, rootDuyenExperienceDir, { recursive: true });
+}
 
 for (const name of readdirSync(publicDir)) {
   if (name !== 'images') {

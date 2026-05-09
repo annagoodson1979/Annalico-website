@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Rosella";
+  src: url("/fonts/Rosella-Regular.woff2") format("woff2");
+}
+
+.font-rosella {
+  font-family: "Rosella", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: black;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+video {
+  max-width: none;
+}
+
+.cinematic-glow {
+  filter: drop-shadow(0 0 40px rgba(255, 230, 180, 0.18));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+
+  video {
+    display: none;
+  }
+}

@@ -6,3 +6,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const repoRoot = join(__dirname, '..');
 
 copyFileSync(join(repoRoot, 'index.source.html'), join(repoRoot, 'index.html'));
+copyFileSync(
+  join(repoRoot, 'duyen-an-experience', 'index.source.html'),
+  join(repoRoot, 'duyen-an-experience', 'index.html')
+);
