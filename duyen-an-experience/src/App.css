@@ -480,8 +480,7 @@ button:hover ~ .luxury-cursor {
   overflow: hidden;
   position: relative;
   background:
-    linear-gradient(to top, rgba(0, 0, 0, 0.65), transparent 50%),
-    url("/images/jade-walkway.jpg");
+    linear-gradient(135deg, #173f36, #081816);
   background-size: cover;
   background-position: center;
   box-shadow: 0 40px 100px rgba(0, 0, 0, 0.45);
@@ -553,8 +552,7 @@ button:hover ~ .luxury-cursor {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to bottom, rgba(5, 5, 5, 0.5), rgba(10, 0, 0, 0.72)),
-    url("/images/red-interior.jpg");
+    linear-gradient(135deg, #173f36, #081816);
   background-size: cover;
   background-position: center;
   transform: scale(1.05);
@@ -582,8 +580,7 @@ button:hover ~ .luxury-cursor {
   padding-top: 10rem;
   padding-bottom: 10rem;
   background:
-    linear-gradient(to bottom, rgba(8, 35, 31, 0.92), rgba(16, 8, 6, 0.96)),
-    url("/images/reflective-water.jpg");
+    linear-gradient(135deg, #173f36, #081816);
   background-size: cover;
   background-position: center;
 }
