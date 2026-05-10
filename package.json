@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite --config vite.preview.config.mjs",
     "build": "node scripts/prepare-build-index.mjs && vite build && node scripts/sync-live-static.mjs",
-    "preview": "vite preview",
+    "preview": "vite preview"
     
   },
   "dependencies": {

@@ -1,58 +1,95 @@
-import { useState } from 'react';
-import type { Page } from './types';
-import Landing from './pages/LandingPreview';
-import Home from './pages/Home';
-import About from './pages/About';
-import Services from './pages/Services';
-import HowIHelp from './pages/HowIHelp';
-import Prices from './pages/Prices';
-import Contact from './pages/Contact';
-import Hire from './pages/Hire';
-import DidYouKnow from './pages/DidYouKnow';
-import Documents from './pages/Documents';
-import PartnershipDirectory from './pages/PartnershipDirectory';
-import SalonHome from './pages/SalonHome';
-import SalonClientPortal from './pages/SalonClientPortal';
-import SalonPackages from './pages/SalonPackages';
+import "./App.css";
 
-function App() {
-  const [currentPage, setCurrentPage] = useState<Page>('landing');
+export default function App() {
+  return (
+    <main className="site">
+      <section className="hero">
+        <video
+          className="hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+        >
+          <source src="/videos/duyen-an-arrival.mp4" type="video/mp4" />
+        </video>
 
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'home':
-        return <Home onNavigate={setCurrentPage} />;
-      case 'about':
-        return <About onNavigate={setCurrentPage} />;
-      case 'services':
-        return <Services onNavigate={setCurrentPage} />;
-      case 'how-help':
-        return <HowIHelp onNavigate={setCurrentPage} />;
-      case 'prices':
-        return <Prices onNavigate={setCurrentPage} />;
-      case 'contact':
-        return <Contact onNavigate={setCurrentPage} />;
-      case 'hire':
-        return <Hire onNavigate={setCurrentPage} />;
-      case 'did-you-know':
-        return <DidYouKnow onNavigate={setCurrentPage} />;
-      case 'partnership-directory':
-        return <PartnershipDirectory onNavigate={setCurrentPage} />;
-      case 'documents':
-        return <Documents onNavigate={setCurrentPage} />;
-      case 'salon':
-        return <SalonHome onNavigate={setCurrentPage} />;
-      case 'salon-portal':
-        return <SalonClientPortal onNavigate={setCurrentPage} />;
-      case 'salon-packages':
-        return <SalonPackages onNavigate={setCurrentPage} />;
-      case 'landing':
-      default:
-        return <Landing onNavigate={setCurrentPage} />;
-    }
-  };
+        <div className="overlay" />
 
-  return <div className="app">{renderPage()}</div>;
+        <div className="hero-content">
+          <p className="eyebrow">WELCOME TO</p>
+
+          <h1>Duyên Ân</h1>
+
+          <p className="subtitle">
+            A hidden garden arrival into warmth, ceremony,
+            and the House of Yen.
+          </p>
+        </div>
+      </section>
+
+      <section className="interior">
+        <div className="interior-overlay" />
+
+        <img
+          src="/images/foyer.jpg"
+          alt=""
+          className="foyer-image"
+        />
+
+        <div className="interior-content">
+          <p className="eyebrow">ENTERING THE HOUSE</p>
+
+          <h2>The atmosphere changes.</h2>
+
+          <p>
+            Deep reds, lantern glow, reflective stone,
+            and towering pillars shift the arrival
+            into ceremonial stillness.
+          </p>
+        </div>
+      </section>
+
+      <section className="businesses">
+        <div className="card">
+          <h3>Salon Studio 21</h3>
+
+          <p>
+            A refined beauty destination illuminated
+            along the House of Yen pathway.
+          </p>
+        </div>
+
+        <div className="card">
+          <h3>YNX Notary</h3>
+
+          <p>
+            Professional services presented with
+            clarity, trust, and elegance.
+          </p>
+        </div>
+      </section>
+
+      <section className="jade">
+        <img
+          src="/images/house-of-jade.jpg"
+          alt=""
+          className="jade-image"
+        />
+
+        <div className="jade-overlay" />
+
+        <div className="jade-content">
+          <p className="eyebrow">HOUSE OF JADE</p>
+
+          <h2>Waiting beyond the Yen circle.</h2>
+
+          <p>
+            A future chapter still hidden beyond
+            bamboo, mist, and flowing water.
+          </p>
+        </div>
+      </section>
+    </main>
+  );
 }
-
-export default App;
