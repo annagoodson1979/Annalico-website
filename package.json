@@ -6,9 +6,9 @@
     "dev": "vite --config vite.preview.config.mjs",
     "build": "node scripts/prepare-build-index.mjs && vite build && node scripts/sync-live-static.mjs",
     "preview": "vite preview"
-    
   },
   "dependencies": {
+    "@studio-freight/lenis": "^1.0.42",
     "framer-motion": "^12.38.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
