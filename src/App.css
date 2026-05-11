@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap");
 
 :root {
   --jade: #173f36;
@@ -194,6 +194,15 @@ button:hover ~ .luxury-cursor {
   transform: translateY(-4px);
 }
 
+.menu-content a.muted-link,
+.muted-text {
+  color: rgba(255, 248, 236, 0.38);
+}
+
+.menu-content a.muted-link:hover {
+  color: rgba(216, 181, 109, 0.65);
+}
+
 .close-menu {
   position: absolute;
   top: 2rem;
@@ -358,10 +367,10 @@ button:hover ~ .luxury-cursor {
 }
 
 .hero h1 {
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Bodoni Moda", "Cormorant Garamond", serif;
   font-size: clamp(4rem, 12vw, 11rem);
-  line-height: 0.86;
-  letter-spacing: -0.04em;
+  line-height: 0.9;
+  letter-spacing: -0.055em;
   margin: 0;
   font-weight: 600;
   text-shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
@@ -417,6 +426,11 @@ button:hover ~ .luxury-cursor {
 .btn.primary {
   background: linear-gradient(135deg, var(--gold), #f0d89c);
   color: #1b1409;
+}
+
+.btn.muted-button {
+  border-color: rgba(255, 248, 236, 0.18);
+  color: rgba(255, 248, 236, 0.48);
 }
 
 .btn:hover {
@@ -492,13 +506,13 @@ button:hover ~ .luxury-cursor {
 }
 
 .cinematic-card::after {
-  content: "House of Jade";
+  content: "House of Yen";
   position: absolute;
   left: 2rem;
   bottom: 2rem;
   font-family: "Cormorant Garamond", serif;
   font-size: 2.8rem;
-  color: var(--champagne);
+  color: rgba(255, 248, 236, 0.42);
 }
 
 /* EXPERIENCE CARDS */

@@ -3,9 +3,15 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
+const SALON_URL = "https://salonstudio21.glossgenius.com";
+const YNX_URL = "https://ynxnotary.com";
+const CONTACT_EMAIL = "info@theyenan.com";
+const CONTACT_PHONE = "(972) 900-7147";
+
 export default function HomePage() {
   const audioRef = useRef(null);
   const [audioOn, setAudioOn] = useState(false);
+  const [introLoading, setIntroLoading] = useState(true);
 
   function toggleAudio() {
     if (!audioRef.current) return;
@@ -40,13 +46,16 @@ export default function HomePage() {
       <nav className="fixed left-1/2 top-6 z-[220] hidden -translate-x-1/2 rounded-full border border-white/[0.07] bg-black/40 px-6 py-3 text-xs uppercase tracking-[0.25em] text-white/60 backdrop-blur-xl md:flex gap-6">
         <a href="#arrival" className="hover:text-amber-200 transition">Arrival</a>
         <a href="#interior" className="hover:text-amber-200 transition">House</a>
-        <a href="#businesses" className="hover:text-amber-200 transition">Businesses</a>
-        <a href="#jade" className="hover:text-amber-200 transition">Jade</a>
+        <a href="#businesses" className="hover:text-amber-200 transition">Presence</a>
+        <a href="#future-wing" className="hover:text-amber-200 transition">Future</a>
         <a href="#visit" className="hover:text-amber-200 transition">Visit</a>
       </nav>
 
-      <LoadingScreen />
-      <CinematicArrival />
+      <LoadingScreen
+        loading={introLoading}
+        onDone={() => setIntroLoading(false)}
+      />
+      {!introLoading && <CinematicArrival />}
       <InteriorWorld />
       <FeaturedBusinesses />
       <BusinessOfTheWeek />
@@ -136,13 +145,11 @@ function CinematicSection({ children, className = "", id }) {
   );
 }
 
-function LoadingScreen() {
-  const [loading, setLoading] = useState(true);
-
+function LoadingScreen({ loading, onDone }) {
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 3500);
+    const timer = setTimeout(onDone, 3500);
     return () => clearTimeout(timer);
-  }, []);
+  }, [onDone]);
 
   return (
     <AnimatePresence>
@@ -177,6 +184,14 @@ function LoadingScreen() {
           >
             {"Duy\u00ean \u00c2n"}
           </motion.h1>
+
+          <button
+            type="button"
+            onClick={onDone}
+            className="absolute bottom-8 right-6 rounded-full border border-white/[0.08] bg-white/[0.04] px-6 py-3 text-xs uppercase tracking-[0.35em] text-white/55 backdrop-blur-xl transition hover:text-amber-200 md:right-8"
+          >
+            Skip Intro
+          </button>
         </motion.div>
       )}
     </AnimatePresence>
@@ -186,6 +201,12 @@ function LoadingScreen() {
 function CinematicArrival() {
   return (
     <section id="arrival" className="relative h-screen overflow-hidden bg-[#050505]">
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-red-950/70 to-amber-100/25" />
+      <div className="absolute left-0 top-0 h-full w-40 bg-gradient-to-r from-emerald-950/80 to-transparent" />
+      <div className="absolute right-0 top-0 h-full w-40 bg-gradient-to-l from-emerald-950/80 to-transparent" />
+      <div className="absolute left-1/2 top-[45%] h-[420px] w-[92vw] max-w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-t-[5rem] border border-amber-100/25 bg-red-950/40 shadow-[0_0_170px_rgba(253,230,138,0.28)] md:h-[540px]" />
+      <div className="absolute bottom-0 left-1/2 h-44 w-[80vw] max-w-[1000px] -translate-x-1/2 bg-gradient-to-t from-emerald-200/25 via-stone-200/15 to-transparent blur-sm" />
+
       <video
         className="absolute inset-0 h-full w-full object-cover opacity-80"
         autoPlay
@@ -269,17 +290,10 @@ function CinematicArrival() {
           src="/images/driver.png"
           className="absolute bottom-0 left-[3%] z-40 hidden h-[520px] object-contain md:block"
           fallback={
-            <div className="absolute bottom-0 left-[5%] z-40 hidden h-[520px] w-32 rounded-t-full border border-white/20 bg-black/40 md:block" />
+            <div className="absolute bottom-0 left-[4%] z-40 h-[320px] w-20 rounded-t-full border border-white/20 bg-black/45 shadow-[0_0_50px_rgba(255,255,255,0.08)] sm:h-[420px] sm:w-24 md:left-[5%] md:h-[520px] md:w-32" />
           }
         />
       </motion.div>
-
-      <motion.div
-        className="absolute bottom-0 left-[5%] z-40 hidden h-[520px] w-32 rounded-t-full border border-white/20 bg-black/40 md:block"
-        initial={{ opacity: 0, x: -80 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 3.1, duration: 1.5 }}
-      />
 
       <motion.div
         className="absolute bottom-0 left-[20%] z-35 hidden h-[560px] md:block"
@@ -291,6 +305,9 @@ function CinematicArrival() {
           src="/images/hostess-left.png"
           alt=""
           className="h-full object-contain"
+          fallback={
+            <div className="h-full w-24 rounded-t-full border border-pink-100/20 bg-pink-200/20 shadow-[0_0_80px_rgba(251,207,232,0.12)]" />
+          }
         />
       </motion.div>
 
@@ -304,6 +321,9 @@ function CinematicArrival() {
           src="/images/hostess-right.png"
           alt=""
           className="h-full object-contain"
+          fallback={
+            <div className="h-full w-24 rounded-t-full border border-pink-100/20 bg-pink-200/20 shadow-[0_0_80px_rgba(251,207,232,0.12)]" />
+          }
         />
       </motion.div>
 
@@ -357,31 +377,6 @@ function CinematicArrival() {
       </motion.div>
 
       <motion.div
-        className="absolute left-[-20%] top-0 z-[26] h-full w-40 rotate-12 bg-gradient-to-r from-transparent via-white/10 to-transparent blur-3xl"
-        animate={{
-          x: ["0vw", "120vw"],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-      />
-
-      <motion.div
-        className="absolute left-[-30%] top-0 z-[26] h-full w-24 rotate-12 bg-gradient-to-r from-transparent via-amber-100/10 to-transparent blur-2xl"
-        animate={{
-          x: ["0vw", "130vw"],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          delay: 2,
-          ease: "linear",
-        }}
-      />
-
-      <motion.div
         className="absolute inset-0 z-[60] flex flex-col items-center justify-end px-6 pb-16 text-center md:pb-20"
         initial={{ opacity: 0, y: 35 }}
         animate={{ opacity: 1, y: 0 }}
@@ -400,6 +395,13 @@ function CinematicArrival() {
         </p>
       </motion.div>
 
+      <a
+        href="#interior"
+        className="absolute bottom-6 right-6 z-[90] rounded-full border border-white/[0.08] bg-black/40 px-5 py-3 text-xs uppercase tracking-[0.3em] text-white/60 backdrop-blur-xl transition hover:text-amber-200 md:bottom-8 md:right-8"
+      >
+        Skip Arrival
+      </a>
+
       <div className="pointer-events-none absolute inset-0 z-[70] bg-[radial-gradient(circle_at_center,transparent_35%,rgba(0,0,0,0.82)_100%)]" />
     </section>
   );
@@ -407,7 +409,7 @@ function CinematicArrival() {
 
 function InteriorWorld() {
   return (
-    <section className="relative min-h-screen overflow-hidden px-6 py-32 bg-gradient-to-b from-black via-red-950/50 to-black">
+    <section id="interior" className="relative min-h-screen overflow-hidden px-6 py-32 bg-gradient-to-b from-black via-red-950/50 to-black">
       <video
         className="absolute inset-0 h-full w-full object-cover opacity-20"
         autoPlay
@@ -423,16 +425,17 @@ function InteriorWorld() {
       <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-16 md:grid-cols-2">
         <div>
           <p className="mb-4 text-xs uppercase tracking-[0.45em] text-amber-200/70">
-            Entering the House
+            House of Yen
           </p>
 
           <h2 className="font-rosella text-5xl leading-[0.95] md:text-7xl">
-            The atmosphere changes.
+            Presence before promotion.
           </h2>
 
           <p className="mt-8 max-w-xl text-lg leading-relaxed text-white/65">
-            Deep reds, lantern glow, reflective stone, and towering pillars shift
-            the arrival into ceremonial stillness.
+            {"Duy\u00ean \u00c2n"} is the umbrella. House of Yen is the strategy,
+            rebrand, and business-building space that shapes how each presence
+            enters the world.
           </p>
         </div>
 
@@ -456,18 +459,24 @@ function InteriorWorld() {
 
 function FeaturedBusinesses() {
   const businesses = [
-    [
-      "Salon Studio 21",
-      "A refined beauty destination illuminated along the House of Yen pathway.",
-    ],
-    [
-      "YNX Notary",
-      "Professional services presented with clarity, trust, and elegance.",
-    ],
+    {
+      name: "Salon Studio 21",
+      description:
+        "A separate beauty destination with its own booking site, connected through the Yen rebrand language.",
+      href: SALON_URL,
+      action: "Visit Salon Studio 21",
+    },
+    {
+      name: "YNX Notary",
+      description:
+        "A separate notary business with its own website, carried as a quiet Duy\u00ean \u00c2n presence.",
+      href: YNX_URL,
+      action: "Visit YNX Notary",
+    },
   ];
 
   return (
-    <section className="px-6 py-32 bg-black">
+    <section id="businesses" className="px-6 py-32 bg-black">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <p className="mb-4 text-xs uppercase tracking-[0.45em] text-amber-200/70">
@@ -479,11 +488,18 @@ function FeaturedBusinesses() {
         </div>
 
         <div className="grid gap-8 md:grid-cols-2">
-          {businesses.map(([name, description]) => (
-            <motion.div key={name} whileHover={{ y: -10, scale: 1.01 }}>
+          {businesses.map((business) => (
+            <motion.a
+              key={business.name}
+              href={business.href}
+              target="_blank"
+              rel="noreferrer"
+              className="block text-current no-underline"
+              whileHover={{ y: -10, scale: 1.01 }}
+            >
               <LuxuryPanel className="min-h-[360px] p-8 flex flex-col justify-end">
                 <div className="mb-10 h-40 rounded-3xl border border-white/[0.08] bg-white/[0.03] flex items-center justify-center p-6">
-                  {name === "Salon Studio 21" ? (
+                  {business.name === "Salon Studio 21" ? (
                     <SmartImage
                       src="/images/salon-studio-21-logo.jpg"
                       alt="Salon Studio 21"
@@ -493,10 +509,13 @@ function FeaturedBusinesses() {
                     <span className="font-rosella text-4xl text-white/70">YNX</span>
                   )}
                 </div>
-                <h3 className="font-rosella text-4xl">{name}</h3>
-                <p className="mt-4 text-white/65">{description}</p>
+                <h3 className="font-rosella text-4xl">{business.name}</h3>
+                <p className="mt-4 text-white/65">{business.description}</p>
+                <p className="mt-6 text-xs uppercase tracking-[0.3em] text-amber-200/60">
+                  {business.action}
+                </p>
               </LuxuryPanel>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>
@@ -508,15 +527,15 @@ function BusinessOfTheWeek() {
   return (
     <section className="relative px-6 py-32 bg-gradient-to-b from-black via-red-950/30 to-black text-center">
       <p className="mb-6 text-xs uppercase tracking-[0.45em] text-amber-200/70">
-        Spotlight Feature
+        House of Yen
       </p>
 
       <h2 className="font-rosella text-5xl md:text-7xl">
-        Business of the Week
+        Built on precision.
       </h2>
 
       <p className="mx-auto mt-6 max-w-2xl text-lg text-white/65">
-        Suspended like a jewel beneath a focused spotlight.
+        Leading with strength and grace. Authority without noise.
       </p>
 
       <LuxuryPanel className="mx-auto mt-20 max-w-3xl p-12">
@@ -526,11 +545,12 @@ function BusinessOfTheWeek() {
           transition={{ duration: 6, repeat: Infinity }}
         />
 
-        <h3 className="font-rosella text-4xl">Featured Brand</h3>
+        <h3 className="font-rosella text-4xl">Redefining the standard.</h3>
 
         <p className="mx-auto mt-6 max-w-xl text-white/65">
-          A rotating showcase celebrating visionary businesses within the House
-          of Yen.
+          House of Yen brings clarity and certainty where it matters most:
+          identity, presentation, positioning, and the business systems behind
+          the visible brand.
         </p>
       </LuxuryPanel>
     </section>
@@ -539,7 +559,7 @@ function BusinessOfTheWeek() {
 
 function LockedHouseOfJade() {
   return (
-    <section className="relative min-h-screen overflow-hidden px-6 py-32 bg-gradient-to-b from-zinc-900 via-black to-black">
+    <section id="future-wing" className="relative min-h-screen overflow-hidden px-6 py-32 bg-gradient-to-b from-zinc-900 via-black to-black">
       <div className="mx-auto grid max-w-7xl items-center gap-16 md:grid-cols-2">
         <div className="relative h-[620px] overflow-hidden rounded-[3rem] border border-white/10 bg-zinc-900 grayscale">
           <SmartImage
@@ -565,7 +585,7 @@ function LockedHouseOfJade() {
 
         <div>
           <p className="mb-4 text-xs uppercase tracking-[0.45em] text-white/35">
-            House of Jade
+            Future Wing
           </p>
 
           <h2 className="font-rosella text-5xl leading-[0.95] text-white/40 md:text-7xl">
@@ -573,7 +593,7 @@ function LockedHouseOfJade() {
           </h2>
 
           <p className="mt-8 text-lg leading-relaxed text-white/50">
-            The House of Jade is intentionally veiled, a future chapter of
+            The Jade concept is intentionally veiled, a future chapter of
             {" Duy\u00ean \u00c2n "}still waiting to awaken.
           </p>
 
@@ -591,9 +611,9 @@ function LockedHouseOfJade() {
 
 function BookingContact() {
   return (
-    <section className="px-6 py-32 text-center bg-black">
+    <section id="visit" className="px-6 py-32 text-center bg-black">
       <p className="mb-6 text-xs uppercase tracking-[0.45em] text-amber-200/70">
-        Begin Your Visit
+        Contact
       </p>
 
       <h2 className="font-rosella text-5xl md:text-7xl">
@@ -601,13 +621,14 @@ function BookingContact() {
       </h2>
 
       <p className="mx-auto mt-8 max-w-2xl text-lg text-white/65">
-        Discover featured businesses, book an experience, or inquire about
-        becoming part of the {"Duy\u00ean \u00c2n"} story.
+        Inquire about House of Yen, or continue to the separate business
+        websites for Salon Studio 21 and YNX Notary.
       </p>
 
       <div className="mt-12 flex flex-col justify-center gap-4 sm:flex-row">
-        <LuxuryButton href="/booking">Book a Visit</LuxuryButton>
-        <LuxuryButton href="/contact">Contact House of Yen</LuxuryButton>
+        <LuxuryButton href={`mailto:${CONTACT_EMAIL}`}>House of Yen Inquiry</LuxuryButton>
+        <LuxuryButton href={SALON_URL}>Salon Studio 21</LuxuryButton>
+        <LuxuryButton href={YNX_URL}>YNX Notary</LuxuryButton>
       </div>
     </section>
   );
@@ -618,7 +639,16 @@ function Footer() {
     <footer className="border-t border-white/10 px-6 py-10 text-center text-white/50">
       <p className="font-rosella mb-3 text-3xl text-white">{"Duy\u00ean \u00c2n"}</p>
       <p className="text-sm">
-        House of Yen . Salon Studio 21 . YNX Notary . House of Jade
+        House of Yen . Salon Studio 21 . YNX Notary . Future Wing
+      </p>
+      <p className="mt-3 text-sm">
+        <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-amber-200 transition">
+          {CONTACT_EMAIL}
+        </a>
+        <span> . </span>
+        <a href="tel:+19729007147" className="hover:text-amber-200 transition">
+          {CONTACT_PHONE}
+        </a>
       </p>
     </footer>
   );
