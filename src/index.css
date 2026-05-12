@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap");
 
 * {
   box-sizing: border-box;
@@ -11,15 +11,27 @@ html {
 }
 
 body {
+  font-family: "Cormorant Garamond", serif;
   min-height: 100vh;
   overflow-x: hidden;
   background: #050404;
-  color: #fff;
-  font-family: "Cormorant Garamond", serif;
+  color: #f5efe8;
+}
+
+p {
+  font-family: "Inter", sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 500;
+  letter-spacing: -0.03em;
 }
 
 section {
   position: relative;
+  padding: 0;
 }
 
 section::after {
@@ -45,6 +57,131 @@ section::after {
   min-height: 100vh;
   overflow: hidden;
   background: #050302;
+}
+
+.intro-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at center, rgba(80, 34, 24, 0.45), transparent 42%),
+    #050404;
+  animation: loaderFadeOut 2.4s ease forwards;
+}
+
+.intro-mark {
+  color: #f7eee5;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(3rem, 8vw, 8rem);
+  letter-spacing: -0.04em;
+  opacity: 0;
+  animation: markReveal 1.4s ease forwards;
+}
+
+.intro-loader p {
+  margin-top: 1.2rem;
+  color: rgba(247, 238, 229, 0.72);
+  font-size: 0.72rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: markReveal 1.4s ease 0.35s forwards;
+}
+
+.intro-line {
+  width: 0;
+  height: 1px;
+  margin-top: 1.4rem;
+  background: rgba(247, 238, 229, 0.55);
+  animation: lineReveal 1.5s ease 0.25s forwards;
+}
+
+.sound-toggle {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 999;
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 999px;
+  padding: 10px 14px;
+  color: white;
+  cursor: pointer;
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(12px);
+}
+
+.journey-wrap {
+  position: relative;
+  height: 600vh;
+  background: #050404;
+}
+
+.journey-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.journey-scene,
+.journey-parallax-layer,
+.journey-glow-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.journey-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.journey-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,.12), rgba(0,0,0,.62)),
+    linear-gradient(to right, rgba(0,0,0,.42), transparent 52%, rgba(0,0,0,.22));
+}
+
+.journey-copy {
+  position: absolute;
+  bottom: 10vh;
+  left: 8vw;
+  z-index: 2;
+  max-width: 820px;
+  color: #f7f0e8;
+  text-shadow: 0 4px 28px rgba(0,0,0,.7);
+}
+
+.journey-copy p {
+  margin-bottom: 1rem;
+  font-size: .72rem;
+  letter-spacing: .42em;
+  text-transform: uppercase;
+}
+
+.journey-copy h2 {
+  margin: 0;
+  font-size: clamp(3rem, 7vw, 7rem);
+  font-weight: 500;
+  line-height: .92;
+}
+
+.journey-copy span {
+  display: block;
+  max-width: 520px;
+  margin-top: 1.4rem;
+  font-family: "Inter", sans-serif;
+  font-size: clamp(1rem, 1.7vw, 1.35rem);
+  line-height: 1.6;
 }
 
 .arrival-image {
@@ -316,6 +453,33 @@ section::after {
   to { transform: scale(1.06); }
 }
 
+@keyframes markReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lineReveal {
+  from { width: 0; }
+  to { width: min(320px, 48vw); }
+}
+
+@keyframes loaderFadeOut {
+  0%,
+  72% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 @keyframes glowPulse {
   from { opacity: .45; }
   to { opacity: .8; }
@@ -385,5 +549,59 @@ section::after {
   .livinghouse-content,
   .heart-content {
     padding: 0 1.5rem 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .arrival-content,
+  .sanctuary-content,
+  .remembrance-content,
+  .livinghouse-content,
+  .heart-content {
+    gap: 1.25rem;
+    padding: 0 6vw 8vh;
+  }
+
+  .arrival-content h1 {
+    font-size: clamp(3.2rem, 18vw, 5rem);
+  }
+
+  .arrival-content h2,
+  .sanctuary-content h2,
+  .remembrance-content h2,
+  .livinghouse-content h2,
+  .heart-content h2 {
+    font-size: clamp(2.2rem, 11vw, 4rem);
+    line-height: 1;
+  }
+
+  .arrival-content p,
+  .sanctuary-content p,
+  .remembrance-content p,
+  .livinghouse-content p,
+  .heart-content p {
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+  }
+
+  .journey-copy {
+    right: 6vw;
+    bottom: 8vh;
+    left: 6vw;
+  }
+
+  .journey-copy h2 {
+    font-size: clamp(2.5rem, 13vw, 4.8rem);
+  }
+
+  .journey-copy p {
+    font-size: .65rem;
+    letter-spacing: .28em;
+  }
+
+  .sound-toggle {
+    right: 16px;
+    bottom: 16px;
+    font-size: 0.75rem;
   }
 }
