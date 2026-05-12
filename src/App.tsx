@@ -1,17 +1,13 @@
-import ArrivalScene from "./components/ArrivalScene";
-import SanctuaryCourtyard from "./components/SanctuaryCourtyard";
-import RemembranceAlcove from "./components/RemembranceAlcove";
-import LivingHouse from "./components/LivingHouse";
-import HeartOfHouse from "./components/HeartOfHouse";
+import IntroLoader from "./components/IntroLoader";
+import CinematicJourney from "./components/CinematicJourney";
+import AmbientSound from "./components/AmbientSound";
 
 function App() {
   return (
     <>
-      <ArrivalScene />
-      <SanctuaryCourtyard />
-      <RemembranceAlcove />
-      <LivingHouse />
-      <HeartOfHouse />
+      <IntroLoader />
+      <CinematicJourney />
+      <AmbientSound />
     </>
   );
 }
