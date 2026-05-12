@@ -96,26 +96,11 @@ function App() {
             </div>
 
             <motion.div
-              className="jade-foyer"
-              initial={{ opacity: 0, scale: 1.04, y: 30 }}
-              animate={{ opacity: loading ? 0 : 1, scale: 1, y: 0 }}
-              transition={{ duration: 2.6, delay: 0.5 }}
-            >
-              <div className="waterfall" />
-              <div className="jade-monolith">
-                <span>Duyên Ân</span>
-              </div>
-              <div className="foyer-pool" />
-            </motion.div>
-            <div className="monolith-ground" />
-
-            <motion.div
               className="title-card"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: loading ? 0 : 1, y: 0 }}
               transition={{ duration: 1.6, delay: 1.1 }}
             >
-              <p>House of Jade</p>
               <h1>Duyên Ân</h1>
 
               <button onClick={() => setEntered(true)}>Enter</button>

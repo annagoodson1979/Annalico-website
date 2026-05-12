@@ -172,7 +172,7 @@ a {
 .arrival-scene {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 5;
   pointer-events: none;
 }
 
@@ -256,29 +256,26 @@ a {
 
 .attendant {
   position: absolute;
-  bottom: 10vh;
-  width: min(260px, 24vw);
-  height: min(520px, 56vh);
+  bottom: 9vh;
+  width: min(190px, 15vw);
+  height: min(430px, 46vh);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom center;
-  opacity: 0;
+  opacity: 0.96;
   filter: drop-shadow(0 20px 40px rgba(0,0,0,0.45));
-  animation:
-    attendantReveal 2.6s ease forwards 1.6s,
-    attendantFloat 6s ease-in-out infinite alternate;
+  animation: attendantReveal 2.2s ease forwards 0.9s;
 }
 
 .attendant-left {
-  left: 10%;
-  width: min(220px, 18vw);
+  left: 35%;
+  width: min(190px, 15vw);
   background-image: url("/images/attendant-left.jpeg");
-  opacity: 0.88;
 }
 
 .attendant-right {
-  right: 10%;
-  width: min(220px, 18vw);
+  right: 24%;
+  width: min(190px, 15vw);
   background-image: url("/images/attendant-right.jpeg");
 }
 
@@ -416,7 +413,7 @@ a {
 
 .title-card {
   position: relative;
-  z-index: 5;
+  z-index: 7;
   padding: 2rem;
   text-align: center;
 }
