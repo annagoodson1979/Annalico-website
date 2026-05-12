@@ -1,3 +1,19 @@
-import HomePage from "../duyen-an-experience/src/App.jsx";
+import ArrivalScene from "./components/ArrivalScene";
+import SanctuaryCourtyard from "./components/SanctuaryCourtyard";
+import RemembranceAlcove from "./components/RemembranceAlcove";
+import LivingHouse from "./components/LivingHouse";
+import HeartOfHouse from "./components/HeartOfHouse";
 
-export default HomePage;
+function App() {
+  return (
+    <>
+      <ArrivalScene />
+      <SanctuaryCourtyard />
+      <RemembranceAlcove />
+      <LivingHouse />
+      <HeartOfHouse />
+    </>
+  );
+}
+
+export default App;

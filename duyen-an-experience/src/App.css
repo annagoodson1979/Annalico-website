@@ -13,13 +13,20 @@
 }
 
 html,
-body {
+body,
+#root {
   margin: 0;
-  min-height: 100%;
+  width: 100%;
+  height: 100%;
   background: var(--black);
   color: var(--cream);
   font-family: "Inter", sans-serif;
   overflow: hidden;
+}
+
+body {
+  position: fixed;
+  inset: 0;
 }
 
 button,
@@ -63,6 +70,71 @@ a {
   overflow: hidden;
 }
 
+.arrival-section {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.arrival-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.arrival-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.arrival-copy-wrap {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: flex-end;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.arrival-copy {
+  max-width: 36rem;
+  color: #fff;
+}
+
+.arrival-copy p {
+  margin: 0;
+  font-size: 0.875rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+}
+
+.arrival-copy h1 {
+  margin: 0.75rem 0 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(3rem, 7vw, 5rem);
+  font-weight: 600;
+  line-height: 0.95;
+}
+
+.arrival-copy span {
+  display: block;
+  max-width: 34rem;
+  margin-top: 1rem;
+  font-size: 1.125rem;
+  line-height: 1.55;
+}
+
+.arrival-section .title-card {
+  display: none;
+}
+
+.animate-slowZoom {
+  animation: slowZoom 18s ease-in-out infinite alternate;
+}
+
 .exterior-scene {
   display: grid;
   place-items: center;
@@ -71,6 +143,13 @@ a {
     url("/images/duyenan.png");
   background-size: cover;
   background-position: center;
+  transition:
+    opacity 1.4s ease,
+    filter 1.4s ease;
+}
+
+.phase-threshold .exterior-scene {
+  filter: brightness(0.72) blur(1px);
 }
 
 .exterior-video-layer,
@@ -99,7 +178,24 @@ a {
   background-size: cover;
   background-position: center;
   opacity: 0.85;
+  transform: scale(1.03);
+  transition:
+    transform 2.2s ease,
+    opacity 1.4s ease,
+    filter 1.4s ease;
   animation: slowExterior 18s ease-in-out infinite alternate;
+}
+
+.phase-approach .exterior-image-layer {
+  opacity: 0.92;
+  filter: brightness(1.08) contrast(1.06);
+  transform: scale(1.11) translateY(-1.5%);
+}
+
+.phase-threshold .exterior-image-layer {
+  opacity: 0.55;
+  filter: brightness(0.65) contrast(1.2) saturate(0.92);
+  transform: scale(1.2) translateY(-4%);
 }
 
 .water-reflection-layer {
@@ -117,6 +213,18 @@ a {
   transform-origin: bottom;
   opacity: 0.55;
   animation: waterDrift 9s linear infinite;
+  transition:
+    opacity 1.4s ease,
+    transform 1.8s ease;
+}
+
+.phase-approach .water-reflection-layer {
+  opacity: 0.82;
+  transform: perspective(600px) rotateX(64deg) translateY(10px);
+}
+
+.phase-threshold .water-reflection-layer {
+  opacity: 0.25;
 }
 
 .bamboo-shadow-layer {
@@ -125,6 +233,18 @@ a {
     linear-gradient(80deg, transparent 0 62%, rgba(0,0,0,0.18) 63%, transparent 65%);
   opacity: 0.35;
   animation: bambooSway 8s ease-in-out infinite alternate;
+  transition:
+    opacity 1.2s ease,
+    transform 1.8s ease;
+}
+
+.phase-approach .bamboo-shadow-layer {
+  opacity: 0.62;
+  transform: translateX(16px);
+}
+
+.phase-threshold .bamboo-shadow-layer {
+  opacity: 0.18;
 }
 
 .lantern-field {
@@ -143,6 +263,14 @@ a {
   animation: lanternRise 18s linear infinite;
 }
 
+.phase-approach .lantern-field span {
+  animation-duration: 11s;
+}
+
+.phase-threshold .lantern-field {
+  opacity: 0.25;
+}
+
 .lantern-field span:nth-child(1) { left: 12%; animation-delay: 0s; }
 .lantern-field span:nth-child(2) { left: 30%; width: 24px; height: 24px; animation-delay: 4s; }
 .lantern-field span:nth-child(3) { left: 54%; animation-delay: 7s; }
@@ -157,6 +285,19 @@ a {
     radial-gradient(circle at 80% 35%, rgba(123,31,25,0.22), transparent 32%);
   filter: blur(4px);
   animation: breathe 7s ease-in-out infinite alternate;
+  transition:
+    opacity 1.2s ease,
+    filter 1.2s ease;
+}
+
+.phase-approach .lantern-haze {
+  opacity: 0.95;
+  filter: blur(7px);
+}
+
+.phase-threshold .lantern-haze {
+  opacity: 0.35;
+  filter: blur(12px);
 }
 
 .film-grain {
@@ -191,6 +332,20 @@ a {
     drop-shadow(0 20px 40px rgba(0,0,0,0.45))
     brightness(0.95);
   animation: driverReveal 2.4s ease forwards 1s;
+  transition:
+    transform 2.2s ease,
+    opacity 1.4s ease,
+    filter 1.4s ease;
+}
+
+.phase-approach .driver-silhouette {
+  opacity: 0.7;
+  transform: translateX(-22px) scale(1.08);
+}
+
+.phase-threshold .driver-silhouette {
+  opacity: 0;
+  transform: translateX(-80px) scale(1.16);
 }
 
 .bridge-path {
@@ -215,6 +370,31 @@ a {
   border-top: 1px solid rgba(255,248,236,0.12);
   opacity: 0.9;
   filter: drop-shadow(0 30px 50px rgba(0,0,0,0.42));
+  transition:
+    transform 2s ease,
+    opacity 1.4s ease,
+    filter 1.4s ease;
+}
+
+.phase-approach .bridge-path {
+  opacity: 1;
+  transform:
+    translateX(-50%)
+    perspective(900px)
+    rotateX(66deg)
+    translateY(4vh)
+    scaleY(1.12);
+}
+
+.phase-threshold .bridge-path {
+  opacity: 0.35;
+  filter: blur(10px) drop-shadow(0 30px 50px rgba(0,0,0,0.42));
+  transform:
+    translateX(-50%)
+    perspective(900px)
+    rotateX(62deg)
+    translateY(12vh)
+    scaleY(1.34);
 }
 
 .bridge-path::before {
@@ -270,13 +450,13 @@ a {
 .attendant-left {
   left: 35%;
   width: min(190px, 15vw);
-  background-image: url("/images/attendant-left.jpeg");
+  background-image: url("/images/attendant-left.png");
 }
 
 .attendant-right {
   right: 24%;
   width: min(190px, 15vw);
-  background-image: url("/images/attendant-right.jpeg");
+  background-image: url("/images/attendant-right.png");
 }
 
 .jade-foyer {
@@ -465,9 +645,22 @@ a {
   background:
     radial-gradient(circle at center, rgba(216,181,109,0.15), transparent 28%),
     linear-gradient(135deg, #120504, #7b1f19 48%, #070302);
+  box-shadow: inset 0 0 180px rgba(0,0,0,0.7);
   transition:
     background 1.2s ease,
     filter 1.2s ease;
+}
+
+.interior-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 80%, rgba(216,181,109,0.22), transparent 30%),
+    linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.78));
+  opacity: 0;
+  animation: interiorAtmosphereIn 2.2s ease forwards 0.4s;
+  pointer-events: none;
 }
 
 .spotlight {
@@ -487,6 +680,8 @@ a {
   inset: 0;
   z-index: 1;
   pointer-events: none;
+  opacity: 0;
+  animation: frameReveal 2.2s ease forwards 0.25s;
 }
 
 .jade-bridge {
@@ -604,12 +799,12 @@ a {
 
 .jade-attendant-left {
   left: 18%;
-  background-image: url("/images/attendant-left.jpeg");
+  background-image: url("/images/jade-attendant1.png");
 }
 
 .jade-attendant-right {
   right: 18%;
-  background-image: url("/images/attendant-right.jpeg");
+  background-image: url("/images/jade-attendant2.jpeg");
 }
 
 .yen-circle-glimpse {
@@ -899,6 +1094,15 @@ a {
   to { transform: scale(1.09) translateY(-1.5%); }
 }
 
+@keyframes slowZoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
 @keyframes waterDrift {
   from { background-position: 0 0; }
   to { background-position: 56px 0; }
@@ -1007,6 +1211,28 @@ a {
   to {
     opacity: 1;
     transform: scale(1.08);
+  }
+}
+
+@keyframes frameReveal {
+  from {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(40px) scale(1.04);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes interiorAtmosphereIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 

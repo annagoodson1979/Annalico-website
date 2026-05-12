@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 function App() {
   const [loading, setLoading] = useState(true);
   const [entered, setEntered] = useState(false);
+  const [arrivalPhase, setArrivalPhase] = useState("opening");
   const [activeDoor, setActiveDoor] = useState(null);
   const [transitionDoor, setTransitionDoor] = useState(null);
   const currentPath = window.location.pathname;
@@ -13,6 +14,20 @@ function App() {
     const timer = setTimeout(() => setLoading(false), 2200);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (loading || currentPath !== "/") return undefined;
+
+    const approachTimer = setTimeout(() => setArrivalPhase("approach"), 900);
+    const thresholdTimer = setTimeout(() => setArrivalPhase("threshold"), 2900);
+    const enterTimer = setTimeout(() => setEntered(true), 5200);
+
+    return () => {
+      clearTimeout(approachTimer);
+      clearTimeout(thresholdTimer);
+      clearTimeout(enterTimer);
+    };
+  }, [currentPath, loading]);
 
   const enterDoor = (door, path) => {
     setTransitionDoor(door);
@@ -67,45 +82,48 @@ function App() {
       )}
 
       {currentPath === "/" && (
-        <main className="cinematic-experience">
-          <section className="scene exterior-scene">
-            <div className="exterior-video-layer">
-              <video autoPlay muted loop playsInline>
-                <source src="/videos/hero-video.mp4" type="video/mp4" />
-              </video>
-            </div>
+        <main className={`cinematic-experience phase-${arrivalPhase}`}>
+          <motion.section
+            className="arrival-section"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{
+              opacity: loading || arrivalPhase === "threshold" ? 0 : 1,
+              y: loading ? 40 : 0,
+            }}
+            transition={{ duration: 1.8 }}
+          >
+            <img
+              src="/images/duyenan.png"
+              alt="Duyen An arrival entrance"
+              className="arrival-image animate-slowZoom"
+            />
 
-            <div className="exterior-image-layer" />
-            <div className="water-reflection-layer" />
-            <div className="bamboo-shadow-layer" />
-            <div className="lantern-field">
-              <span />
-              <span />
-              <span />
-              <span />
-              <span />
-            </div>
+            <div className="arrival-overlay" />
 
-            <div className="film-grain" />
-            <div className="lantern-haze" />
-            <div className="arrival-scene">
-              <div className="driver-silhouette" />
-              <div className="bridge-path" />
-              <div className="attendant attendant-left" />
-              <div className="attendant attendant-right" />
+            <div className="arrival-copy-wrap">
+              <div className="arrival-copy">
+                <p>Welcome to</p>
+                <h1>Duyên Ân</h1>
+                <span>
+                  A cinematic arrival into elegance, heritage, and quiet luxury.
+                </span>
+              </div>
             </div>
 
             <motion.div
               className="title-card"
               initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: loading ? 0 : 1, y: 0 }}
+              animate={{
+                opacity: loading || arrivalPhase === "threshold" ? 0 : 1,
+                y: arrivalPhase === "approach" ? -18 : 0,
+              }}
               transition={{ duration: 1.6, delay: 1.1 }}
             >
               <h1>Duyên Ân</h1>
 
               <button onClick={() => setEntered(true)}>Enter</button>
             </motion.div>
-          </section>
+          </motion.section>
 
           <AnimatePresence>
             {entered && (
