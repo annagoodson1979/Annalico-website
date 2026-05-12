@@ -272,14 +272,14 @@ a {
 .attendant-left {
   left: 10%;
   width: min(220px, 18vw);
-  background-image: url("/images/jade-attendant1.jpeg");
+  background-image: url("/images/attendant-left.jpeg");
   opacity: 0.88;
 }
 
 .attendant-right {
   right: 10%;
   width: min(220px, 18vw);
-  background-image: url("/images/jade-attendant2.jpeg");
+  background-image: url("/images/attendant-right.jpeg");
 }
 
 .jade-foyer {
@@ -607,12 +607,12 @@ a {
 
 .jade-attendant-left {
   left: 18%;
-  background-image: url("/images/jade-attendant1.jpeg");
+  background-image: url("/images/attendant-left.jpeg");
 }
 
 .jade-attendant-right {
   right: 18%;
-  background-image: url("/images/jade-attendant2.jpeg");
+  background-image: url("/images/attendant-right.jpeg");
 }
 
 .yen-circle-glimpse {
