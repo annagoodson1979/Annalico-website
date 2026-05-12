@@ -14,8 +14,12 @@ export default function AmbientSound() {
       setPlaying(false);
     } else {
       audio.volume = 0.22;
-      await audio.play();
-      setPlaying(true);
+      try {
+        await audio.play();
+        setPlaying(true);
+      } catch {
+        setPlaying(false);
+      }
     }
   };
 
