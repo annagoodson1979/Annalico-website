@@ -148,6 +148,23 @@ function App() {
                   <div className="jade-attendant jade-attendant-left" />
                   <div className="jade-attendant jade-attendant-right" />
                 </div>
+                <div className="yen-circle-glimpse">
+                  <div className="yen-circle-doorway-frame">
+                    <img
+                      src="/images/yen-circle-doorway.jpeg"
+                      alt="Yen Circle Entrance"
+                      className="yen-circle-doorway"
+                    />
+
+                    <div className="yen-circle-overlay">
+                      <img
+                        src="/images/yencircle.jpeg"
+                        alt="Yen Circle"
+                        className="yen-circle-image"
+                      />
+                    </div>
+                  </div>
+                </div>
 
                 <motion.div
                   className="interior-title"
