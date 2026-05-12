@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import foyerImage from "./assets/images/foyer.jpg";
+import houseOfJadeImage from "./assets/images/house-of-jade-courtyard.jpg";
 
 const SALON_URL = "https://salonstudio21.glossgenius.com";
 const YNX_URL = "https://ynxnotary.com";
@@ -165,9 +167,9 @@ function LoadingScreen({ loading, onDone }) {
           />
 
           <SmartImage
-            src="/images/jade-monolith.png"
+            src="/images/yencircle.jpeg"
             alt=""
-            className="h-40 w-24 object-contain"
+            className="h-40 w-40 rounded-full object-cover opacity-60"
           />
 
           <motion.div
@@ -207,15 +209,11 @@ function CinematicArrival() {
       <div className="absolute left-1/2 top-[45%] h-[420px] w-[92vw] max-w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-t-[5rem] border border-amber-100/25 bg-red-950/40 shadow-[0_0_170px_rgba(253,230,138,0.28)] md:h-[540px]" />
       <div className="absolute bottom-0 left-1/2 h-44 w-[80vw] max-w-[1000px] -translate-x-1/2 bg-gradient-to-t from-emerald-200/25 via-stone-200/15 to-transparent blur-sm" />
 
-      <video
-        className="absolute inset-0 h-full w-full object-cover opacity-80"
-        autoPlay
-        muted
-        loop
-        playsInline
-      >
-        <source src="/videos/duyen-an-arrival.mp4" type="video/mp4" />
-      </video>
+      <SmartImage
+        src="/images/duyenan.png"
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover opacity-85"
+      />
 
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.05),rgba(0,0,0,0.62))]" />
       <div className="absolute inset-x-0 top-0 h-28 bg-black/70" />
@@ -280,66 +278,6 @@ function CinematicArrival() {
         <div className="absolute inset-0 bg-gradient-to-b from-red-950/70 via-black to-black" />
         <FloatingJadeCore />
       </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, x: -80 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 3.1, duration: 1.5 }}
-      >
-        <SmartImage
-          src="/images/driver.png"
-          className="absolute bottom-0 left-[3%] z-40 hidden h-[520px] object-contain md:block"
-          fallback={
-            <div className="absolute bottom-0 left-[4%] z-40 h-[320px] w-20 rounded-t-full border border-white/20 bg-black/45 shadow-[0_0_50px_rgba(255,255,255,0.08)] sm:h-[420px] sm:w-24 md:left-[5%] md:h-[520px] md:w-32" />
-          }
-        />
-      </motion.div>
-
-      <motion.div
-        className="absolute bottom-0 left-[20%] z-35 hidden h-[560px] md:block"
-        initial={{ opacity: 0, x: -40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 3.6, duration: 1.4 }}
-      >
-        <SmartImage
-          src="/images/hostess-left.png"
-          alt=""
-          className="h-full object-contain"
-          fallback={
-            <div className="h-full w-24 rounded-t-full border border-pink-100/20 bg-pink-200/20 shadow-[0_0_80px_rgba(251,207,232,0.12)]" />
-          }
-        />
-      </motion.div>
-
-      <motion.div
-        className="absolute bottom-0 right-[20%] z-35 hidden h-[560px] md:block"
-        initial={{ opacity: 0, x: 40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 3.6, duration: 1.4 }}
-      >
-        <SmartImage
-          src="/images/hostess-right.png"
-          alt=""
-          className="h-full object-contain"
-          fallback={
-            <div className="h-full w-24 rounded-t-full border border-pink-100/20 bg-pink-200/20 shadow-[0_0_80px_rgba(251,207,232,0.12)]" />
-          }
-        />
-      </motion.div>
-
-      <motion.div
-        className="absolute bottom-14 left-[30%] z-20 h-72 w-24 rounded-t-full border border-pink-100/20 bg-pink-200/20 md:hidden"
-        initial={{ opacity: 0, x: -40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 3.8, duration: 1.4 }}
-      />
-
-      <motion.div
-        className="absolute bottom-14 right-[30%] z-20 h-72 w-24 rounded-t-full border border-pink-100/20 bg-pink-200/20 md:hidden"
-        initial={{ opacity: 0, x: 40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 3.8, duration: 1.4 }}
-      />
 
       {Array.from({ length: 36 }, (_, i) => (
         <motion.div
@@ -410,15 +348,11 @@ function CinematicArrival() {
 function InteriorWorld() {
   return (
     <section id="interior" className="relative min-h-screen overflow-hidden px-6 py-32 bg-gradient-to-b from-black via-red-950/50 to-black">
-      <video
+      <SmartImage
+        src="/images/halo.jpg"
+        alt=""
         className="absolute inset-0 h-full w-full object-cover opacity-20"
-        autoPlay
-        muted
-        loop
-        playsInline
-      >
-        <source src="/videos/lantern-haze.mp4" type="video/mp4" />
-      </video>
+      />
 
       <div className="absolute left-1/2 top-1/2 h-[900px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-700/10 blur-[180px]" />
 
@@ -442,7 +376,7 @@ function InteriorWorld() {
         <LuxuryPanel className="min-h-[560px] p-10">
           <div className="relative flex h-[480px] items-center justify-center overflow-hidden rounded-[2rem] bg-black/40">
             <SmartImage
-              src="/images/foyer.jpg"
+              src={foyerImage}
               alt=""
               className="absolute inset-0 h-full w-full object-cover opacity-50"
             />
@@ -501,7 +435,7 @@ function FeaturedBusinesses() {
                 <div className="mb-10 h-40 rounded-3xl border border-white/[0.08] bg-white/[0.03] flex items-center justify-center p-6">
                   {business.name === "Salon Studio 21" ? (
                     <SmartImage
-                      src="/images/salon-studio-21-logo.jpg"
+                      src="/images/studio21.jpg"
                       alt="Salon Studio 21"
                       className="max-h-full max-w-full object-contain invert"
                     />
@@ -563,7 +497,7 @@ function LockedHouseOfJade() {
       <div className="mx-auto grid max-w-7xl items-center gap-16 md:grid-cols-2">
         <div className="relative h-[620px] overflow-hidden rounded-[3rem] border border-white/10 bg-zinc-900 grayscale">
           <SmartImage
-            src="/images/house-of-jade.jpg"
+            src={houseOfJadeImage}
             alt=""
             className="absolute inset-0 h-full w-full object-cover opacity-45"
           />

@@ -63,7 +63,7 @@ a {
   place-items: center;
   background:
     linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.78)),
-    url("/images/house-of-jade-exterior.jpg");
+    url("/images/duyenan.png");
   background-size: cover;
   background-position: center;
 }
@@ -228,7 +228,7 @@ a {
 .salon-door {
   background:
     linear-gradient(to top, rgba(0,0,0,0.85), transparent 60%),
-    url("/images/red-interior.jpg");
+    url("/images/halo.jpg");
   background-size: cover;
   background-position: center;
 }

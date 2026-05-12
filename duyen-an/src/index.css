@@ -4,14 +4,14 @@
 
 @font-face {
   font-family: "Rosella";
-  src: url("/fonts/Rosella-Regular.woff2") format("woff2");
+  src: url("/images/BethanyRomanceRegular-gwMMR-2.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Rosella";
-  src: url("/fonts/Rosella-Italic.woff2") format("woff2");
+  src: url("/images/Boheme Floral.ttf") format("truetype");
   font-weight: normal;
   font-style: italic;
 }
