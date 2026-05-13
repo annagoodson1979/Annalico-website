@@ -1,12 +1,13 @@
 import IntroLoader from "./components/IntroLoader";
-import CinematicJourney from "./components/CinematicJourney";
+import AutoJourney from "./components/AutoJourney";
 import AmbientSound from "./components/AmbientSound";
+import "./App.css";
 
 function App() {
   return (
     <>
       <IntroLoader />
-      <CinematicJourney />
+      <AutoJourney />
       <AmbientSound />
     </>
   );

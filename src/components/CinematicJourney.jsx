@@ -4,36 +4,46 @@ import { useRef } from "react";
 
 const scenes = [
   {
-    image: "/images/duyenan.jpg",
-    eyebrow: "Welcome to",
-    title: "Duyên Ân",
+    image: "/images/duyenan-arrival.jpg",
+    eyebrow: "Arrival",
+    title: "Welcome to Duyên Ân.",
     text: "Where elegance enters quietly.",
-    glow: true,
   },
   {
-    image: "/images/sanctuary-courtyard.jpg",
-    eyebrow: "Beyond the threshold",
-    title: "The house opens into stillness.",
+    image: "/images/house-of-jade-glimpse.jpg",
+    eyebrow: "A passing glimpse",
+    title: "House of Jade",
+    text: "A quiet threshold within Duyên Ân.",
   },
   {
-    image: "/images/remembrance-alcove.jpg",
-    eyebrow: "In remembrance",
-    title: "Those who came before us remain part of the house.",
+    image: "/images/courtyard-tour.jpg",
+    eyebrow: "Within the courtyard",
+    title: "Stillness moves through the house.",
+    text: "Water, lanterns, and soft conversation guide the path inward.",
   },
   {
-    image: "/images/living-house.jpg",
-    eyebrow: "Within the house",
-    title: "Warmth is carried through every generation.",
+    image: "/images/monolith-path.jpg",
+    eyebrow: "Guided by light",
+    title: "Toward the monolith",
+    text: "Tealights quietly lead the way deeper into the sanctuary.",
   },
   {
-    image: "/images/zen-retreat.jpg",
-    eyebrow: "A quiet place to pause",
-    title: "Some spaces exist simply to let you breathe.",
+    image: "/images/spotlight-scene.jpg",
+    eyebrow: "This week's spotlight",
+    title: "A place where every craft is honored.",
+    text: "The house quietly highlights the people within it.",
   },
   {
-    image: "/images/heart-of-house.jpg",
-    eyebrow: "The heart of the house",
-    title: "Light passes through what remains timeless.",
+    image: "/images/yen-circle.jpg",
+    eyebrow: "The final threshold",
+    title: "Beyond the Yên Circle",
+    text: "The journey settles into presence and purpose.",
+  },
+  {
+    image: "/images/final-office.jpg",
+    eyebrow: "Final destination",
+    title: "The office of House of Yên",
+    text: "What do you need? I'm listening.",
   },
 ];
 
@@ -42,7 +52,11 @@ function JourneyScene({ scene, index, scrollYProgress }) {
   const mid = (index + 0.5) / scenes.length;
   const end = (index + 1) / scenes.length;
 
-  const opacity = useTransform(scrollYProgress, [start, mid, end], [0, 1, 0]);
+  const opacity = useTransform(
+    scrollYProgress,
+    [start, start + 0.08, mid, end - 0.08, end],
+    [0, 1, 1, 1, 0]
+  );
   const scale = useTransform(scrollYProgress, [start, end], [1.04, 1.1]);
   const y = useTransform(scrollYProgress, [start, end], [30, -30]);
 
@@ -59,11 +73,9 @@ function JourneyScene({ scene, index, scrollYProgress }) {
 
       <div className="journey-overlay" />
 
-      {scene.glow && (
-        <Parallax speed={-5} className="journey-glow-layer">
-          <div className="arrival-glow" />
-        </Parallax>
-      )}
+      <Parallax speed={-5} className="journey-glow-layer">
+        <div className="arrival-glow" />
+      </Parallax>
 
       <motion.div className="journey-copy" style={{ y }}>
         <p>{scene.eyebrow}</p>
