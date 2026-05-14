@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import BookingRequest from "./BookingRequest";
 
 const scenes = [
   {
@@ -136,6 +137,14 @@ export default function AutoJourney() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const enterWorld = () => {
+    setEntered(true);
+
+    setTimeout(() => {
+      scrollToSection("world");
+    }, 80);
+  };
+
   return (
     <>
       <section className="auto-journey">
@@ -195,13 +204,13 @@ export default function AutoJourney() {
 
         {finished && (
           <div className="main-navigation">
-            <button onClick={() => setEntered(true)}>Enter Duyên Ân</button>
+            <button onClick={enterWorld}>Enter Duyên Ân</button>
           </div>
         )}
       </section>
 
       {entered && (
-        <div className="entered-world">
+        <div id="world" className="entered-world">
           <div className="world-overlay" />
 
           <div className="world-nav">
@@ -210,6 +219,7 @@ export default function AutoJourney() {
             <div className="world-links">
               <button onClick={() => scrollToSection("salon")}>Salon</button>
               <button onClick={() => scrollToSection("notary")}>Notary</button>
+              <button onClick={() => scrollToSection("appointments")}>Book</button>
               <button onClick={() => scrollToSection("spotlight")}>Spotlight</button>
               <button onClick={() => scrollToSection("office")}>Office</button>
             </div>
@@ -226,13 +236,33 @@ export default function AutoJourney() {
         <h2>Business of the Week</h2>
       </section>
 
-      <section id="salon" className="info-section">
-        <h2>Salon</h2>
+      <section id="salon" className="info-section salon-booking-section">
+        <div className="booking-copy">
+          <p className="section-kicker">Salon Studio 21</p>
+          <h2>Book your beauty appointment.</h2>
+          <p>
+            Personalized hair and beauty services with polished results, warm care,
+            and a simple booking path.
+          </p>
+
+          <div className="booking-actions">
+            <button onClick={() => scrollToSection("appointments")}>
+              Book Salon Studio 21
+            </button>
+            <button onClick={() => scrollToSection("notary")}>Next: Notary</button>
+          </div>
+        </div>
+
+        <div className="booking-visual salon-booking-visual">
+          <img src="/images/studio21.jpg" alt="Salon Studio 21" />
+        </div>
       </section>
 
       <section id="notary" className="info-section">
         <h2>Notary</h2>
       </section>
+
+      <BookingRequest />
 
       <section id="office" className="info-section">
         <h2>Office</h2>
