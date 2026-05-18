@@ -545,7 +545,7 @@ function Landing({ onNavigate }: LandingProps) {
             Yen Brand
           </p>
           <a
-            href="https://www.ynxnotary.com"
+            href="/notary/promo"
             style={{
               color: bulbYellow,
               fontSize: '0.4rem',

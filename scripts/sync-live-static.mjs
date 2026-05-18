@@ -32,6 +32,15 @@ ensureDir(rootImagesDir);
 
 const distIndexPath = join(distDir, 'index.html');
 const rootIndexPath = join(repoRoot, 'index.html');
+const appRouteFallbacks = [
+  'appointments',
+  'book',
+  'salon',
+  'notary',
+  join('notary', 'book'),
+  join('notary', 'promo'),
+  join('notary', 'olivia'),
+];
 
 writeFileSync(rootIndexPath, readFileSync(distIndexPath, 'utf8'));
 
@@ -49,6 +58,19 @@ for (const name of readdirSync(publicDir)) {
   if (name !== 'images') {
     cpSync(join(publicDir, name), join(repoRoot, name), { recursive: true });
   }
+}
+
+const appShell = readFileSync(distIndexPath, 'utf8');
+
+for (const route of appRouteFallbacks) {
+  const distRouteDir = join(distDir, route);
+  const rootRouteDir = join(repoRoot, route);
+
+  ensureDir(distRouteDir);
+  ensureDir(rootRouteDir);
+
+  writeFileSync(join(distRouteDir, 'index.html'), appShell);
+  writeFileSync(join(rootRouteDir, 'index.html'), appShell);
 }
 
 console.log('Synced root static files from dist and public.');
