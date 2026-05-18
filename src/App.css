@@ -493,6 +493,406 @@ section {
   box-shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
 }
 
+.simple-route-page {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  align-items: end;
+  padding: 12vh 8vw;
+  overflow: hidden;
+  color: #f7f0e8;
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.7)),
+    #050404;
+}
+
+.salon-route-page {
+  background:
+    radial-gradient(circle at 75% 35%, rgba(155, 32, 44, 0.22), transparent 34%),
+    linear-gradient(135deg, #090303, #210707 54%, #050404);
+}
+
+.notary-route-page {
+  background:
+    radial-gradient(circle at 72% 34%, rgba(120, 180, 170, 0.18), transparent 34%),
+    linear-gradient(135deg, #031513, #0f1f1b 54%, #050404);
+}
+
+.olivia-route-page {
+  align-items: center;
+  background:
+    radial-gradient(circle at 50% 25%, rgba(198, 161, 91, 0.18), transparent 32%),
+    linear-gradient(135deg, #090303, #19110c 54%, #050404);
+}
+
+.promo-route-page {
+  align-items: center;
+  background:
+    radial-gradient(circle at 52% 24%, rgba(198, 161, 91, 0.2), transparent 32%),
+    linear-gradient(135deg, #031513, #0f1f1b 54%, #050404);
+}
+
+.promo-route-content {
+  width: min(760px, 100%);
+}
+
+.route-back-link {
+  position: fixed;
+  top: 24px;
+  left: 28px;
+  z-index: 4;
+  color: rgba(247, 240, 232, 0.58);
+  text-decoration: none;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-family: "Inter", sans-serif;
+  font-size: 0.68rem;
+}
+
+.simple-route-content {
+  position: relative;
+  z-index: 2;
+  max-width: 820px;
+}
+
+.simple-route-content h1 {
+  margin: 0;
+  font-size: clamp(4rem, 10vw, 10rem);
+  line-height: 0.9;
+}
+
+.simple-route-content > p:not(.section-kicker) {
+  max-width: 620px;
+  margin: 1.4rem 0 0;
+  color: rgba(247, 240, 232, 0.78);
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  line-height: 1.6;
+}
+
+.route-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 2rem;
+}
+
+.route-actions a {
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.07);
+  color: #f7f0e8;
+  padding: 12px 18px;
+  border-radius: 999px;
+  backdrop-filter: blur(12px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
+  font-size: 0.72rem;
+  transition: all 0.35s ease;
+}
+
+.route-actions a:hover {
+  background: rgba(255, 255, 255, 0.13);
+  transform: translateY(-2px);
+}
+
+.promo-code-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 2rem;
+}
+
+.promo-code-form input {
+  min-width: min(320px, 100%);
+  flex: 1;
+  padding: 16px;
+  border: 1px solid rgba(245, 234, 216, 0.4);
+  background: rgba(255, 255, 255, 0.06);
+  color: #f5ead8;
+  border-radius: 14px;
+  font-size: 1rem;
+}
+
+.promo-code-form button,
+.promo-unlocked a {
+  padding: 16px 22px;
+  border: none;
+  border-radius: 999px;
+  background: #c6a15b;
+  color: #0f1f1b;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.promo-error {
+  margin-top: 1rem;
+  color: #f5b7aa;
+  font-family: "Inter", sans-serif;
+}
+
+.promo-unlocked {
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+  margin-top: 2rem;
+}
+
+.promo-unlocked p {
+  margin: 0;
+  color: rgba(247, 240, 232, 0.78);
+}
+
+.olivia-landing {
+  min-height: 100vh;
+  background: #fafafa;
+  color: #171717;
+}
+
+.olivia-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 80px 24px;
+}
+
+.olivia-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #fdf2f8, #ffffff 48%, #ecfdf5);
+}
+
+.olivia-container,
+.olivia-benefit-grid,
+.olivia-thanks-card {
+  width: min(1024px, 100%);
+  margin: 0 auto;
+}
+
+.olivia-card {
+  border: 1px solid rgba(252, 231, 243, 0.95);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+  backdrop-filter: blur(16px);
+}
+
+.olivia-hero-card {
+  position: relative;
+  border-radius: 2rem;
+  padding: clamp(2rem, 5vw, 3rem);
+}
+
+.olivia-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 1rem;
+  border-radius: 999px;
+  background: #fce7f3;
+  padding: 0.55rem 1rem;
+  color: #831843;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.olivia-pill-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.olivia-hero h1 {
+  max-width: 780px;
+  margin: 0;
+  color: #0a0a0a;
+  font-family: "Inter", sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.olivia-hero-card > p:not(.olivia-pill) {
+  max-width: 760px;
+  margin: 1.5rem 0 0;
+  color: #404040;
+  font-size: 1.12rem;
+  line-height: 1.75;
+}
+
+.private-code-badge {
+  display: inline-flex;
+  margin-top: 2rem;
+  border-radius: 1rem;
+  background: #171717;
+  padding: 1rem 1.5rem;
+  color: #ffffff;
+  box-shadow: 0 18px 38px rgba(23, 23, 23, 0.2);
+}
+
+.private-code-badge p {
+  margin: 0;
+  color: #a3a3a3;
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.private-code-badge strong {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 1.5rem;
+  letter-spacing: 0.08em;
+}
+
+.olivia-benefits {
+  padding: 56px 24px;
+}
+
+.olivia-benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.olivia-benefit-card {
+  border-color: #e5e5e5;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 8px 26px rgba(15, 23, 42, 0.08);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.olivia-benefit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 46px rgba(15, 23, 42, 0.12);
+}
+
+.olivia-icon {
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: 1rem;
+}
+
+.olivia-icon.pink {
+  color: #db2777;
+}
+
+.olivia-icon.emerald {
+  color: #047857;
+}
+
+.olivia-icon.amber {
+  color: #d97706;
+}
+
+.olivia-benefit-card h2 {
+  margin: 0;
+  color: #171717;
+  font-family: "Inter", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.olivia-benefit-card p,
+.olivia-benefit-card li {
+  color: #404040;
+  line-height: 1.75;
+}
+
+.olivia-benefit-card p {
+  margin: 0.8rem 0 0;
+}
+
+.olivia-benefit-card ul {
+  margin: 1.2rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.olivia-callout {
+  margin-top: 1.25rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.olivia-callout span {
+  font-weight: 700;
+}
+
+.pink-callout {
+  background: #fdf2f8;
+  color: #831843;
+}
+
+.amber-callout {
+  background: #fffbeb;
+  color: #78350f;
+}
+
+.olivia-thanks {
+  padding: 0 24px 80px;
+}
+
+.olivia-thanks-card {
+  border-radius: 2rem;
+  background: #171717;
+  padding: clamp(2rem, 5vw, 3rem);
+  color: #ffffff;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+}
+
+.olivia-thanks-card h2 {
+  margin: 0;
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.olivia-thanks-card p {
+  max-width: 760px;
+  margin: 1.25rem 0 0;
+  color: #e5e5e5;
+  font-size: 1.12rem;
+  line-height: 1.75;
+}
+
+.olivia-thanks-card .olivia-signoff {
+  margin-top: 2rem;
+  color: #d4d4d4;
+  font-weight: 500;
+}
+
+.olivia-thanks-card a {
+  display: inline-flex;
+  margin-top: 2rem;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #171717;
+  padding: 0.9rem 1.2rem;
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.olivia-flyer-frame {
+  margin-top: 2rem;
+}
+
+.olivia-flyer-frame img {
+  width: min(420px, 82vw);
+  border-radius: 18px;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
+}
+
 .sound-toggle {
   position: fixed;
   right: 24px;
@@ -620,6 +1020,17 @@ section {
 
   .booking-visual {
     min-height: 260px;
+  }
+
+  .olivia-benefit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .olivia-hero,
+  .olivia-benefits,
+  .olivia-thanks {
+    padding-left: 18px;
+    padding-right: 18px;
   }
 
   .sound-toggle {
