@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 import type { FormEvent } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowRight,
   Baby,
-  BadgePercent,
-  CalendarDays,
+  ExternalLink,
   Heart,
   PawPrint,
-  PenLine,
   ShieldCheck,
   Sparkles,
   Users,
+  X,
 } from "lucide-react";
 import IntroLoader from "./components/IntroLoader";
 import AutoJourney from "./components/AutoJourney";
@@ -119,8 +118,11 @@ function PromoPage() {
 }
 
 function OliviaLanding() {
+  const [showExperiences, setShowExperiences] = useState(false);
+
   const bookingLinks = {
     requestForm: "https://forms.gle/YOUR-OLIVIA-REQUEST-FORM",
+    notaryWebsite: "https://ynxnotary.com",
   };
 
   const funNotaries = [
@@ -128,29 +130,25 @@ function OliviaLanding() {
       title: "Love Notes & Letters",
       icon: Heart,
       description:
-        "Write an I love you note, a thank-you letter, or a sweet message to someone special and make the date feel official.",
-      link: "#love-notes",
+        "I love you notes, thank-you letters, encouragement, or sweet words to someone special.",
     },
     {
       title: "Family Promises",
       icon: Users,
       description:
-        "A meaningful keepsake for families who want to write promises, encouragement, or little vows to each other.",
-      link: "#family-promises",
+        "Family vows, promises, memory notes, or heartfelt words you want to keep.",
     },
     {
       title: "Pet Paw Promise",
       icon: PawPrint,
       description:
-        "A playful certificate for kids and their pets, complete with a paw print, picture, or family keepsake moment.",
-      link: "#pet-paw-promise",
+        "A playful keepsake with your pet, a paw print, photo, or forever-friend promise.",
     },
     {
       title: "Kid CEO Certificate",
       icon: Baby,
       description:
-        "A fun confidence-building certificate for lemonade stands, chores, goals, pretend businesses, or big kid milestones.",
-      link: "#kid-ceo-certificate",
+        "A fun official-feeling certificate for goals, chores, little dreams, or milestones.",
     },
   ];
 
@@ -159,278 +157,257 @@ function OliviaLanding() {
     visible: { opacity: 1, y: 0 },
   };
 
+  const glitter = Array.from({ length: 96 });
+  const fairyDust = Array.from({ length: 45 });
+  const modalGlitter = Array.from({ length: 28 });
+
   return (
-    <main className="olivia-landing olivia-playful">
-      <section className="olivia-hero">
-        <div className="olivia-hero-bg" />
-
+    <main className="olivia-landing olivia-glitter-bomb">
+      <div aria-hidden="true" className="olivia-glitter-field">
         <motion.div
-          aria-hidden="true"
-          className="olivia-float olivia-float-heart"
-          animate={{ y: [0, -12, 0], rotate: [0, 8, 0] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <Heart />
-        </motion.div>
-
-        <motion.div
-          aria-hidden="true"
-          className="olivia-float olivia-float-sparkle"
-          animate={{ y: [0, 14, 0], rotate: [0, -10, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="fairy-dust-sweep"
+          initial={{ opacity: 0, x: "-28vw", y: "32vh", rotate: -18 }}
+          animate={{ opacity: [0, 1, 1, 0], x: "118vw", y: "-18vh", rotate: 10 }}
+          transition={{ duration: 3.4, delay: 0.12, ease: "easeInOut" }}
         >
           <Sparkles />
         </motion.div>
 
-        <div className="olivia-container olivia-hero-grid">
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="olivia-card olivia-hero-card"
-          >
-            <p className="olivia-pill">
-              <Heart className="olivia-pill-icon" />
-              Olivia's little thank-you experience
-            </p>
+        {fairyDust.map((_, index) => (
+          <motion.span
+            key={`dust-${index}`}
+            className="fairy-dust-particle"
+            initial={{
+              opacity: 0,
+              x: "-12vw",
+              y: `${62 - index * 0.8}vh`,
+              scale: 0,
+            }}
+            animate={{
+              opacity: [0, 1, 0.85, 0],
+              x: `${18 + index * 2.8}vw`,
+              y: `${18 + Math.sin(index * 0.6) * 38}vh`,
+              scale: [0, 1.6, 1, 0],
+              rotate: [0, 180, 360],
+            }}
+            transition={{
+              duration: 3.2,
+              delay: 0.18 + index * 0.025,
+              ease: "easeOut",
+            }}
+          />
+        ))}
 
-            <h1>Something sweet for Olivia's friends & families.</h1>
+        {glitter.map((_, index) => (
+          <motion.span
+            key={`glitter-${index}`}
+            className={`screen-glitter sparkle-${index % 5}`}
+            initial={{
+              opacity: 0,
+              x: "50vw",
+              y: "52vh",
+              scale: 0,
+            }}
+            animate={{
+              opacity: [0, 1, 0.75, 0],
+              x: `${50 + Math.cos(index * 0.67) * (24 + index * 0.62)}vw`,
+              y: `${52 + Math.sin(index * 0.67) * (24 + index * 0.44)}vh`,
+              scale: [0, 1.8, 0.85, 0],
+              rotate: [0, 160, 340],
+            }}
+            transition={{
+              duration: 2.7,
+              delay: 0.22 + index * 0.012,
+              ease: "easeOut",
+            }}
+          />
+        ))}
+      </div>
 
-            <p>
-              This page was made as a thank you to the people who are part of
-              Olivia's school life. Instead of a regular discount page, this is
-              a place to choose a fun family notary experience: love notes,
-              promises, keepsakes, pet memories, and little moments you may have
-              never thought to make official.
-            </p>
+      <motion.div
+        aria-hidden="true"
+        className="olivia-soft-icon olivia-soft-heart"
+        animate={{ y: [0, -18, 0], rotate: [0, 8, 0] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <Heart />
+      </motion.div>
 
-            <div className="olivia-hero-actions">
-              <a href="#fun-notaries">
-                Pick a family notary
-                <ArrowRight />
-              </a>
+      <motion.div
+        aria-hidden="true"
+        className="olivia-soft-icon olivia-soft-sparkle"
+        animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <Sparkles />
+      </motion.div>
 
-              <div>
-                Use code <span>OG-POP</span> for 15% off
-              </div>
-            </div>
-          </motion.div>
+      <section className="olivia-one-screen">
+        <div className="olivia-hero-bg" />
 
-          <motion.aside
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
-            className="olivia-card olivia-note-card"
-          >
-            <p>Small note</p>
-            <h2>Need a regular notary too?</h2>
-            <p>
-              You are welcome to look around the main notary services anytime,
-              but this page is mainly for Olivia's friends and families to enjoy
-              something more personal and fun.
-            </p>
-            <a href="/notary">View regular notary services</a>
-          </motion.aside>
-        </div>
-      </section>
-
-      <section className="olivia-grownup-note">
         <motion.div
           variants={fadeUp}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="olivia-warning-card"
+          animate="visible"
+          transition={{ duration: 0.75, ease: "easeOut" }}
+          className="olivia-main-card"
         >
-          <ShieldCheck />
-          <div>
-            <h2>Quick grown-up note</h2>
-            <p>
-              Children can enjoy the keepsake experience, but anyone signing a
-              document for notarization must be 18 or older and able to provide
-              valid identification. A parent, guardian, or grown adult will need
-              to be present for anything that requires an official notarization.
-            </p>
-          </div>
-        </motion.div>
-      </section>
-
-      <section id="fun-notaries" className="olivia-fun-section">
-        <div className="olivia-container">
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="olivia-section-heading"
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35, duration: 0.5 }}
+            className="olivia-pill"
           >
-            <p className="olivia-pill emerald-pill">
-              <Sparkles className="olivia-pill-icon" />
-              The fun part
-            </p>
-            <h2>Pick a memory your family can turn into a keepsake.</h2>
-            <p>
-              These are playful, heartfelt signings made for families, kids,
-              friends, and pets. They are meant to be lighthearted, cute, and
-              memorable.
-            </p>
-          </motion.div>
+            <Heart className="olivia-pill-icon" />
+            Olivia's little thank-you experience
+          </motion.p>
 
-          <div className="olivia-fun-grid">
-            {funNotaries.map((item, index) => {
-              const Icon = item.icon;
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.45, duration: 0.65, ease: "easeOut" }}
+          >
+            A sweet family keepsake made just for Olivia's friends & families.
+          </motion.h1>
 
-              return (
-                <motion.a
-                  key={item.title}
-                  href={item.link}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.25 }}
-                  transition={{ duration: 0.55, delay: index * 0.08, ease: "easeOut" }}
-                  className="olivia-card olivia-fun-card"
-                >
-                  <Icon />
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                  <span>
-                    See this idea
-                    <ArrowRight />
-                  </span>
-                </motion.a>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate="visible"
+            variants={{
+              visible: { opacity: 1, y: 0 },
+            }}
+            transition={{ delay: 0.58, duration: 0.65, ease: "easeOut" }}
+            className="olivia-main-copy"
+          >
+            Choose a fun memory to make official: love notes, family promises,
+            pet keepsakes, or fun milestone certificates. Use code{" "}
+            <span>OG-POP</span> for 15% off after approval.
+          </motion.p>
 
-      <section className="olivia-discount-section">
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="olivia-discount-card"
-        >
-          <BadgePercent />
-          <h2>Olivia's request form</h2>
-          <p>
-            Use code <span>OG-POP</span> to send a request for your family
-            notary experience and receive 15% off after your appointment is
-            confirmed. The form lets you share your idea, preferred time, backup
-            time, and whether you prefer in-person or online/remote.
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.72, duration: 0.65, ease: "easeOut" }}
+            className="olivia-main-actions"
+          >
+            <button type="button" onClick={() => setShowExperiences(true)}>
+              See Olivia's experience ideas
+              <Sparkles />
+            </button>
 
-          <div className="olivia-request-actions">
-            <a href={bookingLinks.requestForm} target="_blank" rel="noreferrer">
-              <CalendarDays />
-              Send my Olivia request
+            <a href={bookingLinks.notaryWebsite} target="_blank" rel="noreferrer">
+              Need regular notary services?
+              <ExternalLink />
             </a>
-          </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.86, duration: 0.65, ease: "easeOut" }}
+            className="olivia-quick-note"
+          >
+            <ShieldCheck />
+            <p>
+              Official notarizations require a signer who is 18 or older with
+              valid ID. A parent or guardian must be present for minors when
+              applicable.
+            </p>
+          </motion.div>
         </motion.div>
       </section>
 
-      <section className="olivia-detail-section">
-        <div className="olivia-detail-grid">
+      <AnimatePresence>
+        {showExperiences && (
           <motion.div
-            id="love-notes"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.55, ease: "easeOut" }}
-            className="olivia-detail-card"
+            className="olivia-modal-backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
           >
-            <PenLine />
-            <h3>Love Notes & Letters</h3>
-            <p>
-              A sweet way to write an I love you note, a thank-you letter, or
-              words of encouragement to someone special. It can be for a parent,
-              child, grandparent, teacher, friend, or anyone your family cares
-              about.
-            </p>
-          </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.88, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 20 }}
+              transition={{ type: "spring", stiffness: 180, damping: 18 }}
+              className="olivia-experience-modal"
+            >
+              <div aria-hidden="true" className="modal-glitter-field">
+                {modalGlitter.map((_, index) => (
+                  <motion.span
+                    key={`modal-glitter-${index}`}
+                    className={`modal-glitter sparkle-${index % 5}`}
+                    initial={{ opacity: 0, x: 0, y: 0, scale: 0 }}
+                    animate={{
+                      opacity: [0, 1, 0],
+                      x: Math.cos(index * 1.4) * (70 + index * 6),
+                      y: Math.sin(index * 1.4) * (45 + index * 4),
+                      scale: [0, 1.2, 0],
+                    }}
+                    transition={{ duration: 1.4, delay: index * 0.04, ease: "easeOut" }}
+                  />
+                ))}
+              </div>
 
-          <motion.div
-            id="family-promises"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.55, delay: 0.08, ease: "easeOut" }}
-            className="olivia-detail-card"
-          >
-            <Users />
-            <h3>Family Promises</h3>
-            <p>
-              A meaningful keepsake for family vows, promises, encouragement, or
-              memory-making. This can be silly, heartfelt, or sentimental,
-              whatever feels like your family.
-            </p>
-          </motion.div>
+              <button
+                type="button"
+                onClick={() => setShowExperiences(false)}
+                className="olivia-modal-close"
+                aria-label="Close experience ideas"
+              >
+                <X />
+              </button>
 
-          <motion.div
-            id="pet-paw-promise"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.55, delay: 0.16, ease: "easeOut" }}
-            className="olivia-detail-card"
-          >
-            <PawPrint />
-            <h3>Pet Paw Promise</h3>
-            <p>
-              A playful memory for kids and their pets. Add a paw print, photo,
-              or little promise about walks, treats, snuggles, and forever
-              friendship.
-            </p>
-          </motion.div>
+              <div className="olivia-modal-content">
+                <p className="olivia-pill emerald-pill">
+                  <Sparkles className="olivia-pill-icon" />
+                  Choose your Olivia idea
+                </p>
 
-          <motion.div
-            id="kid-ceo-certificate"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.55, delay: 0.24, ease: "easeOut" }}
-            className="olivia-detail-card"
-          >
-            <Baby />
-            <h3>Kid CEO Certificate</h3>
-            <p>
-              Perfect for lemonade stands, pretend shops, chore goals, big kid
-              milestones, or any little dream that deserves a fun official
-              moment.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+                <h2>Pick the kind of memory you want to create.</h2>
 
-      <section className="olivia-thanks">
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="olivia-thanks-card"
-        >
-          <h2>A little thank you from us</h2>
-          <p>
-            Thank you for being part of Olivia's world. This page is simply a
-            fun way to share something sweet, creative, and a little unexpected
-            with the families around her.
-          </p>
-          <p className="olivia-signoff">- Olivia & Mom</p>
-        </motion.div>
-      </section>
+                <p>
+                  These are examples to help you choose. When you are ready, the
+                  request form will let you tell me which idea you want and share
+                  any details.
+                </p>
+
+                <div className="olivia-modal-grid">
+                  {funNotaries.map((item, index) => {
+                    const Icon = item.icon;
+
+                    return (
+                      <motion.div
+                        key={item.title}
+                        initial={{ opacity: 0, y: 18 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.15 + index * 0.08, duration: 0.45 }}
+                        className="olivia-modal-card"
+                      >
+                        <Icon />
+                        <h3>{item.title}</h3>
+                        <p>{item.description}</p>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+
+                <div className="olivia-modal-actions">
+                  <a href={bookingLinks.requestForm} target="_blank" rel="noreferrer">
+                    Open Olivia request form
+                    <ArrowRight />
+                  </a>
+
+                  <p>
+                    Payment is not collected here. You'll receive confirmation
+                    details after your request is reviewed.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }
