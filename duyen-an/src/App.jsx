@@ -209,11 +209,60 @@ function CinematicArrival() {
       <div className="absolute left-1/2 top-[45%] h-[420px] w-[92vw] max-w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-t-[5rem] border border-amber-100/25 bg-red-950/40 shadow-[0_0_170px_rgba(253,230,138,0.28)] md:h-[540px]" />
       <div className="absolute bottom-0 left-1/2 h-44 w-[80vw] max-w-[1000px] -translate-x-1/2 bg-gradient-to-t from-emerald-200/25 via-stone-200/15 to-transparent blur-sm" />
 
-      <SmartImage
-        src="/images/duyenan.png"
-        alt=""
-        className="absolute inset-0 h-full w-full object-cover opacity-85"
+      <motion.div
+        className="absolute inset-0"
+        initial={{ scale: 1.04, x: 0, y: 0 }}
+        animate={{
+          scale: [1.04, 1.12, 1.08],
+          x: [0, -28, 18],
+          y: [0, -18, -8],
+        }}
+        transition={{
+          duration: 18,
+          repeat: Infinity,
+          repeatType: "mirror",
+          ease: "easeInOut",
+        }}
+      >
+        <SmartImage
+          src="/images/duyenan-arrival.jpeg"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover opacity-90"
+        />
+      </motion.div>
+
+      <motion.div
+        className="pointer-events-none absolute inset-0 z-[18] bg-[linear-gradient(115deg,transparent_18%,rgba(255,235,190,0.18)_42%,transparent_60%)] mix-blend-screen"
+        animate={{ x: ["-28vw", "28vw"], opacity: [0.14, 0.36, 0.14] }}
+        transition={{ duration: 9, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
       />
+
+      <div className="pointer-events-none absolute inset-0 z-[19] overflow-hidden">
+        {Array.from({ length: 28 }, (_, i) => (
+          <motion.span
+            key={i}
+            className="absolute h-1.5 w-1.5 rounded-full bg-amber-100/80 shadow-[0_0_18px_rgba(253,230,138,0.85)]"
+            initial={{
+              x: `${(i * 17) % 100}vw`,
+              y: "-8vh",
+              opacity: 0,
+              scale: 0.4,
+            }}
+            animate={{
+              y: "112vh",
+              x: `${((i * 17) % 100) + (i % 2 ? 12 : -12)}vw`,
+              opacity: [0, 1, 0],
+              scale: [0.4, 1.25, 0.5],
+            }}
+            transition={{
+              duration: 9 + (i % 7),
+              delay: i * 0.22,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+        ))}
+      </div>
 
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.05),rgba(0,0,0,0.62))]" />
       <div className="absolute inset-x-0 top-0 h-28 bg-black/70" />
