@@ -8,9 +8,6 @@ export default function TealightPath({ progress, beats, tealightImage }) {
   return (
     <motion.div style={{ opacity, y }} className="tealight-scene">
       <img src={tealightImage} className="image-plate tealight-plate" alt="" />
-      <div className="plate-debug hallway-debug">
-        <span>Hallway Plate</span>
-      </div>
       <div className="tealight-path">
         {[...Array(9)].map((_, index) => (
           <motion.span

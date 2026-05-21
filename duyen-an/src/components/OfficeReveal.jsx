@@ -8,9 +8,6 @@ export default function OfficeReveal({ progress, beats, officeImage }) {
   return (
     <motion.div style={{ opacity, y }} className="office-arrival">
       <img src={officeImage} className="image-plate office-plate" alt="" />
-      <div className="plate-debug office-debug">
-        <span>Office Plate</span>
-      </div>
       <div className="office-copy">
         <span>Office Arrival</span>
         <strong>The Yen Circle</strong>

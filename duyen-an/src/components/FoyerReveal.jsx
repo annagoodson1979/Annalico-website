@@ -17,9 +17,6 @@ export default function FoyerReveal({ progress, beats, foyerImage, children }) {
         className="image-plate foyer-plate"
         alt=""
       />
-      <div className="plate-debug foyer-debug">
-        <span>Foyer Jade Plate</span>
-      </div>
       <div className="lantern-glow" />
       {[...Array(8)].map((_, index) => (
         <div

@@ -46,7 +46,6 @@ export default function HomePage() {
       <div className="pointer-events-none fixed inset-0 z-[190] bg-[radial-gradient(circle_at_center,transparent_40%,rgba(0,0,0,0.55)_100%)]" />
 
       <nav className="fixed left-1/2 top-6 z-[220] hidden -translate-x-1/2 rounded-full border border-white/[0.07] bg-black/40 px-6 py-3 text-xs uppercase tracking-[0.25em] text-white/60 backdrop-blur-xl md:flex gap-6">
-        <a href="#arrival" className="hover:text-amber-200 transition">Arrival</a>
         <a href="#interior" className="hover:text-amber-200 transition">House</a>
         <a href="#businesses" className="hover:text-amber-200 transition">Presence</a>
         <a href="#future-wing" className="hover:text-amber-200 transition">Future</a>
@@ -362,32 +361,6 @@ function CinematicArrival() {
       >
         <div className="absolute inset-0 bg-transparent" />
       </motion.div>
-
-      <motion.div
-        className="absolute inset-0 z-[60] flex flex-col items-center justify-end px-6 pb-16 text-center md:pb-20"
-        initial={{ opacity: 0, y: 35 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 4.7, duration: 1.8 }}
-      >
-        <p className="mb-4 text-xs uppercase tracking-[0.55em] text-amber-100/85">
-          Welcome to
-        </p>
-
-        <h1 className="font-rosella text-5xl leading-none tracking-[0.02em] text-white drop-shadow-[0_0_30px_rgba(255,240,220,0.2)] sm:text-6xl md:text-[9rem]">
-          {"Duy\u00ean \u00c2n"}
-        </h1>
-
-        <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/75">
-          A hidden garden arrival into warmth, ceremony, and the House of Yen.
-        </p>
-      </motion.div>
-
-      <a
-        href="#interior"
-        className="absolute bottom-6 right-6 z-[90] rounded-full border border-white/[0.08] bg-black/40 px-5 py-3 text-xs uppercase tracking-[0.3em] text-white/60 backdrop-blur-xl transition hover:text-amber-200 md:bottom-8 md:right-8"
-      >
-        Skip Arrival
-      </a>
 
       <div className="pointer-events-none absolute inset-0 z-[70] bg-[radial-gradient(circle_at_center,transparent_35%,rgba(0,0,0,0.82)_100%)]" />
     </section>

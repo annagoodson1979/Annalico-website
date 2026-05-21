@@ -57,9 +57,6 @@ export default function GrandDoors({ progress, beats, brandName, exteriorImage, 
         className="image-plate exterior-plate"
         alt=""
       />
-      <div className="plate-debug exterior-debug">
-        <span>Arrival Plate</span>
-      </div>
       <div className="blossom blossom-left">{"\u273f"}</div>
       <div className="blossom blossom-right">{"\u273f"}</div>
       {[...Array(22)].map((_, index) => (
@@ -90,9 +87,6 @@ export default function GrandDoors({ progress, beats, brandName, exteriorImage, 
             className="image-plate grand-door-plate"
             alt=""
           />
-          <div className="plate-debug grand-door-debug">
-            <span>Grand Doors Plate</span>
-          </div>
           <div className="brand-lockup">
             <div className="brand-name">{brandName}</div>
             <div className="brand-kicker">House of Yen</div>

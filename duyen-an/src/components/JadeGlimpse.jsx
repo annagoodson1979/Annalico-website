@@ -12,9 +12,6 @@ export default function JadeGlimpse({ progress, beats, houseOfJadeImage }) {
         className="image-plate jade-glimpse-plate"
         alt=""
       />
-      <div className="plate-debug jade-debug">
-        <span>House of Jade Plate</span>
-      </div>
       <div className="courtyard-glow" />
       <div className="courtyard-sign">House of Jade</div>
     </motion.div>
