@@ -218,7 +218,7 @@ section {
   z-index: 20;
   background:
     radial-gradient(circle at center, rgba(20, 18, 16, 0.25), rgba(5, 4, 4, 0.92)),
-    url("/images/final-office.jpg");
+    url("/images/office.jpeg");
   background-size: cover;
   background-position: center;
   animation: worldReveal 2s ease forwards;

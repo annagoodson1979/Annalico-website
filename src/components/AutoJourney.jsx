@@ -4,7 +4,7 @@ import BookingRequest from "./BookingRequest";
 
 const scenes = [
   {
-    image: "/images/duyenan-arrival.jpg",
+    image: "/images/duyenan-arrival.jpeg",
     eyebrow: "Arrival",
     title: "Welcome to Duyên Ân.",
     text: "Where elegance enters quietly.",
@@ -18,7 +18,7 @@ const scenes = [
     },
   },
   {
-    image: "/images/house-of-jade-glimpse.jpg",
+    image: "/images/houseofjade.jpeg",
     eyebrow: "A passing glimpse",
     title: "House of Jade",
     text: "A quiet threshold within Duyên Ân.",
@@ -32,10 +32,10 @@ const scenes = [
     },
   },
   {
-    image: "/images/courtyard-tour.jpg",
-    eyebrow: "Within the courtyard",
+    image: "/images/yenlobby.jpg",
+    eyebrow: "Within the lobby",
     title: "Stillness moves through the house.",
-    text: "Water, lanterns, and soft conversation guide the path inward.",
+    text: "Light, texture, and quiet conversation guide the path inward.",
     motion: {
       scale: 1.08,
       xStart: 10,
@@ -88,7 +88,7 @@ const scenes = [
     },
   },
   {
-    image: "/images/final-office.jpg",
+    image: "/images/office.jpeg",
     eyebrow: "Final destination",
     title: "The office of House of Yên",
     text: "What do you need? I'm listening.",

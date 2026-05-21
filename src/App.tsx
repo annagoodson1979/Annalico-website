@@ -59,7 +59,7 @@ function NotaryPage() {
 
         <div className="route-actions">
           <a href="/notary/book">Reserve Appointment</a>
-          <a href="/notary/promo">Promo Code Access</a>
+          <a href="/notary/promo">Access Code</a>
         </div>
       </section>
     </main>
@@ -92,14 +92,14 @@ function PromoPage() {
 
       <section className="simple-route-content promo-route-content">
         <p className="section-kicker">Private Promo</p>
-        <h1>Enter Promo Code</h1>
+        <h1>Access Code</h1>
         <p>Use your private access code to open the Olivia booking landing page.</p>
 
         <form className="promo-code-form" onSubmit={unlockPromo}>
           <input
             value={code}
             onChange={(event) => setCode(event.target.value)}
-            placeholder="Enter Promo Code"
+            placeholder="Enter Access Code"
           />
           <button type="submit">Unlock</button>
         </form>
@@ -121,7 +121,8 @@ function OliviaLanding() {
   const [showExperiences, setShowExperiences] = useState(false);
 
   const bookingLinks = {
-    requestForm: "https://forms.gle/YOUR-OLIVIA-REQUEST-FORM",
+    requestForm:
+      "https://docs.google.com/forms/d/e/1FAIpQLSfZ5uxjapGjtHG3SMHbF23beryvVwdPW5wbE8ibilQrp7PGhQ/viewform?usp=header",
     notaryWebsite: "https://ynxnotary.com",
   };
 
@@ -428,11 +429,11 @@ function OliviaPage() {
 
         <section className="simple-route-content">
           <p className="section-kicker">Private Booking</p>
-          <h1>Promo Code Required</h1>
-          <p>This private landing page opens after entering the promo code.</p>
+          <h1>Access Code Required</h1>
+          <p>This private landing page opens after entering the access code.</p>
 
           <div className="route-actions">
-            <a href="/notary/promo">Enter Promo Code</a>
+            <a href="/notary/promo">Access Code</a>
           </div>
         </section>
       </main>

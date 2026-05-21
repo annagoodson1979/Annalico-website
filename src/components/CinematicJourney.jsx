@@ -4,22 +4,22 @@ import { useRef } from "react";
 
 const scenes = [
   {
-    image: "/images/duyenan-arrival.jpg",
+    image: "/images/duyenan-arrival.jpeg",
     eyebrow: "Arrival",
     title: "Welcome to Duyên Ân.",
     text: "Where elegance enters quietly.",
   },
   {
-    image: "/images/house-of-jade-glimpse.jpg",
+    image: "/images/houseofjade.jpeg",
     eyebrow: "A passing glimpse",
     title: "House of Jade",
     text: "A quiet threshold within Duyên Ân.",
   },
   {
-    image: "/images/courtyard-tour.jpg",
-    eyebrow: "Within the courtyard",
+    image: "/images/yenlobby.jpg",
+    eyebrow: "Within the lobby",
     title: "Stillness moves through the house.",
-    text: "Water, lanterns, and soft conversation guide the path inward.",
+    text: "Light, texture, and quiet conversation guide the path inward.",
   },
   {
     image: "/images/monolith-path.jpg",
@@ -40,7 +40,7 @@ const scenes = [
     text: "The journey settles into presence and purpose.",
   },
   {
-    image: "/images/final-office.jpg",
+    image: "/images/office.jpeg",
     eyebrow: "Final destination",
     title: "The office of House of Yên",
     text: "What do you need? I'm listening.",

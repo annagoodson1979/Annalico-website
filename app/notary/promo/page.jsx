@@ -22,14 +22,14 @@ export default function PromoPage() {
 
   return (
     <main>
-      <h1>Enter Promo Code</h1>
+      <h1>Access Code</h1>
       <p>Use your private access code to open the Olivia booking landing page.</p>
 
       <form onSubmit={unlockPage}>
         <input
           value={code}
           onChange={(event) => setCode(event.target.value)}
-          placeholder="Enter Promo Code"
+          placeholder="Enter Access Code"
         />
 
         <button type="submit">Unlock</button>

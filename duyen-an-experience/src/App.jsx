@@ -93,7 +93,7 @@ function App() {
             transition={{ duration: 1.8 }}
           >
             <img
-              src="/images/duyenan.png"
+              src="/images/duyenan-arrival.jpeg"
               alt="Duyen An arrival entrance"
               className="arrival-image animate-slowZoom"
             />

@@ -4,7 +4,7 @@ function SanctuaryCourtyard() {
   return (
     <section className="sanctuary-scene">
       <img
-        src="/images/sanctuary-courtyard.jpg"
+        src="/images/yenlobby.jpg"
         alt="House of Yen sanctuary courtyard"
         className="sanctuary-image"
       />
