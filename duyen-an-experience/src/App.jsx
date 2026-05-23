@@ -93,7 +93,7 @@ function App() {
             transition={{ duration: 1.8 }}
           >
             <img
-              src="/images/duyenan-arrival.jpeg"
+              src="/images/duyenan-arrival2.jpg"
               alt="Duyen An arrival entrance"
               className="arrival-image animate-slowZoom"
             />
@@ -154,14 +154,14 @@ function App() {
                 <div className="yen-circle-glimpse">
                   <div className="yen-circle-doorway-frame">
                     <img
-                      src="/images/yen-circle-doorway.jpeg"
+                      src="/images/courtyard.png"
                       alt="Yen Circle Entrance"
                       className="yen-circle-doorway"
                     />
 
                     <div className="yen-circle-overlay">
                       <img
-                        src="/images/yencircle.jpeg"
+                        src="/images/courtyard.png"
                         alt="Yen Circle"
                         className="yen-circle-image"
                       />

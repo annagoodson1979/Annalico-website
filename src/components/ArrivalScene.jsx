@@ -4,7 +4,7 @@ export default function ArrivalScene() {
   return (
     <section className="arrival-scene">
       <img
-        src="/images/duyenan-arrival.jpeg"
+        src="/images/duyenan-arrival2.jpg"
         alt="Duyen An arrival entrance"
         className="arrival-image"
       />

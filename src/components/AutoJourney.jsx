@@ -4,7 +4,7 @@ import BookingRequest from "./BookingRequest";
 
 const scenes = [
   {
-    image: "/images/duyenan-arrival.jpeg",
+    image: "/images/duyenan-arrival2.jpg",
     eyebrow: "Arrival",
     title: "Welcome to Duyên Ân.",
     text: "Where elegance enters quietly.",
@@ -32,7 +32,7 @@ const scenes = [
     },
   },
   {
-    image: "/images/yenlobby.jpg",
+    image: "/images/duyenanlobby.jpg",
     eyebrow: "Within the lobby",
     title: "Stillness moves through the house.",
     text: "Light, texture, and quiet conversation guide the path inward.",
@@ -46,7 +46,7 @@ const scenes = [
     },
   },
   {
-    image: "/images/monolith-path.jpg",
+    image: "/images/monolith.jpg",
     eyebrow: "Guided by light",
     title: "Toward the monolith",
     text: "Tealights quietly lead the way deeper into the sanctuary.",
@@ -74,7 +74,7 @@ const scenes = [
     },
   },
   {
-    image: "/images/yen-circle.jpg",
+    image: "/images/courtyard.png",
     eyebrow: "The final threshold",
     title: "Beyond the Yên Circle",
     text: "The journey settles into presence and purpose.",
@@ -88,7 +88,7 @@ const scenes = [
     },
   },
   {
-    image: "/images/office.jpeg",
+    image: "/images/office.jpg",
     eyebrow: "Final destination",
     title: "The office of House of Yên",
     text: "What do you need? I'm listening.",
@@ -234,6 +234,9 @@ export default function AutoJourney() {
 
       <section id="spotlight" className="info-section">
         <h2>Business of the Week</h2>
+        <a className="directory-link" href="/business-directory.html">
+          Click for Business Directory
+        </a>
       </section>
 
       <section id="salon" className="info-section salon-booking-section">

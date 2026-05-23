@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Business Directory | House of Yen</title>
+    <style>
+      :root {
+        --bg: #090706;
+        --card: rgba(255, 255, 255, 0.08);
+        --card-border: rgba(255, 255, 255, 0.18);
+        --text: #f8f1ea;
+        --soft: rgba(248, 241, 234, 0.72);
+        --rose: #d8a5a5;
+        --gold: #c9a46b;
+        --green: #7c8f72;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top center, rgba(216, 165, 165, 0.18), transparent 34%),
+          radial-gradient(circle at bottom right, rgba(124, 143, 114, 0.16), transparent 32%),
+          linear-gradient(135deg, #070504, #130d0c 55%, #080706);
+        overflow-x: hidden;
+      }
+
+      .directory-page {
+        width: min(1100px, 92vw);
+        margin: 0 auto;
+        padding: 72px 0;
+      }
+
+      .hero {
+        text-align: center;
+        margin-bottom: 48px;
+      }
+
+      .eyebrow {
+        color: var(--gold);
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        font-size: 12px;
+        margin-bottom: 14px;
+      }
+
+      h1 {
+        font-size: clamp(40px, 6vw, 76px);
+        margin: 0;
+        font-weight: 500;
+        line-height: 1;
+      }
+
+      .hero p,
+      .admin-panel p,
+      .tagline,
+      .spotlight-preview p {
+        color: var(--soft);
+        font-family: Arial, sans-serif;
+        line-height: 1.7;
+      }
+
+      .hero p {
+        max-width: 640px;
+        margin: 20px auto 0;
+      }
+
+      .admin-panel,
+      .spotlight-preview {
+        border-radius: 30px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+
+      .admin-panel {
+        margin-bottom: 34px;
+        padding: 28px;
+      }
+
+      .admin-panel h2,
+      .spotlight-preview h3 {
+        margin: 0 0 8px;
+        font-size: 28px;
+        font-weight: 500;
+      }
+
+      .business-form,
+      .directory-grid {
+        display: grid;
+        gap: 12px;
+      }
+
+      .business-form {
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      }
+
+      .business-form input {
+        padding: 14px 16px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(0, 0, 0, 0.22);
+        color: var(--text);
+        outline: none;
+      }
+
+      .business-form button {
+        border: 0;
+        border-radius: 999px;
+        padding: 14px 18px;
+        color: #130d0c;
+        background: linear-gradient(135deg, var(--rose), var(--gold));
+        cursor: pointer;
+        font-weight: 700;
+      }
+
+      .directory-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+      }
+
+      .business-card {
+        position: relative;
+        min-height: 360px;
+        padding: 28px;
+        border-radius: 32px;
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
+        overflow: hidden;
+        transition: transform 0.35s ease, border-color 0.35s ease;
+      }
+
+      .business-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(216, 165, 165, 0.55);
+      }
+
+      .business-card::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        background: radial-gradient(circle at top left, rgba(216, 165, 165, 0.24), transparent 38%);
+        pointer-events: none;
+      }
+
+      .logo-mark {
+        position: relative;
+        width: 76px;
+        height: 76px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(201, 164, 107, 0.55);
+        color: var(--gold);
+        font-size: 24px;
+        letter-spacing: 0.08em;
+        margin-bottom: 28px;
+        background: rgba(0, 0, 0, 0.18);
+      }
+
+      .business-card h2 {
+        position: relative;
+        font-size: 32px;
+        margin: 0 0 10px;
+        font-weight: 500;
+      }
+
+      .tagline {
+        position: relative;
+        margin-bottom: 28px;
+      }
+
+      .links {
+        position: absolute;
+        left: 28px;
+        right: 28px;
+        bottom: 28px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .links a {
+        flex: 1 1 auto;
+        text-align: center;
+        text-decoration: none;
+        color: var(--text);
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        padding: 12px 15px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .spotlight-preview {
+        margin-top: 54px;
+        padding: 36px;
+        text-align: center;
+      }
+
+      @media (max-width: 720px) {
+        .directory-page { padding: 42px 0; }
+        .admin-panel { padding: 20px; }
+        .business-card { min-height: 390px; }
+        .links { position: relative; left: auto; right: auto; bottom: auto; margin-top: 24px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="directory-page">
+      <section class="hero">
+        <div class="eyebrow">Private Business Directory</div>
+        <h1>House of Yen</h1>
+        <p>Select a business below. Each card can feed the final spotlight landing animation with the correct name, logo, and client links.</p>
+      </section>
+
+      <section class="admin-panel">
+        <h2>Add New Business Member</h2>
+        <p>Add a business once, and it will appear in the directory, weekly rotation, and monthly random spotlight.</p>
+
+        <form id="addBusinessForm" class="business-form">
+          <input name="name" placeholder="Business name" required />
+          <input name="initials" placeholder="Logo initials, ex: LS" required />
+          <input name="tagline" placeholder="Short tagline" required />
+          <input name="bookingLink" placeholder="Booking link" />
+          <input name="paymentLink" placeholder="Payment link" />
+          <input name="contactLink" placeholder="Contact link or email" />
+          <input name="websiteLink" placeholder="Website link" />
+          <button type="submit">Add Business</button>
+        </form>
+      </section>
+
+      <section id="directoryGrid" class="directory-grid"></section>
+
+      <section class="spotlight-preview">
+        <h3>Spotlight Landing Ready</h3>
+        <p>Clicking any business can send that business data into the final floating spotlight card.</p>
+      </section>
+    </main>
+
+    <script>
+      const starterBusinesses = [
+        {
+          id: "house-of-yen",
+          name: "House of Yen",
+          initials: "HY",
+          tagline: "A world. A standard. A legacy.",
+          bookingLink: "#",
+          paymentLink: "#",
+          contactLink: "mailto:info@theyenan.com",
+          websiteLink: "/"
+        },
+        {
+          id: "ynx-notary",
+          name: "YNX Notary",
+          initials: "YNX",
+          tagline: "Professional notary appointments and document services.",
+          bookingLink: "https://docs.google.com/forms/d/e/1FAIpQLSeAj11M5t6ji4qn6wYjSXV3INLf_mHttATePmDrNA1ItGDNRg/viewform?usp=dialog",
+          paymentLink: "https://notaryassistlink.com/invoice",
+          contactLink: "mailto:info@ynxnotary.com",
+          websiteLink: "https://ynxnotary.com"
+        },
+        {
+          id: "salon-studio-21",
+          name: "Salon Studio 21",
+          initials: "SS",
+          tagline: "Luxury beauty services and restorative treatments.",
+          bookingLink: "https://docs.google.com/forms/d/e/1FAIpQLSfx-d8XV8dK5MV7Ipuv1ZPb2tjcGKTUJ5n0QCYOgZIVgET7gw/viewform?usp=dialog",
+          paymentLink: "https://notaryassist.com/saloninvoice",
+          contactLink: "mailto:salon@email.com",
+          websiteLink: "https://salonstudio21.glossgenius.com"
+        }
+      ];
+
+      const savedBusinesses = JSON.parse(localStorage.getItem("directoryBusinesses")) || [];
+      let businesses = [...starterBusinesses, ...savedBusinesses];
+      const directoryGrid = document.getElementById("directoryGrid");
+      const addBusinessForm = document.getElementById("addBusinessForm");
+
+      function getWednesdayWeekNumber(date = new Date()) {
+        const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
+        const pastDaysOfYear = (date - firstDayOfYear) / 86400000;
+        return Math.floor((pastDaysOfYear + firstDayOfYear.getDay()) / 7);
+      }
+
+      function getFirstWednesdayOfMonth(date = new Date()) {
+        const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+        const day = firstDay.getDay();
+        const daysUntilWednesday = (3 - day + 7) % 7;
+        return new Date(date.getFullYear(), date.getMonth(), 1 + daysUntilWednesday);
+      }
+
+      function seededRandomIndex(seed, length) {
+        let hash = 0;
+        for (let i = 0; i < seed.length; i++) {
+          hash = (hash << 5) - hash + seed.charCodeAt(i);
+          hash |= 0;
+        }
+        return Math.abs(hash) % length;
+      }
+
+      function getFeaturedBusiness() {
+        const now = new Date();
+        const firstWednesday = getFirstWednesdayOfMonth(now);
+        const randomFeatureEnds = new Date(firstWednesday);
+        randomFeatureEnds.setDate(firstWednesday.getDate() + 1);
+        const isRandomFeatureWindow = now >= firstWednesday && now < randomFeatureEnds;
+
+        if (isRandomFeatureWindow) {
+          const randomSeed = `${now.getFullYear()}-${now.getMonth()}-random-feature`;
+          return businesses[seededRandomIndex(randomSeed, businesses.length)];
+        }
+
+        return businesses[getWednesdayWeekNumber(now) % businesses.length];
+      }
+
+      function normalizeContactLink(link) {
+        if (!link || link === "#") return "#";
+        if (link.includes("@") && !link.startsWith("mailto:")) return `mailto:${link}`;
+        return link;
+      }
+
+      function saveBusinessForSpotlight(business = getFeaturedBusiness()) {
+        localStorage.setItem("spotlightBusiness", JSON.stringify(business));
+        window.location.href = `spotlight.html?business=${business.id}`;
+      }
+
+      function renderDirectory() {
+        directoryGrid.innerHTML = businesses.map((business, index) => `
+          <article class="business-card" data-id="${business.id}">
+            <div class="logo-mark">${business.initials}</div>
+            <h2>${business.name}</h2>
+            <p class="tagline">${business.tagline}</p>
+            <div class="links">
+              <a href="${business.bookingLink}">Book</a>
+              <a href="${business.paymentLink}">Pay</a>
+              <a href="${normalizeContactLink(business.contactLink)}">Contact</a>
+              <a href="#" onclick='saveBusinessForSpotlight(businesses[${index}]); return false;'>Spotlight</a>
+            </div>
+          </article>
+        `).join("");
+      }
+
+      addBusinessForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const formData = new FormData(addBusinessForm);
+        const name = formData.get("name").trim();
+        const newBusiness = {
+          id: name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""),
+          name,
+          initials: formData.get("initials").trim(),
+          tagline: formData.get("tagline").trim(),
+          bookingLink: formData.get("bookingLink").trim() || "#",
+          paymentLink: formData.get("paymentLink").trim() || "#",
+          contactLink: formData.get("contactLink").trim() || "#",
+          websiteLink: formData.get("websiteLink").trim() || "#"
+        };
+
+        savedBusinesses.push(newBusiness);
+        localStorage.setItem("directoryBusinesses", JSON.stringify(savedBusinesses));
+        businesses = [...starterBusinesses, ...savedBusinesses];
+        renderDirectory();
+        localStorage.setItem("spotlightBusiness", JSON.stringify(getFeaturedBusiness()));
+        addBusinessForm.reset();
+      });
+
+      renderDirectory();
+      localStorage.setItem("spotlightBusiness", JSON.stringify(getFeaturedBusiness()));
+    </script>
+  </body>
+</html>

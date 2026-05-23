@@ -140,7 +140,7 @@ a {
   place-items: center;
   background:
     linear-gradient(to bottom, rgba(255,255,255,0.04), rgba(0,0,0,0.45)),
-    url("/images/duyenan-arrival.jpeg");
+    url("/images/duyenan-arrival2.jpg");
   background-size: cover;
   background-position: center;
   transition:
@@ -174,7 +174,7 @@ a {
 .exterior-image-layer {
   background:
     linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.72)),
-    url("/images/duyenan-arrival.jpeg");
+    url("/images/duyenan-arrival2.jpg");
   background-size: cover;
   background-position: center;
   opacity: 0.85;
@@ -982,7 +982,7 @@ a {
 .salon-door {
   background:
     linear-gradient(to top, rgba(0,0,0,0.85), transparent 60%),
-    url("/images/halo.jpg");
+    url("/images/duyenanlobby.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -1026,7 +1026,7 @@ a {
   inset: 0;
   background:
     linear-gradient(to bottom, rgba(0,0,0,0.08), rgba(0,0,0,0.72)),
-    url("/images/halo.jpg");
+    url("/images/duyenanlobby.jpg");
   background-size: cover;
   background-position: center;
   opacity: 0.52;

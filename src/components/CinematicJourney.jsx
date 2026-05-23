@@ -4,7 +4,7 @@ import { useRef } from "react";
 
 const scenes = [
   {
-    image: "/images/duyenan-arrival.jpeg",
+    image: "/images/duyenan-arrival2.jpg",
     eyebrow: "Arrival",
     title: "Welcome to Duyên Ân.",
     text: "Where elegance enters quietly.",
@@ -16,13 +16,13 @@ const scenes = [
     text: "A quiet threshold within Duyên Ân.",
   },
   {
-    image: "/images/yenlobby.jpg",
+    image: "/images/duyenanlobby.jpg",
     eyebrow: "Within the lobby",
     title: "Stillness moves through the house.",
     text: "Light, texture, and quiet conversation guide the path inward.",
   },
   {
-    image: "/images/monolith-path.jpg",
+    image: "/images/monolith.jpg",
     eyebrow: "Guided by light",
     title: "Toward the monolith",
     text: "Tealights quietly lead the way deeper into the sanctuary.",
@@ -34,13 +34,13 @@ const scenes = [
     text: "The house quietly highlights the people within it.",
   },
   {
-    image: "/images/yen-circle.jpg",
+    image: "/images/courtyard.png",
     eyebrow: "The final threshold",
     title: "Beyond the Yên Circle",
     text: "The journey settles into presence and purpose.",
   },
   {
-    image: "/images/office.jpeg",
+    image: "/images/office.jpg",
     eyebrow: "Final destination",
     title: "The office of House of Yên",
     text: "What do you need? I'm listening.",
