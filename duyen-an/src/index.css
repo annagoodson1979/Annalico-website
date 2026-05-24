@@ -413,17 +413,29 @@ video {
 .arrival-petal {
   position: absolute;
   z-index: 50;
-  width: 14px;
-  height: 9px;
-  border-radius: 90% 20% 90% 28%;
+  width: 18px;
+  height: 11px;
+  border-radius: 90% 18% 88% 22%;
   background:
-    radial-gradient(circle at 28% 24%, rgba(255, 255, 255, 0.86), transparent 24%),
-    linear-gradient(135deg, rgba(255, 236, 240, 0.92), rgba(228, 143, 163, 0.62));
+    radial-gradient(circle at 24% 24%, rgba(255, 255, 255, 0.92), transparent 22%),
+    linear-gradient(135deg, rgba(255, 238, 242, 0.96), rgba(226, 137, 160, 0.68) 58%, rgba(164, 71, 96, 0.42));
   box-shadow:
-    0 0 10px rgba(255, 205, 218, 0.28),
-    inset -2px -1px 3px rgba(180, 80, 105, 0.22);
-  filter: blur(0.1px);
+    0 0 10px rgba(255, 205, 218, 0.2),
+    inset -3px -1px 4px rgba(180, 80, 105, 0.24);
+  filter: blur(0.05px);
   pointer-events: none;
+}
+
+.arrival-petal:nth-of-type(3n) {
+  width: 13px;
+  height: 8px;
+  opacity: 0.7;
+}
+
+.arrival-petal:nth-of-type(4n) {
+  width: 22px;
+  height: 13px;
+  filter: blur(0.35px);
 }
 
 .cinematic-arrival {

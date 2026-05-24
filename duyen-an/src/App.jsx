@@ -220,7 +220,7 @@ function CinematicArrival() {
         }}
       >
         <SmartImage
-          src="/images/duyenan-arrival2.jpg"
+          src="/images/arrival.jpeg"
           alt=""
           className="absolute inset-0 h-full w-full object-cover opacity-90"
         />
@@ -306,35 +306,34 @@ function CinematicArrival() {
         }}
       />
 
-      {Array.from({ length: 34 }, (_, i) => (
+      {Array.from({ length: 38 }, (_, i) => (
         <motion.span
           key={i}
           className="arrival-petal"
           initial={{
-            x: `${-8 + ((i * 13) % 120)}vw`,
-            y: `${8 + ((i * 19) % 72)}vh`,
+            x: `${-22 - (i % 7) * 5}vw`,
+            y: `${10 + ((i * 17) % 72)}vh`,
             rotate: (i * 31) % 180,
             opacity: 0,
           }}
           animate={{
             x: [
-              `${-8 + ((i * 13) % 120)}vw`,
-              `${-2 + ((i * 13) % 120)}vw`,
-              `${-14 + ((i * 13) % 120)}vw`,
+              `${-22 - (i % 7) * 5}vw`,
+              `${40 + ((i * 9) % 36)}vw`,
+              `${118 + (i % 8) * 4}vw`,
             ],
             y: [
-              `${8 + ((i * 19) % 72)}vh`,
-              `${10 + ((i * 19) % 72)}vh`,
-              `${7 + ((i * 19) % 72)}vh`,
+              `${10 + ((i * 17) % 72)}vh`,
+              `${7 + ((i * 13) % 76)}vh`,
+              `${13 + ((i * 11) % 70)}vh`,
             ],
-            rotate: [(i * 31) % 180, 18 + ((i * 53) % 240), -12 + ((i * 47) % 180)],
-            opacity: [0.12, 0.72, 0.22],
+            rotate: [(i * 31) % 180, 160 + ((i * 53) % 220), 340 + ((i * 47) % 240)],
+            opacity: [0, 0.78, 0.52, 0],
           }}
           transition={{
-            duration: 5.5 + (i % 7),
-            delay: i * 0.18,
+            duration: 9.5 + (i % 8),
+            delay: i * 0.38,
             repeat: Infinity,
-            repeatType: "mirror",
             ease: "easeInOut",
           }}
         />
@@ -475,7 +474,7 @@ function BusinessOfTheWeek() {
   return (
     <section className="relative min-h-screen px-6 py-32 bg-gradient-to-b from-black via-red-950/30 to-black text-center overflow-hidden">
       <SmartImage
-        src="/images/courtyard.png"
+        src="/images/spotlight.jpg"
         alt=""
         className="absolute inset-0 h-full w-full object-cover opacity-35"
       />
@@ -520,7 +519,7 @@ function LockedHouseOfJade() {
       <div className="mx-auto grid max-w-7xl items-center gap-16 md:grid-cols-2">
         <div className="relative h-[620px] overflow-hidden rounded-[3rem] border border-white/10 bg-zinc-900 grayscale">
           <SmartImage
-            src="/images/houseofjade.jpeg"
+            src="/images/courtyard.jpeg"
             alt=""
             className="absolute inset-0 h-full w-full object-cover opacity-65"
           />

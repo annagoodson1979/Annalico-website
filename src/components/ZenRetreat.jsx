@@ -2,7 +2,7 @@ function ZenRetreat() {
   return (
     <section className="zen-scene">
       <img
-        src="/images/courtyard.png"
+        src="/images/courtyard.jpeg"
         alt="Private Zen retreat at House of Yen"
         className="zen-image"
       />
