@@ -485,7 +485,6 @@ function App() {
   return (
     <>
       <AutoJourney />
-      <AmbientSound />
     </>
   );
 }

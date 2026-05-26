@@ -1067,6 +1067,570 @@ section {
   animation: fadeInNav 2s ease forwards;
 }
 
+.intro-controls,
+.intro-status {
+  position: absolute;
+  z-index: 12;
+  left: 50%;
+  bottom: clamp(1.5rem, 5vh, 3.5rem);
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  width: min(92vw, 520px);
+  text-align: center;
+}
+
+.intro-controls button,
+.intro-status button {
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  background: rgba(0, 0, 0, 0.35);
+  color: #f7f0e8;
+  padding: 14px 24px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  backdrop-filter: blur(14px);
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+
+.intro-controls button:hover,
+.intro-status button:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.intro-controls p,
+.intro-status span {
+  margin: 0;
+  color: rgba(247, 240, 232, 0.78);
+  font-family: "Inter", sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.7);
+}
+
+.intro-status {
+  left: auto;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  transform: none;
+  width: auto;
+  flex-direction: row;
+}
+
+.auto-journey .arrivalContent,
+.auto-journey .jadeContent,
+.auto-journey .lobbyContent,
+.auto-journey .monolithContent,
+.auto-journey .spotlightCard,
+.auto-journey .yenCircleContent,
+.auto-journey .officeContent {
+  display: none;
+}
+
+.sceneDepth,
+.sceneLightSweep {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sceneDepth {
+  z-index: -1;
+  opacity: 0.34;
+  mix-blend-mode: screen;
+  filter: blur(14px);
+  background:
+    radial-gradient(circle at 24% 72%, rgba(255, 255, 255, 0.16), transparent 18%),
+    radial-gradient(circle at 74% 42%, rgba(255, 255, 255, 0.1), transparent 22%),
+    radial-gradient(circle at 52% 88%, rgba(255, 255, 255, 0.12), transparent 26%);
+  animation: sceneDepthDrift 10s ease-in-out infinite alternate;
+}
+
+.sceneDepthWarm {
+  background:
+    radial-gradient(circle at 24% 72%, rgba(255, 207, 156, 0.2), transparent 20%),
+    radial-gradient(circle at 76% 42%, rgba(255, 239, 206, 0.12), transparent 24%),
+    radial-gradient(circle at 52% 88%, rgba(255, 166, 116, 0.12), transparent 28%);
+}
+
+.sceneDepthJade {
+  background:
+    radial-gradient(circle at 24% 72%, rgba(136, 255, 212, 0.2), transparent 20%),
+    radial-gradient(circle at 76% 42%, rgba(255, 224, 164, 0.14), transparent 24%),
+    radial-gradient(circle at 52% 88%, rgba(89, 206, 159, 0.14), transparent 28%);
+}
+
+.sceneDepthGold {
+  background:
+    radial-gradient(circle at 50% 48%, rgba(255, 218, 140, 0.24), transparent 22%),
+    radial-gradient(circle at 32% 76%, rgba(255, 242, 205, 0.13), transparent 24%),
+    radial-gradient(circle at 74% 72%, rgba(255, 183, 104, 0.12), transparent 28%);
+}
+
+.sceneDepthRose {
+  background:
+    radial-gradient(circle at 24% 72%, rgba(255, 196, 203, 0.2), transparent 20%),
+    radial-gradient(circle at 76% 42%, rgba(255, 239, 206, 0.12), transparent 24%),
+    radial-gradient(circle at 52% 88%, rgba(216, 165, 165, 0.14), transparent 28%);
+}
+
+.sceneLightSweep {
+  z-index: 0;
+  opacity: 0.22;
+  mix-blend-mode: screen;
+  background: linear-gradient(112deg, transparent 20%, rgba(255, 238, 203, 0.18) 42%, transparent 62%);
+  transform: translateX(-26%);
+  animation: sceneLightSweep 7s ease-in-out infinite alternate;
+}
+
+.sceneLightSweepJade {
+  background: linear-gradient(112deg, transparent 20%, rgba(168, 255, 226, 0.18) 42%, transparent 62%);
+}
+
+.auto-scene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+  background:
+    linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 9px);
+  animation: imageBreathTexture 5.5s ease-in-out infinite alternate;
+}
+
+.arrivalGlow,
+.jadeLight,
+.monolithMist,
+.spotlightBeam,
+.yenCircleMoon,
+.officeWarmth {
+  animation-duration: 5.5s;
+}
+
+.arrivalImage,
+.jadeImage,
+.lobbyImage,
+.monolithImage,
+.spotlightImage,
+.yenCircleImage,
+.officeImage {
+  will-change: transform, filter;
+}
+
+.cinematicVideoLayer {
+  position: absolute;
+  inset: -8%;
+  width: 116%;
+  height: 116%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+  filter: saturate(1.03) contrast(1.04) brightness(0.92);
+  transform: scale(1.02);
+}
+
+.arrivalScene .cinematicVideoLayer {
+  z-index: -4;
+}
+
+.jadeScene .cinematicVideoLayer,
+.lobbyScene .cinematicVideoLayer,
+.yenCircleScene .cinematicVideoLayer,
+.officeScene .cinematicVideoLayer {
+  z-index: -7;
+}
+
+.monolithScene .cinematicVideoLayer {
+  z-index: -6;
+  filter: saturate(0.9) contrast(1.12) brightness(0.58);
+}
+
+.paiSystemScene .cinematicVideoLayer,
+.spotlightRevealScene .cinematicVideoLayer {
+  z-index: -8;
+}
+
+.cinematicVideoLayer + .arrivalShade,
+.cinematicVideoLayer + .jadeShade,
+.cinematicVideoLayer + .lobbyShade,
+.cinematicVideoLayer + .monolithShade,
+.cinematicVideoLayer + .yenCircleShade,
+.cinematicVideoLayer + .officeShade,
+.cinematicVideoLayer + .paiSystemShade,
+.cinematicVideoLayer + .spotlightRevealShade {
+  backdrop-filter: none;
+}
+
+@keyframes sceneDepthDrift {
+  from {
+    transform: translate3d(-3%, 2%, 0) scale(1.02);
+    opacity: 0.22;
+  }
+
+  to {
+    transform: translate3d(4%, -3%, 0) scale(1.08);
+    opacity: 0.42;
+  }
+}
+
+@keyframes sceneLightSweep {
+  from {
+    transform: translateX(-32%) skewX(-8deg);
+    opacity: 0.1;
+  }
+
+  to {
+    transform: translateX(28%) skewX(-8deg);
+    opacity: 0.34;
+  }
+}
+
+@keyframes imageBreathTexture {
+  from {
+    transform: translateX(-1.5%);
+    opacity: 0.1;
+  }
+
+  to {
+    transform: translateX(1.5%);
+    opacity: 0.22;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sceneDepth,
+  .sceneLightSweep,
+  .auto-scene::after {
+    animation: none;
+  }
+}
+
+.paiSystemScene,
+.spotlightRevealScene {
+  position: relative;
+  min-height: 100svh;
+  width: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  background: #050302;
+}
+
+.paiSystemImage,
+.spotlightRevealImage {
+  position: absolute;
+  inset: -8%;
+  z-index: -8;
+  background-size: cover;
+  background-position: center;
+  transform-origin: center;
+}
+
+.paiSystemImage {
+  background-image: url("/images/PAI.jpeg");
+  filter: saturate(0.9) contrast(1.12) brightness(0.64);
+}
+
+.spotlightRevealImage {
+  background-image: url("/images/spotlight.jpg");
+  filter: saturate(1.02) contrast(1.08) brightness(0.68);
+}
+
+.paiSystemShade,
+.spotlightRevealShade {
+  position: absolute;
+  inset: 0;
+  z-index: -7;
+}
+
+.paiSystemShade {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255, 199, 118, 0.16), transparent 28%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.84)),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.78), transparent 50%, rgba(0, 0, 0, 0.78));
+}
+
+.spotlightRevealShade {
+  background:
+    radial-gradient(circle at 50% 48%, rgba(255, 218, 146, 0.22), transparent 28%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.86)),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.74), transparent 50%, rgba(0, 0, 0, 0.74));
+}
+
+.paiSystemWater {
+  position: absolute;
+  left: -12%;
+  right: -12%;
+  bottom: -12%;
+  height: 50%;
+  z-index: -4;
+  opacity: 0.64;
+  background:
+    linear-gradient(95deg, transparent, rgba(255, 221, 170, 0.2), transparent 42%),
+    repeating-linear-gradient(0deg, rgba(255, 226, 190, 0.08) 0 2px, transparent 3px 15px);
+  transform: perspective(640px) rotateX(62deg);
+  transform-origin: bottom;
+  animation: paiWaterFlow 4.6s ease-in-out infinite alternate;
+}
+
+.paiSystemMist {
+  position: absolute;
+  inset: auto -18% -10% -18%;
+  height: 54%;
+  z-index: -3;
+  opacity: 0.42;
+  background: radial-gradient(ellipse at center, rgba(255, 226, 190, 0.24), rgba(255, 226, 190, 0.06) 42%, transparent 72%);
+  filter: blur(22px);
+  animation: paiMistBreathe 6s ease-in-out infinite alternate;
+}
+
+.paiWaterLines {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 46%;
+  z-index: -2;
+  pointer-events: none;
+  overflow: hidden;
+  transform: perspective(700px) rotateX(64deg);
+  transform-origin: bottom;
+}
+
+.paiWaterLines span {
+  position: absolute;
+  left: -20%;
+  right: -20%;
+  height: 1px;
+  bottom: calc(8% + var(--line, 0) * 8%);
+  background: linear-gradient(90deg, transparent, rgba(255, 235, 210, 0.5), transparent);
+  animation: paiWaterLine 3.5s linear infinite;
+}
+
+.paiWaterLines span:nth-child(1) { --line: 1; }
+.paiWaterLines span:nth-child(2) { --line: 2; }
+.paiWaterLines span:nth-child(3) { --line: 3; }
+.paiWaterLines span:nth-child(4) { --line: 4; }
+.paiWaterLines span:nth-child(5) { --line: 5; }
+.paiWaterLines span:nth-child(6) { --line: 6; }
+.paiWaterLines span:nth-child(7) { --line: 7; }
+.paiWaterLines span:nth-child(8) { --line: 8; }
+.paiWaterLines span:nth-child(9) { --line: 9; }
+
+.paiGearField {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  opacity: 0.34;
+}
+
+.paiGearField span {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 199, 118, 0.42);
+  box-shadow: 0 0 34px rgba(255, 160, 90, 0.12);
+}
+
+.paiStatuePulse {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  z-index: -1;
+  width: min(44vw, 520px);
+  height: min(44vw, 520px);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 220, 170, 0.22), transparent 62%);
+  filter: blur(14px);
+}
+
+.hourglassGlow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: -2;
+  width: min(50vw, 540px);
+  height: min(72vh, 680px);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse at center, rgba(255, 208, 132, 0.26), transparent 62%);
+  filter: blur(18px);
+  animation: hourglassGlowPulse 4.8s ease-in-out infinite alternate;
+}
+
+.hourglass {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  width: min(36vw, 320px);
+  height: min(62vh, 540px);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.hourglass::before,
+.hourglass::after {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: rgba(255, 230, 190, 0.45);
+  box-shadow: 0 0 24px rgba(255, 192, 112, 0.34);
+}
+
+.hourglass::before {
+  top: 0;
+}
+
+.hourglass::after {
+  bottom: 0;
+}
+
+.hourglassTop,
+.hourglassBottom {
+  position: absolute;
+  left: 14%;
+  right: 14%;
+  height: 43%;
+  border: 1px solid rgba(255, 230, 190, 0.26);
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(8px);
+}
+
+.hourglassTop {
+  top: 3%;
+  clip-path: polygon(0 0, 100% 0, 52% 100%, 48% 100%);
+}
+
+.hourglassBottom {
+  bottom: 3%;
+  clip-path: polygon(48% 0, 52% 0, 100% 100%, 0 100%);
+}
+
+.hourglassNeck {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: 2px;
+  height: 8%;
+  transform: translateX(-50%);
+  background: rgba(255, 218, 154, 0.8);
+  box-shadow: 0 0 18px rgba(255, 190, 110, 0.8);
+}
+
+.hourglass span {
+  --drift: 0px;
+  position: absolute;
+  top: 18%;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 222, 160, 0.9);
+  box-shadow: 0 0 12px rgba(255, 182, 90, 0.7);
+  animation: sandFall 3.8s ease-in infinite;
+}
+
+.businessNameDust {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 4;
+  transform: translate(-50%, -50%);
+  width: min(88vw, 900px);
+  text-align: center;
+  color: #fff5df;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.4rem, 7vw, 7rem);
+  line-height: 0.95;
+  text-shadow: 0 12px 44px rgba(0, 0, 0, 0.72);
+}
+
+.newName {
+  color: #ffe0a6;
+}
+
+@keyframes paiWaterFlow {
+  from {
+    transform: perspective(640px) rotateX(62deg) translateX(-2%);
+    opacity: 0.42;
+  }
+
+  to {
+    transform: perspective(640px) rotateX(62deg) translateX(3%);
+    opacity: 0.74;
+  }
+}
+
+@keyframes paiMistBreathe {
+  from {
+    opacity: 0.26;
+    transform: translateX(-4%);
+  }
+
+  to {
+    opacity: 0.52;
+    transform: translateX(4%);
+  }
+}
+
+@keyframes paiWaterLine {
+  from {
+    transform: translateX(-12%);
+    opacity: 0.1;
+  }
+
+  50% {
+    opacity: 0.65;
+  }
+
+  to {
+    transform: translateX(12%);
+    opacity: 0.12;
+  }
+}
+
+@keyframes hourglassGlowPulse {
+  from {
+    opacity: 0.34;
+    scale: 0.96;
+  }
+
+  to {
+    opacity: 0.7;
+    scale: 1.06;
+  }
+}
+
+@keyframes sandFall {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.5);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  52% {
+    transform: translate3d(var(--drift), 190px, 0) scale(1);
+    opacity: 0.92;
+  }
+
+  100% {
+    transform: translate3d(calc(var(--drift) * -0.35), 380px, 0) scale(0.65);
+    opacity: 0;
+  }
+}
+
 .main-navigation button,
 .sound-toggle {
   border: 1px solid rgba(255, 255, 255, 0.35);
@@ -3551,5 +4115,1211 @@ section {
 
   .pai-orb-content h3 {
     font-size: 1.35rem;
+  }
+}
+
+/* Final cinematic scene source-of-truth styles */
+
+.arrivalScene {
+  position: relative;
+  min-height: 100svh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: clamp(2rem, 6vw, 5rem);
+  isolation: isolate;
+  color: #fff8f0;
+}
+
+.arrivalImage {
+  position: absolute;
+  inset: -3%;
+  z-index: -4;
+  background-image: url("/images/arrival.jpeg");
+  background-size: cover;
+  background-position: center;
+  filter: saturate(1.08) contrast(1.04);
+  transform-origin: center;
+}
+
+.arrivalShade {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background:
+    linear-gradient(90deg, rgba(8, 3, 2, 0.72) 0%, rgba(8, 3, 2, 0.36) 42%, rgba(8, 3, 2, 0.08) 100%),
+    linear-gradient(180deg, rgba(5, 2, 1, 0.18) 0%, rgba(5, 2, 1, 0.18) 45%, rgba(5, 2, 1, 0.7) 100%);
+}
+
+.arrivalGlow {
+  position: absolute;
+  inset: auto -10% -25% -10%;
+  height: 48%;
+  z-index: -2;
+  background: radial-gradient(ellipse at center, rgba(255, 190, 154, 0.22), rgba(255, 190, 154, 0.08) 38%, transparent 72%);
+  pointer-events: none;
+}
+
+.arrivalContent {
+  max-width: 720px;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 8px 34px rgba(0, 0, 0, 0.55);
+}
+
+.arrivalKicker {
+  margin: 0 0 0.85rem;
+  font-size: clamp(0.72rem, 1.2vw, 0.86rem);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255, 231, 211, 0.86);
+}
+
+.arrivalContent h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3.2rem, 9vw, 8.5rem);
+  line-height: 0.9;
+  font-weight: 400;
+  letter-spacing: -0.065em;
+}
+
+.arrivalText {
+  max-width: 560px;
+  margin: clamp(1rem, 2vw, 1.35rem) 0 0;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  line-height: 1.65;
+  color: rgba(255, 244, 232, 0.86);
+}
+
+.petalLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  perspective: 900px;
+  transform-style: preserve-3d;
+}
+
+.petal {
+  --depth: 0.5;
+  --drift: 0px;
+  --lift: 0px;
+  --spin: 420deg;
+  position: absolute;
+  left: -12vw;
+  display: block;
+  border-radius: 85% 15% 75% 25%;
+  background:
+    radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.92), transparent 24%),
+    linear-gradient(135deg, #ffd9df 0%, #f6a6b7 48%, #d86f86 100%);
+  box-shadow: 0 0 8px rgba(255, 188, 199, 0.22);
+  filter: blur(calc((1 - var(--depth)) * 1.6px));
+  transform: translateZ(calc((var(--depth) - 0.5) * 420px)) rotate(18deg);
+  animation-name: petalBreeze3d;
+  animation-timing-function: cubic-bezier(0.45, 0, 0.35, 1);
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+
+.petal:nth-child(3n) {
+  animation-name: petalBreezeHigh3d;
+}
+
+.petal:nth-child(4n) {
+  animation-name: petalBreeze3d;
+}
+
+.petal:nth-child(5n) {
+  opacity: calc(var(--depth) * 0.6);
+}
+
+@keyframes petalBreeze {
+  0% {
+    translate: -14vw 0;
+    rotate: 0deg;
+  }
+
+  20% {
+    translate: 12vw -14px;
+    rotate: 70deg;
+  }
+
+  45% {
+    translate: 45vw 18px;
+    rotate: 155deg;
+  }
+
+  70% {
+    translate: 78vw -22px;
+    rotate: 245deg;
+  }
+
+  100% {
+    translate: 116vw 8px;
+    rotate: 340deg;
+  }
+}
+
+@keyframes petalBreeze3d {
+  0% {
+    transform:
+      translate3d(-18vw, 0, calc((var(--depth) - 0.5) * 420px))
+      rotateX(20deg)
+      rotateY(0deg)
+      rotateZ(0deg)
+      scale(calc(0.65 + var(--depth) * 0.9));
+    opacity: 0;
+  }
+
+  14% {
+    opacity: calc(0.16 + var(--depth) * 0.72);
+  }
+
+  32% {
+    transform:
+      translate3d(24vw, calc(var(--lift) * 0.45), calc((var(--depth) - 0.5) * 520px))
+      rotateX(86deg)
+      rotateY(160deg)
+      rotateZ(calc(var(--spin) * 0.34))
+      scale(calc(0.7 + var(--depth) * 0.92));
+  }
+
+  64% {
+    transform:
+      translate3d(68vw, calc(var(--lift) * -0.2 + var(--drift) * 0.16), calc((var(--depth) - 0.5) * 620px))
+      rotateX(178deg)
+      rotateY(300deg)
+      rotateZ(calc(var(--spin) * 0.72))
+      scale(calc(0.65 + var(--depth) * 1.05));
+  }
+
+  100% {
+    transform:
+      translate3d(124vw, calc(var(--lift) + var(--drift) * 0.28), calc((var(--depth) - 0.5) * 700px))
+      rotateX(260deg)
+      rotateY(460deg)
+      rotateZ(var(--spin))
+      scale(calc(0.58 + var(--depth) * 1.22));
+    opacity: 0;
+  }
+}
+
+@keyframes petalBreezeHigh3d {
+  0% {
+    transform:
+      translate3d(-20vw, 20px, calc((var(--depth) - 0.5) * 500px))
+      rotateX(0deg)
+      rotateY(0deg)
+      rotateZ(-40deg)
+      scale(calc(0.45 + var(--depth) * 0.75));
+    opacity: 0;
+  }
+
+  18% {
+    opacity: calc(0.12 + var(--depth) * 0.6);
+  }
+
+  52% {
+    transform:
+      translate3d(54vw, calc(-80px + var(--lift) * 0.5), calc((var(--depth) - 0.5) * 620px))
+      rotateX(130deg)
+      rotateY(220deg)
+      rotateZ(calc(var(--spin) * 0.56))
+      scale(calc(0.5 + var(--depth) * 0.86));
+  }
+
+  100% {
+    transform:
+      translate3d(120vw, calc(-40px + var(--lift)), calc((var(--depth) - 0.5) * 740px))
+      rotateX(280deg)
+      rotateY(420deg)
+      rotateZ(var(--spin))
+      scale(calc(0.42 + var(--depth) * 1));
+    opacity: 0;
+  }
+}
+
+@keyframes petalBreezeNear3d {
+  0% {
+    transform:
+      translate3d(-24vw, 42px, 260px)
+      rotateX(10deg)
+      rotateY(-80deg)
+      rotateZ(0deg)
+      scale(1.15);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.95;
+  }
+
+  42% {
+    transform:
+      translate3d(38vw, calc(var(--lift) * 0.35), 360px)
+      rotateX(180deg)
+      rotateY(120deg)
+      rotateZ(calc(var(--spin) * 0.45))
+      scale(1.75);
+    opacity: 0.82;
+  }
+
+  100% {
+    transform:
+      translate3d(132vw, calc(var(--lift) + 80px), 180px)
+      rotateX(360deg)
+      rotateY(480deg)
+      rotateZ(var(--spin))
+      scale(1.25);
+    opacity: 0;
+  }
+}
+
+.auto-journey .petal {
+  box-shadow: 0 0 5px rgba(255, 188, 199, 0.14);
+}
+
+.monolithScene {
+  position: relative;
+  min-height: 100svh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: clamp(2rem, 5vw, 5rem);
+  color: #fff8ec;
+  isolation: isolate;
+}
+
+.monolithImage {
+  position: absolute;
+  inset: -10%;
+  z-index: -6;
+  background-image: url("/images/monolith.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: saturate(0.88) contrast(1.15) brightness(0.54);
+  transform-origin: center;
+}
+
+.monolithShade {
+  position: absolute;
+  inset: 0;
+  z-index: -5;
+  background:
+    radial-gradient(ellipse at center 34%, rgba(255, 202, 139, 0.08), transparent 34%),
+    linear-gradient(180deg, rgba(3, 3, 3, 0.38) 0%, rgba(3, 3, 3, 0.46) 42%, rgba(3, 3, 3, 0.9) 100%),
+    linear-gradient(90deg, rgba(4, 3, 2, 0.8) 0%, rgba(4, 3, 2, 0.24) 48%, rgba(4, 3, 2, 0.8) 100%);
+}
+
+.monolithWater {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: -6%;
+  height: 42%;
+  z-index: -3;
+  opacity: 0.5;
+  background:
+    linear-gradient(100deg, transparent 0%, rgba(255, 206, 145, 0.14) 18%, transparent 36%, rgba(255, 244, 222, 0.08) 54%, transparent 76%),
+    repeating-linear-gradient(0deg, rgba(255, 224, 177, 0.08) 0px, rgba(255, 224, 177, 0.08) 1px, transparent 3px, transparent 12px);
+  filter: blur(0.4px);
+  animation: monolithWaterShift 8s ease-in-out infinite alternate;
+  transform: perspective(500px) rotateX(62deg);
+  transform-origin: bottom;
+}
+
+.monolithMist {
+  position: absolute;
+  inset: auto -12% 0 -12%;
+  height: 46%;
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0.38;
+  background: radial-gradient(ellipse at center, rgba(255, 223, 177, 0.18), rgba(255, 223, 177, 0.06) 38%, transparent 72%);
+  filter: blur(18px);
+  animation: monolithMistDrift 11s ease-in-out infinite alternate;
+}
+
+.monolithPathLights {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.pathLight {
+  --depth: 0;
+  position: absolute;
+  bottom: calc(13% + (var(--depth) * 4.8%));
+  width: calc(7px + (var(--depth) * 1.2px));
+  height: calc(7px + (var(--depth) * 1.2px));
+  border-radius: 999px;
+  background: rgba(255, 210, 136, 0.92);
+  box-shadow:
+    0 0 8px rgba(255, 191, 99, 0.82),
+    0 0 22px rgba(255, 165, 76, 0.38),
+    0 0 42px rgba(255, 142, 59, 0.18);
+  opacity: 0;
+  animation:
+    candleIgnite 0.9s ease forwards,
+    monolithCandleFlicker 3.2s ease-in-out infinite;
+  animation-delay: var(--delay), calc(var(--delay) + 0.9s);
+}
+
+.pathLight-left {
+  left: calc(49% - 6rem - (var(--depth) * 3.1vw));
+}
+
+.pathLight-right {
+  right: calc(49% - 6rem - (var(--depth) * 3.1vw));
+}
+
+.pathLight::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -14px;
+  width: 14px;
+  height: 28px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: radial-gradient(ellipse at center, rgba(255, 189, 92, 0.34), transparent 68%);
+  filter: blur(2px);
+}
+
+.monolithContent {
+  position: relative;
+  z-index: 2;
+  width: min(720px, 100%);
+  text-align: center;
+  text-shadow: 0 10px 36px rgba(0, 0, 0, 0.72);
+}
+
+.monolithKicker {
+  margin: 0 0 0.85rem;
+  font-size: clamp(0.72rem, 1.1vw, 0.84rem);
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: rgba(255, 231, 194, 0.86);
+}
+
+.monolithContent h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3rem, 8vw, 7.6rem);
+  line-height: 0.92;
+  font-weight: 400;
+  letter-spacing: -0.065em;
+}
+
+.monolithText {
+  max-width: 560px;
+  margin: clamp(1rem, 2vw, 1.35rem) auto 0;
+  font-size: clamp(1rem, 1.65vw, 1.26rem);
+  line-height: 1.65;
+  color: rgba(255, 246, 232, 0.84);
+}
+
+@keyframes monolithCandleFlicker {
+  0%,
+  100% {
+    opacity: 0.72;
+    scale: 0.96;
+  }
+
+  42% {
+    opacity: 1;
+    scale: 1.08;
+  }
+
+  68% {
+    opacity: 0.84;
+    scale: 1.01;
+  }
+}
+
+@keyframes candleIgnite {
+  from {
+    opacity: 0;
+    transform: scale(0.35);
+    filter: blur(5px);
+  }
+
+  55% {
+    opacity: 1;
+    transform: scale(1.55);
+    filter: blur(0);
+  }
+
+  to {
+    opacity: 0.88;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes monolithWaterShift {
+  from {
+    translate: -2% 0;
+    opacity: 0.38;
+  }
+
+  to {
+    translate: 2% -1%;
+    opacity: 0.58;
+  }
+}
+
+@keyframes monolithMistDrift {
+  from {
+    translate: -3% 0;
+  }
+
+  to {
+    translate: 3% -1%;
+  }
+}
+
+.jadeScene {
+  position: relative;
+  min-height: 100svh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: clamp(2rem, 6vw, 5rem);
+  color: #f2fff5;
+  isolation: isolate;
+}
+
+.jadeImage {
+  position: absolute;
+  inset: -4%;
+  z-index: -7;
+  background-image: url("/images/houseofjade.jpeg");
+  background-size: cover;
+  background-position: center;
+  filter: saturate(1.05) contrast(1.08) brightness(0.84);
+  transform-origin: center;
+}
+
+.jadeShade {
+  position: absolute;
+  inset: 0;
+  z-index: -6;
+  background:
+    radial-gradient(ellipse at 58% 34%, rgba(102, 255, 205, 0.16), transparent 34%),
+    linear-gradient(90deg, rgba(2, 8, 7, 0.76) 0%, rgba(2, 8, 7, 0.34) 44%, rgba(2, 8, 7, 0.18) 100%),
+    linear-gradient(180deg, rgba(1, 5, 4, 0.14) 0%, rgba(1, 5, 4, 0.28) 46%, rgba(1, 5, 4, 0.84) 100%);
+}
+
+.jadeLight {
+  position: absolute;
+  inset: 0;
+  z-index: -5;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 68% 31%, rgba(122, 255, 205, 0.2), transparent 24%),
+    radial-gradient(circle at 23% 24%, rgba(255, 196, 115, 0.18), transparent 20%),
+    radial-gradient(ellipse at 50% 100%, rgba(44, 177, 131, 0.2), transparent 58%);
+  animation: jadeLightBreath 8s ease-in-out infinite alternate;
+}
+
+.jadeLanternLayer,
+.jadeMistLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.jadeLanternLayer {
+  z-index: -3;
+}
+
+.jadeLantern {
+  --scale: 1;
+  --delay: 0s;
+  position: absolute;
+  width: calc(34px * var(--scale));
+  height: calc(46px * var(--scale));
+  border-radius: 999px 999px 44% 44%;
+  background: radial-gradient(circle at 50% 36%, rgba(255, 245, 194, 0.95), rgba(255, 174, 83, 0.5) 44%, transparent 72%);
+  box-shadow:
+    0 0 18px rgba(255, 190, 96, 0.42),
+    0 0 52px rgba(255, 148, 74, 0.22);
+  opacity: 0.72;
+  filter: blur(0.2px);
+  animation: lanternGlow 4.8s ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+.jadeLantern::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -18px;
+  width: 1px;
+  height: 22px;
+  transform: translateX(-50%);
+  background: rgba(244, 226, 178, 0.28);
+}
+
+.jadeLantern::after {
+  content: "";
+  position: absolute;
+  inset: 20% 18%;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 234, 174, 0.25);
+}
+
+.jadeMistLayer {
+  z-index: -2;
+  overflow: hidden;
+}
+
+.jadeMist {
+  position: absolute;
+  left: -22%;
+  width: 144%;
+  height: 12rem;
+  background: radial-gradient(ellipse at center, rgba(191, 255, 226, 0.16), rgba(191, 255, 226, 0.05) 42%, transparent 72%);
+  filter: blur(22px);
+  opacity: 0.42;
+  animation-name: jadeMistDrift;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.jadeContent {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+  text-shadow: 0 10px 38px rgba(0, 0, 0, 0.68);
+}
+
+.jadeKicker {
+  margin: 0 0 0.85rem;
+  font-size: clamp(0.72rem, 1.1vw, 0.86rem);
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: rgba(216, 255, 236, 0.88);
+}
+
+.jadeContent h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3.1rem, 8vw, 7.7rem);
+  line-height: 0.92;
+  font-weight: 400;
+  letter-spacing: -0.065em;
+}
+
+.jadeText {
+  max-width: 560px;
+  margin: clamp(1rem, 2vw, 1.35rem) 0 0;
+  font-size: clamp(1rem, 1.7vw, 1.28rem);
+  line-height: 1.65;
+  color: rgba(239, 255, 245, 0.84);
+}
+
+@keyframes jadeLightBreath {
+  from {
+    opacity: 0.62;
+    filter: blur(0px);
+  }
+
+  to {
+    opacity: 0.92;
+    filter: blur(1px);
+  }
+}
+
+@keyframes lanternGlow {
+  0%,
+  100% {
+    opacity: 0.54;
+    transform: translateY(0) scale(0.96);
+  }
+
+  48% {
+    opacity: 0.86;
+    transform: translateY(-3px) scale(1.04);
+  }
+}
+
+@keyframes jadeMistDrift {
+  from {
+    translate: -4% 0;
+  }
+
+  to {
+    translate: 4% -1.5%;
+  }
+}
+
+@media (max-width: 760px) {
+  .arrivalScene,
+  .jadeScene {
+    min-height: 100svh;
+    padding: 2rem 1.35rem 4rem;
+    align-items: flex-end;
+  }
+
+  .arrivalImage,
+  .jadeImage {
+    inset: -6%;
+    background-position: center;
+  }
+
+  .arrivalShade {
+    background: linear-gradient(180deg, rgba(5, 2, 1, 0.08) 0%, rgba(5, 2, 1, 0.28) 46%, rgba(5, 2, 1, 0.82) 100%);
+  }
+
+  .arrivalContent h1 {
+    font-size: clamp(3rem, 18vw, 5.7rem);
+  }
+
+  .arrivalText,
+  .jadeText {
+    max-width: 22rem;
+  }
+
+  .petal {
+    animation-duration: 15s;
+  }
+
+  .monolithScene {
+    padding: 2rem 1.35rem 4rem;
+  }
+
+  .monolithImage {
+    inset: -6%;
+    background-position: center;
+  }
+
+  .monolithShade {
+    background: linear-gradient(180deg, rgba(3, 3, 3, 0.12) 0%, rgba(3, 3, 3, 0.28) 42%, rgba(3, 3, 3, 0.88) 100%);
+  }
+
+  .monolithContent h1 {
+    font-size: clamp(2.85rem, 16vw, 5.5rem);
+  }
+
+  .monolithText {
+    max-width: 23rem;
+  }
+
+  .pathLight {
+    bottom: calc(17% + (var(--depth) * 4.2%));
+    width: calc(5px + (var(--depth) * 0.8px));
+    height: calc(5px + (var(--depth) * 0.8px));
+  }
+
+  .pathLight-left {
+    left: calc(47% - 2.7rem - (var(--depth) * 2.4vw));
+  }
+
+  .pathLight-right {
+    right: calc(47% - 2.7rem - (var(--depth) * 2.4vw));
+  }
+
+  .monolithWater {
+    height: 34%;
+  }
+
+  .jadeShade {
+    background: linear-gradient(180deg, rgba(1, 5, 4, 0.08) 0%, rgba(1, 5, 4, 0.34) 44%, rgba(1, 5, 4, 0.9) 100%);
+  }
+
+  .jadeContent h1 {
+    font-size: clamp(3rem, 17vw, 5.7rem);
+  }
+
+  .jadeLantern {
+    opacity: 0.5;
+  }
+
+  .jadeLantern:nth-child(2),
+  .jadeLantern:nth-child(4) {
+    display: none;
+  }
+
+  .jadeMist {
+    height: 9rem;
+    opacity: 0.34;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .petal,
+  .monolithWater,
+  .monolithMist,
+  .pathLight,
+  .jadeLight,
+  .jadeLantern,
+  .jadeMist {
+    animation: none;
+  }
+
+  .petal {
+    opacity: 0.18;
+  }
+}
+
+.lobbyScene,
+.spotlightScene,
+.yenCircleScene,
+.officeScene {
+  position: relative;
+  min-height: 100svh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  isolation: isolate;
+  color: #fff8ec;
+}
+
+.lobbyScene,
+.yenCircleScene,
+.officeScene {
+  justify-content: flex-start;
+  padding: clamp(2rem, 6vw, 5rem);
+}
+
+.spotlightScene {
+  align-items: center;
+  justify-content: center;
+  padding: clamp(2rem, 5vw, 5rem);
+}
+
+.lobbyImage,
+.spotlightImage,
+.yenCircleImage,
+.officeImage {
+  position: absolute;
+  inset: -4%;
+  z-index: -7;
+  background-size: cover;
+  background-position: center;
+  transform-origin: center;
+}
+
+.lobbyImage {
+  background-image: url("/images/duyenanlobby.jpg");
+  filter: saturate(1.06) contrast(1.08) brightness(0.88);
+}
+
+.spotlightImage {
+  background-image: url("/images/spotlight.jpg");
+  filter: saturate(0.96) contrast(1.12) brightness(0.82);
+}
+
+.yenCircleImage {
+  background-image: url("/images/yenlobby.jpg");
+  filter: saturate(1.02) contrast(1.06) brightness(0.86);
+}
+
+.officeImage {
+  background-image: url("/images/office.jpg");
+  filter: saturate(1.02) contrast(1.06) brightness(0.84);
+}
+
+.lobbyShade,
+.spotlightShade,
+.yenCircleShade,
+.officeShade {
+  position: absolute;
+  inset: 0;
+  z-index: -6;
+}
+
+.lobbyShade {
+  background:
+    radial-gradient(ellipse at 58% 40%, rgba(255, 232, 190, 0.15), transparent 34%),
+    linear-gradient(90deg, rgba(7, 5, 3, 0.74), rgba(7, 5, 3, 0.28) 46%, rgba(7, 5, 3, 0.16)),
+    linear-gradient(180deg, rgba(5, 4, 3, 0.12), rgba(5, 4, 3, 0.84));
+}
+
+.spotlightShade {
+  background:
+    radial-gradient(circle at center, rgba(255, 212, 144, 0.14), transparent 32%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.86)),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.68), transparent 50%, rgba(0, 0, 0, 0.68));
+}
+
+.yenCircleShade {
+  background:
+    radial-gradient(circle at 50% 38%, rgba(216, 165, 165, 0.14), transparent 32%),
+    linear-gradient(90deg, rgba(8, 5, 4, 0.72), rgba(8, 5, 4, 0.22) 48%, rgba(8, 5, 4, 0.52)),
+    linear-gradient(180deg, rgba(5, 3, 2, 0.1), rgba(5, 3, 2, 0.84));
+}
+
+.officeShade {
+  background:
+    radial-gradient(ellipse at 70% 42%, rgba(255, 214, 160, 0.14), transparent 30%),
+    linear-gradient(90deg, rgba(8, 4, 3, 0.78), rgba(8, 4, 3, 0.32) 45%, rgba(8, 4, 3, 0.18)),
+    linear-gradient(180deg, rgba(4, 2, 2, 0.1), rgba(4, 2, 2, 0.88));
+}
+
+.lobbyReflection {
+  position: absolute;
+  inset: auto -10% -8% -10%;
+  height: 40%;
+  z-index: -3;
+  opacity: 0.42;
+  background:
+    linear-gradient(105deg, transparent, rgba(255, 235, 190, 0.14), transparent 38%),
+    repeating-linear-gradient(0deg, rgba(255, 232, 192, 0.08) 0 1px, transparent 3px 11px);
+  transform: perspective(520px) rotateX(60deg);
+  transform-origin: bottom;
+  animation: lobbyReflect 9s ease-in-out infinite alternate;
+}
+
+.lobbyShimmer,
+.spotlightSparks,
+.officeMotes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.lobbyShimmer {
+  z-index: -2;
+}
+
+.lobbyShimmer span {
+  position: absolute;
+  bottom: -8%;
+  width: 1px;
+  height: 58%;
+  background: linear-gradient(to top, transparent, rgba(255, 231, 190, 0.28), transparent);
+  transform: rotate(12deg);
+  animation: lobbyShimmer 6s ease-in-out infinite;
+}
+
+.lobbyContent,
+.yenCircleContent,
+.officeContent {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  text-shadow: 0 10px 38px rgba(0, 0, 0, 0.68);
+}
+
+.lobbyKicker,
+.spotlightKicker,
+.yenCircleKicker,
+.officeKicker {
+  margin: 0 0 0.85rem;
+  font-size: clamp(0.72rem, 1.1vw, 0.86rem);
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: rgba(255, 231, 194, 0.88);
+}
+
+.lobbyContent h1,
+.yenCircleContent h1,
+.officeContent h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3rem, 8vw, 7.6rem);
+  line-height: 0.92;
+  font-weight: 400;
+  letter-spacing: -0.065em;
+}
+
+.lobbyText,
+.yenCircleText,
+.officeText {
+  max-width: 560px;
+  margin: clamp(1rem, 2vw, 1.35rem) 0 0;
+  font-size: clamp(1rem, 1.7vw, 1.28rem);
+  line-height: 1.65;
+  color: rgba(255, 246, 232, 0.84);
+}
+
+.spotlightBeam {
+  position: absolute;
+  inset: -20% 18%;
+  z-index: -3;
+  opacity: 0.5;
+  background: linear-gradient(115deg, transparent 18%, rgba(255, 219, 154, 0.22) 45%, transparent 70%);
+  filter: blur(18px);
+  animation: spotlightBeamDrift 8s ease-in-out infinite alternate;
+}
+
+.spotlightSparks {
+  z-index: -2;
+}
+
+.spotlightSparks span,
+.officeMotes span {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255, 224, 174, 0.72);
+  box-shadow: 0 0 16px rgba(255, 180, 100, 0.38);
+}
+
+.spotlightSparks span {
+  animation: spotlightSpark 5s ease-in-out infinite;
+}
+
+.spotlightCard {
+  position: relative;
+  z-index: 2;
+  width: min(520px, 92vw);
+  padding: clamp(1.6rem, 4vw, 3rem);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.45);
+  text-align: center;
+}
+
+.spotlightCard h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.6rem, 7vw, 5.8rem);
+  line-height: 0.94;
+  font-weight: 400;
+  letter-spacing: -0.045em;
+}
+
+.spotlightCard p:not(.spotlightKicker) {
+  margin: 1rem auto 1.5rem;
+  max-width: 390px;
+  color: rgba(255, 246, 232, 0.82);
+  line-height: 1.65;
+}
+
+.spotlightCard a {
+  display: inline-block;
+  color: #fff8ec;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  border-radius: 999px;
+  padding: 0.8rem 1.1rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.yenCircleMoon {
+  position: absolute;
+  right: 10%;
+  top: 12%;
+  width: clamp(9rem, 18vw, 16rem);
+  height: clamp(9rem, 18vw, 16rem);
+  z-index: -3;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 232, 220, 0.24), rgba(216, 165, 165, 0.08) 45%, transparent 68%);
+  filter: blur(2px);
+  animation: yenMoonBreath 7s ease-in-out infinite alternate;
+}
+
+.yenCircleRipples {
+  position: absolute;
+  inset: auto 0 9% 0;
+  height: 36%;
+  z-index: -2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.yenCircleRipples span {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 24rem;
+  height: 6rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 226, 205, 0.18);
+  transform: translateX(-50%) perspective(600px) rotateX(68deg);
+  animation: yenRipple 5s ease-out infinite;
+}
+
+.officeWarmth {
+  position: absolute;
+  inset: auto -12% -18% -12%;
+  height: 48%;
+  z-index: -3;
+  background: radial-gradient(ellipse at center, rgba(255, 192, 132, 0.24), rgba(255, 192, 132, 0.08) 42%, transparent 72%);
+  filter: blur(16px);
+  animation: officeWarmth 7s ease-in-out infinite alternate;
+}
+
+.officeMotes {
+  z-index: -2;
+}
+
+.officeMotes span {
+  bottom: -8%;
+  animation: officeMoteRise 10s linear infinite;
+}
+
+@keyframes lobbyReflect {
+  from {
+    translate: -2% 0;
+    opacity: 0.32;
+  }
+
+  to {
+    translate: 2% -1%;
+    opacity: 0.52;
+  }
+}
+
+@keyframes lobbyShimmer {
+  0%,
+  100% {
+    opacity: 0;
+    translate: -1rem 0;
+  }
+
+  45% {
+    opacity: 0.85;
+  }
+
+  70% {
+    opacity: 0.2;
+    translate: 1.4rem -3rem;
+  }
+}
+
+@keyframes spotlightBeamDrift {
+  from {
+    translate: -4% 0;
+    opacity: 0.32;
+  }
+
+  to {
+    translate: 5% -2%;
+    opacity: 0.62;
+  }
+}
+
+@keyframes spotlightSpark {
+  0%,
+  100% {
+    opacity: 0.12;
+    scale: 0.8;
+    translate: 0 0;
+  }
+
+  50% {
+    opacity: 0.9;
+    scale: 1.25;
+    translate: 12px -18px;
+  }
+}
+
+@keyframes yenMoonBreath {
+  from {
+    opacity: 0.5;
+    scale: 0.96;
+  }
+
+  to {
+    opacity: 0.9;
+    scale: 1.04;
+  }
+}
+
+@keyframes yenRipple {
+  from {
+    opacity: 0.42;
+    scale: 0.45;
+  }
+
+  to {
+    opacity: 0;
+    scale: 1.4;
+  }
+}
+
+@keyframes officeWarmth {
+  from {
+    opacity: 0.62;
+    translate: -2% 0;
+  }
+
+  to {
+    opacity: 0.92;
+    translate: 2% -1%;
+  }
+}
+
+@keyframes officeMoteRise {
+  0% {
+    opacity: 0;
+    transform: translateY(0) translateX(0);
+  }
+
+  20% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-105vh) translateX(28px);
+  }
+}
+
+@media (max-width: 760px) {
+  .lobbyScene,
+  .yenCircleScene,
+  .officeScene,
+  .spotlightScene {
+    min-height: 100svh;
+    padding: 2rem 1.35rem 4rem;
+  }
+
+  .lobbyImage,
+  .spotlightImage,
+  .yenCircleImage,
+  .officeImage {
+    inset: -6%;
+  }
+
+  .lobbyShade,
+  .yenCircleShade,
+  .officeShade {
+    background: linear-gradient(180deg, rgba(5, 3, 2, 0.1), rgba(5, 3, 2, 0.32) 44%, rgba(5, 3, 2, 0.9));
+  }
+
+  .lobbyContent h1,
+  .yenCircleContent h1,
+  .officeContent h1 {
+    font-size: clamp(2.85rem, 16vw, 5.5rem);
+  }
+
+  .spotlightCard {
+    margin-top: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lobbyReflection,
+  .lobbyShimmer span,
+  .spotlightBeam,
+  .spotlightSparks span,
+  .yenCircleMoon,
+  .yenCircleRipples span,
+  .officeWarmth,
+  .officeMotes span {
+    animation: none;
   }
 }

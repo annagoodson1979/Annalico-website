@@ -1,137 +1,173 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import BookingRequest from "./BookingRequest";
+import FinalArrivalScene from "./FinalArrivalScene";
+import FinalHouseOfJadeScene from "./FinalHouseOfJadeScene";
+import FinalLobbyScene from "./FinalLobbyScene";
+import FinalMonolithScene from "./FinalMonolithScene";
+import FinalOfficeScene from "./FinalOfficeScene";
+import FinalPaiSystemScene from "./FinalPaiSystemScene";
+import FinalSpotlightRevealScene from "./FinalSpotlightRevealScene";
+import FinalSpotlightScene from "./FinalSpotlightScene";
+import FinalYenCircleScene from "./FinalYenCircleScene";
 
 const scenes = [
   {
+    cue: "arrival",
+    component: FinalArrivalScene,
     image: "/images/arrival.jpeg",
-    eyebrow: "Arrival",
-    title: "Welcome to Duyên Ân.",
-    text: "Where elegance enters quietly.",
-    motion: {
-      scale: 1.08,
-      xStart: 0,
-      xEnd: -30,
-      yStart: 0,
-      yEnd: -10,
-      duration: 7,
-    },
+    title: "Arrival",
   },
   {
-    image: "/images/houseofjade.jpeg",
-    eyebrow: "A passing glimpse",
-    title: "House of Jade",
-    text: "A quiet threshold within Duyên Ân.",
-    motion: {
-      scale: 1.06,
-      xStart: -20,
-      xEnd: 20,
-      yStart: 0,
-      yEnd: -12,
-      duration: 6,
-    },
-  },
-  {
+    cue: "yen",
+    component: FinalLobbyScene,
     image: "/images/duyenanlobby.jpg",
-    eyebrow: "Within the lobby",
-    title: "Stillness moves through the house.",
-    text: "Light, texture, and quiet conversation guide the path inward.",
-    motion: {
-      scale: 1.08,
-      xStart: 10,
-      xEnd: -20,
-      yStart: 0,
-      yEnd: -18,
-      duration: 7,
-    },
+    title: "House of Yen",
   },
   {
+    cue: "jade-glimpse",
+    component: FinalHouseOfJadeScene,
+    image: "/images/houseofjade.jpeg",
+    title: "House of Jade",
+  },
+  {
+    cue: "monolith",
+    component: FinalMonolithScene,
     image: "/images/monolith.jpg",
-    eyebrow: "Guided by light",
-    title: "Toward the monolith",
-    text: "Tealights quietly lead the way deeper into the sanctuary.",
-    motion: {
-      scale: 1.12,
-      xStart: 0,
-      xEnd: 0,
-      yStart: 20,
-      yEnd: -40,
-      duration: 8,
-    },
+    title: "Monolith",
   },
   {
-    image: "/images/spotlight.jpg",
-    eyebrow: "This week's spotlight",
-    title: "A place where every craft is honored.",
-    text: "The house quietly highlights the people within it.",
-    motion: {
-      scale: 1.07,
-      xStart: -15,
-      xEnd: 18,
-      yStart: 0,
-      yEnd: -16,
-      duration: 6,
-    },
+    cue: "candles",
+    component: FinalMonolithScene,
+    image: "/images/monolith.jpg",
+    title: "Candles",
   },
   {
+    cue: "yen-chamber",
+    component: FinalYenCircleScene,
     image: "/images/courtyard.jpeg",
-    eyebrow: "The final threshold",
-    title: "Beyond the Yên Circle",
-    text: "The journey settles into presence and purpose.",
-    motion: {
-      scale: 1.08,
-      xStart: 0,
-      xEnd: 0,
-      yStart: 12,
-      yEnd: -20,
-      duration: 7,
-    },
+    title: "Yen Circle",
   },
   {
+    cue: "spotlight",
+    component: FinalSpotlightRevealScene,
+    image: "/images/spotlight.jpg",
+    title: "Spotlight",
+  },
+  {
+    cue: "water-recedes",
+    component: FinalPaiSystemScene,
+    image: "/images/PAI.jpeg",
+    title: "Water Recedes",
+  },
+  {
+    cue: "mechanics",
+    component: FinalPaiSystemScene,
+    image: "/images/PAI.jpeg",
+    title: "Mechanics",
+  },
+  {
+    cue: "awakening",
+    component: FinalPaiSystemScene,
+    image: "/images/PAI.jpeg",
+    title: "Awakening",
+  },
+  {
+    cue: "athena-nod",
+    component: FinalPaiSystemScene,
+    image: "/images/PAI.jpeg",
+    title: "Athena Nod",
+  },
+  {
+    cue: "dust-transition",
+    component: FinalSpotlightRevealScene,
+    image: "/images/spotlight.jpg",
+    title: "Dust Transition",
+  },
+  {
+    cue: "final-bell",
+    component: FinalOfficeScene,
     image: "/images/office.jpg",
-    eyebrow: "Final destination",
-    title: "The office of House of Yên",
-    text: "What do you need? I'm listening.",
-    motion: {
-      scale: 1.06,
-      xStart: 0,
-      xEnd: -12,
-      yStart: 0,
-      yEnd: -10,
-      duration: 8,
-    },
+    title: "Final Bell",
   },
 ];
 
+const sceneCues = [
+  { time: 0, scene: "arrival" },
+  { time: 18, scene: "yen" },
+  { time: 38, scene: "jade-glimpse" },
+  { time: 55, scene: "monolith" },
+  { time: 78, scene: "candles" },
+  { time: 96, scene: "yen-chamber" },
+  { time: 112, scene: "spotlight" },
+  { time: 122, scene: "water-recedes" },
+  { time: 138, scene: "mechanics" },
+  { time: 155, scene: "awakening" },
+  { time: 170, scene: "athena-nod" },
+  { time: 182, scene: "dust-transition" },
+  { time: 196, scene: "final-bell" },
+];
+
+const soundtrackSrc = "/audio/duyen-an-awakening.mp3";
+const endingDelaySeconds = 10;
+
+function getSceneIndexForTime(time) {
+  const activeCue = [...sceneCues].reverse().find((cue) => time >= cue.time);
+  const sceneIndex = scenes.findIndex((scene) => scene.cue === activeCue?.scene);
+
+  return sceneIndex >= 0 ? sceneIndex : 0;
+}
+
 export default function AutoJourney() {
+  const audioRef = useRef(null);
   const [index, setIndex] = useState(0);
   const [finished, setFinished] = useState(false);
   const [entered, setEntered] = useState(false);
-  const duration = 5200;
-
-  useEffect(() => {
-    if (finished) return undefined;
-
-    const timer = setInterval(() => {
-      setIndex((current) => {
-        if (current >= scenes.length - 1) {
-          clearInterval(timer);
-
-          setTimeout(() => {
-            setFinished(true);
-          }, 5000);
-
-          return current;
-        }
-
-        return current + 1;
-      });
-    }, duration);
-
-    return () => clearInterval(timer);
-  }, [finished]);
+  const [playing, setPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [audioError, setAudioError] = useState("");
 
   const scene = scenes[index];
+  const SceneComponent = scene.component;
+
+  const updateFromAudioTime = (time) => {
+    setCurrentTime(time);
+    setIndex(getSceneIndexForTime(time));
+
+    const finalCue = sceneCues[sceneCues.length - 1];
+    if (time >= finalCue.time + endingDelaySeconds) {
+      setFinished(true);
+      setPlaying(false);
+    }
+  };
+
+  const startIntro = async () => {
+    const audio = audioRef.current;
+
+    if (!audio) return;
+
+    setAudioError("");
+    setFinished(false);
+    setEntered(false);
+    setIndex(0);
+    setCurrentTime(0);
+
+    try {
+      audio.currentTime = 0;
+      await audio.play();
+      setPlaying(true);
+    } catch {
+      setAudioError(
+        "Add public/audio/duyen-an-awakening.mp3 to play and sync the intro."
+      );
+      setPlaying(false);
+    }
+  };
+
+  const pauseIntro = () => {
+    audioRef.current?.pause();
+    setPlaying(false);
+  };
 
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -148,70 +184,77 @@ export default function AutoJourney() {
   return (
     <>
       <section className="auto-journey">
+        <audio
+          ref={audioRef}
+          src={soundtrackSrc}
+          preload="auto"
+          onTimeUpdate={(event) => updateFromAudioTime(event.currentTarget.currentTime)}
+          onEnded={() => {
+            setFinished(true);
+            setPlaying(false);
+          }}
+          onError={() => {
+            setAudioError(
+              "Add public/audio/duyen-an-awakening.mp3 to play and sync the intro."
+            );
+            setPlaying(false);
+          }}
+        />
+
         <AnimatePresence mode="wait">
           <motion.div
-            key={scene.image}
+            key={scene.cue}
             className="auto-scene"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.4, ease: "easeInOut" }}
           >
-            <motion.img
-              src={scene.image}
-              alt={scene.title}
-              className="auto-image"
-              initial={{
-                scale: 1.03,
-                x: scene.motion?.xStart || 0,
-                y: scene.motion?.yStart || 0,
-              }}
-              animate={{
-                scale: scene.motion?.scale || 1.08,
-                x: scene.motion?.xEnd || 0,
-                y: scene.motion?.yEnd || -20,
-              }}
-              transition={{
-                duration: scene.motion?.duration || 6,
-                ease: "easeInOut",
-              }}
-            />
+            {SceneComponent ? (
+              <SceneComponent />
+            ) : (
+              <>
+                <motion.img
+                  src={scene.image}
+                  alt={scene.title}
+                  className="auto-image"
+                  initial={{ scale: 1.03, x: 0, y: 0 }}
+                  animate={{ scale: 1.08, x: 0, y: -20 }}
+                  transition={{ duration: 6, ease: "easeInOut" }}
+                />
 
-            <div className="auto-overlay" />
-            {index === 0 && (
-              <div className="wind-petal-field" aria-hidden="true">
-                {Array.from({ length: 64 }, (_, petalIndex) => (
-                  <span key={petalIndex} />
-                ))}
-              </div>
+                <div className="auto-overlay" />
+                <div className="cinematic-mist" />
+                <div className="cinematic-light" />
+                <div className="cinematic-particles">
+                  <span />
+                  <span />
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </>
             )}
-            <div className="cinematic-mist" />
-            <div className="cinematic-light" />
-            <div className="cinematic-particles">
-              <span />
-              <span />
-              <span />
-              <span />
-              <span />
-            </div>
-
-            <motion.div
-              className="auto-copy"
-              initial={{ opacity: 0, y: 28 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -18 }}
-              transition={{ duration: 1.1, ease: "easeOut" }}
-            >
-              <p>{scene.eyebrow}</p>
-              <h2>{scene.title}</h2>
-              {scene.text && <span>{scene.text}</span>}
-            </motion.div>
           </motion.div>
         </AnimatePresence>
 
+        {!playing && !finished && (
+          <div className="intro-controls">
+            <button onClick={startIntro}>Start Experience</button>
+            {audioError && <p>{audioError}</p>}
+          </div>
+        )}
+
+        {playing && (
+          <div className="intro-status">
+            <button onClick={pauseIntro}>Pause</button>
+            <span>{Math.floor(currentTime)}s</span>
+          </div>
+        )}
+
         {finished && (
           <div className="main-navigation">
-            <button onClick={enterWorld}>Enter Duyên Ân</button>
+            <button onClick={enterWorld}>Enter Duyen An</button>
           </div>
         )}
       </section>
@@ -221,7 +264,7 @@ export default function AutoJourney() {
           <div className="world-overlay" />
 
           <div className="world-nav">
-            <div className="world-logo">Duyên Ân</div>
+            <div className="world-logo">Duyen An</div>
 
             <div className="world-links">
               <button onClick={() => scrollToSection("salon")}>Salon</button>
@@ -235,7 +278,7 @@ export default function AutoJourney() {
           </div>
 
           <div className="world-panel">
-            <h1>House of Yên</h1>
+            <h1>House of Yen</h1>
             <p>What do you need? I'm listening.</p>
           </div>
         </div>
