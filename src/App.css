@@ -2828,3 +2828,728 @@ section {
     font-size: 0.75rem;
   }
 }
+
+/* Final PAI Directory source-of-truth styles */
+.pai-root {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top center, rgba(120, 0, 0, 0.28), transparent 38%),
+    linear-gradient(to bottom, #050505, #000);
+  color: #f8eeee;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.pai-shell {
+  width: min(1240px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 36px 0 80px;
+}
+
+.pai-kicker {
+  margin: 0;
+  color: #e14747;
+  font-size: 0.72rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+}
+
+.pai-header,
+.pai-gateway,
+.pai-audio-panel,
+.pai-awakening,
+.pai-spotlight,
+.pai-profile,
+.pai-admin,
+.pai-partner-card {
+  border: 1px solid rgba(150, 20, 20, 0.38);
+  border-radius: 32px;
+  background: rgba(0, 0, 0, 0.62);
+  box-shadow: 0 0 70px rgba(120, 0, 0, 0.14);
+  margin-bottom: 32px;
+}
+
+.pai-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 28px;
+  align-items: flex-end;
+  padding: 0 0 28px;
+  border-width: 0 0 1px;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.pai-header h1,
+.pai-awakening h1,
+.pai-gateway h2,
+.pai-spotlight h2,
+.pai-profile h2,
+.pai-section-heading h2 {
+  margin: 0;
+  color: #ffdada;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.pai-header h1 {
+  margin-top: 10px;
+  font-size: clamp(2.4rem, 7vw, 5rem);
+}
+
+.pai-header p:last-child,
+.pai-gateway-copy p:last-child,
+.pai-audio-panel p,
+.pai-awakening-lead,
+.pai-spotlight p,
+.pai-card-snippet,
+.pai-profile-copy p,
+.pai-section-heading p:last-child {
+  color: #c8b4b4;
+  line-height: 1.75;
+}
+
+.pai-header nav,
+.pai-audio-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pai-header nav button {
+  border: 1px solid rgba(160, 40, 40, 0.45);
+  background: rgba(0, 0, 0, 0.5);
+  color: #c7aaaa;
+  border-radius: 999px;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.pai-header nav button.active,
+.pai-header nav button:hover {
+  border-color: rgba(255, 100, 100, 0.75);
+  color: #fff0f0;
+  background: rgba(120, 0, 0, 0.28);
+}
+
+.pai-button,
+.pai-card-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 14px;
+  padding: 12px 18px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.78rem;
+  transition: 180ms ease;
+}
+
+.pai-button-solid {
+  border: 1px solid #ffc6c6;
+  background: #ffc6c6;
+  color: #150000;
+  font-weight: 700;
+}
+
+.pai-button-outline,
+.pai-card-button {
+  border: 1px solid rgba(255, 90, 90, 0.65);
+  background: rgba(0, 0, 0, 0.45);
+  color: #ffdada;
+}
+
+.pai-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  border-radius: 999px;
+  border: 1px solid;
+  padding: 7px 12px;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.pai-badge-red { border-color: rgba(255, 70, 70, 0.7); color: #ffd0d0; }
+.pai-badge-gold { border-color: rgba(255, 205, 120, 0.75); color: #ffdc9a; }
+.pai-badge-green { border-color: rgba(80, 220, 150, 0.65); color: #baf7d2; }
+.pai-badge-gray { border-color: rgba(180, 180, 180, 0.45); color: #d0d0d0; }
+
+.pai-gateway,
+.pai-spotlight,
+.pai-profile-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 28px;
+  align-items: center;
+  padding: 34px;
+}
+
+.pai-gateway {
+  background:
+    radial-gradient(circle at right center, rgba(160, 0, 0, 0.18), transparent 44%),
+    rgba(0, 0, 0, 0.62);
+}
+
+.pai-gateway-copy h2,
+.pai-spotlight h2,
+.pai-profile-copy h3 {
+  margin-top: 12px;
+  color: #ffdada;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.pai-gateway-copy h2 {
+  font-size: clamp(2rem, 4vw, 3.8rem);
+}
+
+.pai-statues {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.pai-statue {
+  min-height: 260px;
+  border-radius: 28px;
+  border: 1px solid rgba(180, 35, 35, 0.35);
+  background:
+    linear-gradient(to bottom, rgba(255, 220, 220, 0.12), transparent 40%),
+    rgba(15, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+.pai-statue-figure {
+  width: 76px;
+  height: 150px;
+  border-radius: 50% 50% 12px 12px;
+  background: radial-gradient(circle at top, #ffe4e4, #b58a8a 42%, #4b1717 78%);
+  box-shadow: 0 0 30px rgba(255, 100, 100, 0.2);
+}
+
+.pai-statue p {
+  margin: 18px 0 0;
+  color: #ffdada;
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: 0.12em;
+}
+
+.pai-audio-panel {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: center;
+}
+
+.pai-audio-panel h3 {
+  margin: 8px 0;
+  color: #ffe3e3;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+}
+
+.pai-audio-player {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+.pai-awakening {
+  position: relative;
+  min-height: 720px;
+  padding: 44px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at center, rgba(180, 20, 20, 0.2), transparent 34%),
+    linear-gradient(to bottom, #060202, #000);
+}
+
+.pai-red-aura {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  width: 390px;
+  height: 390px;
+  margin-left: -195px;
+  margin-top: -195px;
+  border-radius: 50%;
+  background: rgba(180, 0, 0, 0.18);
+  filter: blur(58px);
+}
+
+.pai-particle,
+.pai-dust {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255, 210, 210, 0.7);
+  pointer-events: none;
+}
+
+.pai-awakening-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1120px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pai-start-button {
+  border: 1px solid rgba(255, 80, 80, 0.6);
+  border-radius: 999px;
+  padding: 18px 38px;
+  background:
+    radial-gradient(circle at center, rgba(255, 40, 40, 0.22), transparent 70%),
+    rgba(0, 0, 0, 0.7);
+  color: #ffdada;
+  cursor: pointer;
+  margin-bottom: 34px;
+}
+
+.pai-start-button span,
+.pai-orb-content span,
+.pai-step-card span {
+  display: block;
+  color: #e14747;
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.pai-start-button strong {
+  display: block;
+  margin-top: 8px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.35rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.pai-awakening h1 {
+  color: #ffdada;
+  font-size: clamp(2.8rem, 8vw, 6.6rem);
+  margin-top: 12px;
+}
+
+.pai-awakening-lead {
+  max-width: 760px;
+  margin: 20px auto 0;
+  font-size: 1.06rem;
+}
+
+.pai-candles {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 9px;
+  max-width: 850px;
+  margin: 36px auto 48px;
+}
+
+.pai-candle {
+  height: 8px;
+  border-radius: 999px;
+  background: #ffb6b6;
+  box-shadow: 0 0 18px rgba(255, 80, 80, 0.45);
+}
+
+.pai-orb-wrap {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 430px;
+}
+
+.pai-orb-ring,
+.pai-orb-dash {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.pai-orb-ring {
+  width: 420px;
+  height: 420px;
+  border: 1px solid rgba(255, 70, 70, 0.22);
+}
+
+.pai-orb-dash {
+  width: 490px;
+  height: 490px;
+  border: 1px dashed rgba(160, 20, 20, 0.35);
+}
+
+.pai-orb {
+  width: min(390px, 84vw);
+  height: min(390px, 84vw);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 80, 80, 0.4);
+  background:
+    radial-gradient(circle at center, rgba(255, 0, 0, 0.18), transparent 58%),
+    rgba(0, 0, 0, 0.78);
+  display: grid;
+  place-items: center;
+  padding: 40px;
+}
+
+.pai-orb-content h3,
+.pai-stone-name h3,
+.pai-step-card h4 {
+  color: #ffe1e1;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+}
+
+.pai-orb-content h3 {
+  margin: 14px 0;
+  font-size: 1.8rem;
+}
+
+.pai-orb-content p,
+.pai-step-card p {
+  margin: 0;
+  color: #bca8a8;
+  line-height: 1.55;
+  font-size: 0.9rem;
+}
+
+.pai-stone {
+  max-width: 760px;
+  margin: 0 auto 30px;
+  padding: 22px;
+  border-radius: 28px;
+  border: 1px solid rgba(180, 35, 35, 0.36);
+  background: rgba(0, 0, 0, 0.58);
+}
+
+.pai-stone-name {
+  position: relative;
+  overflow: hidden;
+  min-height: 110px;
+  margin-top: 16px;
+  display: grid;
+  place-items: center;
+  border-radius: 22px;
+  border: 1px solid rgba(150, 20, 20, 0.35);
+  background: radial-gradient(circle at center, rgba(140, 0, 0, 0.18), transparent 52%), #080303;
+}
+
+.pai-stone-name h3 {
+  margin: 0;
+  font-size: clamp(1.8rem, 5vw, 3.2rem);
+  text-transform: uppercase;
+}
+
+.pai-system-status,
+.pai-directory-tools,
+.pai-directory-grid,
+.pai-form-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.pai-system-status {
+  max-width: 860px;
+  margin: 0 auto 34px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.pai-system-status > div {
+  text-align: left;
+  border-radius: 22px;
+  border: 1px solid rgba(150, 20, 20, 0.32);
+  background: rgba(0, 0, 0, 0.48);
+  padding: 18px;
+}
+
+.pai-water-track {
+  height: 8px;
+  background: rgba(90, 0, 0, 0.7);
+  border-radius: 999px;
+  margin: 14px 0;
+  overflow: hidden;
+}
+
+.pai-water-track div {
+  height: 100%;
+  border-radius: 999px;
+  background: #ff5555;
+  box-shadow: 0 0 18px rgba(255, 80, 80, 0.55);
+}
+
+.pai-gear {
+  width: 42px;
+  height: 42px;
+  margin: 14px 0;
+  border-radius: 50%;
+  border: 5px dotted rgba(255, 80, 80, 0.75);
+}
+
+.pai-step-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.pai-step-card {
+  text-align: left;
+  padding: 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(120, 20, 20, 0.32);
+  background: rgba(0, 0, 0, 0.42);
+}
+
+.pai-step-active {
+  border-color: rgba(255, 90, 90, 0.85);
+  box-shadow: 0 0 24px rgba(180, 0, 0, 0.22);
+}
+
+.pai-spotlight {
+  grid-template-columns: 1.2fr 0.8fr;
+}
+
+.pai-spotlight h2 {
+  font-size: clamp(2rem, 5vw, 4.4rem);
+}
+
+.pai-spotlight-mark,
+.pai-card-image,
+.pai-profile-art {
+  border-radius: 28px;
+  border: 1px solid rgba(255, 120, 120, 0.25);
+  background: radial-gradient(circle at center, rgba(180, 0, 0, 0.22), transparent 60%), #090303;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 28px;
+  color: #ffdada;
+}
+
+.pai-directory-tools {
+  grid-template-columns: 1fr 280px;
+  margin-bottom: 22px;
+}
+
+.pai-directory-tools div {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.pai-directory-tools svg {
+  position: absolute;
+  left: 16px;
+  color: #e14747;
+}
+
+.pai-directory-tools input,
+.pai-directory-tools select,
+.pai-form-grid input,
+.pai-form-grid select,
+.pai-form-grid textarea {
+  width: 100%;
+  border: 1px solid rgba(160, 30, 30, 0.42);
+  background: rgba(0, 0, 0, 0.72);
+  color: #f8eeee;
+  border-radius: 16px;
+  padding: 14px 16px;
+  font: inherit;
+}
+
+.pai-directory-tools input,
+.pai-directory-tools select {
+  padding-left: 48px;
+}
+
+.pai-directory-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.pai-partner-card {
+  padding: 22px;
+}
+
+.pai-card-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.pai-card-top h3 {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 0;
+  color: #ffdada;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  letter-spacing: 0.1em;
+}
+
+.pai-card-top p {
+  margin: 8px 0 0;
+  color: #e14747;
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.pai-card-image {
+  height: 160px;
+  margin: 22px 0;
+}
+
+.pai-card-contact,
+.pai-profile-contact {
+  display: grid;
+  gap: 8px;
+  color: #c8b4b4;
+  margin: 18px 0;
+}
+
+.pai-card-contact span,
+.pai-profile-contact span {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.pai-card-button {
+  width: 100%;
+}
+
+.pai-profile,
+.pai-admin {
+  padding: 34px;
+}
+
+.pai-back {
+  border: 0;
+  background: transparent;
+  color: #e14747;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  margin-bottom: 22px;
+  cursor: pointer;
+}
+
+.pai-profile-grid {
+  grid-template-columns: 0.9fr 1.1fr;
+}
+
+.pai-profile-art {
+  min-height: 420px;
+}
+
+.pai-profile-copy h3 {
+  font-size: 2rem;
+}
+
+.pai-form-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.pai-form-grid textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.pai-check {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: #d8c4c4;
+  margin: 18px 0;
+}
+
+@media (max-width: 920px) {
+  .pai-header,
+  .pai-gateway,
+  .pai-audio-panel,
+  .pai-spotlight,
+  .pai-profile-grid,
+  .pai-directory-tools,
+  .pai-system-status,
+  .pai-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pai-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .pai-statues,
+  .pai-directory-grid,
+  .pai-step-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pai-awakening {
+    padding: 28px 18px;
+  }
+
+  .pai-candles {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .pai-orb-wrap {
+    min-height: 360px;
+  }
+
+  .pai-orb-ring {
+    width: 330px;
+    height: 330px;
+  }
+
+  .pai-orb-dash {
+    width: 370px;
+    height: 370px;
+  }
+}
+
+@media (max-width: 560px) {
+  .pai-shell {
+    width: min(100% - 20px, 1240px);
+  }
+
+  .pai-header h1,
+  .pai-awakening h1 {
+    letter-spacing: 0.1em;
+  }
+
+  .pai-gateway,
+  .pai-profile,
+  .pai-admin,
+  .pai-spotlight {
+    padding: 22px;
+  }
+
+  .pai-statue {
+    min-height: 210px;
+  }
+
+  .pai-orb {
+    width: 300px;
+    height: 300px;
+    padding: 28px;
+  }
+
+  .pai-orb-content h3 {
+    font-size: 1.35rem;
+  }
+}
