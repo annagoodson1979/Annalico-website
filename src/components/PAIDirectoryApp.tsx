@@ -1,33 +1,33 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import type { Dispatch, ReactNode, SetStateAction } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import {
   Crown,
   ExternalLink,
   Filter,
   Gem,
-  Globe,
   Mail,
+  Pause,
   Phone,
+  Play,
   Plus,
   Search,
   Star,
+  Upload,
 } from "lucide-react";
+
+type PartnerTier = "Registry Listing" | "Featured House" | "Founding House" | "Inner Circle";
 
 type Partner = {
   id: number;
   name: string;
   category: string;
-  tier: "Registry Listing" | "Featured House" | "Founding House" | "Inner Circle";
-  status: string;
+  tier: PartnerTier;
+  status: "Active" | "Inactive";
   featured: boolean;
-  wednesdayEligible: boolean;
-  monthlyEligible: boolean;
   phone: string;
   email: string;
   website: string;
   bookingLink: string;
-  image: string;
   snippet: string;
   description: string;
 };
@@ -36,50 +36,42 @@ const awakeningSequence = [
   {
     step: "01",
     title: "The Waters Withdraw",
-    description:
-      "The fountain slows. Water retracts into the marble channels as the chamber falls silent.",
+    description: "The fountain slows. Water retreats into the marble channels as the chamber falls silent.",
   },
   {
     step: "02",
     title: "The Figures Awaken",
-    description:
-      "Persephone and Inanna slowly rotate inward while Athena retracts into shadow.",
+    description: "Persephone and Inanna rotate inward as Athena slips back toward the wall.",
   },
   {
     step: "03",
     title: "The Acknowledgement",
-    description:
-      "Athena's head turns slightly toward the viewer. A subtle nod confirms the transition.",
+    description: "Athena turns her head slightly toward the viewer and gives one quiet nod.",
   },
   {
     step: "04",
     title: "The Clockwork Turns",
-    description:
-      "Hidden gears and ceremonial mechanisms begin realigning the registry.",
+    description: "Hidden mechanisms begin realigning the registry beneath the stone.",
   },
   {
     step: "05",
     title: "The Spotlight Ignites",
-    description:
-      "A golden beam descends into the center chamber as the current Featured House fades.",
+    description: "A red-gold beam descends into the center chamber as the old name begins to fade.",
   },
   {
     step: "06",
     title: "The New House Revealed",
-    description:
-      "The next Featured House materializes slowly within the spotlight.",
+    description: "The next Featured House forms from dust, like sand gathering through time.",
   },
   {
     step: "07",
     title: "The Final Bell",
-    description:
-      "A single bell echoes through the sanctuary. The figures return to stillness.",
+    description: "A single bell echoes through the sanctuary. The figures return to stillness.",
   },
   {
     step: "08",
     title: "The System Rests",
-    description:
-      "Water rushes forward again. The PAI System sleeps until the next awakening.",
+    description: "Water rushes forward again. The PAI System sleeps until the next awakening.",
   },
 ];
 
@@ -91,14 +83,10 @@ const initialPartners: Partner[] = [
     tier: "Founding House",
     status: "Active",
     featured: true,
-    wednesdayEligible: true,
-    monthlyEligible: true,
     phone: "(702) 867-6687",
-    email: "info@ynxnotary.com",
-    website: "https://ynxnotary.com",
-    bookingLink:
-      "https://docs.google.com/forms/d/e/1FAIpQLSeAj11M5t6ji4qn6wYjSXV3INLf_mHttATePmDrNA1ItGDNRg/viewform?usp=dialog",
-    image: "",
+    email: "",
+    website: "",
+    bookingLink: "",
     snippet: "Professional notary services with precision, discretion, and authority.",
     description:
       "YNX Notary provides notarizations, loan signing support, apostille facilitation, power of attorney notarization, affidavits, business documents, and remote online notary services.",
@@ -110,71 +98,18 @@ const initialPartners: Partner[] = [
     tier: "Founding House",
     status: "Active",
     featured: false,
-    wednesdayEligible: true,
-    monthlyEligible: true,
     phone: "",
-    email: "salon@email.com",
+    email: "",
     website: "",
-    bookingLink:
-      "https://docs.google.com/forms/d/e/1FAIpQLSfx-d8XV8dK5MV7Ipuv1ZPb2tjcGKTUJ5n0QCYOgZIVgET7gw/viewform?usp=dialog",
-    image: "",
+    bookingLink: "",
     snippet: "Beauty, wellness, and personal transformation in a refined private setting.",
     description:
       "A salon experience centered on color, styling, care, confidence, and quiet luxury.",
   },
 ];
 
-const tierStyles: Record<Partner["tier"], string> = {
-  "Registry Listing": "registry",
-  "Featured House": "featured",
-  "Founding House": "founding",
-  "Inner Circle": "inner",
-};
-
-function Badge({
-  children,
-  tone = "registry",
-}: {
-  children: ReactNode;
-  tone?: string;
-}) {
-  return <span className={`pai-badge ${tone}`}>{children}</span>;
-}
-
-function StatueGateway() {
-  return (
-    <section className="pai-statue-gateway">
-      <div className="pai-statue-image">
-        <div className="pai-gateway-statue persephone">Persephone</div>
-        <div className="pai-gateway-statue athena">Athena</div>
-        <div className="pai-gateway-statue inanna">Inanna</div>
-      </div>
-      <div className="pai-statue-copy">
-        <p className="pai-eyebrow">The Statue Gateway</p>
-        <h2>Three Figures. One System.</h2>
-        <p>
-          Persephone, Athena, and Inanna stand as separate ancient figures so the
-          awakening can feel physical: water withdraws, stone shifts, and the
-          PAI System prepares to reveal the next Featured House.
-        </p>
-
-        <div className="pai-motion-rules">
-          <article>
-            <h3>Persephone</h3>
-            <p>Slow inward rotation. Organic, quiet, transformational.</p>
-          </article>
-          <article>
-            <h3>Athena</h3>
-            <p>Withdraws toward the wall, turns slightly, then gives one restrained nod.</p>
-          </article>
-          <article>
-            <h3>Inanna</h3>
-            <p>Mirrors Persephone inward. Ascension meeting transformation.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-  );
+function Badge({ children, tone = "red" }: { children: React.ReactNode; tone?: "red" | "gold" | "green" | "gray" }) {
+  return <span className={`pai-badge pai-badge-${tone}`}>{children}</span>;
 }
 
 function AudioReactiveControl({
@@ -199,12 +134,10 @@ function AudioReactiveControl({
     if (!audioRef.current) return;
 
     if (!contextRef.current) {
-      const AudioContextConstructor =
-        window.AudioContext || (window as typeof window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+      const AudioContextClass =
+        window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
 
-      if (!AudioContextConstructor) return;
-
-      const audioContext = new AudioContextConstructor();
+      const audioContext = new AudioContextClass();
       const analyser = audioContext.createAnalyser();
       analyser.fftSize = 128;
 
@@ -227,8 +160,9 @@ function AudioReactiveControl({
     const tick = () => {
       analyser.getByteFrequencyData(dataArray);
       const average = dataArray.reduce((sum, value) => sum + value, 0) / dataArray.length;
-      onAudioLevel(Math.min(1, average / 120));
-      animationRef.current = window.requestAnimationFrame(tick);
+      const normalized = Math.min(1, average / 120);
+      onAudioLevel(normalized);
+      animationRef.current = requestAnimationFrame(tick);
     };
 
     tick();
@@ -236,182 +170,273 @@ function AudioReactiveControl({
 
   function pauseAudio() {
     audioRef.current?.pause();
+
     if (animationRef.current) {
-      window.cancelAnimationFrame(animationRef.current);
+      cancelAnimationFrame(animationRef.current);
     }
+
     onAudioLevel(0);
   }
 
   return (
-    <section className="pai-audio-control">
+    <section className="pai-audio-panel">
       <div>
-        <p className="pai-eyebrow">Audio Reactive Layer</p>
-        <h2>Let the chamber breathe with your music.</h2>
-        <p>Upload a song, press play, and the glow and particles react to the sound.</p>
+        <p className="pai-kicker">Audio Reactive Layer</p>
+        <h3>Let the chamber breathe with your music</h3>
+        <p>Upload a song, press play, and the glow, candles, water, and particles respond to the sound.</p>
       </div>
 
       <div className="pai-audio-actions">
-        <label>
+        <label className="pai-button pai-button-outline">
+          <Upload size={16} />
           Upload Song
-          <input type="file" accept="audio/*" onChange={handleUpload} />
+          <input type="file" accept="audio/*" onChange={handleUpload} hidden />
         </label>
-        <button onClick={startAudioReaction}>Play</button>
-        <button onClick={pauseAudio}>Pause</button>
+
+        <button className="pai-button pai-button-solid" onClick={startAudioReaction}>
+          <Play size={16} />
+          Play
+        </button>
+
+        <button className="pai-button pai-button-outline" onClick={pauseAudio}>
+          <Pause size={16} />
+          Pause
+        </button>
       </div>
 
-      <audio ref={audioRef} controls />
+      <audio ref={audioRef} controls className="pai-audio-player" />
+    </section>
+  );
+}
+
+function StatueGateway() {
+  return (
+    <section className="pai-gateway">
+      <div className="pai-gateway-copy">
+        <p className="pai-kicker">The Doorway</p>
+        <h2>Persephone · Athena · Inanna</h2>
+        <p>
+          Three figures stand as one system: transformation, wisdom, and reinvention. The sanctuary does not open loudly.
+          It awakens through silence, stone, water, and time.
+        </p>
+      </div>
+
+      <div className="pai-statues">
+        {["Persephone", "Athena", "Inanna"].map((name, index) => (
+          <motion.div
+            key={name}
+            className="pai-statue"
+            animate={{ y: [0, -8, 0] }}
+            transition={{ duration: 5 + index, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <div className="pai-statue-figure" />
+            <p>{name}</p>
+          </motion.div>
+        ))}
+      </div>
     </section>
   );
 }
 
 function AwakeningChamber({
-  featuredName,
-  audioLevel = 0,
+  audioLevel,
+  beatPulse,
 }: {
-  featuredName: string;
-  audioLevel?: number;
+  audioLevel: number;
+  beatPulse: number;
 }) {
   const [activeStep, setActiveStep] = useState(0);
+  const [featuredName, setFeaturedName] = useState("YNX Notary");
+
+  const candleCount = 12;
+  const activeCandles = Math.min(candleCount, Math.floor(audioLevel * candleCount));
+  const isWaterSilent = activeStep >= 1 && activeStep <= 6;
+  const isDustShift = activeStep === 5;
 
   useEffect(() => {
-    const interval = window.setInterval(() => {
-      setActiveStep((current) => (current + 1) % awakeningSequence.length);
+    const interval = setInterval(() => {
+      setActiveStep((prev) => (prev + 1) % awakeningSequence.length);
     }, 3500);
 
-    return () => window.clearInterval(interval);
+    return () => clearInterval(interval);
   }, []);
 
-  const active = awakeningSequence[activeStep];
-  const waterSilent = activeStep >= 1 && activeStep <= 6;
-  const revealing = activeStep === 5;
-  const mechanismEngaged = activeStep >= 3 && activeStep <= 5;
+  useEffect(() => {
+    if (activeStep === 5) {
+      const timer = setTimeout(() => setFeaturedName("House of Jade Salon"), 900);
+      return () => clearTimeout(timer);
+    }
+
+    if (activeStep === 0) {
+      setFeaturedName("YNX Notary");
+    }
+  }, [activeStep]);
 
   return (
-    <section className="pai-chamber">
-      <div className="pai-chamber-bg" />
+    <section className="pai-awakening">
       <motion.div
-        className="pai-red-orbit"
-        animate={{
-          opacity: [0.28, 0.74 + audioLevel * 0.2, 0.28],
-          scale: [1, 1.06 + audioLevel * 0.25, 1],
-        }}
+        className="pai-red-aura"
+        style={{ scale: 1 + audioLevel * 0.25 }}
+        animate={{ opacity: [0.3, 0.85, 0.3] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {Array.from({ length: 26 }, (_, index) => (
+      {[...Array(28)].map((_, i) => (
         <motion.span
-          key={index}
-          className="pai-dust"
+          key={i}
+          className="pai-particle"
           style={{
-            left: `${8 + ((index * 37) % 84)}%`,
-            top: `${12 + ((index * 19) % 72)}%`,
+            left: `${8 + ((i * 37) % 84)}%`,
+            top: `${12 + ((i * 19) % 72)}%`,
           }}
           animate={{
-            opacity: [0.08, 0.72 + audioLevel * 0.25, 0.08],
+            opacity: [0.1, 0.75 + audioLevel * 0.25, 0.1],
             y: [0, -18 - audioLevel * 35, 0],
           }}
-          transition={{
-            duration: 4 + (index % 5),
-            repeat: Infinity,
-            delay: index * 0.18,
-          }}
+          transition={{ duration: 4 + (i % 5), repeat: Infinity, delay: i * 0.18 }}
         />
       ))}
 
-      <div className="pai-chamber-content">
-        <div className="pai-chamber-copy">
-          <p className="pai-eyebrow">Wednesday Awakening Sequence</p>
-          <h1>The PAI System</h1>
-          <p>
-            Water recedes. The chamber stills. Ancient mechanisms awaken beneath
-            the sanctuary as the Featured House transitions within the spotlight.
-          </p>
+      <div className="pai-awakening-inner">
+        <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }} className="pai-start-button">
+          <span>Enter The Sanctuary</span>
+          <strong>Start Experience</strong>
+        </motion.button>
+
+        <p className="pai-kicker">Wednesday Awakening Sequence</p>
+        <h1>The PAI System</h1>
+        <p className="pai-awakening-lead">
+          Water recedes. The chamber stills. Ancient mechanisms awaken beneath the sanctuary as the Featured House
+          transitions within the spotlight.
+        </p>
+
+        <div className="pai-candles">
+          {[...Array(candleCount)].map((_, i) => (
+            <motion.div
+              key={`${i}-${beatPulse}`}
+              animate={{
+                opacity: i <= activeCandles ? [0.35, 1, 0.55] : 0.25,
+                scale: i <= activeCandles ? [1, 1.35, 1] : 1,
+              }}
+              transition={{ duration: 0.7, delay: i * 0.035 }}
+              className="pai-candle"
+            />
+          ))}
         </div>
 
-        <div className="pai-ritual-stage">
+        <div className="pai-orb-wrap">
           <motion.div
-            className={`pai-water ${waterSilent ? "is-silent" : ""}`}
+            className="pai-orb-ring"
+            animate={{ scale: [1, 1 + audioLevel * 0.18, 1], opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 3, repeat: Infinity }}
+          />
+
+          <motion.div
+            className="pai-orb-dash"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+          />
+
+          <motion.div
+            className="pai-orb"
             animate={{
-              scaleX: waterSilent ? 0.4 : 1 + audioLevel * 0.16,
-              opacity: waterSilent ? 0.18 : 0.68 + audioLevel * 0.22,
+              boxShadow: [
+                `0 0 ${20 + audioLevel * 40}px rgba(180,20,20,0.25)`,
+                `0 0 ${70 + audioLevel * 120}px rgba(255,40,40,0.55)`,
+                `0 0 ${20 + audioLevel * 40}px rgba(180,20,20,0.25)`,
+              ],
             }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
-          />
-
-          <motion.div
-            className="pai-clock-ring"
-            animate={{ rotate: mechanismEngaged ? 360 : 0, scale: 1 + audioLevel * 0.12 }}
-            transition={{
-              duration: 5,
-              repeat: mechanismEngaged ? Infinity : 0,
-              ease: "linear",
-            }}
-          />
-
-          <motion.div
-            className="pai-statue left"
-            animate={{ rotate: activeStep >= 2 ? -8 : -24, x: activeStep >= 2 ? 12 : 0 }}
-            transition={{ duration: 1.4, ease: "easeInOut" }}
+            transition={{ duration: 4, repeat: Infinity }}
           >
-            P
-          </motion.div>
-          <motion.div
-            className="pai-statue center"
-            animate={{ y: activeStep >= 3 ? -8 : 0, opacity: activeStep >= 3 ? 0.95 : 0.62 }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
-          >
-            A
-          </motion.div>
-          <motion.div
-            className="pai-statue right"
-            animate={{ rotate: activeStep >= 2 ? 8 : 24, x: activeStep >= 2 ? -12 : 0 }}
-            transition={{ duration: 1.4, ease: "easeInOut" }}
-          >
-            I
-          </motion.div>
-
-          <motion.div
-            className="pai-spotlight-beam"
-            animate={{ opacity: activeStep >= 4 && activeStep <= 6 ? 1 : 0.18 }}
-            transition={{ duration: 0.9 }}
-          />
-
-          <motion.div
-            className="pai-featured-name"
-            animate={{
-              opacity: revealing ? [0.2, 1, 0.85] : 0.92,
-              filter: revealing ? ["blur(10px)", "blur(0px)", "blur(0px)"] : "blur(0px)",
-            }}
-            transition={{ duration: 1.2 }}
-          >
-            {featuredName}
+            <motion.div
+              key={activeStep}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2 }}
+              className="pai-orb-content"
+            >
+              <span>Step {awakeningSequence[activeStep].step}</span>
+              <h3>{awakeningSequence[activeStep].title}</h3>
+              <p>{awakeningSequence[activeStep].description}</p>
+            </motion.div>
           </motion.div>
         </div>
 
-        <div className="pai-active-step">
-          <span>{active.step}</span>
-          <div>
-            <h2>{active.title}</h2>
-            <p>{active.description}</p>
+        <div className="pai-stone">
+          <p className="pai-kicker">Featured House Stone</p>
+          <div className="pai-stone-name">
+            <motion.h3
+              key={featuredName}
+              initial={isDustShift ? { opacity: 0, filter: "blur(14px)", scale: 1.08 } : { opacity: 1 }}
+              animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
+              transition={{ duration: 1.4 }}
+            >
+              {featuredName}
+            </motion.h3>
+
+            {isDustShift &&
+              [...Array(36)].map((_, i) => (
+                <motion.span
+                  key={i}
+                  className="pai-dust"
+                  style={{
+                    left: `${10 + ((i * 13) % 80)}%`,
+                    top: `${20 + ((i * 17) % 60)}%`,
+                  }}
+                  initial={{ opacity: 0, x: 0, y: 0 }}
+                  animate={{
+                    opacity: [0, 1, 0],
+                    x: (i % 2 ? 1 : -1) * (18 + i),
+                    y: -20 + (i % 9) * 6,
+                  }}
+                  transition={{ duration: 1.6, delay: i * 0.025 }}
+                />
+              ))}
           </div>
         </div>
 
-        <div className="pai-state-grid">
+        <div className="pai-system-status">
           <div>
-            <p className="pai-eyebrow">Water State</p>
-            <div className="pai-meter">
-              <motion.span
-                animate={{ width: waterSilent ? "12%" : "100%", opacity: waterSilent ? 0.35 : 1 }}
+            <p className="pai-kicker">Water State</p>
+            <div className="pai-water-track">
+              <motion.div
+                animate={{
+                  width: isWaterSilent ? `${12 + audioLevel * 25}%` : `${75 + audioLevel * 25}%`,
+                  opacity: isWaterSilent ? 0.35 + audioLevel * 0.25 : 1,
+                }}
                 transition={{ duration: 1.4 }}
               />
             </div>
-            <p>{waterSilent ? "Withdrawn into silence" : "Flowing through the chamber"}</p>
+            <span>{isWaterSilent ? "Withdrawn into silence" : "Flowing through the chamber"}</span>
           </div>
+
           <div>
-            <p className="pai-eyebrow">Mechanism</p>
-            <div className={`pai-mechanism ${mechanismEngaged ? "is-active" : ""}`} />
-            <p>{mechanismEngaged ? "Clockwork engaged" : "Resting beneath stone"}</p>
+            <p className="pai-kicker">Mechanism</p>
+            <motion.div
+              className="pai-gear"
+              animate={{ rotate: activeStep >= 3 && activeStep <= 5 ? 360 : 0 }}
+              transition={{
+                duration: 5,
+                repeat: activeStep >= 3 && activeStep <= 5 ? Infinity : 0,
+                ease: "linear",
+              }}
+            />
+            <span>{activeStep >= 3 && activeStep <= 5 ? "Clockwork engaged" : "Resting beneath stone"}</span>
           </div>
+        </div>
+
+        <div className="pai-step-grid">
+          {awakeningSequence.map((item, index) => (
+            <motion.div
+              key={item.step}
+              className={`pai-step-card ${activeStep === index ? "pai-step-active" : ""}`}
+              animate={{ y: activeStep === index ? -4 : 0 }}
+            >
+              <span>{item.step}</span>
+              <h4>{item.title}</h4>
+              <p>{item.description}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
@@ -426,65 +451,106 @@ function PartnerCard({
   onSelect: (partner: Partner) => void;
 }) {
   return (
-    <motion.article
-      layout
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="pai-partner-card"
-    >
+    <motion.article layout className="pai-partner-card" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
       <div className="pai-card-top">
         <div>
-          <div className="pai-card-title-row">
-            {partner.featured && <Star />}
-            <h3>{partner.name}</h3>
-          </div>
+          <h3>
+            {partner.featured && <Star size={16} />}
+            {partner.name}
+          </h3>
           <p>{partner.category}</p>
         </div>
-        <Badge tone={tierStyles[partner.tier]}>{partner.tier}</Badge>
+        <Badge tone={partner.tier === "Inner Circle" ? "gold" : "red"}>{partner.tier}</Badge>
       </div>
 
-      <div className="pai-image-box">
-        <span>{partner.name.split(" ").map((part) => part[0]).join("").slice(0, 3)}</span>
+      <div className="pai-card-image">
+        <Gem />
+        <span>Featured Image</span>
       </div>
 
-      <p className="pai-snippet">{partner.snippet}</p>
+      <p className="pai-card-snippet">{partner.snippet}</p>
 
-      <div className="pai-contact-list">
+      <div className="pai-card-contact">
         {partner.phone && (
-          <a href={`tel:${partner.phone.replace(/[^0-9+]/g, "")}`}>
-            <Phone /> {partner.phone}
-          </a>
+          <span>
+            <Phone size={15} />
+            {partner.phone}
+          </span>
         )}
         {partner.email && (
-          <a href={`mailto:${partner.email}`}>
-            <Mail /> {partner.email}
-          </a>
-        )}
-        {partner.website && (
-          <a href={partner.website} target="_blank" rel="noreferrer">
-            <Globe /> Website
-          </a>
+          <span>
+            <Mail size={15} />
+            {partner.email}
+          </span>
         )}
       </div>
 
-      <div className="pai-card-actions">
-        <button onClick={() => onSelect(partner)}>View Featured Page</button>
-        {partner.bookingLink && (
-          <a href={partner.bookingLink} target="_blank" rel="noreferrer">
-            Book <ExternalLink />
-          </a>
-        )}
-      </div>
+      <button className="pai-card-button" onClick={() => onSelect(partner)}>
+        View Featured Page <ExternalLink size={15} />
+      </button>
     </motion.article>
   );
 }
 
-function AddPartnerPanel({
+function FeaturedProfile({
+  partner,
+  onBack,
+}: {
+  partner: Partner;
+  onBack: () => void;
+}) {
+  return (
+    <section className="pai-profile">
+      <button className="pai-back" onClick={onBack}>
+        ← Back to Directory
+      </button>
+
+      <div className="pai-profile-grid">
+        <div className="pai-profile-art">
+          <Gem size={72} />
+          <h2>{partner.name}</h2>
+          <p>{partner.category}</p>
+        </div>
+
+        <div className="pai-profile-copy">
+          <Badge tone="red">{partner.tier}</Badge>
+          <h3>Featured House Profile</h3>
+          <p>{partner.description}</p>
+
+          <div className="pai-profile-contact">
+            {partner.phone && (
+              <span>
+                <Phone size={18} />
+                {partner.phone}
+              </span>
+            )}
+            {partner.email && (
+              <span>
+                <Mail size={18} />
+                {partner.email}
+              </span>
+            )}
+            {partner.website && (
+              <span>
+                <ExternalLink size={18} />
+                {partner.website}
+              </span>
+            )}
+          </div>
+
+          <button className="pai-button pai-button-solid">Book / Contact</button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AdminPanel({
   partners,
   setPartners,
 }: {
   partners: Partner[];
-  setPartners: Dispatch<SetStateAction<Partner[]>>;
+  setPartners: React.Dispatch<React.SetStateAction<Partner[]>>;
 }) {
   const [draft, setDraft] = useState<Omit<Partner, "id">>({
     name: "",
@@ -492,19 +558,17 @@ function AddPartnerPanel({
     tier: "Registry Listing",
     status: "Active",
     featured: false,
-    wednesdayEligible: true,
-    monthlyEligible: false,
     phone: "",
     email: "",
     website: "",
     bookingLink: "",
-    image: "",
     snippet: "",
     description: "",
   });
 
   function addPartner() {
     if (!draft.name.trim()) return;
+
     setPartners([{ ...draft, id: Date.now() }, ...partners]);
     setDraft({
       ...draft,
@@ -516,51 +580,45 @@ function AddPartnerPanel({
       bookingLink: "",
       snippet: "",
       description: "",
+      featured: false,
     });
   }
 
   return (
-    <section className="pai-admin-panel">
-      <div>
-        <p className="pai-eyebrow">Private Admin</p>
-        <h2>Add Business Member</h2>
+    <section className="pai-admin">
+      <div className="pai-section-heading">
+        <p className="pai-kicker">Private Admin</p>
+        <h2>Partner Dashboard</h2>
+        <p>Add and manage businesses inside the PAI System.</p>
       </div>
 
-      <div className="pai-admin-grid">
-        <input placeholder="Business name" value={draft.name} onChange={(event) => setDraft({ ...draft, name: event.target.value })} />
-        <input placeholder="Category" value={draft.category} onChange={(event) => setDraft({ ...draft, category: event.target.value })} />
-        <select value={draft.tier} onChange={(event) => setDraft({ ...draft, tier: event.target.value as Partner["tier"] })}>
+      <div className="pai-form-grid">
+        <input placeholder="Business name" value={draft.name} onChange={(e) => setDraft({ ...draft, name: e.target.value })} />
+        <input placeholder="Category" value={draft.category} onChange={(e) => setDraft({ ...draft, category: e.target.value })} />
+
+        <select value={draft.tier} onChange={(e) => setDraft({ ...draft, tier: e.target.value as PartnerTier })}>
           <option>Registry Listing</option>
           <option>Featured House</option>
           <option>Founding House</option>
           <option>Inner Circle</option>
         </select>
-        <input placeholder="Phone number" value={draft.phone} onChange={(event) => setDraft({ ...draft, phone: event.target.value })} />
-        <input placeholder="Email" value={draft.email} onChange={(event) => setDraft({ ...draft, email: event.target.value })} />
-        <input placeholder="Website" value={draft.website} onChange={(event) => setDraft({ ...draft, website: event.target.value })} />
-        <input placeholder="Image URL or path" value={draft.image} onChange={(event) => setDraft({ ...draft, image: event.target.value })} />
-        <input className="wide" placeholder="Booking link" value={draft.bookingLink} onChange={(event) => setDraft({ ...draft, bookingLink: event.target.value })} />
-        <input className="wide" placeholder="Short spotlight snippet" value={draft.snippet} onChange={(event) => setDraft({ ...draft, snippet: event.target.value })} />
-        <textarea className="wide" placeholder="Full business description" value={draft.description} onChange={(event) => setDraft({ ...draft, description: event.target.value })} />
+
+        <input placeholder="Phone number" value={draft.phone} onChange={(e) => setDraft({ ...draft, phone: e.target.value })} />
+        <input placeholder="Email" value={draft.email} onChange={(e) => setDraft({ ...draft, email: e.target.value })} />
+        <input placeholder="Website / link" value={draft.website} onChange={(e) => setDraft({ ...draft, website: e.target.value })} />
+
+        <textarea placeholder="Short spotlight snippet" value={draft.snippet} onChange={(e) => setDraft({ ...draft, snippet: e.target.value })} />
+        <textarea placeholder="Full business description" value={draft.description} onChange={(e) => setDraft({ ...draft, description: e.target.value })} />
       </div>
 
-      <div className="pai-admin-checks">
-        <label>
-          <input type="checkbox" checked={draft.featured} onChange={(event) => setDraft({ ...draft, featured: event.target.checked })} />
-          Featured now
-        </label>
-        <label>
-          <input type="checkbox" checked={draft.wednesdayEligible} onChange={(event) => setDraft({ ...draft, wednesdayEligible: event.target.checked })} />
-          Wednesday eligible
-        </label>
-        <label>
-          <input type="checkbox" checked={draft.monthlyEligible} onChange={(event) => setDraft({ ...draft, monthlyEligible: event.target.checked })} />
-          Monthly spotlight
-        </label>
-      </div>
+      <label className="pai-check">
+        <input type="checkbox" checked={draft.featured} onChange={(e) => setDraft({ ...draft, featured: e.target.checked })} />
+        Featured now
+      </label>
 
-      <button className="pai-add-button" onClick={addPartner}>
-        <Plus /> Add Partner
+      <button className="pai-button pai-button-solid" onClick={addPartner}>
+        <Plus size={16} />
+        Add Partner
       </button>
     </section>
   );
@@ -568,115 +626,121 @@ function AddPartnerPanel({
 
 export default function PAIDirectoryApp() {
   const [partners, setPartners] = useState<Partner[]>(initialPartners);
+  const [view, setView] = useState<"directory" | "featured" | "admin">("directory");
+  const [selected, setSelected] = useState<Partner>(initialPartners[0]);
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All");
-  const [selected, setSelected] = useState<Partner>(initialPartners[0]);
-  const [showAdmin, setShowAdmin] = useState(false);
   const [audioLevel, setAudioLevel] = useState(0);
+  const [beatPulse, setBeatPulse] = useState(0);
 
-  const categories = useMemo(
-    () => ["All", ...Array.from(new Set(partners.map((partner) => partner.category).filter(Boolean)))],
-    [partners],
-  );
+  function handleAudioLevel(level: number) {
+    setAudioLevel(level);
+    if (level > 0.48) setBeatPulse(Date.now());
+  }
 
   const featured = partners.find((partner) => partner.featured) || partners[0];
 
-  const filtered = partners.filter((partner) => {
-    const haystack = [partner.name, partner.category, partner.snippet, partner.description]
-      .join(" ")
-      .toLowerCase();
-    return haystack.includes(query.toLowerCase()) && (category === "All" || partner.category === category);
+  const categories = useMemo(() => {
+    return ["All", ...Array.from(new Set(partners.map((partner) => partner.category).filter(Boolean)))];
+  }, [partners]);
+
+  const filteredPartners = partners.filter((partner) => {
+    const searchable = `${partner.name} ${partner.category} ${partner.snippet} ${partner.description}`.toLowerCase();
+    const matchesSearch = searchable.includes(query.toLowerCase());
+    const matchesCategory = category === "All" || partner.category === category;
+    return matchesSearch && matchesCategory;
   });
 
   return (
-    <main className="pai-page">
-      <a className="pai-return" href="/">
-        Return to Duyen An
-      </a>
-
-      <StatueGateway />
-      <AudioReactiveControl onAudioLevel={setAudioLevel} />
-      <AwakeningChamber featuredName={featured.name} audioLevel={audioLevel} />
-
-      <header className="pai-directory-header">
-        <div>
-          <p className="pai-eyebrow">Passage · Alignment · Intelligence</p>
-          <h1>PAI Directory</h1>
-          <p>A curated network of trusted services, featured houses, and private partners.</p>
-        </div>
-        <nav>
-          <a href="#directory">Directory</a>
-          <a href="#featured">Featured</a>
-          <button onClick={() => setShowAdmin((current) => !current)}>Admin</button>
-        </nav>
-      </header>
-
-      {showAdmin && <AddPartnerPanel partners={partners} setPartners={setPartners} />}
-
-      <section id="featured" className="pai-current-spotlight">
-        <div>
-          <Badge tone="inner">
-            <Crown /> Current Spotlight
-          </Badge>
-          <h2>{featured.name}</h2>
-          <p>{featured.snippet}</p>
-          <button onClick={() => setSelected(featured)}>Click Here</button>
-        </div>
-        <div className="pai-gem-card">
-          <Gem />
-          <p>Wednesday Cycle</p>
-          <span>The featured house changes during the awakening sequence.</span>
-        </div>
-      </section>
-
-      <section id="directory" className="pai-filter-bar">
-        <label>
-          <Search />
-          <input placeholder="Search the directory" value={query} onChange={(event) => setQuery(event.target.value)} />
-        </label>
-        <label>
-          <Filter />
-          <select value={category} onChange={(event) => setCategory(event.target.value)}>
-            {categories.map((item) => (
-              <option key={item}>{item}</option>
-            ))}
-          </select>
-        </label>
-      </section>
-
-      <section className="pai-partner-grid">
-        {filtered.map((partner) => (
-          <PartnerCard key={partner.id} partner={partner} onSelect={setSelected} />
-        ))}
-      </section>
-
-      <section className="pai-feature-profile">
-        <button onClick={() => setSelected(featured)}>Refresh Featured View</button>
-        <div className="pai-profile-grid">
-          <div className="pai-profile-mark">
-            <Gem />
-            <h2>{selected.name}</h2>
-            <p>{selected.category}</p>
+    <main className="pai-root">
+      <div className="pai-shell">
+        <header className="pai-header">
+          <div>
+            <p className="pai-kicker">Passage · Alignment · Intelligence</p>
+            <h1>PAI Directory</h1>
+            <p>A cinematic directory system for featured houses, partners, and curated services.</p>
           </div>
-          <div className="pai-profile-copy">
-            <Badge tone={tierStyles[selected.tier]}>{selected.tier}</Badge>
-            <h3>Featured House Profile</h3>
-            <p>{selected.description}</p>
-            <div className="pai-card-actions left">
-              {selected.website && (
-                <a href={selected.website} target="_blank" rel="noreferrer">
-                  Website <ExternalLink />
-                </a>
-              )}
-              {selected.bookingLink && (
-                <a href={selected.bookingLink} target="_blank" rel="noreferrer">
-                  Book / Contact <ExternalLink />
-                </a>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
+
+          <nav>
+            <button className={view === "directory" ? "active" : ""} onClick={() => setView("directory")}>
+              Directory
+            </button>
+            <button className={view === "featured" ? "active" : ""} onClick={() => setView("featured")}>
+              Featured
+            </button>
+            <button className={view === "admin" ? "active" : ""} onClick={() => setView("admin")}>
+              Admin
+            </button>
+          </nav>
+        </header>
+
+        <StatueGateway />
+        <AudioReactiveControl onAudioLevel={handleAudioLevel} />
+        <AwakeningChamber audioLevel={audioLevel} beatPulse={beatPulse} />
+
+        {view === "directory" && (
+          <>
+            <section className="pai-spotlight">
+              <div>
+                <Badge tone="gold">
+                  <Crown size={14} />
+                  Current Spotlight
+                </Badge>
+                <h2>{featured.name}</h2>
+                <p>{featured.snippet}</p>
+                <button
+                  className="pai-button pai-button-outline"
+                  onClick={() => {
+                    setSelected(featured);
+                    setView("featured");
+                  }}
+                >
+                  Click Here <ExternalLink size={16} />
+                </button>
+              </div>
+
+              <div className="pai-spotlight-mark">
+                <Gem size={54} />
+                <p>Wednesday Cycle</p>
+                <span>The Featured House changes during the awakening sequence.</span>
+              </div>
+            </section>
+
+            <section className="pai-directory-tools">
+              <div>
+                <Search size={18} />
+                <input placeholder="Search the directory" value={query} onChange={(e) => setQuery(e.target.value)} />
+              </div>
+
+              <div>
+                <Filter size={18} />
+                <select value={category} onChange={(e) => setCategory(e.target.value)}>
+                  {categories.map((item) => (
+                    <option key={item}>{item}</option>
+                  ))}
+                </select>
+              </div>
+            </section>
+
+            <section className="pai-directory-grid">
+              {filteredPartners.map((partner) => (
+                <PartnerCard
+                  key={partner.id}
+                  partner={partner}
+                  onSelect={(selectedPartner) => {
+                    setSelected(selectedPartner);
+                    setView("featured");
+                  }}
+                />
+              ))}
+            </section>
+          </>
+        )}
+
+        {view === "featured" && <FeaturedProfile partner={selected} onBack={() => setView("directory")} />}
+
+        {view === "admin" && <AdminPanel partners={partners} setPartners={setPartners} />}
+      </div>
     </main>
   );
 }

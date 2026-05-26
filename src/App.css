@@ -234,7 +234,19 @@ html {
 }
 
 .pai-audio-actions label input {
-  display: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pai-audio-status {
+  grid-column: 1 / -1;
+  margin: 16px 0 0;
+  color: rgba(254, 226, 226, 0.78);
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
 }
 
 .pai-audio-control audio {
