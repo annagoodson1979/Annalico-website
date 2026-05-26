@@ -426,6 +426,17 @@ video {
   pointer-events: none;
 }
 
+.arrival-petal::after {
+  content: "";
+  position: absolute;
+  inset: 22% 18% auto auto;
+  width: 38%;
+  height: 1px;
+  border-radius: 999px;
+  background: rgba(150, 52, 82, 0.28);
+  transform: rotate(-18deg);
+}
+
 .arrival-petal:nth-of-type(3n) {
   width: 13px;
   height: 8px;

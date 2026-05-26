@@ -12,7 +12,6 @@ import {
   Users,
   X,
 } from "lucide-react";
-import IntroLoader from "./components/IntroLoader";
 import AutoJourney from "./components/AutoJourney";
 import AmbientSound from "./components/AmbientSound";
 import BookingRequest from "./components/BookingRequest";
@@ -58,6 +57,9 @@ function NotaryPage() {
         <p>Professional mobile and document services.</p>
 
         <div className="route-actions">
+          <a href="https://ynxnotary.com" target="_blank" rel="noreferrer">
+            Visit YNX Notary
+          </a>
           <a href="/notary/book">Reserve Appointment</a>
           <a href="/notary/promo">Access Code</a>
         </div>
@@ -473,7 +475,6 @@ function App() {
 
   return (
     <>
-      <IntroLoader />
       <AutoJourney />
       <AmbientSound />
     </>

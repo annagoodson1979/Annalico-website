@@ -306,33 +306,40 @@ function CinematicArrival() {
         }}
       />
 
-      {Array.from({ length: 38 }, (_, i) => (
+      {Array.from({ length: 86 }, (_, i) => (
         <motion.span
           key={i}
           className="arrival-petal"
           initial={{
-            x: `${-22 - (i % 7) * 5}vw`,
-            y: `${10 + ((i * 17) % 72)}vh`,
+            x: `${-34 - (i % 9) * 4}vw`,
+            y: `${4 + ((i * 17) % 82)}vh`,
             rotate: (i * 31) % 180,
             opacity: 0,
           }}
           animate={{
             x: [
-              `${-22 - (i % 7) * 5}vw`,
-              `${40 + ((i * 9) % 36)}vw`,
-              `${118 + (i % 8) * 4}vw`,
+              `${-34 - (i % 9) * 4}vw`,
+              `${28 + ((i * 11) % 42)}vw`,
+              `${74 + ((i * 7) % 32)}vw`,
+              `${120 + (i % 10) * 4}vw`,
             ],
             y: [
-              `${10 + ((i * 17) % 72)}vh`,
-              `${7 + ((i * 13) % 76)}vh`,
-              `${13 + ((i * 11) % 70)}vh`,
+              `${4 + ((i * 17) % 82)}vh`,
+              `${13 + ((i * 19) % 64)}vh`,
+              `${2 + ((i * 23) % 80)}vh`,
+              `${8 + ((i * 13) % 74)}vh`,
             ],
-            rotate: [(i * 31) % 180, 160 + ((i * 53) % 220), 340 + ((i * 47) % 240)],
-            opacity: [0, 0.78, 0.52, 0],
+            rotate: [
+              (i * 31) % 180,
+              170 + ((i * 53) % 220),
+              360 + ((i * 47) % 240),
+              560 + ((i * 29) % 260),
+            ],
+            opacity: [0, 0.86, 0.7, 0.42, 0],
           }}
           transition={{
-            duration: 9.5 + (i % 8),
-            delay: i * 0.38,
+            duration: 7.8 + (i % 9),
+            delay: i * 0.14,
             repeat: Infinity,
             ease: "easeInOut",
           }}

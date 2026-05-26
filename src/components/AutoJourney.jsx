@@ -178,6 +178,13 @@ export default function AutoJourney() {
             />
 
             <div className="auto-overlay" />
+            {index === 0 && (
+              <div className="wind-petal-field" aria-hidden="true">
+                {Array.from({ length: 64 }, (_, petalIndex) => (
+                  <span key={petalIndex} />
+                ))}
+              </div>
+            )}
             <div className="cinematic-mist" />
             <div className="cinematic-light" />
             <div className="cinematic-particles">
@@ -218,7 +225,9 @@ export default function AutoJourney() {
 
             <div className="world-links">
               <button onClick={() => scrollToSection("salon")}>Salon</button>
-              <button onClick={() => scrollToSection("notary")}>Notary</button>
+              <a href="https://ynxnotary.com" target="_blank" rel="noreferrer">
+                Notary
+              </a>
               <button onClick={() => scrollToSection("appointments")}>Book</button>
               <button onClick={() => scrollToSection("spotlight")}>Spotlight</button>
               <button onClick={() => scrollToSection("office")}>Office</button>
@@ -252,17 +261,15 @@ export default function AutoJourney() {
             <button onClick={() => scrollToSection("appointments")}>
               Book Salon Studio 21
             </button>
-            <button onClick={() => scrollToSection("notary")}>Next: Notary</button>
+            <a href="https://ynxnotary.com" target="_blank" rel="noreferrer">
+              Next: Notary
+            </a>
           </div>
         </div>
 
         <div className="booking-visual salon-booking-visual">
           <img src="/images/studio21.jpg" alt="Salon Studio 21" />
         </div>
-      </section>
-
-      <section id="notary" className="info-section">
-        <h2>Notary</h2>
       </section>
 
       <BookingRequest />

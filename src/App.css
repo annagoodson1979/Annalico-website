@@ -178,6 +178,52 @@ section {
 .cinematic-particles span:nth-child(4) { left: 71%; animation-delay: 2s; }
 .cinematic-particles span:nth-child(5) { left: 88%; animation-delay: 8s; }
 
+.wind-petal-field {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.wind-petal-field span {
+  position: absolute;
+  left: -12vw;
+  top: calc(var(--petal-top, 48) * 1%);
+  width: calc(10px + var(--petal-size, 1) * 7px);
+  height: calc(6px + var(--petal-size, 1) * 5px);
+  border-radius: 88% 18% 78% 28%;
+  background:
+    radial-gradient(circle at 26% 24%, rgba(255, 255, 255, 0.9), transparent 22%),
+    linear-gradient(135deg, rgba(255, 241, 246, 0.95), rgba(232, 148, 170, 0.72) 58%, rgba(157, 62, 92, 0.42));
+  box-shadow:
+    0 0 12px rgba(255, 210, 224, 0.26),
+    inset -3px -1px 4px rgba(160, 62, 92, 0.2);
+  opacity: 0;
+  filter: blur(calc(var(--petal-blur, 0) * 1px));
+  animation: windPetalBlow calc(8s + var(--petal-speed, 0) * 1s) ease-in-out infinite;
+  animation-delay: calc(var(--petal-delay, 0) * -1s);
+}
+
+.wind-petal-field span:nth-child(6n + 1) { --petal-top: 18; --petal-size: 1.2; --petal-speed: 1.5; --petal-delay: 0.7; --petal-blur: 0.1; }
+.wind-petal-field span:nth-child(6n + 2) { --petal-top: 33; --petal-size: 0.7; --petal-speed: 3; --petal-delay: 2.2; --petal-blur: 0.35; }
+.wind-petal-field span:nth-child(6n + 3) { --petal-top: 47; --petal-size: 1.5; --petal-speed: 0.3; --petal-delay: 4.8; --petal-blur: 0; }
+.wind-petal-field span:nth-child(6n + 4) { --petal-top: 61; --petal-size: 0.9; --petal-speed: 2.2; --petal-delay: 6.4; --petal-blur: 0.25; }
+.wind-petal-field span:nth-child(6n + 5) { --petal-top: 73; --petal-size: 1.1; --petal-speed: 1; --petal-delay: 8.1; --petal-blur: 0.15; }
+.wind-petal-field span:nth-child(6n + 6) { --petal-top: 25; --petal-size: 0.6; --petal-speed: 4; --petal-delay: 9.6; --petal-blur: 0.45; }
+
+.wind-petal-field span:nth-child(odd) {
+  animation-name: windPetalBlowHigh;
+}
+
+.wind-petal-field span:nth-child(3n) {
+  animation-duration: 11.5s;
+}
+
+.wind-petal-field span:nth-child(4n) {
+  animation-delay: -5.2s;
+}
+
 .main-navigation {
   position: absolute;
   inset: 0;
@@ -207,7 +253,8 @@ section {
 }
 
 .main-navigation button:hover,
-.world-links button:hover {
+.world-links button:hover,
+.world-links a:hover {
   background: rgba(255, 255, 255, 0.12);
   transform: translateY(-2px);
 }
@@ -251,7 +298,8 @@ section {
   gap: 14px;
 }
 
-.world-links button {
+.world-links button,
+.world-links a {
   border: 1px solid rgba(255, 255, 255, 0.18);
   background: rgba(255, 255, 255, 0.04);
   color: #f6eee7;
@@ -260,6 +308,8 @@ section {
   backdrop-filter: blur(12px);
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
   font-size: 0.72rem;
   cursor: pointer;
   transition: all 0.35s ease;
@@ -297,6 +347,14 @@ section {
 
 .info-section h2 {
   font-size: clamp(3rem, 7vw, 7rem);
+}
+
+.info-section-copy {
+  max-width: 560px;
+  margin-top: 18px;
+  color: rgba(247, 240, 232, 0.74);
+  font-size: clamp(1rem, 1.7vw, 1.25rem);
+  line-height: 1.7;
 }
 
 .directory-link {
@@ -1805,6 +1863,58 @@ section {
   }
 }
 
+@keyframes windPetalBlow {
+  0% {
+    opacity: 0;
+    transform: translate3d(-10vw, 8vh, 0) rotate(0deg) rotateY(0deg);
+  }
+
+  10% {
+    opacity: 0.82;
+  }
+
+  45% {
+    opacity: 0.78;
+    transform: translate3d(48vw, -4vh, 0) rotate(210deg) rotateY(150deg);
+  }
+
+  72% {
+    opacity: 0.58;
+    transform: translate3d(86vw, 5vh, 0) rotate(390deg) rotateY(310deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(118vw, -2vh, 0) rotate(560deg) rotateY(420deg);
+  }
+}
+
+@keyframes windPetalBlowHigh {
+  0% {
+    opacity: 0;
+    transform: translate3d(-14vw, -4vh, 0) rotate(20deg) rotateY(0deg);
+  }
+
+  12% {
+    opacity: 0.86;
+  }
+
+  48% {
+    opacity: 0.76;
+    transform: translate3d(46vw, 9vh, 0) rotate(-180deg) rotateY(210deg);
+  }
+
+  76% {
+    opacity: 0.56;
+    transform: translate3d(90vw, -7vh, 0) rotate(-330deg) rotateY(340deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(120vw, 3vh, 0) rotate(-520deg) rotateY(480deg);
+  }
+}
+
 @keyframes fadeInNav {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -1849,7 +1959,8 @@ section {
     flex-wrap: wrap;
   }
 
-  .world-links button {
+  .world-links button,
+  .world-links a {
     font-size: 0.66rem;
     padding: 10px 14px;
   }
