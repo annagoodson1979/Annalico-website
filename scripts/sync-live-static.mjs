@@ -43,6 +43,10 @@ const appRouteFallbacks = [
   join('notary', 'olivia'),
 ];
 
+const appFileFallbacks = [
+  'business-directory.html',
+];
+
 writeFileSync(rootIndexPath, readFileSync(distIndexPath, 'utf8'));
 
 emptyDir(rootAssetsDir);
@@ -72,6 +76,11 @@ for (const route of appRouteFallbacks) {
 
   writeFileSync(join(distRouteDir, 'index.html'), appShell);
   writeFileSync(join(rootRouteDir, 'index.html'), appShell);
+}
+
+for (const filename of appFileFallbacks) {
+  writeFileSync(join(distDir, filename), appShell);
+  writeFileSync(join(repoRoot, filename), appShell);
 }
 
 console.log('Synced root static files from dist and public.');

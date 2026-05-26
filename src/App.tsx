@@ -474,7 +474,11 @@ function App() {
     );
   }
 
-  if (currentPath === "/business-directory" || currentPath === "/business-directory/") {
+  if (
+    currentPath === "/business-directory" ||
+    currentPath === "/business-directory/" ||
+    currentPath === "/business-directory.html"
+  ) {
     return <PAIDirectoryApp />;
   }
 

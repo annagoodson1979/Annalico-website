@@ -77,6 +77,172 @@ html {
   border-radius: 2rem;
 }
 
+.pai-statue-gateway,
+.pai-audio-control {
+  display: grid;
+  gap: 0;
+  margin-bottom: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(168, 38, 38, 0.38);
+  border-radius: 2rem;
+  background: rgba(0, 0, 0, 0.72);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(18px);
+}
+
+.pai-statue-gateway {
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+}
+
+.pai-statue-image {
+  position: relative;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  gap: clamp(14px, 3vw, 34px);
+  min-height: 34rem;
+  padding: 44px 24px;
+  overflow: hidden;
+  background:
+    linear-gradient(to right, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.68)),
+    url("/images/PAI.jpeg");
+  background-size: cover;
+  background-position: center;
+}
+
+.pai-statue-image::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 42%;
+  background: linear-gradient(to top, #000, transparent);
+}
+
+.pai-gateway-statue {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: clamp(82px, 12vw, 138px);
+  height: clamp(250px, 34vw, 390px);
+  place-items: end center;
+  border: 1px solid rgba(248, 113, 113, 0.26);
+  border-radius: 999px 999px 22px 22px;
+  padding-bottom: 28px;
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.09), transparent 18%),
+    linear-gradient(to bottom, rgba(127, 29, 29, 0.5), rgba(0, 0, 0, 0.72));
+  color: rgba(254, 226, 226, 0.8);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1rem, 1.6vw, 1.5rem);
+  letter-spacing: 0.12em;
+  text-orientation: mixed;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  box-shadow:
+    0 35px 80px rgba(0, 0, 0, 0.5),
+    inset 0 0 80px rgba(248, 113, 113, 0.08);
+}
+
+.pai-gateway-statue.persephone {
+  transform: rotate(-4deg) translateY(12px);
+}
+
+.pai-gateway-statue.athena {
+  height: clamp(280px, 38vw, 430px);
+}
+
+.pai-gateway-statue.inanna {
+  transform: rotate(4deg) translateY(12px);
+}
+
+.pai-statue-copy,
+.pai-audio-control {
+  padding: clamp(28px, 4vw, 48px);
+}
+
+.pai-statue-copy h2,
+.pai-audio-control h2 {
+  margin: 0.8rem 0 0;
+  color: #fee2e2;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.4rem, 5vw, 4.8rem);
+  line-height: 0.95;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pai-statue-copy > p,
+.pai-audio-control p {
+  color: rgba(244, 244, 245, 0.74);
+  line-height: 1.75;
+}
+
+.pai-motion-rules {
+  display: grid;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.pai-motion-rules article {
+  border: 1px solid rgba(248, 113, 113, 0.2);
+  border-radius: 18px;
+  padding: 18px;
+  background: rgba(0, 0, 0, 0.42);
+}
+
+.pai-motion-rules h3 {
+  margin: 0;
+  color: #fee2e2;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.12em;
+}
+
+.pai-motion-rules p {
+  margin: 0.5rem 0 0;
+  color: rgba(244, 244, 245, 0.62);
+  line-height: 1.6;
+}
+
+.pai-audio-control {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+}
+
+.pai-audio-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.pai-audio-actions label,
+.pai-audio-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(248, 113, 113, 0.36);
+  border-radius: 14px;
+  padding: 12px 16px;
+  color: #fee2e2;
+  background: rgba(127, 29, 29, 0.18);
+  font-family: "Inter", sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.pai-audio-actions label input {
+  display: none;
+}
+
+.pai-audio-control audio {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-top: 20px;
+}
+
 .pai-chamber-bg,
 .pai-red-orbit {
   position: absolute;
@@ -195,6 +361,15 @@ html {
   mix-blend-mode: screen;
 }
 
+.pai-clock-ring {
+  position: absolute;
+  width: min(31rem, 82vw);
+  height: min(31rem, 82vw);
+  border: 1px dashed rgba(127, 29, 29, 0.42);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
 .pai-featured-name {
   position: absolute;
   bottom: 34px;
@@ -237,6 +412,48 @@ html {
   margin: 0.55rem 0 0;
   color: rgba(244, 244, 245, 0.68);
   line-height: 1.6;
+}
+
+.pai-state-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.pai-state-grid > div {
+  border: 1px solid rgba(248, 113, 113, 0.2);
+  border-radius: 18px;
+  padding: 18px;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.pai-meter {
+  height: 9px;
+  margin: 15px 0;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(69, 10, 10, 0.88);
+}
+
+.pai-meter span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: rgba(248, 113, 113, 0.76);
+}
+
+.pai-mechanism {
+  width: 44px;
+  height: 44px;
+  margin: 14px 0;
+  border: 4px dotted rgba(248, 113, 113, 0.7);
+  border-radius: 50%;
+}
+
+.pai-mechanism.is-active {
+  animation: paiMechanismSpin 4s linear infinite;
 }
 
 .pai-directory-header {
@@ -509,6 +726,26 @@ html {
   resize: vertical;
 }
 
+.pai-admin-checks {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.pai-admin-checks label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(248, 113, 113, 0.2);
+  border-radius: 14px;
+  padding: 14px;
+  color: rgba(244, 244, 245, 0.72);
+  background: rgba(0, 0, 0, 0.34);
+  font-family: "Inter", sans-serif;
+  font-size: 0.82rem;
+}
+
 .pai-add-button {
   margin-top: 18px;
 }
@@ -556,10 +793,14 @@ html {
   }
 
   .pai-directory-header,
+  .pai-statue-gateway,
+  .pai-audio-control,
   .pai-current-spotlight,
   .pai-profile-grid,
   .pai-filter-bar,
-  .pai-admin-grid {
+  .pai-admin-grid,
+  .pai-admin-checks,
+  .pai-state-grid {
     grid-template-columns: 1fr;
   }
 
@@ -574,6 +815,12 @@ html {
 
   .pai-statue.left { left: 6%; }
   .pai-statue.right { right: 6%; }
+}
+
+@keyframes paiMechanismSpin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 body {
