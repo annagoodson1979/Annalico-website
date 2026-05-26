@@ -4398,12 +4398,12 @@ section {
 
 .monolithImage {
   position: absolute;
-  inset: -10%;
+  inset: -14%;
   z-index: -6;
   background-image: url("/images/monolith.jpg");
   background-size: cover;
   background-position: center;
-  filter: saturate(0.88) contrast(1.15) brightness(0.54);
+  filter: saturate(0.78) contrast(1.24) brightness(0.36);
   transform-origin: center;
 }
 
@@ -4412,9 +4412,26 @@ section {
   inset: 0;
   z-index: -5;
   background:
-    radial-gradient(ellipse at center 34%, rgba(255, 202, 139, 0.08), transparent 34%),
-    linear-gradient(180deg, rgba(3, 3, 3, 0.38) 0%, rgba(3, 3, 3, 0.46) 42%, rgba(3, 3, 3, 0.9) 100%),
-    linear-gradient(90deg, rgba(4, 3, 2, 0.8) 0%, rgba(4, 3, 2, 0.24) 48%, rgba(4, 3, 2, 0.8) 100%);
+    radial-gradient(ellipse at center 38%, rgba(255, 207, 132, 0.18), transparent 20%),
+    radial-gradient(ellipse at center 24%, rgba(255, 233, 184, 0.1), transparent 16%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.56) 0%, rgba(0, 0, 0, 0.62) 44%, rgba(0, 0, 0, 0.95) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.18) 49%, rgba(0, 0, 0, 0.88) 100%);
+}
+
+.monolithFocusGlow {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  z-index: -2;
+  width: min(34vw, 420px);
+  height: min(46vh, 520px);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0.64;
+  background:
+    radial-gradient(ellipse at center, rgba(255, 203, 122, 0.32), rgba(255, 181, 92, 0.12) 35%, transparent 68%);
+  filter: blur(12px);
+  animation: monolithFocusPulse 5.5s ease-in-out infinite alternate;
 }
 
 .monolithWater {
@@ -4424,7 +4441,7 @@ section {
   bottom: -6%;
   height: 42%;
   z-index: -3;
-  opacity: 0.5;
+  opacity: 0.22;
   background:
     linear-gradient(100deg, transparent 0%, rgba(255, 206, 145, 0.14) 18%, transparent 36%, rgba(255, 244, 222, 0.08) 54%, transparent 76%),
     repeating-linear-gradient(0deg, rgba(255, 224, 177, 0.08) 0px, rgba(255, 224, 177, 0.08) 1px, transparent 3px, transparent 12px);
@@ -4440,7 +4457,7 @@ section {
   height: 46%;
   z-index: -2;
   pointer-events: none;
-  opacity: 0.38;
+  opacity: 0.24;
   background: radial-gradient(ellipse at center, rgba(255, 223, 177, 0.18), rgba(255, 223, 177, 0.06) 38%, transparent 72%);
   filter: blur(18px);
   animation: monolithMistDrift 11s ease-in-out infinite alternate;
@@ -4456,9 +4473,9 @@ section {
 .pathLight {
   --depth: 0;
   position: absolute;
-  bottom: calc(13% + (var(--depth) * 4.8%));
-  width: calc(7px + (var(--depth) * 1.2px));
-  height: calc(7px + (var(--depth) * 1.2px));
+  bottom: calc(10% + (var(--depth) * 4.2%));
+  width: calc(5px + (var(--depth) * 0.9px));
+  height: calc(5px + (var(--depth) * 0.9px));
   border-radius: 999px;
   background: rgba(255, 210, 136, 0.92);
   box-shadow:
@@ -4473,11 +4490,11 @@ section {
 }
 
 .pathLight-left {
-  left: calc(49% - 6rem - (var(--depth) * 3.1vw));
+  left: calc(49% - 4.8rem - (var(--depth) * 2.55vw));
 }
 
 .pathLight-right {
-  right: calc(49% - 6rem - (var(--depth) * 3.1vw));
+  right: calc(49% - 4.8rem - (var(--depth) * 2.55vw));
 }
 
 .pathLight::after {
@@ -4561,6 +4578,18 @@ section {
     opacity: 0.88;
     transform: scale(1);
     filter: blur(0);
+  }
+}
+
+@keyframes monolithFocusPulse {
+  from {
+    opacity: 0.42;
+    transform: translate(-50%, -50%) scale(0.94);
+  }
+
+  to {
+    opacity: 0.76;
+    transform: translate(-50%, -50%) scale(1.05);
   }
 }
 
