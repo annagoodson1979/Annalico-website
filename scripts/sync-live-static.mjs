@@ -35,6 +35,7 @@ const rootIndexPath = join(repoRoot, 'index.html');
 const appRouteFallbacks = [
   'appointments',
   'book',
+  'business-directory',
   'salon',
   'notary',
   join('notary', 'book'),

@@ -15,6 +15,7 @@ import {
 import AutoJourney from "./components/AutoJourney";
 import AmbientSound from "./components/AmbientSound";
 import BookingRequest from "./components/BookingRequest";
+import PAIDirectoryApp from "./components/PAIDirectoryApp";
 import "./App.css";
 
 const promoCode = "OG-POP";
@@ -471,6 +472,10 @@ function App() {
         <AmbientSound />
       </>
     );
+  }
+
+  if (currentPath === "/business-directory" || currentPath === "/business-directory/") {
+    return <PAIDirectoryApp />;
   }
 
   return (

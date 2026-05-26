@@ -243,7 +243,7 @@ export default function AutoJourney() {
 
       <section id="spotlight" className="info-section">
         <h2>Business of the Week</h2>
-        <a className="directory-link" href="/business-directory.html">
+        <a className="directory-link" href="/business-directory">
           Click for Business Directory
         </a>
       </section>
