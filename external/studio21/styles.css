@@ -186,9 +186,18 @@ h2 {
   font-size: clamp(1.8rem, 4vw, 3rem);
 }
 
+.choice-card p {
+  min-height: 72px;
+  margin: -8px 0 24px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
 .choice-card a,
 .button-link {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid rgba(231, 187, 179, 0.38);
   border-radius: 999px;
   padding: 13px 18px;
@@ -199,6 +208,11 @@ h2 {
   text-transform: uppercase;
 }
 
+.button-link.secondary {
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.035);
+}
+
 .page-shell {
   min-height: calc(100vh - 132px);
   display: grid;
@@ -207,7 +221,7 @@ h2 {
 }
 
 .page-card {
-  width: min(760px, 100%);
+  width: min(920px, 100%);
   padding: clamp(24px, 5vw, 44px);
   text-align: center;
 }
@@ -228,6 +242,40 @@ h2 {
   margin: 22px auto 28px;
   color: var(--muted);
   line-height: 1.75;
+}
+
+.service-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 30px 0;
+  text-align: left;
+}
+
+.service-list article {
+  border: 1px solid rgba(231, 187, 179, 0.16);
+  border-radius: 18px;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.service-list h2 {
+  margin: 0 0 8px;
+  color: var(--rose);
+  font-size: 1.24rem;
+}
+
+.service-list p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .site-footer {
@@ -278,6 +326,10 @@ h2 {
   }
 
   .choice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-list {
     grid-template-columns: 1fr;
   }
 
