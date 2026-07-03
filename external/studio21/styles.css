@@ -10,6 +10,14 @@
   --line: rgba(231, 187, 179, 0.24);
 }
 
+@font-face {
+  font-family: "Rosella Inline";
+  src: url("fonts/rosella-inline.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -139,6 +147,12 @@ h2 {
   letter-spacing: 0.08em;
   line-height: 0.95;
   text-transform: uppercase;
+}
+
+.salon-title {
+  font-family: "Rosella Inline", Georgia, "Times New Roman", serif;
+  letter-spacing: 0.04em;
+  text-transform: none;
 }
 
 .subtitle {
