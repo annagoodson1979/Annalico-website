@@ -125,6 +125,41 @@ a {
   text-transform: uppercase;
 }
 
+.logo-placeholder img,
+.salon-card-wordmark,
+.salon-page-wordmark {
+  display: block;
+  width: 100%;
+  filter: invert(1);
+  mix-blend-mode: screen;
+}
+
+.logo-placeholder img {
+  max-width: 220px;
+}
+
+.salon-card-wordmark {
+  max-width: 340px;
+  margin: 0 0 22px;
+}
+
+.salon-page-wordmark {
+  max-width: min(620px, 100%);
+  margin: 0 auto;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .eyebrow {
   margin: 0 0 12px;
   color: var(--gold);
