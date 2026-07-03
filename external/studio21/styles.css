@@ -359,6 +359,30 @@ h2 {
   flex-wrap: wrap;
 }
 
+.studio-link-list {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 0 0 26px;
+}
+
+.studio-link-list a {
+  border: 1px solid rgba(231, 187, 179, 0.2);
+  border-radius: 999px;
+  padding: 10px 13px;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.studio-link-list a:hover {
+  color: var(--text);
+  border-color: rgba(231, 187, 179, 0.42);
+}
+
 .site-footer {
   display: flex;
   justify-content: space-between;
