@@ -261,10 +261,10 @@ h2 {
 }
 
 .subtitle {
-  margin: 0;
-  color: var(--muted);
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  letter-spacing: 0.16em;
+  margin: 12px 0 0;
+  color: rgba(247, 238, 232, 0.58);
+  font-size: clamp(0.68rem, 1.1vw, 0.86rem);
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   text-shadow: 0 8px 26px rgba(0, 0, 0, 0.72);
 }
@@ -303,10 +303,13 @@ h2 {
 }
 
 .landing-hero .choice-card {
+  display: grid;
+  justify-items: center;
   padding: 8px 10px;
   border-radius: 14px;
   background: rgba(7, 4, 5, 0.42);
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22);
+  text-align: center;
 }
 
 .landing-hero .card-placeholder {
@@ -335,6 +338,7 @@ h2 {
 }
 
 .landing-hero .choice-card a {
+  margin: 0 auto;
   padding: 6px 9px;
   font-size: 0.5rem;
   letter-spacing: 0.1em;
@@ -482,6 +486,14 @@ h2 {
 
 .site-footer p {
   margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.footer-sep {
+  color: rgba(247, 238, 232, 0.58);
 }
 
 @media (max-width: 760px) {
