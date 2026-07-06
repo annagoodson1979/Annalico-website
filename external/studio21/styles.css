@@ -255,6 +255,43 @@ h2 {
   background: var(--panel-strong);
 }
 
+.landing-hero .choice-grid {
+  width: min(760px, calc(100% - 28px));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.landing-hero .choice-card {
+  padding: 16px 18px;
+  border-radius: 20px;
+}
+
+.landing-hero .card-placeholder {
+  display: none;
+}
+
+.landing-hero .choice-card h2 {
+  margin-bottom: 10px;
+  font-size: clamp(1.3rem, 2.4vw, 2rem);
+}
+
+.landing-hero .salon-card-wordmark {
+  max-width: 230px;
+  margin-bottom: 10px;
+}
+
+.landing-hero .choice-card p {
+  min-height: 0;
+  margin: 0 0 14px;
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.landing-hero .choice-card a {
+  padding: 10px 14px;
+  font-size: 0.66rem;
+}
+
 .card-placeholder {
   height: 150px;
   border-radius: 20px;
