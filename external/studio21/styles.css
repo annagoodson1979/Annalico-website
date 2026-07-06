@@ -177,6 +177,22 @@ a {
   margin: 0 auto;
 }
 
+.notary-card-wordmark,
+.notary-page-wordmark {
+  display: block;
+  width: 100%;
+}
+
+.notary-card-wordmark {
+  max-width: 290px;
+  margin: 0 0 18px;
+}
+
+.notary-page-wordmark {
+  max-width: min(620px, 100%);
+  margin: 0 auto;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
