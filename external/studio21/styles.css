@@ -118,31 +118,14 @@ a {
   position: absolute;
   inset: 0;
   z-index: -2;
-  background-color: #070405;
-  overflow: hidden;
-}
-
-.landing-art::before {
-  content: "";
-  position: absolute;
-  inset: -48px;
-  background: url("images/finalstudio21.png") center center / cover no-repeat;
-  filter: blur(28px) brightness(0.48) saturate(0.92);
-  opacity: 0.82;
-  transform: scale(1.04);
-}
-
-.landing-art::after {
-  content: "";
-  position: absolute;
-  inset: 0;
   background-image:
     radial-gradient(ellipse at center 34%, transparent 0%, transparent 44%, rgba(7, 4, 5, 0.7) 75%, #070405 100%),
     linear-gradient(180deg, rgba(7, 4, 5, 0.02) 0%, rgba(7, 4, 5, 0.06) 48%, #070405 100%),
-    url("images/finalstudio21.png");
+    url("images/logo.png");
   background-size: min(1120px, 94vw) auto;
   background-position: center 42px;
   background-repeat: no-repeat;
+  background-color: #070405;
 }
 
 .landing-hero::after {
