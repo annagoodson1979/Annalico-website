@@ -118,14 +118,36 @@ a {
   position: absolute;
   inset: 0;
   z-index: -2;
+  background-color: #070405;
+  overflow: hidden;
+}
+
+.landing-art::before {
+  content: "";
+  position: absolute;
+  inset: 0;
   background-image:
-    radial-gradient(ellipse at center 34%, transparent 0%, transparent 44%, rgba(7, 4, 5, 0.7) 75%, #070405 100%),
-    linear-gradient(180deg, rgba(7, 4, 5, 0.02) 0%, rgba(7, 4, 5, 0.06) 48%, #070405 100%),
     url("images/logo.png");
   background-size: min(1120px, 94vw) auto;
   background-position: center 42px;
   background-repeat: no-repeat;
-  background-color: #070405;
+  mask-image:
+    linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, #000 8%, #000 72%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, #000 8%, #000 72%, transparent 100%);
+  -webkit-mask-composite: source-in;
+}
+
+.landing-art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center 34%, transparent 0%, transparent 48%, rgba(7, 4, 5, 0.58) 76%, #070405 100%),
+    linear-gradient(180deg, rgba(7, 4, 5, 0.02) 0%, rgba(7, 4, 5, 0.08) 52%, #070405 100%);
 }
 
 .landing-hero::after {
