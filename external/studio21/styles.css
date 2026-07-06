@@ -297,15 +297,16 @@ h2 {
 }
 
 .landing-hero .choice-grid {
-  width: min(560px, calc(100% - 28px));
-  gap: 10px;
-  margin-top: 12px;
+  width: min(460px, calc(100% - 28px));
+  gap: 8px;
+  margin-top: 8px;
 }
 
 .landing-hero .choice-card {
-  padding: 10px 12px;
-  border-radius: 15px;
-  background: rgba(7, 4, 5, 0.48);
+  padding: 8px 10px;
+  border-radius: 14px;
+  background: rgba(7, 4, 5, 0.42);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22);
 }
 
 .landing-hero .card-placeholder {
@@ -313,9 +314,9 @@ h2 {
 }
 
 .landing-hero .choice-card h2 {
-  margin: 0 0 6px;
+  margin: 0 0 7px;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(0.94rem, 1.6vw, 1.22rem);
+  font-size: clamp(0.8rem, 1.35vw, 1rem);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -326,6 +327,7 @@ h2 {
 }
 
 .landing-hero .choice-card p {
+  display: none;
   min-height: 0;
   margin: 0 0 8px;
   font-size: 0.68rem;
@@ -333,8 +335,8 @@ h2 {
 }
 
 .landing-hero .choice-card a {
-  padding: 7px 10px;
-  font-size: 0.55rem;
+  padding: 6px 9px;
+  font-size: 0.5rem;
   letter-spacing: 0.1em;
 }
 
@@ -468,13 +470,14 @@ h2 {
 
 .site-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 16px;
   padding: 18px clamp(18px, 5vw, 56px) 24px;
   border-top: 1px solid rgba(231, 187, 179, 0.12);
   color: var(--soft);
   font-size: 0.78rem;
   letter-spacing: 0.08em;
+  text-align: center;
 }
 
 .site-footer p {
