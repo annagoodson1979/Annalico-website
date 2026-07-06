@@ -119,11 +119,13 @@ a {
   inset: 0;
   z-index: -2;
   background-image:
-    linear-gradient(180deg, rgba(7, 4, 5, 0.08) 0%, rgba(7, 4, 5, 0.12) 48%, rgba(7, 4, 5, 0.9) 100%),
+    radial-gradient(ellipse at center 34%, transparent 0%, transparent 42%, rgba(7, 4, 5, 0.78) 72%, #070405 100%),
+    linear-gradient(180deg, rgba(7, 4, 5, 0.02) 0%, rgba(7, 4, 5, 0.06) 48%, #070405 100%),
     url("images/finalstudio21.png");
   background-size: min(1120px, 94vw) auto;
   background-position: center 42px;
   background-repeat: no-repeat;
+  background-color: #070405;
 }
 
 .landing-hero::after {
