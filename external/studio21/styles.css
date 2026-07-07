@@ -396,6 +396,34 @@ h2 {
   text-align: center;
 }
 
+.salon-shell {
+  width: 100%;
+  padding: 0 clamp(16px, 4vw, 46px) 34px;
+}
+
+.salon-landing-card {
+  position: relative;
+  width: min(1180px, 100%);
+  min-height: calc(100vh - 178px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  padding-top: clamp(320px, 48vw, 620px);
+}
+
+.salon-landing-art {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(7, 4, 5, 0.02) 0%, rgba(7, 4, 5, 0.22) 58%, rgba(7, 4, 5, 0.88) 100%),
+    url("images/s21salon.jpg?v=20260706");
+  background-size: min(1220px, 100vw) auto;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
 .page-placeholder {
   min-height: 220px;
   margin-bottom: 30px;
