@@ -44,7 +44,7 @@ a {
 .site-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 24px;
   padding: 22px clamp(18px, 5vw, 56px);
   border-bottom: 1px solid rgba(231, 187, 179, 0.12);
@@ -381,6 +381,25 @@ h2 {
 .button-link.secondary {
   color: var(--muted);
   background: rgba(255, 255, 255, 0.035);
+}
+
+.stacked-link {
+  min-width: 210px;
+  flex-direction: column;
+  gap: 5px;
+  line-height: 1.1;
+}
+
+.stacked-link span {
+  color: var(--soft);
+  font-size: 0.56rem;
+  letter-spacing: 0.18em;
+}
+
+.stacked-link strong {
+  font-size: 0.76rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
 }
 
 .page-shell {

@@ -8,12 +8,10 @@
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="index.html">Studio 21&trade;</a>
       <button class="menu-toggle" type="button">Menu</button>
       <nav class="site-nav">
         <a href="index.html">Home</a>
-        <a href="salon.html">Studio 21&trade; | Salon</a>
-        <a href="notary.html">Studio 21&trade; | Notary</a>
+        <a href="#services">Services</a>
         <a href="contact.html">Contact</a>
       </nav>
     </header>
@@ -21,14 +19,9 @@
     <main class="page-shell salon-shell">
       <section class="page-card salon-landing-card">
         <div class="salon-landing-art" aria-label="Studio 21 Salon floral artwork"></div>
-        <p class="eyebrow">Studio 21&trade; | Salon</p>
         <h1 class="sr-only">Studio 21&trade; | Salon</h1>
-        <p>
-          A private appointment-based salon experience for curated beauty
-          services, client requests, and VIP appointment alerts.
-        </p>
 
-        <div class="service-list">
+        <div id="services" class="service-list">
           <article>
             <h2>Hair Services</h2>
             <p>Color, styling, treatments, maintenance, and custom salon requests.</p>
@@ -48,8 +41,14 @@
         </div>
 
         <div class="button-row">
-          <a class="button-link" href="https://docs.google.com/forms/d/e/1FAIpQLSfx-d8XV8dK5MV7Ipuv1ZPb2tjcGKTUJ5n0QCYOgZIVgET7gw/viewform?usp=header">Request Appointment</a>
-          <a class="button-link secondary" href="https://docs.google.com/forms/d/e/1FAIpQLScQUDk9t48zQBrKTtR0JSJAass3MFrlT1I1LuBgaHTqFNh6oQ/viewform?usp=header">Existing Clients Portal</a>
+          <a class="button-link stacked-link" href="https://docs.google.com/forms/d/e/1FAIpQLSfx-d8XV8dK5MV7Ipuv1ZPb2tjcGKTUJ5n0QCYOgZIVgET7gw/viewform?usp=header">
+            <span>New Client</span>
+            <strong>Request Appointment</strong>
+          </a>
+          <a class="button-link secondary stacked-link" href="https://docs.google.com/forms/d/e/1FAIpQLScQUDk9t48zQBrKTtR0JSJAass3MFrlT1I1LuBgaHTqFNh6oQ/viewform?usp=header">
+            <span>Existing Clients</span>
+            <strong>Existing Clients Portal</strong>
+          </a>
         </div>
       </section>
     </main>
