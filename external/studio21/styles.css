@@ -76,6 +76,25 @@ a {
   color: var(--rose);
 }
 
+.site-nav a.nav-feature {
+  color: rgba(247, 238, 232, 0.9);
+  text-shadow:
+    0 0 16px rgba(201, 149, 142, 0.42),
+    0 0 28px rgba(199, 163, 107, 0.18);
+}
+
+.site-nav a.nav-feature::after {
+  content: "";
+  display: block;
+  height: 1px;
+  margin-top: 5px;
+  background: linear-gradient(90deg, transparent, rgba(201, 149, 142, 0.82), transparent);
+}
+
+.site-nav a.nav-feature:hover {
+  color: var(--text);
+}
+
 .menu-toggle {
   display: none;
   border: 1px solid var(--line);
