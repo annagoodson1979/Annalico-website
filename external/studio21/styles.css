@@ -297,19 +297,25 @@ h2 {
 }
 
 .landing-hero .choice-grid {
-  width: min(460px, calc(100% - 28px));
-  gap: 8px;
-  margin-top: 8px;
+  width: min(560px, calc(100% - 28px));
+  gap: 14px;
+  margin-top: 10px;
 }
 
 .landing-hero .choice-card {
   display: grid;
   justify-items: center;
-  padding: 8px 10px;
-  border-radius: 14px;
-  background: rgba(7, 4, 5, 0.42);
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
   text-align: center;
+}
+
+.landing-hero .choice-card:hover {
+  background: transparent;
 }
 
 .landing-hero .card-placeholder {
@@ -317,11 +323,13 @@ h2 {
 }
 
 .landing-hero .choice-card h2 {
-  margin: 0 0 7px;
+  margin: 0 0 6px;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(0.8rem, 1.35vw, 1rem);
-  letter-spacing: 0.08em;
+  color: rgba(247, 238, 232, 0.78);
+  font-size: clamp(0.72rem, 1.1vw, 0.9rem);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  text-shadow: 0 8px 24px rgba(0, 0, 0, 0.78);
 }
 
 .landing-hero .salon-card-wordmark {
@@ -339,9 +347,19 @@ h2 {
 
 .landing-hero .choice-card a {
   margin: 0 auto;
-  padding: 6px 9px;
-  font-size: 0.5rem;
-  letter-spacing: 0.1em;
+  border-color: rgba(201, 149, 142, 0.34);
+  padding: 8px 14px;
+  color: rgba(247, 238, 232, 0.82);
+  background: rgba(7, 4, 5, 0.22);
+  font-size: 0.58rem;
+  letter-spacing: 0.13em;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+.landing-hero .choice-card a:hover {
+  border-color: rgba(201, 149, 142, 0.62);
+  color: var(--text);
+  background: rgba(201, 149, 142, 0.1);
 }
 
 .card-placeholder {
