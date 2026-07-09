@@ -524,6 +524,37 @@ h2 {
   flex-wrap: wrap;
 }
 
+.membership-list {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 18px auto 0;
+}
+
+.membership-link {
+  border-color: rgba(199, 163, 107, 0.4);
+  background: rgba(199, 163, 107, 0.08);
+}
+
+.vagaro-widget-card {
+  width: min(460px, 100%);
+  margin: 24px auto 0;
+  padding: 14px 16px 18px;
+  border: 1px solid rgba(231, 187, 179, 0.18);
+  border-radius: 22px;
+  background: rgba(7, 4, 5, 0.48);
+}
+
+.vagaro-widget-card .embedded-widget-title {
+  color: var(--text) !important;
+  letter-spacing: 0.12em;
+}
+
+.vagaro-widget-card .vagaro a {
+  color: rgba(247, 238, 232, 0.45) !important;
+}
+
 .studio-link-list {
   display: flex;
   justify-content: center;
