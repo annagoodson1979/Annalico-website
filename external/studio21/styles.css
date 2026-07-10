@@ -66,8 +66,8 @@ a {
 
 .site-nav a {
   color: var(--muted);
-  font-size: 0.78rem;
-  letter-spacing: 0.14em;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
@@ -77,7 +77,12 @@ a {
 }
 
 .site-nav a.nav-feature {
+  color: var(--muted);
+}
+
+.site-nav a.nav-feature strong {
   color: rgba(231, 187, 179, 0.96);
+  font-weight: 400;
   text-shadow:
     0 0 16px rgba(201, 149, 142, 0.52),
     0 0 28px rgba(201, 149, 142, 0.22);
@@ -92,6 +97,10 @@ a {
 }
 
 .site-nav a.nav-feature:hover {
+  color: var(--text);
+}
+
+.site-nav a.nav-feature:hover strong {
   color: var(--text);
 }
 
@@ -639,8 +648,8 @@ h2 {
   padding: 18px clamp(18px, 5vw, 56px) 24px;
   border-top: 1px solid rgba(231, 187, 179, 0.12);
   color: var(--soft);
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
+  font-size: 0.66rem;
+  letter-spacing: 0.07em;
   text-align: center;
 }
 
