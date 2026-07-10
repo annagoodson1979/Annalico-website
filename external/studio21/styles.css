@@ -66,8 +66,8 @@ a {
 
 .site-nav a {
   color: var(--muted);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -646,8 +646,8 @@ h2 {
   padding: 18px clamp(18px, 5vw, 56px) 24px;
   border-top: 1px solid rgba(231, 187, 179, 0.12);
   color: var(--soft);
-  font-size: 0.66rem;
-  letter-spacing: 0.07em;
+  font-size: 0.56rem;
+  letter-spacing: 0.06em;
   text-align: center;
 }
 
