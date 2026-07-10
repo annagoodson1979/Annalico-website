@@ -86,14 +86,6 @@ a {
   text-shadow: none;
 }
 
-.site-nav a.nav-feature::after {
-  content: "";
-  display: block;
-  height: 1px;
-  margin-top: 5px;
-  background: linear-gradient(90deg, transparent, rgba(201, 149, 142, 0.52), transparent);
-}
-
 .site-nav a.nav-feature:hover {
   color: var(--text);
 }
