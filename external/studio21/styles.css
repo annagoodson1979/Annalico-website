@@ -165,8 +165,8 @@ a {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at center 34%, transparent 0%, transparent 48%, rgba(7, 4, 5, 0.58) 76%, #070405 100%),
-    linear-gradient(180deg, rgba(7, 4, 5, 0.02) 0%, rgba(7, 4, 5, 0.08) 52%, #070405 100%);
+    radial-gradient(ellipse at center 34%, transparent 0%, transparent 52%, rgba(7, 4, 5, 0.34) 82%, rgba(7, 4, 5, 0.58) 100%),
+    linear-gradient(180deg, rgba(7, 4, 5, 0.02) 0%, rgba(7, 4, 5, 0.06) 58%, rgba(7, 4, 5, 0.62) 100%);
 }
 
 .landing-hero::after {
@@ -494,7 +494,7 @@ h2 {
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(180deg, rgba(7, 4, 5, 0.02) 0%, rgba(7, 4, 5, 0.22) 58%, rgba(7, 4, 5, 0.88) 100%),
+    linear-gradient(180deg, rgba(7, 4, 5, 0.02) 0%, rgba(7, 4, 5, 0.14) 62%, rgba(7, 4, 5, 0.62) 100%),
     url("images/salonlogo.jpg?v=20260710");
   background-size: min(760px, 84vw) auto;
   background-position: center 34px;
