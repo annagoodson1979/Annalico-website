@@ -61,12 +61,12 @@ a {
 .site-nav {
   display: flex;
   align-items: center;
-  gap: clamp(16px, 3vw, 34px);
+  gap: clamp(24px, 4vw, 54px);
 }
 
 .site-nav a {
   color: var(--muted);
-  font-size: 0.58rem;
+  font-size: 0.62rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -449,7 +449,7 @@ h2 {
 
 .stacked-link span {
   color: var(--soft);
-  font-size: 0.56rem;
+  font-size: 0.6rem;
   letter-spacing: 0.18em;
 }
 
