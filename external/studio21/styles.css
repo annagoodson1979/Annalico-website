@@ -147,9 +147,17 @@ a {
   inset: 0;
   background-image:
     url("images/s21.jpg?v=20260709");
-  background-size: cover;
-  background-position: center top;
+  background-size: min(1120px, 94vw) auto;
+  background-position: center 42px;
   background-repeat: no-repeat;
+  mask-image:
+    linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, #000 8%, #000 72%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, #000 8%, #000 72%, transparent 100%);
+  -webkit-mask-composite: source-in;
 }
 
 .landing-art::after {
