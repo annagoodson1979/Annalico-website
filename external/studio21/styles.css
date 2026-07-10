@@ -147,8 +147,8 @@ a {
   inset: 0;
   background-image:
     url("images/s21.jpg?v=20260710");
-  background-size: min(900px, 86vw) auto;
-  background-position: center 34px;
+  background-size: min(1320px, 108vw) auto;
+  background-position: center -24px;
   background-repeat: no-repeat;
   mask-image:
     linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%),
@@ -496,8 +496,8 @@ h2 {
   background:
     linear-gradient(180deg, rgba(7, 4, 5, 0.02) 0%, rgba(7, 4, 5, 0.14) 62%, rgba(7, 4, 5, 0.62) 100%),
     url("images/salonlogo.jpg?v=20260710");
-  background-size: min(760px, 84vw) auto;
-  background-position: center 34px;
+  background-size: min(1040px, 104vw) auto;
+  background-position: center -18px;
   background-repeat: no-repeat;
   mask-image:
     linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%),
