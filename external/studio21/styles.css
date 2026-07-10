@@ -77,10 +77,10 @@ a {
 }
 
 .site-nav a.nav-feature {
-  color: rgba(247, 238, 232, 0.9);
+  color: rgba(231, 187, 179, 0.96);
   text-shadow:
-    0 0 16px rgba(201, 149, 142, 0.42),
-    0 0 28px rgba(199, 163, 107, 0.18);
+    0 0 16px rgba(201, 149, 142, 0.52),
+    0 0 28px rgba(201, 149, 142, 0.22);
 }
 
 .site-nav a.nav-feature::after {
@@ -146,7 +146,7 @@ a {
   position: absolute;
   inset: 0;
   background-image:
-    url("images/s21.JPEG?v=20260706");
+    url("images/s21.jpg?v=20260709");
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
@@ -487,7 +487,7 @@ h2 {
   z-index: -1;
   background:
     linear-gradient(180deg, rgba(7, 4, 5, 0.02) 0%, rgba(7, 4, 5, 0.22) 58%, rgba(7, 4, 5, 0.88) 100%),
-    url("images/s21salon.jpg?v=20260706");
+    url("images/salonlogo.jpg?v=20260709");
   background-size: min(1220px, 100vw) auto;
   background-position: center top;
   background-repeat: no-repeat;
@@ -559,17 +559,20 @@ h2 {
 }
 
 .vagaro-widget-card {
-  width: min(460px, 100%);
-  margin: 24px auto 0;
-  padding: 14px 16px 18px;
+  width: min(360px, 100%);
+  margin: 18px auto 0;
+  padding: 10px 14px 14px;
   border: 1px solid rgba(231, 187, 179, 0.18);
   border-radius: 22px;
   background: rgba(7, 4, 5, 0.48);
 }
 
-.vagaro-widget-card .embedded-widget-title {
-  color: var(--text) !important;
-  letter-spacing: 0.12em;
+.appointment-title {
+  margin: 0 0 10px;
+  color: rgba(247, 238, 232, 0.84);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
 .vagaro-widget-card .vagaro a {
