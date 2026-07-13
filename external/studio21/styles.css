@@ -472,6 +472,17 @@ h2 {
   text-align: center;
 }
 
+.linkedin-panel {
+  width: min(320px, 100%);
+  margin: 18px auto 0;
+  display: flex;
+  justify-content: center;
+  opacity: 0.82;
+  filter: saturate(0.8);
+  transform: scale(0.88);
+  transform-origin: top center;
+}
+
 .salon-shell {
   width: 100%;
   padding: 0 clamp(16px, 4vw, 46px) 34px;
