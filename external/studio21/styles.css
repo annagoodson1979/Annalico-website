@@ -76,6 +76,11 @@ a {
   color: var(--rose);
 }
 
+.site-nav a[href="index.html"],
+.site-nav a[href="index.html"]:hover {
+  color: rgba(247, 238, 232, 0.9);
+}
+
 .site-nav a.nav-feature {
   color: var(--muted);
 }
@@ -495,7 +500,7 @@ h2 {
   flex-direction: column;
   justify-content: flex-end;
   overflow: hidden;
-  padding-top: clamp(320px, 48vw, 620px);
+  padding-top: clamp(240px, 36vw, 460px);
 }
 
 .salon-landing-art {
@@ -584,16 +589,17 @@ h2 {
 }
 
 .vagaro-widget-card {
-  width: min(300px, 100%);
-  margin: 14px auto 0;
-  padding: 7px 10px 10px;
+  width: min(240px, 100%);
+  margin: 10px auto 0;
+  padding: 8px 10px;
   border: 1px solid rgba(231, 187, 179, 0.18);
   border-radius: 22px;
   background: rgba(7, 4, 5, 0.48);
 }
 
 .appointment-title {
-  margin: 0 0 7px;
+  display: block;
+  margin: 0;
   color: rgba(247, 238, 232, 0.84);
   font-size: 0.68rem;
   letter-spacing: 0.14em;
