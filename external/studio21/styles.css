@@ -150,7 +150,7 @@ a {
   position: absolute;
   inset: 0;
   background-image:
-    url("images/logos21.JPEG?v=20260718");
+    url("images/s21logo.jpg?v=20260718");
   background-size: min(1060px, 90vw) auto;
   background-position: center 8px;
   background-repeat: no-repeat;
@@ -274,6 +274,10 @@ h2 {
   letter-spacing: 0.08em;
   line-height: 0.95;
   text-transform: uppercase;
+}
+
+.page-card h1.gold-heading {
+  color: var(--gold);
 }
 
 .salon-title {
@@ -490,7 +494,7 @@ h2 {
 .salon-shell {
   width: 100%;
   padding: 0 clamp(16px, 4vw, 46px) 24px;
-  background: #050404;
+  background: #020202;
 }
 
 .salon-landing-card {
@@ -605,7 +609,7 @@ h2 {
 }
 
 .vagaro-widget-card {
-  width: min(360px, 100%);
+  width: min(680px, 100%);
   margin: 8px auto 0;
   padding: 12px;
   border: 1px solid rgba(231, 187, 179, 0.18);
@@ -618,9 +622,10 @@ h2 {
   display: block;
   margin: 0 0 10px;
   color: rgba(247, 238, 232, 0.96);
-  font-size: 0.7rem;
-  letter-spacing: 0.16em;
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .vagaro-widget-scroll {
@@ -632,7 +637,7 @@ h2 {
 }
 
 .vagaro-widget-card .vagaro {
-  width: 250px;
+  width: 100%;
   padding: 0;
   border: 0;
   margin: 0 auto;
