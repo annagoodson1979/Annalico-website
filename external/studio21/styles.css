@@ -662,6 +662,10 @@ h2 {
   text-decoration: none;
 }
 
+.notary-widget-card {
+  margin-top: 6px;
+}
+
 .vagaro-fallback-link {
   display: inline-flex;
   margin-top: 16px;
