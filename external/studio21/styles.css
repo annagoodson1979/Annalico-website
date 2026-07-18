@@ -65,7 +65,7 @@ a {
 }
 
 .site-nav a {
-  color: var(--muted);
+  color: rgba(247, 238, 232, 0.9);
   font-size: 0.62rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -145,10 +145,11 @@ a {
   position: absolute;
   inset: 0;
   background-image:
-    url("images/s21.jpg?v=20260717");
+    url("images/logos21.JPEG?v=20260718");
   background-size: min(1180px, 96vw) auto;
   background-position: center 18px;
   background-repeat: no-repeat;
+  filter: brightness(1.18) contrast(1.04);
   mask-image:
     linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%),
     linear-gradient(180deg, transparent 0%, #000 8%, #000 72%, transparent 100%);
@@ -163,9 +164,7 @@ a {
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse at center 34%, transparent 0%, transparent 52%, rgba(7, 4, 5, 0.34) 82%, rgba(7, 4, 5, 0.58) 100%),
-    linear-gradient(180deg, rgba(7, 4, 5, 0.02) 0%, rgba(7, 4, 5, 0.06) 58%, rgba(7, 4, 5, 0.62) 100%);
+  background: transparent;
 }
 
 .landing-hero::after {
@@ -173,7 +172,7 @@ a {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: radial-gradient(circle at center 42%, transparent 0%, rgba(7, 4, 5, 0.16) 48%, rgba(7, 4, 5, 0.58) 100%);
+  background: transparent;
   pointer-events: none;
 }
 
@@ -232,7 +231,7 @@ a {
 }
 
 .notary-page-wordmark {
-  max-width: min(620px, 100%);
+  max-width: min(820px, 100%);
   margin: 0 auto;
 }
 
@@ -585,19 +584,19 @@ h2 {
 }
 
 .vagaro-widget-card {
-  width: min(360px, 100%);
-  margin: 18px auto 0;
-  padding: 10px 14px 14px;
+  width: min(300px, 100%);
+  margin: 14px auto 0;
+  padding: 7px 10px 10px;
   border: 1px solid rgba(231, 187, 179, 0.18);
   border-radius: 22px;
   background: rgba(7, 4, 5, 0.48);
 }
 
 .appointment-title {
-  margin: 0 0 10px;
+  margin: 0 0 7px;
   color: rgba(247, 238, 232, 0.84);
-  font-size: 0.78rem;
-  letter-spacing: 0.16em;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
@@ -621,25 +620,26 @@ h2 {
 .studio-link-list {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 18px;
   flex-wrap: wrap;
   margin: 0 0 26px;
 }
 
 .studio-link-list a {
-  border: 1px solid rgba(231, 187, 179, 0.2);
-  border-radius: 999px;
-  padding: 10px 13px;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
   color: var(--muted);
-  background: rgba(255, 255, 255, 0.03);
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
+  background: transparent;
+  font-size: 0.66rem;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
 }
 
 .studio-link-list a:hover {
   color: var(--text);
-  border-color: rgba(231, 187, 179, 0.42);
+  text-decoration: underline;
+  text-underline-offset: 5px;
 }
 
 .site-footer {
