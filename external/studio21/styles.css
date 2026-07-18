@@ -490,6 +490,7 @@ h2 {
 .salon-shell {
   width: 100%;
   padding: 0 clamp(16px, 4vw, 46px) 34px;
+  background: #050404;
 }
 
 .salon-landing-card {
@@ -501,6 +502,10 @@ h2 {
   justify-content: flex-end;
   overflow: hidden;
   padding-top: clamp(240px, 36vw, 460px);
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
 .salon-landing-art {
@@ -508,7 +513,7 @@ h2 {
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(180deg, rgba(7, 4, 5, 0.02) 0%, rgba(7, 4, 5, 0.14) 62%, rgba(7, 4, 5, 0.62) 100%),
+    linear-gradient(180deg, rgba(7, 4, 5, 0) 0%, rgba(7, 4, 5, 0.08) 68%, rgba(7, 4, 5, 0.28) 100%),
     url("images/salonlogo.jpg?v=20260710");
   background-size: min(760px, 84vw) auto;
   background-position: center 34px;
