@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Studio 21&trade; | Salon</title>
-    <link rel="stylesheet" href="styles.css?v=20260718g" />
+    <link rel="stylesheet" href="styles.css?v=20260718i" />
   </head>
   <body>
     <header class="site-header">
@@ -18,10 +18,12 @@
     </header>
 
     <main class="page-shell salon-shell">
-      <section class="page-card salon-landing-card">
+      <section class="page-card salon-landing-card" aria-label="Studio 21 Salon">
         <div class="salon-landing-art" aria-label="Studio 21 Salon floral artwork"></div>
         <h1 class="sr-only">Studio 21&trade; | Salon</h1>
+      </section>
 
+      <section class="salon-content-card">
         <div id="services" class="service-list">
           <article>
             <h2>Hair Services</h2>
@@ -42,7 +44,14 @@
         </div>
 
         <div id="booking" class="vagaro-widget-card">
-          <a class="appointment-title" href="https://docs.google.com/forms/d/e/1FAIpQLSfx-d8XV8dK5MV7Ipuv1ZPb2tjcGKTUJ5n0QCYOgZIVgET7gw/viewform?usp=header">Request An Appointment</a>
+          <p class="appointment-title">Request An Appointment</p>
+          <iframe
+            class="appointment-frame"
+            src="https://docs.google.com/forms/d/e/1FAIpQLSfx-d8XV8dK5MV7Ipuv1ZPb2tjcGKTUJ5n0QCYOgZIVgET7gw/viewform?embedded=true"
+            title="Studio 21 Salon appointment request form"
+          >
+            Loading...
+          </iframe>
         </div>
       </section>
     </main>

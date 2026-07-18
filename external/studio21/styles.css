@@ -489,19 +489,17 @@ h2 {
 
 .salon-shell {
   width: 100%;
-  padding: 0 clamp(16px, 4vw, 46px) 34px;
+  padding: 0 clamp(16px, 4vw, 46px) 24px;
   background: #050404;
 }
 
 .salon-landing-card {
   position: relative;
   width: min(1180px, 100%);
-  min-height: calc(100vh - 178px);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  min-height: clamp(360px, 52vw, 620px);
   overflow: hidden;
-  padding-top: clamp(240px, 36vw, 460px);
+  margin: 0 auto;
+  padding: 0;
   border-color: transparent;
   background: transparent;
   box-shadow: none;
@@ -516,8 +514,8 @@ h2 {
   background:
     linear-gradient(180deg, rgba(7, 4, 5, 0) 0%, rgba(7, 4, 5, 0.08) 68%, rgba(7, 4, 5, 0.28) 100%),
     url("images/salonlogo.jpg?v=20260710");
-  background-size: min(760px, 84vw) auto;
-  background-position: center 34px;
+  background-size: min(900px, 92vw) auto;
+  background-position: center 12px;
   background-repeat: no-repeat;
   mask-image:
     linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%),
@@ -533,6 +531,12 @@ h2 {
 .salon-landing-card .vagaro-widget-card {
   position: relative;
   z-index: 1;
+}
+
+.salon-content-card {
+  width: min(960px, 100%);
+  margin: clamp(8px, 2vw, 18px) auto 0;
+  text-align: center;
 }
 
 .page-placeholder {
@@ -557,7 +561,7 @@ h2 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
-  margin: 30px 0;
+  margin: 0 0 16px;
   text-align: left;
 }
 
@@ -601,21 +605,30 @@ h2 {
 }
 
 .vagaro-widget-card {
-  width: min(240px, 100%);
-  margin: 10px auto 0;
-  padding: 8px 10px;
+  width: min(520px, 100%);
+  margin: 8px auto 0;
+  padding: 14px;
   border: 1px solid rgba(231, 187, 179, 0.18);
   border-radius: 22px;
-  background: rgba(7, 4, 5, 0.48);
+  background: rgba(7, 4, 5, 0.42);
 }
 
 .appointment-title {
   display: block;
-  margin: 0;
-  color: rgba(247, 238, 232, 0.84);
-  font-size: 0.68rem;
-  letter-spacing: 0.14em;
+  margin: 0 0 10px;
+  color: rgba(247, 238, 232, 0.96);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
+}
+
+.appointment-frame {
+  display: block;
+  width: 100%;
+  height: clamp(260px, 34vh, 340px);
+  border: 0;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.94);
 }
 
 .vagaro-widget-card .vagaro a {
@@ -723,6 +736,15 @@ h2 {
 
   .service-list {
     grid-template-columns: 1fr;
+  }
+
+  .salon-landing-card {
+    min-height: clamp(320px, 82vw, 520px);
+  }
+
+  .salon-landing-art {
+    background-size: min(760px, 128vw) auto;
+    background-position: center 18px;
   }
 
   .site-footer {
