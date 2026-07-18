@@ -146,8 +146,8 @@ a {
   inset: 0;
   background-image:
     url("images/logos21.JPEG?v=20260718");
-  background-size: min(1180px, 96vw) auto;
-  background-position: center 18px;
+  background-size: min(1060px, 90vw) auto;
+  background-position: center 8px;
   background-repeat: no-repeat;
   filter: brightness(1.18) contrast(1.04);
   mask-image:
