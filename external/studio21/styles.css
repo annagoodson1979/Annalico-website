@@ -678,6 +678,27 @@ h2 {
   margin-top: 6px;
 }
 
+.notary-test-links {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.notary-test-links a {
+  color: rgba(247, 238, 232, 0.78);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.notary-test-links a:hover {
+  color: var(--gold);
+}
+
 .vagaro-fallback-link {
   display: inline-flex;
   margin-top: 16px;
