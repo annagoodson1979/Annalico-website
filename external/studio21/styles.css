@@ -637,7 +637,9 @@ h2 {
   font-size: 0.76rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.45;
 }
 
 .member-request-card {
