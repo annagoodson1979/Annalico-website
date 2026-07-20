@@ -640,21 +640,6 @@ h2 {
   white-space: nowrap;
 }
 
-.salon-widget-preview-link {
-  display: inline-flex;
-  margin: 0 0 10px;
-  color: var(--gold);
-  font-size: 0.64rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  text-decoration: underline;
-  text-underline-offset: 5px;
-}
-
-.salon-widget-preview-link:hover {
-  color: var(--text);
-}
-
 .vagaro-widget-scroll {
   width: 100%;
   max-height: clamp(260px, 34vh, 340px);
