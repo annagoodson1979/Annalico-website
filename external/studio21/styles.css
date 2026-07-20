@@ -640,6 +640,35 @@ h2 {
   white-space: nowrap;
 }
 
+.member-request-link-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 14px;
+}
+
+.member-request-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: min(520px, 100%);
+  min-height: 44px;
+  padding: 11px 18px;
+  border: 1px solid rgba(201, 149, 142, 0.44);
+  border-radius: 999px;
+  color: var(--text);
+  background: rgba(201, 149, 142, 0.1);
+  font-size: 0.72rem;
+  letter-spacing: 0.13em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.member-request-link:hover {
+  border-color: rgba(231, 187, 179, 0.72);
+  background: rgba(201, 149, 142, 0.16);
+  color: var(--gold);
+}
+
 .vagaro-widget-scroll {
   width: 100%;
   max-height: clamp(260px, 34vh, 340px);
