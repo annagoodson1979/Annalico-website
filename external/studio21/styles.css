@@ -99,6 +99,10 @@ a {
   color: var(--text);
 }
 
+.notary-nav {
+  gap: clamp(24px, 4vw, 64px);
+}
+
 .menu-toggle {
   display: none;
   border: 1px solid var(--line);
@@ -150,7 +154,7 @@ a {
   position: absolute;
   inset: 0;
   background-image:
-    url("images/s21logo.jpg?v=20260718");
+    url("images/s21lo.jpg?v=20260723");
   background-size: min(1060px, 90vw) auto;
   background-position: center 8px;
   background-repeat: no-repeat;
@@ -505,8 +509,8 @@ h2 {
 
 .salon-shell {
   width: 100%;
-  padding: 0 clamp(16px, 4vw, 46px) 24px;
-  background: #020202;
+  padding: 0 clamp(16px, 4vw, 46px) 34px;
+  background: #050404;
 }
 
 .salon-landing-card {
@@ -528,7 +532,7 @@ h2 {
   inset: 0;
   z-index: 0;
   background:
-    linear-gradient(180deg, rgba(7, 4, 5, 0) 0%, rgba(7, 4, 5, 0.08) 68%, rgba(7, 4, 5, 0.28) 100%),
+    linear-gradient(180deg, rgba(5, 4, 4, 0) 0%, rgba(5, 4, 4, 0.06) 72%, rgba(5, 4, 4, 0.18) 100%),
     url("images/salonlogo.jpg?v=20260710");
   background-size: min(900px, 92vw) auto;
   background-position: center 12px;
@@ -550,8 +554,8 @@ h2 {
 }
 
 .salon-content-card {
-  width: min(960px, 100%);
-  margin: clamp(8px, 2vw, 18px) auto 0;
+  width: min(1040px, 100%);
+  margin: clamp(22px, 4vw, 44px) auto 0;
   text-align: center;
 }
 
@@ -576,8 +580,8 @@ h2 {
 .service-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-  margin: 0 0 16px;
+  gap: clamp(14px, 2vw, 22px);
+  margin: 0 0 clamp(22px, 4vw, 38px);
   text-align: left;
 }
 
@@ -621,9 +625,9 @@ h2 {
 }
 
 .vagaro-widget-card {
-  width: min(680px, 100%);
-  margin: 8px auto 0;
-  padding: 12px;
+  width: min(760px, 100%);
+  margin: 0 auto;
+  padding: clamp(16px, 3vw, 24px);
   border: 1px solid rgba(231, 187, 179, 0.18);
   border-radius: 22px;
   background: rgba(7, 4, 5, 0.42);
@@ -634,8 +638,8 @@ h2 {
   display: block;
   margin: 0 0 10px;
   color: rgba(247, 238, 232, 0.96);
-  font-size: 0.76rem;
-  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   white-space: normal;
   overflow-wrap: anywhere;
@@ -643,9 +647,9 @@ h2 {
 }
 
 .member-request-card {
-  width: min(680px, 100%);
-  margin: 0 auto 14px;
-  padding: 12px;
+  width: min(760px, 100%);
+  margin: 0 auto clamp(22px, 4vw, 36px);
+  padding: clamp(16px, 3vw, 24px);
   border: 1px solid rgba(231, 187, 179, 0.18);
   border-radius: 22px;
   background: rgba(7, 4, 5, 0.42);
@@ -653,9 +657,9 @@ h2 {
 }
 
 .request-note {
-  margin: -2px auto 12px;
+  margin: -2px auto 16px;
   color: rgba(247, 238, 232, 0.62);
-  font-size: 0.72rem;
+  font-size: 0.66rem;
   line-height: 1.45;
 }
 
@@ -664,14 +668,14 @@ h2 {
   align-items: center;
   justify-content: center;
   width: min(320px, 100%);
-  min-height: 44px;
-  padding: 11px 18px;
+  min-height: 40px;
+  padding: 10px 16px;
   border: 1px solid rgba(201, 149, 142, 0.44);
   border-radius: 999px;
   color: var(--text);
   background: rgba(201, 149, 142, 0.1);
-  font-size: 0.72rem;
-  letter-spacing: 0.13em;
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
   text-align: center;
   text-transform: uppercase;
 }
