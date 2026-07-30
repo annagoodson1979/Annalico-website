@@ -513,7 +513,7 @@ h2 {
 .salon-shell {
   width: 100%;
   padding: 0 clamp(16px, 4vw, 46px) 34px;
-  background: #050404;
+  background: #030303;
 }
 
 .salon-landing-card {
@@ -535,7 +535,7 @@ h2 {
   inset: 0;
   z-index: 0;
   background:
-    linear-gradient(180deg, rgba(5, 4, 4, 0) 0%, rgba(5, 4, 4, 0.06) 72%, rgba(5, 4, 4, 0.18) 100%),
+    linear-gradient(180deg, rgba(3, 3, 3, 0) 0%, rgba(3, 3, 3, 0.06) 72%, rgba(3, 3, 3, 0.2) 100%),
     url("images/salonlogo.jpg?v=20260710");
   background-size: min(900px, 92vw) auto;
   background-position: center 12px;
@@ -560,6 +560,14 @@ h2 {
   width: min(1040px, 100%);
   margin: clamp(22px, 4vw, 44px) auto 0;
   text-align: center;
+}
+
+.section-kicker {
+  margin: 0 0 clamp(16px, 2vw, 22px);
+  color: rgba(255, 250, 246, 0.9);
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
 }
 
 .page-placeholder {
@@ -633,14 +641,14 @@ h2 {
   padding: clamp(16px, 3vw, 24px);
   border: 1px solid rgba(231, 187, 179, 0.18);
   border-radius: 22px;
-  background: rgba(7, 4, 5, 0.42);
+  background: rgba(3, 3, 3, 0.56);
 }
 
 .appointment-title,
 .embedded-widget-title {
   display: block;
   margin: 0 0 10px;
-  color: rgba(247, 238, 232, 0.96);
+  color: rgba(255, 250, 246, 0.99);
   font-size: 0.68rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -655,13 +663,13 @@ h2 {
   padding: clamp(16px, 3vw, 24px);
   border: 1px solid rgba(231, 187, 179, 0.18);
   border-radius: 22px;
-  background: rgba(7, 4, 5, 0.42);
+  background: rgba(3, 3, 3, 0.56);
   text-align: center;
 }
 
 .request-note {
   margin: -2px auto 16px;
-  color: rgba(247, 238, 232, 0.62);
+  color: rgba(255, 250, 246, 0.78);
   font-size: 0.66rem;
   line-height: 1.45;
 }
@@ -675,7 +683,7 @@ h2 {
   padding: 10px 16px;
   border: 1px solid rgba(201, 149, 142, 0.44);
   border-radius: 999px;
-  color: var(--text);
+  color: rgba(255, 250, 246, 0.98);
   background: rgba(201, 149, 142, 0.1);
   font-size: 0.66rem;
   letter-spacing: 0.12em;
