@@ -68,7 +68,7 @@ a {
 
 .site-nav a {
   color: rgba(247, 238, 232, 0.9);
-  font-size: 0.76rem;
+  font-size: 0.86rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -843,7 +843,7 @@ h2 {
 
   .site-nav a {
     padding: 13px 12px;
-    font-size: 0.68rem;
+    font-size: 0.74rem;
   }
 
   .choice-grid {
