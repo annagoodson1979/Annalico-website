@@ -46,7 +46,7 @@ a {
   align-items: center;
   justify-content: center;
   gap: 24px;
-  padding: 24px clamp(22px, 6vw, 76px);
+  padding: 24px clamp(48px, 2in, 192px);
   border-bottom: 1px solid rgba(231, 187, 179, 0.12);
 }
 
@@ -61,8 +61,8 @@ a {
 .site-nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: min(1120px, 100%);
+  justify-content: center;
+  width: 100%;
   gap: clamp(26px, 4vw, 70px);
 }
 
@@ -102,7 +102,7 @@ a {
 }
 
 .notary-nav {
-  width: min(1260px, 100%);
+  width: 100%;
   gap: clamp(24px, 3.5vw, 62px);
 }
 
@@ -158,7 +158,7 @@ a {
   inset: 0;
   background-image:
     url("images/s21lo.jpg?v=20260723");
-  background-size: min(1380px, 112vw) auto;
+  background-size: cover;
   background-position: center 0;
   background-repeat: no-repeat;
   filter: brightness(1.18) contrast(1.04);
@@ -790,7 +790,7 @@ h2 {
   display: flex;
   justify-content: center;
   gap: 24px;
-  padding: 20px clamp(22px, 6vw, 76px) 26px;
+  padding: 20px clamp(48px, 2in, 192px) 26px;
   border-top: 1px solid rgba(231, 187, 179, 0.12);
   color: var(--soft);
   font-size: 0.72rem;
@@ -799,10 +799,10 @@ h2 {
 }
 
 .site-footer p {
-  width: min(1120px, 100%);
+  width: 100%;
   margin: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
 }
