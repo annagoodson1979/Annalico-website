@@ -46,7 +46,7 @@ a {
   align-items: center;
   justify-content: center;
   gap: 24px;
-  padding: 22px clamp(18px, 5vw, 56px);
+  padding: 24px clamp(22px, 6vw, 76px);
   border-bottom: 1px solid rgba(231, 187, 179, 0.12);
 }
 
@@ -61,13 +61,15 @@ a {
 .site-nav {
   display: flex;
   align-items: center;
-  gap: clamp(18px, 3vw, 42px);
+  justify-content: space-between;
+  width: min(1120px, 100%);
+  gap: clamp(26px, 4vw, 70px);
 }
 
 .site-nav a {
   color: rgba(247, 238, 232, 0.9);
-  font-size: 0.6rem;
-  letter-spacing: 0.1em;
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
@@ -100,7 +102,8 @@ a {
 }
 
 .notary-nav {
-  gap: clamp(24px, 4vw, 64px);
+  width: min(1260px, 100%);
+  gap: clamp(24px, 3.5vw, 62px);
 }
 
 .menu-toggle {
@@ -122,7 +125,7 @@ a {
 
 .home-shell {
   width: 100%;
-  min-height: calc(100vh - 132px);
+  min-height: calc(100vh - 146px);
   padding: 0;
 }
 
@@ -132,7 +135,7 @@ a {
 }
 
 .landing-hero {
-  min-height: calc(100vh - 132px);
+  min-height: calc(100vh - 146px);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -155,8 +158,8 @@ a {
   inset: 0;
   background-image:
     url("images/s21lo.jpg?v=20260723");
-  background-size: min(1060px, 90vw) auto;
-  background-position: center 8px;
+  background-size: min(1380px, 112vw) auto;
+  background-position: center 0;
   background-repeat: no-repeat;
   filter: brightness(1.18) contrast(1.04);
   mask-image:
@@ -786,20 +789,21 @@ h2 {
 .site-footer {
   display: flex;
   justify-content: center;
-  gap: 16px;
-  padding: 18px clamp(18px, 5vw, 56px) 24px;
+  gap: 24px;
+  padding: 20px clamp(22px, 6vw, 76px) 26px;
   border-top: 1px solid rgba(231, 187, 179, 0.12);
   color: var(--soft);
-  font-size: 0.56rem;
-  letter-spacing: 0.06em;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
   text-align: center;
 }
 
 .site-footer p {
+  width: min(1120px, 100%);
   margin: 0;
   display: flex;
-  justify-content: center;
-  gap: 10px;
+  justify-content: space-between;
+  gap: 16px;
   flex-wrap: wrap;
 }
 
@@ -824,6 +828,8 @@ h2 {
     display: none;
     flex-direction: column;
     align-items: stretch;
+    justify-content: flex-start;
+    width: auto;
     gap: 0;
     border: 1px solid var(--line);
     border-radius: 20px;
@@ -837,6 +843,7 @@ h2 {
 
   .site-nav a {
     padding: 13px 12px;
+    font-size: 0.68rem;
   }
 
   .choice-grid {
@@ -860,5 +867,10 @@ h2 {
   .site-footer {
     flex-direction: column;
     text-align: center;
+    font-size: 0.64rem;
+  }
+
+  .site-footer p {
+    justify-content: center;
   }
 }
