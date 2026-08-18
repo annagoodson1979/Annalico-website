@@ -42,6 +42,8 @@ a {
 }
 
 .site-header {
+  position: relative;
+  z-index: 20;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -115,6 +117,7 @@ a {
   background: transparent;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .home-shell,
@@ -900,16 +903,22 @@ h2 {
 
 @media (max-width: 760px) {
   .site-header {
-    align-items: flex-start;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 64px;
+    padding: 14px 18px;
+    background: rgba(7, 4, 5, 0.94);
   }
 
   .menu-toggle {
     display: inline-flex;
+    margin-left: auto;
   }
 
   .site-nav {
     position: absolute;
-    top: 68px;
+    z-index: 40;
+    top: calc(100% + 8px);
     left: 16px;
     right: 16px;
     display: none;
@@ -921,7 +930,8 @@ h2 {
     border: 1px solid var(--line);
     border-radius: 20px;
     padding: 10px;
-    background: rgba(7, 4, 5, 0.96);
+    background: rgba(7, 4, 5, 0.98);
+    box-shadow: 0 22px 54px rgba(0, 0, 0, 0.42);
   }
 
   .site-nav.is-open {
@@ -930,7 +940,30 @@ h2 {
 
   .site-nav a {
     padding: 13px 12px;
-    font-size: 0.74rem;
+    font-size: 0.78rem;
+  }
+
+  .home-shell {
+    min-height: calc(100svh - 124px);
+  }
+
+  .landing-hero {
+    min-height: calc(100svh - 124px);
+    padding: 0 16px 26px;
+    justify-content: flex-end;
+  }
+
+  .landing-art::before {
+    background-size: min(100vw, 760px) auto;
+    background-position: center 20px;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+
+  .page-shell {
+    width: min(100% - 24px, 1120px);
+    min-height: calc(100svh - 124px);
+    padding: 28px 0;
   }
 
   .choice-grid {
@@ -943,12 +976,23 @@ h2 {
   }
 
   .salon-landing-card {
-    min-height: clamp(320px, 82vw, 520px);
+    min-height: clamp(270px, 68vw, 440px);
   }
 
   .salon-landing-art {
-    background-size: min(760px, 128vw) auto;
-    background-position: center 18px;
+    background-size: min(100vw, 720px) auto;
+    background-position: center 12px;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+
+  .portal-card {
+    padding: 24px 18px;
+  }
+
+  .portal-form input,
+  .portal-form button {
+    min-height: 48px;
   }
 
   .site-footer {
