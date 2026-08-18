@@ -674,6 +674,17 @@ h2 {
   line-height: 1.45;
 }
 
+.text-link {
+  color: rgba(255, 250, 246, 0.96);
+  text-decoration: underline;
+  text-decoration-color: rgba(201, 149, 142, 0.72);
+  text-underline-offset: 5px;
+}
+
+.text-link:hover {
+  color: var(--gold);
+}
+
 .member-request-link {
   display: inline-flex;
   align-items: center;
@@ -792,6 +803,74 @@ h2 {
   color: var(--text);
   text-decoration: underline;
   text-underline-offset: 5px;
+}
+
+.portal-shell {
+  min-height: calc(100vh - 132px);
+}
+
+.portal-card {
+  width: min(720px, 100%);
+}
+
+.portal-form {
+  display: grid;
+  gap: 12px;
+  width: min(440px, 100%);
+  margin: 28px auto 0;
+  text-align: left;
+}
+
+.portal-form label {
+  color: rgba(255, 250, 246, 0.86);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.portal-form input {
+  width: 100%;
+  border: 1px solid rgba(231, 187, 179, 0.28);
+  border-radius: 999px;
+  padding: 14px 18px;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.055);
+  font: inherit;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  outline: none;
+}
+
+.portal-form input:focus {
+  border-color: rgba(231, 187, 179, 0.72);
+  box-shadow: 0 0 24px rgba(201, 149, 142, 0.18);
+}
+
+.portal-form button {
+  border: 1px solid rgba(231, 187, 179, 0.42);
+  border-radius: 999px;
+  padding: 14px 18px;
+  color: var(--text);
+  background: rgba(201, 149, 142, 0.12);
+  font: inherit;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.portal-form button:hover {
+  border-color: rgba(231, 187, 179, 0.72);
+  background: rgba(201, 149, 142, 0.2);
+}
+
+.portal-message,
+.portal-hint {
+  margin: 6px 0 0;
+  color: rgba(255, 250, 246, 0.68);
+  font-size: 0.72rem;
+  line-height: 1.5;
+  text-align: center;
 }
 
 .site-footer {
