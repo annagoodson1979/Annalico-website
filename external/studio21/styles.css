@@ -996,12 +996,17 @@ h2 {
   }
 
   .site-footer {
-    flex-direction: column;
+    padding: 14px 10px 18px;
     text-align: center;
-    font-size: 0.64rem;
+    font-size: clamp(0.48rem, 1.8vw, 0.64rem);
+    letter-spacing: 0.03em;
   }
 
   .site-footer p {
     justify-content: center;
+    align-items: center;
+    gap: clamp(4px, 1.4vw, 9px);
+    flex-wrap: nowrap;
+    white-space: nowrap;
   }
 }
