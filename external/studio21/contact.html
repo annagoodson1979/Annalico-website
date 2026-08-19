@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact | Studio 21&trade;</title>
-    <link rel="stylesheet" href="styles.css?v=20260818b" />
+    <link rel="stylesheet" href="styles.css?v=20260818c" />
   </head>
   <body>
     <header class="site-header">
@@ -20,22 +20,39 @@
 
     <main class="page-shell">
       <section class="page-card">
-        <div class="page-placeholder">Contact Form Placeholder</div>
         <h1 class="gold-heading">Contact</h1>
         <p>
-          This page will hold the Studio 21&trade; contact form, appointment request
-          links, and direct studio contact details.
+          Choose the studio you need and send a quick message.
         </p>
-        <div class="button-row">
-          <a class="button-link" href="salon.html">Salon Requests</a>
-          <a class="button-link secondary" href="https://www.ynxnotary.com/">Studio 21&trade; | Notary</a>
+
+        <div class="contact-choice-grid">
+          <section class="contact-choice-card">
+            <h2>Studio 21&trade; Salon</h2>
+            <form class="mini-message-form" data-mailto-form data-email="anna@astudio21.com" data-subject="Studio 21 Salon Message">
+              <label for="salonMessage">Message</label>
+              <textarea id="salonMessage" name="message" placeholder="How can Studio 21 Salon help?"></textarea>
+              <button type="submit">Send Message</button>
+            </form>
+            <a class="button-link contact-studio-link" href="salon.html">Studio 21&trade; Salon</a>
+          </section>
+
+          <section class="contact-choice-card">
+            <img class="contact-logo" src="images/nlogo.jpg" alt="Studio 21 Notary logo" />
+            <h2>Studio 21&trade; Notary</h2>
+            <form class="mini-message-form" data-mailto-form data-email="info@ynxnotary.com" data-subject="Studio 21 Notary Message">
+              <label for="notaryMessage">Message</label>
+              <textarea id="notaryMessage" name="message" placeholder="How can Studio 21 Notary help?"></textarea>
+              <button type="submit">Send Message</button>
+            </form>
+            <a class="button-link secondary contact-studio-link" href="https://www.ynxnotary.com/">Studio 21&trade; Notary</a>
+          </section>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <p>
-        <span>A Brand of Duy&#234;n &#194;n LLC</span>
+        <span>A Brand of Duyen An LLC</span>
         <span class="footer-sep">|</span>
         <span>(972) 900-7147</span>
         <span class="footer-sep">|</span>
@@ -45,6 +62,6 @@
       </p>
     </footer>
 
-    <script src="script.js?v=20260818a"></script>
+    <script src="script.js?v=20260818c"></script>
   </body>
 </html>

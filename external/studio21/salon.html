@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Studio 21&trade; | Salon</title>
-    <link rel="stylesheet" href="styles.css?v=20260818b" />
+    <link rel="stylesheet" href="styles.css?v=20260818c" />
   </head>
   <body>
     <header class="site-header">
@@ -12,8 +12,15 @@
       <nav class="site-nav">
         <a href="index.html">Home</a>
         <a href="#services">Services</a>
-        <a href="#booking">Book</a>
-        <a href="client-portal.html">Client Portal</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfx-d8XV8dK5MV7Ipuv1ZPb2tjcGKTUJ5n0QCYOgZIVgET7gw/viewform?usp=header" target="_blank" rel="noopener noreferrer">New Clients</a>
+        <details class="nav-access">
+          <summary>Existing Clients</summary>
+          <form class="nav-access-form" data-client-portal-form>
+            <input name="clientCode" type="text" autocomplete="off" placeholder="Access code" required />
+            <button type="submit">Enter</button>
+            <p class="nav-access-message" data-portal-message aria-live="polite"></p>
+          </form>
+        </details>
         <a href="contact.html">Contact</a>
       </nav>
     </header>
@@ -30,60 +37,27 @@
         <div class="service-list">
           <article>
             <h2>Hair Services</h2>
-            <p>Color, styling, treatments, maintenance, and custom salon requests.</p>
+            <p>Highlights, conditioning care, color, styling, maintenance, and hair loss treatment plans with a five-week take-home prescription. <a class="detail-link" href="contact.html">Click for more details.</a></p>
           </article>
           <article>
-            <h2>Five O'Clock Somewhere</h2>
-            <p>A new treatment experience for polished refreshes and after-hours glow.</p>
+            <h2>PAI System Treatments</h2>
+            <p>Introducing elevated treatment experiences designed for scalp care, restoration, shine, and a more intentional salon visit. <a class="detail-link" href="contact.html">Click for more details.</a></p>
           </article>
           <article>
             <h2>Memberships Are Here</h2>
-            <p>Giving back, celebrating milestones, and sharing the perks of Studio 21&trade;.</p>
+            <p>Online booking, member perks, milestone celebrations, and new ways to give back are arriving inside Studio 21&trade;. <a class="detail-link" href="contact.html">Click inside.</a></p>
           </article>
           <article>
-            <h2>Signature Shampoo Bump</h2>
-            <p>A polished refresh service built around care, finish, and shine.</p>
+            <h2>Hair Loss Treatment Plans</h2>
+            <p>Focused options for men and women with personalized care, treatment support, and a five-week take-home prescription plan. More exciting updates are coming soon. <a class="detail-link" href="contact.html">Click for more details.</a></p>
           </article>
-        </div>
-
-        <div class="member-request-card">
-          <div class="embedded-widget-title">Studio 21&trade; New Customers Request Appointment</div>
-          <p class="request-note">Requests are reviewed first and confirmed once availability is open.</p>
-          <a
-            class="member-request-link"
-            href="https://docs.google.com/forms/d/e/1FAIpQLSfx-d8XV8dK5MV7Ipuv1ZPb2tjcGKTUJ5n0QCYOgZIVgET7gw/viewform?usp=header"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Click Here
-          </a>
-        </div>
-
-        <div id="booking" class="vagaro-widget-card">
-          <div id="frameTitle" class="embedded-widget-title">Studio 21&trade; Existing Clients</div>
-          <p class="request-note">
-            <a class="text-link" href="client-portal.html">Enter your access code</a>
-          </p>
-          <div class="vagaro-widget-scroll">
-            <div class="vagaro">
-              <a href="https://www.vagaro.com/pro/">Powered by Vagaro</a>
-              <a href="https://www.vagaro.com/pro/salon-software">Salon Software</a>,
-              <a href="https://www.vagaro.com/pro/spa-software">Spa Software</a>
-              &amp;
-              <a href="https://www.vagaro.com/pro/fitness-software">Fitness Software</a>
-              <script
-                type="text/javascript"
-                src="https://www.vagaro.com//resources/WidgetEmbeddedLoader/OZqqDZSnEJScT3qnV3avV34mC2PeFJ4mC30m9cyUgIAeggAfgX0feAOdfn0Wg2WdfASg9gAdAXCxdfkJE1wgEJgoapOUcPCvdfQOapkvdfYPc9eRcG?v=5k0ZrK4AMIyazE9ObOd9rDSKFF6IZBjnN35kyOL5r100#"
-              ></script>
-            </div>
-          </div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <p>
-        <span>A Brand of Duy&#234;n &#194;n LLC</span>
+        <span>A Brand of Duyen An LLC</span>
         <span class="footer-sep">|</span>
         <span>(972) 900-7147</span>
         <span class="footer-sep">|</span>
@@ -93,6 +67,6 @@
       </p>
     </footer>
 
-    <script src="script.js?v=20260818a"></script>
+    <script src="script.js?v=20260818c"></script>
   </body>
 </html>
