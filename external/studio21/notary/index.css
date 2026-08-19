@@ -1,0 +1,31 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Allura&family=Montserrat:wght@100;200;300;400;500&family=Qwigley&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Cormorant Garamond', serif;
+  background: #000;
+  color: #fff;
+  min-height: 100vh;
+}
+
+#root, html, body {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.info-hover-card {
+  transition: transform 0.26s ease, box-shadow 0.26s ease, border-color 0.26s ease, background 0.26s ease;
+  transform-origin: center;
+}
+
+.info-hover-card:hover {
+  transform: scale(1.035);
+  border-color: rgba(212, 175, 55, 0.45) !important;
+  background: linear-gradient(180deg, rgba(212, 175, 55, 0.09), rgba(255, 255, 255, 0.03)) !important;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.35), 0 0 24px rgba(212, 175, 55, 0.16);
+}

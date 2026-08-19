@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Private Access Code | Studio 21&trade; | Notary</title>
+    <meta
+      name="description"
+      content="Enter your private Studio 21&trade; | Notary access code to unlock Olivia's family notary experience."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="promo-page-body">
+    <main class="promo-gate-page">
+      <a class="back-link" href="index.html">Studio 21&trade; | Notary</a>
+
+      <section class="promo-gate-card">
+        <p class="eyebrow">Private Promo</p>
+        <h1>Access Code</h1>
+        <p>
+          This page is for invited Olivia friends, families, and teachers. Enter your access code
+          to open the private experience.
+        </p>
+
+        <form class="promo-form" id="promoForm">
+          <input id="promoCode" type="text" placeholder="Enter access code" autocomplete="off" />
+          <button type="submit">Unlock Experience</button>
+        </form>
+
+        <p class="promo-message" id="promoMessage" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <script>
+      const correctCode = "OG-POP";
+      const form = document.getElementById("promoForm");
+      const input = document.getElementById("promoCode");
+      const message = document.getElementById("promoMessage");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        if (input.value.trim().toUpperCase() === correctCode) {
+          sessionStorage.setItem("ynxOliviaPromoUnlocked", "true");
+          message.textContent = "Access granted. Opening Olivia's experience...";
+          window.setTimeout(() => {
+            window.location.href = "olivia-experience.html";
+          }, 650);
+          return;
+        }
+
+        message.textContent = "That code did not work. Please check it and try again.";
+      });
+    </script>
+  </body>
+</html>
