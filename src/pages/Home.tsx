@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react';
 import type { Page } from '../types';
 import SiteFooter from '../components/SiteFooter';
 
-const landingLogo = '/images/llc2.jpg';
+const landingLogo = '/images/logo.jpg';
 const notaryLogo = '/images/logo.jpg';
 
 interface HomeProps {
@@ -13,7 +13,7 @@ function Home({ onNavigate }: HomeProps) {
   const gold = '#d4af37';
   const logoAccent = '#f3efec';
   const paper = '#f2efe8';
-  const footerHeight = 52;
+  const footerHeight = 34;
   const navHeight = 74;
 
   const styles: Record<string, CSSProperties> = {
@@ -47,7 +47,7 @@ function Home({ onNavigate }: HomeProps) {
       borderBottom: '1px solid rgba(255,255,255,0.08)',
       zIndex: 20,
       backdropFilter: 'blur(10px)',
-      gap: '20px',
+      gap: '14px',
     },
     navLeft: {
       position: 'absolute',
@@ -60,8 +60,8 @@ function Home({ onNavigate }: HomeProps) {
       width: '132px',
     },
     navLogo: {
-      width: '86px',
-      height: '86px',
+      width: '98px',
+      height: '98px',
       borderRadius: '50%',
       objectFit: 'cover',
       objectPosition: 'center',
@@ -74,7 +74,7 @@ function Home({ onNavigate }: HomeProps) {
     navRight: {
       display: 'flex',
       alignItems: 'center',
-      gap: '0',
+      gap: '4px',
       fontFamily: "'Montserrat', sans-serif",
       justifyContent: 'center',
     },
@@ -85,9 +85,9 @@ function Home({ onNavigate }: HomeProps) {
     },
     navButton: {
       fontFamily: "'Montserrat', sans-serif",
-      fontSize: '0.7em',
+      fontSize: '0.58em',
       fontWeight: 300,
-      letterSpacing: '2px',
+      letterSpacing: '1.5px',
       textTransform: 'uppercase',
       color: '#888',
       background: 'transparent',
@@ -95,21 +95,21 @@ function Home({ onNavigate }: HomeProps) {
       cursor: 'pointer',
       transition: 'all 0.3s ease',
       margin: 0,
-      padding: '8px 16px',
-      width: '184px',
+      padding: '8px 8px',
+      width: 'auto',
       textAlign: 'center',
     },
     navButtonPlaceholder: {
       fontFamily: "'Montserrat', sans-serif",
-      fontSize: '0.7em',
+      fontSize: '0.58em',
       fontWeight: 300,
       letterSpacing: '2px',
       textTransform: 'uppercase',
       background: 'transparent',
       border: 'none',
       margin: 0,
-      padding: '8px 16px',
-      width: '184px',
+      padding: '8px 8px',
+      width: 'auto',
       textAlign: 'center',
       visibility: 'hidden',
       pointerEvents: 'none',
@@ -191,6 +191,33 @@ function Home({ onNavigate }: HomeProps) {
       textTransform: 'uppercase',
       whiteSpace: 'nowrap',
     },
+    startPrompt: {
+      fontFamily: "'Cinzel', serif",
+      fontSize: '0.52rem',
+      letterSpacing: '1.6px',
+      textTransform: 'uppercase',
+      color: '#f3efec',
+      whiteSpace: 'nowrap',
+      animation: 'startPromptGlow 5.5s ease-in-out infinite',
+      margin: '0 2px 0 6px',
+    },
+    oliviaButton: {
+      fontFamily: "'Montserrat', sans-serif",
+      fontSize: '0.58em',
+      fontWeight: 500,
+      letterSpacing: '1.5px',
+      textTransform: 'uppercase',
+      color: gold,
+      background: 'transparent',
+      border: 'none',
+      cursor: 'pointer',
+      transition: 'all 0.3s ease',
+      margin: 0,
+      padding: '8px 8px',
+      width: 'auto',
+      textAlign: 'center',
+      animation: 'oliviaNavGlow 5.5s ease-in-out infinite',
+    },
   };
 
   return (
@@ -204,6 +231,14 @@ function Home({ onNavigate }: HomeProps) {
           color: #d4af37 !important;
           transform: scale(1.08) translateY(-1px);
           text-shadow: 0 0 12px rgba(212, 175, 55, 0.35);
+        }
+        @keyframes startPromptGlow {
+          0%, 100% { color: rgba(243, 239, 236, 0.86); text-shadow: none; }
+          50% { color: #d4af37; text-shadow: 0 0 12px rgba(212, 175, 55, 0.35); }
+        }
+        @keyframes oliviaNavGlow {
+          0%, 100% { color: #d4af37; text-shadow: 0 0 12px rgba(212, 175, 55, 0.24); }
+          50% { color: #f3efec; text-shadow: none; }
         }
       `}</style>
       <div style={styles.backgroundOverlay} />
@@ -236,11 +271,24 @@ function Home({ onNavigate }: HomeProps) {
           >
             Did You Know?
           </button>
-          <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('contact')}>
-            Contact
+          <span style={styles.startPrompt}>Start Here</span>
+          <button
+            className="nav-hover-button"
+            style={styles.oliviaButton}
+            onClick={() => {
+              window.location.href = '/notary/promo';
+            }}
+          >
+            Olivia
           </button>
           <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('hire')}>
             Work With Me
+          </button>
+          <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('contact')}>
+            Contact
+          </button>
+          <button className="nav-hover-button" style={styles.navButton} onClick={() => onNavigate('about')}>
+            About Me
           </button>
         </div>
       </nav>

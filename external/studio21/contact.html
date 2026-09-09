@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact | Studio 21&trade;</title>
-    <link rel="stylesheet" href="styles.css?v=20260819b" />
+    <link rel="stylesheet" href="styles.css?v=20260820e" />
   </head>
   <body>
     <header class="site-header">
@@ -13,7 +13,7 @@
       <nav class="site-nav">
         <a href="index.html">Home</a>
         <a href="salon.html">Studio 21&trade; | Salon</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfx-d8XV8dK5MV7Ipuv1ZPb2tjcGKTUJ5n0QCYOgZIVgET7gw/viewform?usp=header" target="_blank" rel="noopener noreferrer">New Clients</a>
+        <a href="new-clients.html">New Clients</a>
         <a href="notary/">Studio 21&trade; | Notary</a>
         <a href="contact.html">Contact</a>
       </nav>
@@ -25,11 +25,14 @@
         <p>
           Choose the studio you need and send a quick message.
         </p>
+        <p class="service-note">
+          Please do not include IDs, Social Security numbers, payment details, signatures, or sensitive documents in these message boxes.
+        </p>
 
         <div class="contact-choice-grid">
           <section class="contact-choice-card">
             <h2>Studio 21&trade; Salon</h2>
-            <form class="mini-message-form" data-mailto-form data-email="anna@astudio21.com" data-subject="Studio 21 Salon Message">
+            <form class="mini-message-form" data-mailto-form data-public-save-warning data-email="anna@astudio21.com" data-subject="Studio 21 Salon Message">
               <label for="salonMessage">Message</label>
               <textarea id="salonMessage" name="message" placeholder="How can Studio 21 Salon help?"></textarea>
               <button type="submit">Send Message</button>
@@ -40,7 +43,7 @@
           <section class="contact-choice-card">
             <img class="contact-logo" src="images/nlogo.jpg" alt="Studio 21 Notary logo" />
             <h2>Studio 21&trade; Notary</h2>
-            <form class="mini-message-form" data-mailto-form data-email="anna@astudio21.com" data-subject="Studio 21 Notary Message">
+            <form class="mini-message-form" data-mailto-form data-public-save-warning data-email="anna@astudio21.com" data-subject="Studio 21 Notary Message">
               <label for="notaryMessage">Message</label>
               <textarea id="notaryMessage" name="message" placeholder="How can Studio 21 Notary help?"></textarea>
               <button type="submit">Send Message</button>
@@ -63,6 +66,6 @@
       </p>
     </footer>
 
-    <script src="script.js?v=20260819b"></script>
+    <script src="script.js?v=20260820e"></script>
   </body>
 </html>

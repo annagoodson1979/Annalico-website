@@ -1,0 +1,24 @@
+.studio21-private-entry {
+  min-height: 100dvh;
+  padding: 72px 20px;
+  display: grid;
+  place-items: center;
+  background: #f5f0e9;
+  color: #302b27;
+  font: 15px/1.6 Arial, sans-serif;
+}
+.studio21-private-entry-card {
+  width: min(100%, 580px);
+  padding: clamp(26px, 6vw, 52px);
+  background: #fffdf9;
+  border: 1px solid #dcd1c4;
+  border-radius: 22px;
+  text-align: center;
+}
+.studio21-private-entry-card p { font-family: inherit; }
+.studio21-private-entry-brand { margin-bottom: 36px; font-size: 12px; letter-spacing: 3px; }
+.studio21-private-entry-card > svg { color: #737f6d; }
+.studio21-private-entry-card h1 { margin: 20px 0; font: 38px/1.12 Georgia, serif; letter-spacing: -1px; }
+.studio21-private-entry-status { margin: 24px 0; padding: 14px; border-radius: 10px; background: #e7ece3; }
+.studio21-private-entry-card .studio21-private-entry-small { color: #69615a; font-size: 13px; }
+.studio21-private-entry-card a { display: inline-block; margin-top: 26px; color: #51453b; text-underline-offset: 4px; }

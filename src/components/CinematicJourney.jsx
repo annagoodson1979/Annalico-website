@@ -4,7 +4,7 @@ import { useRef } from "react";
 
 const scenes = [
   {
-    image: "/images/arrival.jpeg",
+    image: "/images/arrival2.jpg",
     eyebrow: "Arrival",
     title: "Welcome to Duyên Ân.",
     text: "Where elegance enters quietly.",
@@ -22,7 +22,7 @@ const scenes = [
     text: "Light, texture, and quiet conversation guide the path inward.",
   },
   {
-    image: "/images/monolith.jpg",
+    image: "/images/monolith2.jpg",
     eyebrow: "Guided by light",
     title: "Toward the monolith",
     text: "Tealights quietly lead the way deeper into the sanctuary.",

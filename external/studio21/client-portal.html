@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Existing Client Portal | Studio 21&trade;</title>
-    <link rel="stylesheet" href="styles.css?v=20260819b" />
+    <link rel="stylesheet" href="styles.css?v=20260820e" />
   </head>
   <body>
     <header class="site-header">
@@ -12,7 +12,7 @@
       <nav class="site-nav">
         <a href="index.html">Home</a>
         <a href="salon.html">Salon</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfx-d8XV8dK5MV7Ipuv1ZPb2tjcGKTUJ5n0QCYOgZIVgET7gw/viewform?usp=header" target="_blank" rel="noopener noreferrer">New Clients</a>
+        <a href="new-clients.html">New Clients</a>
         <a href="notary/">Notary</a>
         <a href="contact.html">Contact</a>
       </nav>
@@ -33,6 +33,34 @@
 
         <p class="portal-hint">Codes are not case-sensitive.</p>
       </section>
+
+      <section class="page-card portal-card recovery-card" id="recover-code">
+        <p class="eyebrow">Forgot Access Code</p>
+        <h2>Recover Your Code</h2>
+        <p>Enter your client name and answer the question shown. If verified, your booking link will open.</p>
+
+        <form class="portal-form" id="accessRecoveryForm">
+          <label for="recoveryFirstName">First Name</label>
+          <input id="recoveryFirstName" name="firstName" type="text" autocomplete="given-name" placeholder="First name" required />
+
+          <label for="recoveryLastName">Last Name</label>
+          <input id="recoveryLastName" name="lastName" type="text" autocomplete="family-name" placeholder="Last name" required />
+
+          <p class="recovery-question" id="recoveryQuestionText" data-recovery-question></p>
+          <input id="recoverySecurityQuestion" name="securityQuestion" type="hidden" />
+
+          <label for="recoverySecurityAnswer">Security Answer</label>
+          <input id="recoverySecurityAnswer" name="securityAnswer" type="text" autocomplete="off" placeholder="Answer" required />
+
+          <button type="submit">Recover Access</button>
+          <p class="portal-message" id="recoveryMessage" aria-live="polite"></p>
+        </form>
+
+        <div class="recovery-confirmation" id="recoveryConfirmation" hidden>
+          <p>Access verified. For your protection, please confirm this was you before continuing.</p>
+          <button type="button" id="continueRecoveredAccess">Yes, continue to booking</button>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
@@ -47,6 +75,6 @@
       </p>
     </footer>
 
-    <script src="script.js?v=20260819b"></script>
+    <script src="script.js?v=20260820e"></script>
   </body>
 </html>

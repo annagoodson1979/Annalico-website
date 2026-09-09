@@ -41,7 +41,7 @@
         event.preventDefault();
 
         if (input.value.trim().toUpperCase() === correctCode) {
-          sessionStorage.setItem("ynxOliviaPromoUnlocked", "true");
+          sessionStorage.setItem("studio21OliviaPromoUnlocked", "true");
           message.textContent = "Access granted. Opening Olivia's experience...";
           window.setTimeout(() => {
             window.location.href = "olivia-experience.html";

@@ -2,6 +2,15 @@ node_modules/
 dist/
 .vite/
 
+# Never publish local secrets, client imports, or temporary private previews.
+.env
+.env.*
+!.env.example
+.private-workspaces/
+private-client-data/
+client-imports/
+.tmp-previews/
+
 .DS_Store
 Thumbs.db
 

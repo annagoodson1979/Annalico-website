@@ -1,4 +1,11 @@
 import { useMemo, useState } from "react";
+import {
+  buildServiceTimeline,
+  colorCut,
+  getOverlapMinutes,
+  getServiceDuration,
+  getStylistRequiredMinutes,
+} from "../scheduling/serviceSteps";
 
 const SMART_WINDOW_MINUTES = 90;
 const correctCode = "OG-POP";
@@ -11,10 +18,10 @@ const services = {
     price: 85,
     business: "salon",
   },
-  color: {
-    label: "Color",
-    duration: 180,
-    buffer: 30,
+  colorCut: {
+    label: colorCut.name,
+    steps: colorCut.steps,
+    buffer: 0,
     price: 250,
     business: "salon",
   },
@@ -98,7 +105,15 @@ function getDayName(dateValue) {
   });
 }
 
-function getSmartTimeSlots(dateValue, serviceKey, clientType) {
+function getServiceMinutes(service, includeOptionalSteps) {
+  if (service.steps) {
+    return getServiceDuration(service, includeOptionalSteps);
+  }
+
+  return service.duration;
+}
+
+function getSmartTimeSlots(dateValue, serviceKey, clientType, includeOptionalSteps) {
   const service = services[serviceKey];
 
   if (!dateValue || !service) return [];
@@ -112,7 +127,7 @@ function getSmartTimeSlots(dateValue, serviceKey, clientType) {
 
   if (!open || !close) return [];
 
-  const serviceLength = service.duration + service.buffer;
+  const serviceLength = getServiceMinutes(service, includeOptionalSteps) + service.buffer;
   const openMinutes = timeToMinutes(open);
   const closeMinutes = timeToMinutes(close);
   const slots = [];
@@ -138,13 +153,28 @@ export default function BookingRequest() {
   const [service, setService] = useState("haircut");
   const [date, setDate] = useState("");
   const [clientType, setClientType] = useState("regular");
+  const [selectedTime, setSelectedTime] = useState("");
+  const [includeOptionalSteps, setIncludeOptionalSteps] = useState(true);
   const [accessCode, setAccessCode] = useState("");
   const [unlocked, setUnlocked] = useState(false);
 
   const availableTimes = useMemo(
-    () => getSmartTimeSlots(date, service, clientType),
-    [date, service, clientType]
+    () => getSmartTimeSlots(date, service, clientType, includeOptionalSteps),
+    [date, service, clientType, includeOptionalSteps]
   );
+
+  const selectedService = services[service];
+  const serviceMinutes = getServiceMinutes(selectedService, includeOptionalSteps);
+  const serviceTimeline = selectedService.steps
+    ? buildServiceTimeline(selectedService, selectedTime || "09:00", includeOptionalSteps)
+    : [];
+  const stylistMinutes = selectedService.steps
+    ? getStylistRequiredMinutes(selectedService, includeOptionalSteps)
+    : serviceMinutes;
+  const overlapMinutes = selectedService.steps
+    ? getOverlapMinutes(selectedService, includeOptionalSteps)
+    : 0;
+  const overlapStep = serviceTimeline.find((step) => step.overlapAllowed);
 
   const unlockPage = () => {
     if (accessCode === correctCode) {
@@ -167,22 +197,96 @@ export default function BookingRequest() {
         <input type="tel" placeholder="Phone Number" required />
         <input type="email" placeholder="Email" />
 
-        <select value={clientType} onChange={(event) => setClientType(event.target.value)}>
+        <select
+          value={clientType}
+          onChange={(event) => {
+            setClientType(event.target.value);
+            setSelectedTime("");
+          }}
+        >
           <option value="regular">Regular Client</option>
           <option value="VIP">VIP Client</option>
         </select>
 
-        <select value={service} onChange={(event) => setService(event.target.value)} required>
+        <select
+          value={service}
+          onChange={(event) => {
+            setService(event.target.value);
+            setSelectedTime("");
+          }}
+          required
+        >
           {Object.entries(services).map(([key, serviceOption]) => (
             <option value={key} key={key}>
-              {serviceOption.label} - {serviceOption.duration} min
+              {serviceOption.label} - {getServiceMinutes(serviceOption, includeOptionalSteps)} min
             </option>
           ))}
         </select>
 
-        <input type="date" value={date} onChange={(event) => setDate(event.target.value)} required />
+        {selectedService.steps ? (
+          <section className="service-flow" aria-label={`${selectedService.label} service flow`}>
+            <div className="service-flow-heading">
+              <div>
+                <span>Smart service flow</span>
+                <h2>{selectedService.label}</h2>
+              </div>
 
-        <select required>
+              <label className="optional-step-toggle">
+                <input
+                  type="checkbox"
+                  checked={includeOptionalSteps}
+                  onChange={(event) => {
+                    setIncludeOptionalSteps(event.target.checked);
+                    setSelectedTime("");
+                  }}
+                />
+                Include blow-dry
+              </label>
+            </div>
+
+            <div className="service-flow-summary">
+              <span><strong>{serviceMinutes}</strong> visit minutes</span>
+              <span><strong>{stylistMinutes}</strong> hands-on minutes</span>
+              <span className="overlap-summary"><strong>{overlapMinutes}</strong> flexible minutes</span>
+            </div>
+
+            <div className="service-timeline">
+              {serviceTimeline.map((step) => (
+                <article
+                  className={step.overlapAllowed ? "service-step overlap-step" : "service-step"}
+                  key={step.name}
+                  style={{ flexGrow: step.minutes }}
+                >
+                  <strong>{step.name}</strong>
+                  <span>{step.minutes} min</span>
+                  {selectedTime ? <small>{step.start}–{step.end}</small> : null}
+                </article>
+              ))}
+            </div>
+
+            <p className="service-flow-note">
+              {selectedTime && overlapStep
+                ? `The stylist is free from ${overlapStep.start} to ${overlapStep.end}, so another client can be served during processing.`
+                : "The gold processing block is the safe overlap window for another client."}
+            </p>
+          </section>
+        ) : null}
+
+        <input
+          type="date"
+          value={date}
+          onChange={(event) => {
+            setDate(event.target.value);
+            setSelectedTime("");
+          }}
+          required
+        />
+
+        <select
+          value={selectedTime}
+          onChange={(event) => setSelectedTime(event.target.value)}
+          required
+        >
           <option value="">Choose Time</option>
           {availableTimes.map((time) => (
             <option value={time} key={time}>

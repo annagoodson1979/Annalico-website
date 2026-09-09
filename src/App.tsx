@@ -14,12 +14,18 @@ import {
 } from "lucide-react";
 import AutoJourney from "./components/AutoJourney";
 import AmbientSound from "./components/AmbientSound";
+import AvaBookingAssistant from "./components/AvaBookingAssistant";
+import AvaStudioDashboard from "./components/AvaStudioDashboard";
 import BookingRequest from "./components/BookingRequest";
 import PAIDirectoryApp from "./components/PAIDirectoryApp";
 import "./App.css";
 
 const promoCode = "OG-POP";
 const promoStorageKey = "ynxPromoUnlocked";
+const salonVipCode = "VIP-21";
+const salonVipStorageKey = "salonVipUnlocked";
+const salonVipFormLink =
+  "https://docs.google.com/forms/d/e/1FAIpQLScQUDk9t48zQBrKTtR0JSJAass3MFrlT1I1LuBgaHTqFNh6oQ/viewform?usp=header";
 
 function SalonPage() {
   return (
@@ -38,7 +44,109 @@ function SalonPage() {
 
         <div className="route-actions">
           <a href="/appointments">Request Appointment</a>
+          <a href="/salon/vip">VIP Client Access</a>
           <a href="/notary">Notary Services</a>
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function SalonVipAccessPage() {
+  const [code, setCode] = useState("");
+  const [unlocked, setUnlocked] = useState(false);
+  const [error, setError] = useState("");
+
+  const unlockVip = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (code.trim().toUpperCase() === salonVipCode) {
+      sessionStorage.setItem(salonVipStorageKey, "true");
+      setUnlocked(true);
+      setError("");
+      return;
+    }
+
+    setError("Invalid access code");
+  };
+
+  return (
+    <main className="simple-route-page salon-route-page">
+      <a className="route-back-link" href="/salon">
+        Salon Studio 21
+      </a>
+
+      <section className="simple-route-content promo-route-content">
+        <p className="section-kicker">VIP Client Access</p>
+        <h1>Salon Studio 21 VIP</h1>
+        <p>Existing salon clients can enter the private access code to open the VIP request form.</p>
+
+        <form className="promo-code-form" onSubmit={unlockVip}>
+          <input
+            value={code}
+            onChange={(event) => setCode(event.target.value)}
+            placeholder="Enter Access Code"
+          />
+          <button type="submit">Unlock</button>
+        </form>
+
+        {error ? <p className="promo-error">{error}</p> : null}
+
+        {unlocked ? (
+          <div className="promo-unlocked">
+            <p>Access granted.</p>
+            <a href="/salon/vip-request">Continue to VIP Request Form</a>
+          </div>
+        ) : null}
+      </section>
+    </main>
+  );
+}
+
+function SalonVipRequestPage() {
+  const [unlocked, setUnlocked] = useState(false);
+
+  useEffect(() => {
+    setUnlocked(sessionStorage.getItem(salonVipStorageKey) === "true");
+  }, []);
+
+  if (!unlocked) {
+    return (
+      <main className="simple-route-page salon-route-page">
+        <a className="route-back-link" href="/salon">
+          Salon Studio 21
+        </a>
+
+        <section className="simple-route-content">
+          <p className="section-kicker">VIP Client Request</p>
+          <h1>Access Code Required</h1>
+          <p>This private request page opens after entering the VIP salon access code.</p>
+
+          <div className="route-actions">
+            <a href="/salon/vip">Enter Access Code</a>
+          </div>
+        </section>
+      </main>
+    );
+  }
+
+  return (
+    <main className="simple-route-page salon-route-page">
+      <a className="route-back-link" href="/salon">
+        Salon Studio 21
+      </a>
+
+      <section className="simple-route-content promo-route-content">
+        <p className="section-kicker">Existing Clients</p>
+        <h1>Salon Studio 21 VIP Client Request Form</h1>
+        <p>
+          Use this private form for VIP salon appointment requests and client alerts.
+        </p>
+
+        <div className="route-actions">
+          <a href={salonVipFormLink} target="_blank" rel="noreferrer">
+            Open VIP Request Form
+          </a>
         </div>
       </section>
     </main>
@@ -453,6 +561,14 @@ function App() {
     return <SalonPage />;
   }
 
+  if (currentPath === "/salon/vip") {
+    return <SalonVipAccessPage />;
+  }
+
+  if (currentPath === "/salon/vip-request") {
+    return <SalonVipRequestPage />;
+  }
+
   if (currentPath === "/notary") {
     return <NotaryPage />;
   }
@@ -465,7 +581,20 @@ function App() {
     return <OliviaPage />;
   }
 
-  if (currentPath === "/appointments" || currentPath === "/book" || currentPath === "/notary/book") {
+  if (currentPath === "/appointments" || currentPath === "/appointments/ava") {
+    return (
+      <>
+        <AvaBookingAssistant />
+        <AmbientSound />
+      </>
+    );
+  }
+
+  if (currentPath === "/appointments/manage" || currentPath === "/appointments/dashboard") {
+    return <AvaStudioDashboard />;
+  }
+
+  if (currentPath === "/book" || currentPath === "/notary/book") {
     return (
       <>
         <BookingRequest />

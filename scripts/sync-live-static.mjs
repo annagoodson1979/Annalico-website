@@ -37,6 +37,8 @@ const appRouteFallbacks = [
   'book',
   'business-directory',
   'salon',
+  join('salon', 'vip'),
+  join('salon', 'vip-request'),
   'notary',
   join('notary', 'book'),
   join('notary', 'promo'),

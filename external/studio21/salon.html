@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Studio 21&trade; | Salon</title>
-    <link rel="stylesheet" href="styles.css?v=20260819c" />
+    <link rel="stylesheet" href="styles.css?v=20260820e" />
   </head>
   <body>
     <header class="site-header">
@@ -12,12 +12,13 @@
       <nav class="site-nav">
         <a href="index.html">Home</a>
         <a href="#services">Services</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfx-d8XV8dK5MV7Ipuv1ZPb2tjcGKTUJ5n0QCYOgZIVgET7gw/viewform?usp=header" target="_blank" rel="noopener noreferrer">New Clients</a>
+        <a href="new-clients.html">New Clients</a>
         <details class="nav-access">
           <summary>Existing Clients</summary>
           <form class="nav-access-form" data-client-portal-form>
             <input name="clientCode" type="text" autocomplete="off" placeholder="Access code" required />
             <button type="submit">Enter</button>
+            <a class="forgot-code-link" href="client-portal.html#recover-code">Forgot access code?</a>
             <p class="nav-access-message" data-portal-message aria-live="polite"></p>
           </form>
         </details>
@@ -29,28 +30,73 @@
       <section class="page-card salon-landing-card" aria-label="Studio 21 Salon">
         <div class="salon-landing-art" aria-label="Studio 21 Salon floral artwork"></div>
         <h1 class="sr-only">Studio 21&trade; | Salon</h1>
+        <div class="salon-content-card salon-highlights-card">
+          <p id="services" class="section-kicker">New Services</p>
+
+        <div class="service-tabs" role="tablist" aria-label="Studio 21 service categories">
+          <button class="service-tab is-active" type="button" role="tab" aria-selected="true" data-service-tab="hair">Hair</button>
+          <button class="service-tab" type="button" role="tab" aria-selected="false" data-service-tab="treatments">Treatments</button>
+          <button class="service-tab" type="button" role="tab" aria-selected="false" data-service-tab="memberships">Memberships</button>
+          <button class="service-tab" type="button" role="tab" aria-selected="false" data-service-tab="hair-loss">Hair Loss</button>
+        </div>
+
+          <div class="service-list">
+          <article data-service-panel="hair">
+            <h2>Hair Services</h2>
+            <p>Highlights, conditioning care, color, styling, maintenance, and hair loss treatment plans with a five-week take-home prescription. <a class="detail-link" href="services/hair-services.html">Click for more details.</a></p>
+          </article>
+          <article data-service-panel="treatments" hidden>
+            <h2>PAI System Treatments</h2>
+            <p>Introducing elevated treatment experiences designed for scalp care, restoration, shine, and a more intentional salon visit. <a class="detail-link" href="services/pai-treatments.html">Click for more details.</a></p>
+          </article>
+          <article data-service-panel="memberships" hidden>
+            <h2>Memberships Are Here</h2>
+            <p>Online booking, member perks, milestone celebrations, and new ways to give back are arriving inside Studio 21&trade;. <a class="detail-link" href="services/memberships.html">Click inside.</a></p>
+          </article>
+          <article data-service-panel="hair-loss" hidden>
+            <h2>Hair Loss Treatment Plans</h2>
+            <p>Focused options for men and women with personalized care, treatment support, and a five-week take-home prescription plan. More exciting updates are coming soon. <a class="detail-link" href="services/hair-loss.html">Click for more details.</a></p>
+          </article>
+          </div>
+        </div>
       </section>
 
-      <section class="salon-content-card">
-        <p id="services" class="section-kicker">New Services</p>
+      <section class="booking-assistant" id="booking-assistant" aria-live="polite">
+        <div class="booking-assistant-intro">
+          <p class="section-kicker">Existing Client Booking</p>
+          <h2 data-booking-greeting>Hi, welcome back.</h2>
+          <p data-booking-summary>Enter your access code from Existing Clients to begin your guided appointment request.</p>
+        </div>
 
-        <div class="service-list">
-          <article>
-            <h2>Hair Services</h2>
-            <p>Highlights, conditioning care, color, styling, maintenance, and hair loss treatment plans with a five-week take-home prescription. <a class="detail-link" href="https://www.vagaro.com/astudio21/services" target="_blank" rel="noopener noreferrer">Click for more details.</a></p>
-          </article>
-          <article>
-            <h2>PAI System Treatments</h2>
-            <p>Introducing elevated treatment experiences designed for scalp care, restoration, shine, and a more intentional salon visit. <a class="detail-link" href="https://www.vagaro.com/astudio21/services" target="_blank" rel="noopener noreferrer">Click for more details.</a></p>
-          </article>
-          <article>
-            <h2>Memberships Are Here</h2>
-            <p>Online booking, member perks, milestone celebrations, and new ways to give back are arriving inside Studio 21&trade;. <a class="detail-link" href="https://www.vagaro.com/astudio21/services" target="_blank" rel="noopener noreferrer">Click inside.</a></p>
-          </article>
-          <article>
-            <h2>Hair Loss Treatment Plans</h2>
-            <p>Focused options for men and women with personalized care, treatment support, and a five-week take-home prescription plan. More exciting updates are coming soon. <a class="detail-link" href="https://www.vagaro.com/astudio21/services" target="_blank" rel="noopener noreferrer">Click for more details.</a></p>
-          </article>
+        <div class="booking-progress" aria-hidden="true">
+          <span data-booking-progress></span>
+        </div>
+
+        <form class="booking-wizard" data-booking-wizard hidden>
+          <fieldset data-booking-step></fieldset>
+
+          <div class="booking-wizard-actions">
+            <button type="button" class="assistant-back" data-booking-back>Back</button>
+            <button type="button" class="assistant-secondary" data-booking-done>That's all I need</button>
+            <button type="button" class="assistant-primary" data-booking-next>Next</button>
+          </div>
+        </form>
+
+        <div class="booking-review" data-booking-review hidden>
+          <h3>You're almost done.</h3>
+          <p data-booking-review-text></p>
+          <div class="waitlist-choice" data-waitlist-choice>
+            <h4>If your preferred opening is not available</h4>
+            <p>Would you like to be added to the waitlist first?</p>
+            <div class="waitlist-choice-actions">
+              <a class="assistant-primary" data-waitlist-link href="#">Yes, waitlist me</a>
+              <button type="button" class="assistant-back" data-show-text-link>No, I need to text Anna</button>
+            </div>
+            <a class="text-message-link" data-text-message-link href="sms:+19729007147?&body=Hi%20Anna%2C%20I%20need%20help%20with%20my%20Studio%2021%20appointment%20request.">Send Anna a text</a>
+          </div>
+          <a class="button-link" data-booking-request-link href="#" target="_blank" rel="noopener noreferrer">Request Booking</a>
+          <button type="button" class="assistant-back" data-booking-edit>Edit Choices</button>
+          <p class="booking-confirmation" data-booking-confirmation hidden>Thank you. Your request is ready to submit. Please allow Anna to quickly check that everything looks good and does not need any adjustments. You will receive a response as soon as possible.</p>
         </div>
       </section>
     </main>
@@ -67,6 +113,6 @@
       </p>
     </footer>
 
-    <script src="script.js?v=20260819c"></script>
+    <script src="script.js?v=20260820e"></script>
   </body>
 </html>

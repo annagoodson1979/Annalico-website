@@ -2,110 +2,94 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState } from "react";
 import BookingRequest from "./BookingRequest";
 import FinalArrivalScene from "./FinalArrivalScene";
-import FinalHouseOfJadeScene from "./FinalHouseOfJadeScene";
 import FinalLobbyScene from "./FinalLobbyScene";
 import FinalMonolithScene from "./FinalMonolithScene";
-import FinalOfficeScene from "./FinalOfficeScene";
 import FinalPaiSystemScene from "./FinalPaiSystemScene";
+import FinalServiceSplitScene from "./FinalServiceSplitScene";
 import FinalSpotlightRevealScene from "./FinalSpotlightRevealScene";
-import FinalSpotlightScene from "./FinalSpotlightScene";
 import FinalYenCircleScene from "./FinalYenCircleScene";
 
 const scenes = [
   {
     cue: "arrival",
     component: FinalArrivalScene,
-    image: "/images/arrival.jpeg",
+    image: "/images/arrival2.jpg",
     title: "Arrival",
-  },
-  {
-    cue: "yen",
-    component: FinalLobbyScene,
-    image: "/images/duyenanlobby.jpg",
-    title: "House of Yen",
-  },
-  {
-    cue: "jade-glimpse",
-    component: FinalHouseOfJadeScene,
-    image: "/images/houseofjade.jpeg",
-    title: "House of Jade",
   },
   {
     cue: "monolith",
     component: FinalMonolithScene,
-    image: "/images/monolith.jpg",
+    image: "/images/monolith2.jpg",
     title: "Monolith",
   },
   {
-    cue: "candles",
+    cue: "tea-light-path",
     component: FinalMonolithScene,
-    image: "/images/monolith.jpg",
-    title: "Candles",
+    image: "/images/monolith2.jpg",
+    title: "Tea Light Path",
   },
   {
-    cue: "yen-chamber",
-    component: FinalYenCircleScene,
-    image: "/images/courtyard.jpeg",
-    title: "Yen Circle",
+    cue: "lobby",
+    component: FinalLobbyScene,
+    image: "/images/duyenanlobby.jpg",
+    title: "Lobby",
   },
   {
-    cue: "spotlight",
+    cue: "salon-notary",
+    component: FinalServiceSplitScene,
+    image: "/images/duyenanlobby.jpg",
+    title: "Salon and Notary",
+  },
+  {
+    cue: "hourglass-spotlight",
     component: FinalSpotlightRevealScene,
     image: "/images/spotlight.jpg",
-    title: "Spotlight",
+    title: "Hourglass Spotlight",
+  },
+  {
+    cue: "pai-sanctuary",
+    component: FinalPaiSystemScene,
+    image: "/images/PAI1.jpg",
+    title: "PAI Sanctuary",
   },
   {
     cue: "water-recedes",
     component: FinalPaiSystemScene,
-    image: "/images/PAI.jpeg",
+    image: "/images/PAI1.jpg",
     title: "Water Recedes",
   },
   {
-    cue: "mechanics",
+    cue: "figures-awaken",
     component: FinalPaiSystemScene,
-    image: "/images/PAI.jpeg",
-    title: "Mechanics",
+    image: "/images/PAI1.jpg",
+    title: "Figures Awaken",
   },
   {
-    cue: "awakening",
-    component: FinalPaiSystemScene,
-    image: "/images/PAI.jpeg",
-    title: "Awakening",
-  },
-  {
-    cue: "athena-nod",
-    component: FinalPaiSystemScene,
-    image: "/images/PAI.jpeg",
-    title: "Athena Nod",
-  },
-  {
-    cue: "dust-transition",
+    cue: "name-dust-transition",
     component: FinalSpotlightRevealScene,
     image: "/images/spotlight.jpg",
-    title: "Dust Transition",
+    title: "Name Dust Transition",
   },
   {
-    cue: "final-bell",
-    component: FinalOfficeScene,
-    image: "/images/office.jpg",
-    title: "Final Bell",
+    cue: "yen-circle",
+    component: FinalYenCircleScene,
+    image: "/images/courtyard.jpeg",
+    title: "Yen Circle",
   },
 ];
 
 const sceneCues = [
   { time: 0, scene: "arrival" },
-  { time: 18, scene: "yen" },
-  { time: 38, scene: "jade-glimpse" },
-  { time: 55, scene: "monolith" },
-  { time: 78, scene: "candles" },
-  { time: 96, scene: "yen-chamber" },
-  { time: 112, scene: "spotlight" },
-  { time: 122, scene: "water-recedes" },
-  { time: 138, scene: "mechanics" },
-  { time: 155, scene: "awakening" },
-  { time: 170, scene: "athena-nod" },
-  { time: 182, scene: "dust-transition" },
-  { time: 196, scene: "final-bell" },
+  { time: 18, scene: "monolith" },
+  { time: 34, scene: "tea-light-path" },
+  { time: 52, scene: "lobby" },
+  { time: 70, scene: "salon-notary" },
+  { time: 90, scene: "hourglass-spotlight" },
+  { time: 114, scene: "pai-sanctuary" },
+  { time: 136, scene: "water-recedes" },
+  { time: 156, scene: "figures-awaken" },
+  { time: 178, scene: "name-dust-transition" },
+  { time: 202, scene: "yen-circle" },
 ];
 
 const soundtrackSrc = "/audio/duyen-an-awakening.mp3";
