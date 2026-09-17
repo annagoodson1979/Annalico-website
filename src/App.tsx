@@ -26,6 +26,7 @@ const salonVipCode = "VIP-21";
 const salonVipStorageKey = "salonVipUnlocked";
 const salonVipFormLink =
   "https://docs.google.com/forms/d/e/1FAIpQLScQUDk9t48zQBrKTtR0JSJAass3MFrlT1I1LuBgaHTqFNh6oQ/viewform?usp=header";
+const salonWebsite = "https://salon.astudio21.com";
 
 function SalonPage() {
   return (
@@ -43,7 +44,8 @@ function SalonPage() {
         </p>
 
         <div className="route-actions">
-          <a href="/appointments">Request Appointment</a>
+          <a href={salonWebsite}>Enter Studio 21</a>
+          <a href={`${salonWebsite}/appointments`}>Request Appointment</a>
           <a href="/salon/vip">VIP Client Access</a>
           <a href="/notary">Notary Services</a>
         </div>
