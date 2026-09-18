@@ -30,7 +30,7 @@ jobs:
           cache: npm
 
       - name: Install
-        run: npm install
+        run: npm install --include=dev
 
       - name: Build
         run: npm run build
