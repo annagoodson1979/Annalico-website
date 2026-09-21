@@ -2357,6 +2357,10 @@ h2 {
     -webkit-mask-image: none;
   }
 
+  /* The artwork is a short image at the top on phones, not the full hero height. */
+  .owner-easter-egg { left:48.5%; top:calc(20px + 17vw); width:28px; height:28px; }
+  .owner-tooth-egg { left:46.35%; top:calc(20px + 20.3vw); width:22px; height:22px; }
+
   .page-shell {
     width: min(100% - 24px, 1120px);
     min-height: calc(100svh - 124px);
