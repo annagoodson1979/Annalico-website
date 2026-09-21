@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content="0; url=https://salon.astudio21.com/booking" />
     <title>Existing Client Portal | Studio 21&trade;</title>
     <link rel="stylesheet" href="styles.css?v=20260820e" />
   </head>
@@ -19,47 +20,12 @@
 
     <main class="page-shell portal-shell">
       <section class="page-card portal-card">
-        <p class="eyebrow">Existing Client Portal</p>
-        <h1>Enter Your Code</h1>
-        <p>Use your private Studio 21&trade; access code to open your booking link.</p>
-
-        <form class="portal-form" id="clientPortalForm">
-          <label for="clientCode">Access Code</label>
-          <input id="clientCode" name="clientCode" type="text" autocomplete="off" placeholder="Enter code" required />
-          <button type="submit">Continue</button>
-          <p class="portal-message" id="portalMessage" aria-live="polite"></p>
-        </form>
-
-        <p class="portal-hint">Codes are not case-sensitive.</p>
+        <p class="eyebrow">Studio 21 Booking</p>
+        <h1>Booking has moved</h1>
+        <p>Opening the Studio 21 booking site now.</p>
+        <p><a class="button-link" href="https://salon.astudio21.com/booking">Continue to Booking</a></p>
       </section>
 
-      <section class="page-card portal-card recovery-card" id="recover-code">
-        <p class="eyebrow">Forgot Access Code</p>
-        <h2>Recover Your Code</h2>
-        <p>Enter your client name and answer the question shown. If verified, your booking link will open.</p>
-
-        <form class="portal-form" id="accessRecoveryForm">
-          <label for="recoveryFirstName">First Name</label>
-          <input id="recoveryFirstName" name="firstName" type="text" autocomplete="given-name" placeholder="First name" required />
-
-          <label for="recoveryLastName">Last Name</label>
-          <input id="recoveryLastName" name="lastName" type="text" autocomplete="family-name" placeholder="Last name" required />
-
-          <p class="recovery-question" id="recoveryQuestionText" data-recovery-question></p>
-          <input id="recoverySecurityQuestion" name="securityQuestion" type="hidden" />
-
-          <label for="recoverySecurityAnswer">Security Answer</label>
-          <input id="recoverySecurityAnswer" name="securityAnswer" type="text" autocomplete="off" placeholder="Answer" required />
-
-          <button type="submit">Recover Access</button>
-          <p class="portal-message" id="recoveryMessage" aria-live="polite"></p>
-        </form>
-
-        <div class="recovery-confirmation" id="recoveryConfirmation" hidden>
-          <p>Access verified. For your protection, please confirm this was you before continuing.</p>
-          <button type="button" id="continueRecoveredAccess">Yes, continue to booking</button>
-        </div>
-      </section>
     </main>
 
     <footer class="site-footer">
