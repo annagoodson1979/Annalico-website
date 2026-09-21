@@ -9,45 +9,6 @@ if (menuToggle && siteNav) {
 
 const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
-const ownerEye = document.querySelector(".owner-easter-egg");
-const ownerTooth = document.querySelector(".owner-tooth-egg");
-const ownerRiddle = document.querySelector(".owner-riddle");
-const ownerRiddleForm = document.querySelector("#ownerRiddleForm");
-const ownerRiddleMessage = document.querySelector("#ownerRiddleMessage");
-let ownerShortcutStartedAt = 0;
-let ownerShortcutTimer = 0;
-
-function failOwnerShortcut() {
-  window.clearTimeout(ownerShortcutTimer);
-  ownerShortcutStartedAt = 0;
-  if (ownerRiddleMessage) ownerRiddleMessage.textContent = "Wrong passcode.";
-}
-
-if (ownerEye && ownerTooth && ownerRiddle) {
-  ownerEye.addEventListener("click", (event) => {
-    event.preventDefault();
-    ownerShortcutStartedAt = Date.now();
-    ownerRiddle.classList.add("is-open");
-    ownerRiddle.setAttribute("aria-hidden", "false");
-    if (ownerRiddleMessage) ownerRiddleMessage.textContent = "Access code required.";
-    window.clearTimeout(ownerShortcutTimer);
-    ownerShortcutTimer = window.setTimeout(failOwnerShortcut, 5000);
-  });
-  ownerRiddleForm?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    failOwnerShortcut();
-  });
-  ownerTooth.addEventListener("click", (event) => {
-    event.preventDefault();
-    if (!ownerShortcutStartedAt || Date.now() - ownerShortcutStartedAt > 5000) {
-      failOwnerShortcut();
-      return;
-    }
-    window.clearTimeout(ownerShortcutTimer);
-    window.location.assign(ownerTooth.href);
-  });
-}
-
 document.querySelectorAll(".site-nav a").forEach((link) => {
   if (link.getAttribute("href") === currentPage) {
     link.classList.add("is-active");

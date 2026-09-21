@@ -270,28 +270,6 @@ a {
   outline: 0;
 }
 
-.owner-tooth-egg {
-  position: absolute;
-  z-index: 3;
-  left: 46.35%;
-  top: 53.5%;
-  width: 15px;
-  height: 15px;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  outline: 0;
-}
-
-.owner-riddle { display:none; position:absolute; inset:0; z-index:4; pointer-events:none; }
-.owner-riddle.is-open { display:block; }
-.owner-riddle-card { pointer-events:auto; position:absolute; top:18px; right:clamp(14px,4vw,58px); width:min(260px,calc(100% - 28px)); padding:18px; border:1px solid rgba(247,238,232,.4); border-radius:10px; background:rgba(14,9,10,.92); color:#f7eee8; box-shadow:0 12px 38px rgba(0,0,0,.42); }
-.owner-riddle-card p { margin:0 0 5px; font:700 9px/1 Arial,Helvetica,sans-serif; letter-spacing:1.3px; }
-.owner-riddle-card h2 { margin:0 0 13px; font-size:20px; }
-.owner-riddle-card label { display:grid; gap:5px; font:700 9px/1 Arial,Helvetica,sans-serif; letter-spacing:.8px; text-transform:uppercase; }
-.owner-riddle-card input { min-height:37px; padding:8px; border:1px solid rgba(247,238,232,.4); border-radius:5px; background:#fffaf5; color:#211719; }
-.owner-riddle-card button { width:100%; margin-top:10px; padding:9px; border:1px solid #f7eee8; border-radius:5px; background:#f7eee8; color:#211719; font-weight:800; }
-.owner-riddle-card small { display:block; min-height:18px; margin-top:9px; color:#ead4d8; font-size:10px; }
-
 .owner-easter-egg:focus-visible {
   outline: 2px solid rgba(247, 238, 232, 0.9);
   outline-offset: 5px;
@@ -2359,7 +2337,6 @@ h2 {
 
   /* The artwork is a short image at the top on phones, not the full hero height. */
   .owner-easter-egg { left:49.25%; top:calc(20px + 17vw); width:28px; height:28px; }
-  .owner-tooth-egg { left:46.35%; top:calc(20px + 20.3vw); width:22px; height:22px; }
 
   .page-shell {
     width: min(100% - 24px, 1120px);
