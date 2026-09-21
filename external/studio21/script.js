@@ -9,6 +9,63 @@ if (menuToggle && siteNav) {
 
 const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
+const ownerEye = document.querySelector(".owner-easter-egg");
+const ownerTooth = document.querySelector(".owner-tooth-egg");
+const ownerRiddle = document.querySelector(".owner-riddle");
+const ownerRiddleForm = document.querySelector("#ownerRiddleForm");
+const ownerRiddleMessage = document.querySelector("#ownerRiddleMessage");
+const ownerShortcutLock = "studio21-owner-shortcut-lock";
+let ownerShortcutStartedAt = 0;
+let ownerShortcutTimer = 0;
+
+function nextHour() {
+  const now = new Date();
+  now.setHours(now.getHours() + 1, 0, 0, 0);
+  return now.getTime();
+}
+
+function shortcutLocked() {
+  try { return Number(localStorage.getItem(ownerShortcutLock) || 0) > Date.now(); } catch { return false; }
+}
+
+function failOwnerShortcut(message = "That access code is not correct.") {
+  window.clearTimeout(ownerShortcutTimer);
+  ownerShortcutStartedAt = 0;
+  try { localStorage.setItem(ownerShortcutLock, String(nextHour())); } catch {}
+  if (ownerRiddleMessage) ownerRiddleMessage.textContent = `${message} Try the private desk again after the next hour.`;
+}
+
+if (ownerEye && ownerTooth && ownerRiddle) {
+  ownerEye.addEventListener("click", (event) => {
+    event.preventDefault();
+    if (shortcutLocked()) {
+      ownerRiddle.classList.add("is-open");
+      ownerRiddle.setAttribute("aria-hidden", "false");
+      if (ownerRiddleMessage) ownerRiddleMessage.textContent = "This entrance resets at the next hour. Use the private desk sign-in instead.";
+      return;
+    }
+    ownerShortcutStartedAt = Date.now();
+    ownerRiddle.classList.add("is-open");
+    ownerRiddle.setAttribute("aria-hidden", "false");
+    if (ownerRiddleMessage) ownerRiddleMessage.textContent = "Access code required.";
+    window.clearTimeout(ownerShortcutTimer);
+    ownerShortcutTimer = window.setTimeout(() => failOwnerShortcut("Time expired."), 5000);
+  });
+  ownerRiddleForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    failOwnerShortcut();
+  });
+  ownerTooth.addEventListener("click", (event) => {
+    event.preventDefault();
+    if (!ownerShortcutStartedAt || Date.now() - ownerShortcutStartedAt > 5000 || shortcutLocked()) {
+      failOwnerShortcut("That entrance is no longer available.");
+      return;
+    }
+    window.clearTimeout(ownerShortcutTimer);
+    window.location.assign(ownerTooth.href);
+  });
+}
+
 document.querySelectorAll(".site-nav a").forEach((link) => {
   if (link.getAttribute("href") === currentPage) {
     link.classList.add("is-active");
