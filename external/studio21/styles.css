@@ -85,6 +85,11 @@ a {
 .legal-page h2 { margin:30px 0 9px; color:var(--rose); font-family:Georgia,"Times New Roman",serif; font-size:1.18rem; }
 .legal-page p { max-width: none; line-height:1.7; }
 .legal-page .legal-contact { margin-top:10px; }
+.sms-page { max-width:720px; text-align:center; }
+.sms-subscribe { margin:30px 0; font-size:1.15rem; }
+.sms-subscribe a { color:var(--rose); text-decoration:underline; text-underline-offset:4px; }
+.sms-legal-links { display:flex; justify-content:center; gap:12px; margin-top:30px; font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase; }
+.sms-legal-links a:hover { color:var(--rose); }
 
 .nav-access {
   position: relative;
