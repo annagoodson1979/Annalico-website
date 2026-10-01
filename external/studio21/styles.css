@@ -76,7 +76,7 @@ a {
 }
 
 .landing-header { padding-bottom: 42px; }
-.legal-nav { position:absolute; bottom:12px; display:flex; align-items:center; justify-content:center; gap:5px; color:var(--soft); font-size:0.5rem; letter-spacing:0.045em; text-transform:uppercase; white-space:nowrap; }
+.legal-nav { position:absolute; bottom:12px; display:flex; align-items:center; justify-content:center; gap:8px; color:var(--soft); font-size:0.62rem; letter-spacing:0.08em; text-transform:uppercase; }
 .legal-nav a:hover { color:var(--rose); }
 
 .legal-page { max-width: 900px; text-align:left; }
@@ -388,6 +388,13 @@ h2 {
 
 .page-card h1.gold-heading {
   color: var(--gold);
+}
+
+/* Legal-link pages need a quieter title than the salon landing sections. */
+.legal-page h1,
+.page-card.legal-page h1 {
+  font-size: clamp(1.8rem, 5vw, 3.2rem);
+  line-height: 1.05;
 }
 
 .notary-page-card h1 {
