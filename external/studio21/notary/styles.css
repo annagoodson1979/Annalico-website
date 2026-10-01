@@ -3,7 +3,8 @@
   --panel: rgba(236, 240, 229, 0.86);
   --panel-soft: rgba(255, 255, 255, 0.32);
   --text: #273026;
-  --muted: #5f695a;
+  /* Match supporting copy to the landing page's dark green for readability. */
+  --muted: #34483a;
   --gold: #738163;
   --jade: #dce6d3;
   --olive: #46513f;
