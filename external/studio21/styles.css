@@ -76,7 +76,7 @@ a {
 }
 
 .landing-header { padding-bottom: 42px; }
-.legal-nav { position:absolute; bottom:12px; display:flex; align-items:center; justify-content:center; gap:8px; color:var(--soft); font-size:0.62rem; letter-spacing:0.08em; text-transform:uppercase; }
+.legal-nav { position:absolute; bottom:12px; display:flex; align-items:center; justify-content:center; gap:5px; color:var(--soft); font-size:0.5rem; letter-spacing:0.045em; text-transform:uppercase; white-space:nowrap; }
 .legal-nav a:hover { color:var(--rose); }
 
 .legal-page { max-width: 900px; text-align:left; }
